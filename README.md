@@ -1,6 +1,10 @@
-# datos-escala-humana
-Datos a escala humana: an open source book
+# Datos a escala humana
+Un libro de código abierto
 
-[Contributor Guide](/project/CONTRIBUTING.md) | [Code of Conduct](/project/CODE_OF_CONDUCT.md) | [Roadmap](/project/ROADMAP.md)
+[Guía de Contribución](/project/CONTRIBUTING.md) | [Código de Conducta](/project/CODE_OF_CONDUCT.md) | [Hoja de Ruta](/project/ROADMAP.md)
 
-🚧 Project Status: this book is currently in the early stages of development. I hope to complete an MVP by the end of October 2025. Please see the ROADMAP for more information.
+🚧 Estado del Proyecto: este libro se encuentra actualmente en las primeras etapas de desarrollo. Espero completar un MVP para finales de octubre de 2025. Por favor, consulta la HOJA DE RUTA para más información.
+
+## Patrocinadores del Proyecto
+
+[![](public/ciut-logo.png)](https://ciut.fau.unlp.edu.ar/)

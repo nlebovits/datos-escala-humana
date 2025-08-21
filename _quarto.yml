@@ -10,16 +10,24 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
-    - summary.qmd
+    - python_geoespacial.qmd
+    - riesgo_climatico.qmd
+    - datos_abiertos.qmd
+    - datos_accion.qmd
+    - conclusion.qmd
     - references.qmd
 
 bibliography: references.bib
 
 format:
   html:
+    toc: true
+    toc_float: true
     theme: cosmo
-  pdf:
-    documentclass: scrreprt
-
+    code-fold: true
+    code-summary: "Mostrar código"
+    number-sections: true
+    fontsize: "11"
+    lightbox: auto
 
 
