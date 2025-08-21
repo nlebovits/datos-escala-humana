@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Datos Abiertos – Datos a escala humana</title>
+<title>2&nbsp; Python Geoespacial – Datos a escala humana</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./datos_accion.html" rel="next">
-<link href="./riesgo_climatico.html" rel="prev">
+<link href="./02-riesgo-climatico.html" rel="next">
+<link href="./intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./datos_abiertos.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Datos Abiertos</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-python-geoespacial.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Python Geoespacial</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -97,6 +97,32 @@ ul.task-list li input[type="checkbox"] {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Datos a escala humana</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/nlebovits/datos-escala-humana" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -120,25 +146,25 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./python_geoespacial.html" class="sidebar-item-text sidebar-link">
+  <a href="./01-python-geoespacial.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Python Geoespacial</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./riesgo_climatico.html" class="sidebar-item-text sidebar-link">
+  <a href="./02-riesgo-climatico.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Riesgo Climático para Ciudades</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./datos_abiertos.html" class="sidebar-item-text sidebar-link active">
+  <a href="./03-datos-abiertos.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Datos Abiertos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./datos_accion.html" class="sidebar-item-text sidebar-link">
+  <a href="./04-datos-accion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datos a la Acción</span></span></a>
   </div>
 </li>
@@ -164,12 +190,32 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#qué-son-los-datos-abiertos" id="toc-qué-son-los-datos-abiertos" class="nav-link active" data-scroll-target="#qué-son-los-datos-abiertos"><span class="header-section-number">4.1</span> Qué son los Datos Abiertos</a></li>
-  <li><a href="#fuentes-comunes-de-datos-abiertos" id="toc-fuentes-comunes-de-datos-abiertos" class="nav-link" data-scroll-target="#fuentes-comunes-de-datos-abiertos"><span class="header-section-number">4.2</span> Fuentes Comunes de Datos Abiertos</a></li>
-  <li><a href="#cómo-encontrar-datos-abiertos" id="toc-cómo-encontrar-datos-abiertos" class="nav-link" data-scroll-target="#cómo-encontrar-datos-abiertos"><span class="header-section-number">4.3</span> Cómo Encontrar Datos Abiertos</a></li>
-  <li><a href="#cómo-entender-los-datos-abiertos" id="toc-cómo-entender-los-datos-abiertos" class="nav-link" data-scroll-target="#cómo-entender-los-datos-abiertos"><span class="header-section-number">4.4</span> Cómo Entender los Datos Abiertos</a></li>
-  <li><a href="#qué-se-puede-y-no-se-puede-hacer-con-los-datos-abiertos" id="toc-qué-se-puede-y-no-se-puede-hacer-con-los-datos-abiertos" class="nav-link" data-scroll-target="#qué-se-puede-y-no-se-puede-hacer-con-los-datos-abiertos"><span class="header-section-number">4.5</span> Qué se Puede y No se Puede Hacer con los Datos Abiertos</a></li>
-  <li><a href="#cómo-evaluar-la-calidad-de-los-datos-abiertos" id="toc-cómo-evaluar-la-calidad-de-los-datos-abiertos" class="nav-link" data-scroll-target="#cómo-evaluar-la-calidad-de-los-datos-abiertos"><span class="header-section-number">4.6</span> Cómo Evaluar la Calidad de los Datos Abiertos</a></li>
+  <li><a href="#por-qué-python-gis" id="toc-por-qué-python-gis" class="nav-link active" data-scroll-target="#por-qué-python-gis"><span class="header-section-number">2.1</span> ¿Por qué Python GIS?</a>
+  <ul class="collapse">
+  <li><a href="#ventajas-sobre-el-software-de-punto-y-clic" id="toc-ventajas-sobre-el-software-de-punto-y-clic" class="nav-link" data-scroll-target="#ventajas-sobre-el-software-de-punto-y-clic"><span class="header-section-number">2.1.1</span> Ventajas sobre el Software de Punto y Clic</a></li>
+  </ul></li>
+  <li><a href="#entradasalida-de-datos-es" id="toc-entradasalida-de-datos-es" class="nav-link" data-scroll-target="#entradasalida-de-datos-es"><span class="header-section-number">2.2</span> Entrada/Salida de Datos (E/S)</a>
+  <ul class="collapse">
+  <li><a href="#datos-vectoriales" id="toc-datos-vectoriales" class="nav-link" data-scroll-target="#datos-vectoriales"><span class="header-section-number">2.2.1</span> Datos Vectoriales</a></li>
+  <li><a href="#datos-raster" id="toc-datos-raster" class="nav-link" data-scroll-target="#datos-raster"><span class="header-section-number">2.2.2</span> Datos Raster</a></li>
+  </ul></li>
+  <li><a href="#sistemas-de-referencia-de-coordenadas" id="toc-sistemas-de-referencia-de-coordenadas" class="nav-link" data-scroll-target="#sistemas-de-referencia-de-coordenadas"><span class="header-section-number">2.3</span> Sistemas de Referencia de Coordenadas</a></li>
+  <li><a href="#software-y-bibliotecas-geoespaciales" id="toc-software-y-bibliotecas-geoespaciales" class="nav-link" data-scroll-target="#software-y-bibliotecas-geoespaciales"><span class="header-section-number">2.4</span> Software y Bibliotecas Geoespaciales</a></li>
+  <li><a href="#lectura-y-visualización-de-datos-geoespaciales" id="toc-lectura-y-visualización-de-datos-geoespaciales" class="nav-link" data-scroll-target="#lectura-y-visualización-de-datos-geoespaciales"><span class="header-section-number">2.5</span> Lectura y Visualización de Datos Geoespaciales</a>
+  <ul class="collapse">
+  <li><a href="#importación-de-datos" id="toc-importación-de-datos" class="nav-link" data-scroll-target="#importación-de-datos"><span class="header-section-number">2.5.1</span> Importación de Datos</a></li>
+  <li><a href="#visualización-básica" id="toc-visualización-básica" class="nav-link" data-scroll-target="#visualización-básica"><span class="header-section-number">2.5.2</span> Visualización Básica</a></li>
+  </ul></li>
+  <li><a href="#operaciones-espaciales-básicas" id="toc-operaciones-espaciales-básicas" class="nav-link" data-scroll-target="#operaciones-espaciales-básicas"><span class="header-section-number">2.6</span> Operaciones Espaciales Básicas</a>
+  <ul class="collapse">
+  <li><a href="#reproyecciones" id="toc-reproyecciones" class="nav-link" data-scroll-target="#reproyecciones"><span class="header-section-number">2.6.1</span> Reproyecciones</a></li>
+  <li><a href="#operaciones-de-recorte" id="toc-operaciones-de-recorte" class="nav-link" data-scroll-target="#operaciones-de-recorte"><span class="header-section-number">2.6.2</span> Operaciones de Recorte</a></li>
+  <li><a href="#superposiciones-espaciales" id="toc-superposiciones-espaciales" class="nav-link" data-scroll-target="#superposiciones-espaciales"><span class="header-section-number">2.6.3</span> Superposiciones Espaciales</a></li>
+  <li><a href="#estadísticas-zonales" id="toc-estadísticas-zonales" class="nav-link" data-scroll-target="#estadísticas-zonales"><span class="header-section-number">2.6.4</span> Estadísticas Zonales</a></li>
+  <li><a href="#agregaciones-espaciales-básicas" id="toc-agregaciones-espaciales-básicas" class="nav-link" data-scroll-target="#agregaciones-espaciales-básicas"><span class="header-section-number">2.6.5</span> Agregaciones Espaciales Básicas</a></li>
+  <li><a href="#extracción-de-raster" id="toc-extracción-de-raster" class="nav-link" data-scroll-target="#extracción-de-raster"><span class="header-section-number">2.6.6</span> Extracción de Raster</a></li>
+  </ul></li>
+  <li><a href="#recursos-adicionales-y-aprendizaje-avanzado" id="toc-recursos-adicionales-y-aprendizaje-avanzado" class="nav-link" data-scroll-target="#recursos-adicionales-y-aprendizaje-avanzado"><span class="header-section-number">2.7</span> Recursos Adicionales y Aprendizaje Avanzado</a></li>
   </ul>
 </nav>
     </div>
@@ -178,7 +224,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Datos Abiertos</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Python Geoespacial</span></h1>
 </div>
 
 
@@ -195,23 +241,59 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="qué-son-los-datos-abiertos" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="qué-son-los-datos-abiertos"><span class="header-section-number">4.1</span> Qué son los Datos Abiertos</h2>
+<section id="por-qué-python-gis" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="por-qué-python-gis"><span class="header-section-number">2.1</span> ¿Por qué Python GIS?</h2>
+<section id="ventajas-sobre-el-software-de-punto-y-clic" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="ventajas-sobre-el-software-de-punto-y-clic"><span class="header-section-number">2.1.1</span> Ventajas sobre el Software de Punto y Clic</h3>
 </section>
-<section id="fuentes-comunes-de-datos-abiertos" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="fuentes-comunes-de-datos-abiertos"><span class="header-section-number">4.2</span> Fuentes Comunes de Datos Abiertos</h2>
 </section>
-<section id="cómo-encontrar-datos-abiertos" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="cómo-encontrar-datos-abiertos"><span class="header-section-number">4.3</span> Cómo Encontrar Datos Abiertos</h2>
+<section id="entradasalida-de-datos-es" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="entradasalida-de-datos-es"><span class="header-section-number">2.2</span> Entrada/Salida de Datos (E/S)</h2>
+<section id="datos-vectoriales" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="datos-vectoriales"><span class="header-section-number">2.2.1</span> Datos Vectoriales</h3>
 </section>
-<section id="cómo-entender-los-datos-abiertos" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="cómo-entender-los-datos-abiertos"><span class="header-section-number">4.4</span> Cómo Entender los Datos Abiertos</h2>
+<section id="datos-raster" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="datos-raster"><span class="header-section-number">2.2.2</span> Datos Raster</h3>
 </section>
-<section id="qué-se-puede-y-no-se-puede-hacer-con-los-datos-abiertos" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="qué-se-puede-y-no-se-puede-hacer-con-los-datos-abiertos"><span class="header-section-number">4.5</span> Qué se Puede y No se Puede Hacer con los Datos Abiertos</h2>
 </section>
-<section id="cómo-evaluar-la-calidad-de-los-datos-abiertos" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="cómo-evaluar-la-calidad-de-los-datos-abiertos"><span class="header-section-number">4.6</span> Cómo Evaluar la Calidad de los Datos Abiertos</h2>
+<section id="sistemas-de-referencia-de-coordenadas" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="sistemas-de-referencia-de-coordenadas"><span class="header-section-number">2.3</span> Sistemas de Referencia de Coordenadas</h2>
+</section>
+<section id="software-y-bibliotecas-geoespaciales" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="software-y-bibliotecas-geoespaciales"><span class="header-section-number">2.4</span> Software y Bibliotecas Geoespaciales</h2>
+</section>
+<section id="lectura-y-visualización-de-datos-geoespaciales" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="lectura-y-visualización-de-datos-geoespaciales"><span class="header-section-number">2.5</span> Lectura y Visualización de Datos Geoespaciales</h2>
+<section id="importación-de-datos" class="level3" data-number="2.5.1">
+<h3 data-number="2.5.1" class="anchored" data-anchor-id="importación-de-datos"><span class="header-section-number">2.5.1</span> Importación de Datos</h3>
+</section>
+<section id="visualización-básica" class="level3" data-number="2.5.2">
+<h3 data-number="2.5.2" class="anchored" data-anchor-id="visualización-básica"><span class="header-section-number">2.5.2</span> Visualización Básica</h3>
+</section>
+</section>
+<section id="operaciones-espaciales-básicas" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="operaciones-espaciales-básicas"><span class="header-section-number">2.6</span> Operaciones Espaciales Básicas</h2>
+<section id="reproyecciones" class="level3" data-number="2.6.1">
+<h3 data-number="2.6.1" class="anchored" data-anchor-id="reproyecciones"><span class="header-section-number">2.6.1</span> Reproyecciones</h3>
+</section>
+<section id="operaciones-de-recorte" class="level3" data-number="2.6.2">
+<h3 data-number="2.6.2" class="anchored" data-anchor-id="operaciones-de-recorte"><span class="header-section-number">2.6.2</span> Operaciones de Recorte</h3>
+</section>
+<section id="superposiciones-espaciales" class="level3" data-number="2.6.3">
+<h3 data-number="2.6.3" class="anchored" data-anchor-id="superposiciones-espaciales"><span class="header-section-number">2.6.3</span> Superposiciones Espaciales</h3>
+</section>
+<section id="estadísticas-zonales" class="level3" data-number="2.6.4">
+<h3 data-number="2.6.4" class="anchored" data-anchor-id="estadísticas-zonales"><span class="header-section-number">2.6.4</span> Estadísticas Zonales</h3>
+</section>
+<section id="agregaciones-espaciales-básicas" class="level3" data-number="2.6.5">
+<h3 data-number="2.6.5" class="anchored" data-anchor-id="agregaciones-espaciales-básicas"><span class="header-section-number">2.6.5</span> Agregaciones Espaciales Básicas</h3>
+</section>
+<section id="extracción-de-raster" class="level3" data-number="2.6.6">
+<h3 data-number="2.6.6" class="anchored" data-anchor-id="extracción-de-raster"><span class="header-section-number">2.6.6</span> Extracción de Raster</h3>
+</section>
+</section>
+<section id="recursos-adicionales-y-aprendizaje-avanzado" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="recursos-adicionales-y-aprendizaje-avanzado"><span class="header-section-number">2.7</span> Recursos Adicionales y Aprendizaje Avanzado</h2>
 
 
 </section>
@@ -309,7 +391,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/nlebovits\.github\.io\/datos-escala-humana\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -639,13 +721,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./riesgo_climatico.html" class="pagination-link" aria-label="Riesgo Climático para Ciudades">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Riesgo Climático para Ciudades</span></span>
+      <a href="./intro.html" class="pagination-link" aria-label="Introducción">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./datos_accion.html" class="pagination-link" aria-label="Datos a la Acción">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datos a la Acción</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./02-riesgo-climatico.html" class="pagination-link" aria-label="Riesgo Climático para Ciudades">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Riesgo Climático para Ciudades</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -6,14 +6,17 @@ book:
   title: "Datos a escala humana"
   subtitle: "Datos abiertos para ciudades resilientes"
   author: "Nissim Lebovits"
-  date: today
+
+  site-url: https://nlebovits.github.io/datos-escala-humana/
+  repo-url: https://github.com/nlebovits/datos-escala-humana
+  sharing: [twitter, facebook, linkedin]
   chapters:
     - index.qmd
     - intro.qmd
-    - python_geoespacial.qmd
-    - riesgo_climatico.qmd
-    - datos_abiertos.qmd
-    - datos_accion.qmd
+    - 01-python-geoespacial.qmd
+    - 02-riesgo-climatico.qmd
+    - 03-datos-abiertos.qmd
+    - 04-datos-accion.qmd
     - conclusion.qmd
     - references.qmd
 
@@ -24,6 +27,7 @@ format:
     toc: true
     toc_float: true
     theme: cosmo
+    code-link: true
     code-fold: true
     code-summary: "Mostrar código"
     number-sections: true
