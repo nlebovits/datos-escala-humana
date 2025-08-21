@@ -1,0 +1,22 @@
+repos:
+  - repo: local
+    hooks:
+      - id: format-qmd-python
+        name: Format Python in QMD
+        entry: python tools/qmd_ruff.py "format"
+        language: python
+        files: \.qmd$
+        additional_dependencies: [ruff]
+      
+      - id: lint-qmd-python
+        name: Lint and fix Python in QMD
+        entry: python tools/qmd_ruff.py "check --fix"
+        language: python
+        files: \.qmd$
+        additional_dependencies: [ruff]
+  
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.18.1
+    hooks:
+      - id: markdownlint-cli2
+        args: [.markdownlint-cli2.yaml]

@@ -35,4 +35,3 @@
 ### Extracción de Raster
 
 ## Recursos Adicionales y Aprendizaje Avanzado
-
