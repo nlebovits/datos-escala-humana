@@ -28,6 +28,17 @@ uv sync
 uv run pre-commit install
 ```
 
+## Licenciamiento
+
+Este proyecto utiliza una licencia dual:
+
+- **Contenido y documentación**: Licenciados bajo
+  [Creative Commons Attribution 4.0 International (CC BY 4.0)](/LICENSE-CC-BY-4.0)
+- **Código y software**: Licenciados bajo [MIT License](/LICENSE-MIT)
+
+Consulta los archivos de licencia completos para más detalles sobre los
+términos y condiciones.
+
 ## Patrocinadores del Proyecto
 
 [![Logo CIUT](public/ciut-logo.png)](https://ciut.fau.unlp.edu.ar/)
