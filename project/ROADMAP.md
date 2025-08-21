@@ -22,7 +22,7 @@ Desarrollar un libro de código abierto sobre datos geoespaciales en español, c
 - **Entrevistas con estudiantes** para mejoras
 
 ### **Fase 4: Expansión (2026)**
-- **Sección de recetas** con ejemplos reales
+- **Cookbook** con ejemplos reales
 - **Traducciones** (inglés, francés, idiomas ONU)
 - **Integración en cursos académicos**
 - **Mantenimiento del código** y actualizaciones
@@ -35,7 +35,7 @@ Desarrollar un libro de código abierto sobre datos geoespaciales en español, c
 
 **Mediano plazo (2026):**
 - Comité directivo establecido
-- Sección de recetas implementada
+- Cookbook implementado
 - Traducciones iniciadas
 
 **Largo plazo (2027+):**
