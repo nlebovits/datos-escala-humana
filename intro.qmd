@@ -13,3 +13,9 @@
 ## Software
 
 ## Agradecimientos
+
+
+Some important philosophical notes:
+- Learn by doing; it's okay if you don't get it the first time, because we'll practice a lot
+- Practice before theory
+- Broad, not deep (it's great to go deep, and we will provide you resources to do so, but this is a crash course oriented toward applications)
