@@ -15,6 +15,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: astral-sh/setup-uv@v1
+      - name: Install Quarto
+        run: |
+          curl -LO https://github.com/quarto-dev/quarto-cli/releases/download/v1.4.549/quarto-1.4.549-linux-amd64.deb
+          sudo dpkg -i quarto-1.4.549-linux-amd64.deb
       - name: Install dependencies
         run: uv sync
       - name: Render
