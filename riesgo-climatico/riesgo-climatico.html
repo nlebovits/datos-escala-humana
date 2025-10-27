@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; Esperanza – Datos a escala humana</title>
+<title>3&nbsp; Riesgo Climático para Ciudades – Datos a escala humana</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,8 +29,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../cookbooks/la-plata.html" rel="next">
-<link href="../cookbooks/pergamino.html" rel="prev">
+<link href="../datos-abiertos/datos-abiertos.html" rel="next">
+<link href="../python-geoespacial/python-geoespacial.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -249,7 +249,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../cookbooks/pergamino.html">Cookbooks</a></li><li class="breadcrumb-item"><a href="../cookbooks/esperanza.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Esperanza</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../riesgo-climatico/riesgo-climatico.html">Riesgo Climático para Ciudades</a></li><li class="breadcrumb-item"><a href="../riesgo-climatico/riesgo-climatico.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Riesgo Climático para Ciudades</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -343,7 +343,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../riesgo-climatico/riesgo-climatico.html" class="sidebar-item-text sidebar-link">
+  <a href="../riesgo-climatico/riesgo-climatico.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Riesgo Climático para Ciudades</span></span></a>
   </div>
 </li>
@@ -400,7 +400,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../cookbooks/esperanza.html" class="sidebar-item-text sidebar-link active">
+  <a href="../cookbooks/esperanza.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Esperanza</span></span></a>
   </div>
 </li>
@@ -435,16 +435,45 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#qué-es-el-riesgo-climático" id="toc-qué-es-el-riesgo-climático" class="nav-link active" data-scroll-target="#qué-es-el-riesgo-climático"><span class="header-section-number">3.1</span> ¿Qué es el Riesgo Climático?</a>
+  <ul class="collapse">
+  <li><a href="#peligros-naturales" id="toc-peligros-naturales" class="nav-link" data-scroll-target="#peligros-naturales"><span class="header-section-number">3.1.1</span> Peligros Naturales</a></li>
+  <li><a href="#exposición" id="toc-exposición" class="nav-link" data-scroll-target="#exposición"><span class="header-section-number">3.1.2</span> Exposición</a></li>
+  <li><a href="#vulnerabilidad" id="toc-vulnerabilidad" class="nav-link" data-scroll-target="#vulnerabilidad"><span class="header-section-number">3.1.3</span> Vulnerabilidad</a></li>
+  </ul></li>
+  <li><a href="#evaluación-del-riesgo" id="toc-evaluación-del-riesgo" class="nav-link" data-scroll-target="#evaluación-del-riesgo"><span class="header-section-number">3.2</span> Evaluación del Riesgo</a>
+  <ul class="collapse">
+  <li><a href="#combinando-factores-para-obtener-impacto" id="toc-combinando-factores-para-obtener-impacto" class="nav-link" data-scroll-target="#combinando-factores-para-obtener-impacto"><span class="header-section-number">3.2.1</span> Combinando Factores para Obtener Impacto</a></li>
+  <li><a href="#cálculo-del-riesgo" id="toc-cálculo-del-riesgo" class="nav-link" data-scroll-target="#cálculo-del-riesgo"><span class="header-section-number">3.2.2</span> Cálculo del Riesgo</a></li>
+  </ul></li>
+  <li><a href="#cambio-climático-y-riesgo-de-desastres" id="toc-cambio-climático-y-riesgo-de-desastres" class="nav-link" data-scroll-target="#cambio-climático-y-riesgo-de-desastres"><span class="header-section-number">3.3</span> Cambio Climático y Riesgo de Desastres</a></li>
+  <li><a href="#efectos-específicos-en-ciudades" id="toc-efectos-específicos-en-ciudades" class="nav-link" data-scroll-target="#efectos-específicos-en-ciudades"><span class="header-section-number">3.4</span> Efectos Específicos en Ciudades</a>
+  <ul class="collapse">
+  <li><a href="#características-urbanas-que-aumentan-el-riesgo" id="toc-características-urbanas-que-aumentan-el-riesgo" class="nav-link" data-scroll-target="#características-urbanas-que-aumentan-el-riesgo"><span class="header-section-number">3.4.1</span> Características Urbanas que Aumentan el Riesgo</a></li>
+  <li><a href="#infraestructura-crítica" id="toc-infraestructura-crítica" class="nav-link" data-scroll-target="#infraestructura-crítica"><span class="header-section-number">3.4.2</span> Infraestructura Crítica</a></li>
+  </ul></li>
+  <li><a href="#tipos-comunes-de-peligros-para-ciudades" id="toc-tipos-comunes-de-peligros-para-ciudades" class="nav-link" data-scroll-target="#tipos-comunes-de-peligros-para-ciudades"><span class="header-section-number">3.5</span> Tipos Comunes de Peligros para Ciudades</a>
+  <ul class="collapse">
+  <li><a href="#inundaciones-urbanas" id="toc-inundaciones-urbanas" class="nav-link" data-scroll-target="#inundaciones-urbanas"><span class="header-section-number">3.5.1</span> Inundaciones Urbanas</a></li>
+  <li><a href="#olas-de-calor" id="toc-olas-de-calor" class="nav-link" data-scroll-target="#olas-de-calor"><span class="header-section-number">3.5.2</span> Olas de Calor</a></li>
+  <li><a href="#tormentas-intensas" id="toc-tormentas-intensas" class="nav-link" data-scroll-target="#tormentas-intensas"><span class="header-section-number">3.5.3</span> Tormentas Intensas</a></li>
+  <li><a href="#elevación-del-nivel-del-mar" id="toc-elevación-del-nivel-del-mar" class="nav-link" data-scroll-target="#elevación-del-nivel-del-mar"><span class="header-section-number">3.5.4</span> Elevación del Nivel del Mar</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/nlebovits/datos-escala-humana/edit/main/riesgo-climatico/riesgo-climatico.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nlebovits/datos-escala-humana/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../cookbooks/pergamino.html">Cookbooks</a></li><li class="breadcrumb-item"><a href="../cookbooks/esperanza.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Esperanza</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../riesgo-climatico/riesgo-climatico.html">Riesgo Climático para Ciudades</a></li><li class="breadcrumb-item"><a href="../riesgo-climatico/riesgo-climatico.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Riesgo Climático para Ciudades</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Esperanza</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Riesgo Climático para Ciudades</span></h1>
 </div>
 
 
@@ -461,8 +490,56 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="qué-es-el-riesgo-climático" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="qué-es-el-riesgo-climático"><span class="header-section-number">3.1</span> ¿Qué es el Riesgo Climático?</h2>
+<section id="peligros-naturales" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="peligros-naturales"><span class="header-section-number">3.1.1</span> Peligros Naturales</h3>
+</section>
+<section id="exposición" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="exposición"><span class="header-section-number">3.1.2</span> Exposición</h3>
+</section>
+<section id="vulnerabilidad" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="vulnerabilidad"><span class="header-section-number">3.1.3</span> Vulnerabilidad</h3>
+</section>
+</section>
+<section id="evaluación-del-riesgo" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="evaluación-del-riesgo"><span class="header-section-number">3.2</span> Evaluación del Riesgo</h2>
+<section id="combinando-factores-para-obtener-impacto" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="combinando-factores-para-obtener-impacto"><span class="header-section-number">3.2.1</span> Combinando Factores para Obtener Impacto</h3>
+</section>
+<section id="cálculo-del-riesgo" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="cálculo-del-riesgo"><span class="header-section-number">3.2.2</span> Cálculo del Riesgo</h3>
+</section>
+</section>
+<section id="cambio-climático-y-riesgo-de-desastres" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="cambio-climático-y-riesgo-de-desastres"><span class="header-section-number">3.3</span> Cambio Climático y Riesgo de Desastres</h2>
+</section>
+<section id="efectos-específicos-en-ciudades" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="efectos-específicos-en-ciudades"><span class="header-section-number">3.4</span> Efectos Específicos en Ciudades</h2>
+<section id="características-urbanas-que-aumentan-el-riesgo" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="características-urbanas-que-aumentan-el-riesgo"><span class="header-section-number">3.4.1</span> Características Urbanas que Aumentan el Riesgo</h3>
+</section>
+<section id="infraestructura-crítica" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="infraestructura-crítica"><span class="header-section-number">3.4.2</span> Infraestructura Crítica</h3>
+</section>
+</section>
+<section id="tipos-comunes-de-peligros-para-ciudades" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="tipos-comunes-de-peligros-para-ciudades"><span class="header-section-number">3.5</span> Tipos Comunes de Peligros para Ciudades</h2>
+<section id="inundaciones-urbanas" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="inundaciones-urbanas"><span class="header-section-number">3.5.1</span> Inundaciones Urbanas</h3>
+</section>
+<section id="olas-de-calor" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="olas-de-calor"><span class="header-section-number">3.5.2</span> Olas de Calor</h3>
+</section>
+<section id="tormentas-intensas" class="level3" data-number="3.5.3">
+<h3 data-number="3.5.3" class="anchored" data-anchor-id="tormentas-intensas"><span class="header-section-number">3.5.3</span> Tormentas Intensas</h3>
+</section>
+<section id="elevación-del-nivel-del-mar" class="level3" data-number="3.5.4">
+<h3 data-number="3.5.4" class="anchored" data-anchor-id="elevación-del-nivel-del-mar"><span class="header-section-number">3.5.4</span> Elevación del Nivel del Mar</h3>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -880,13 +957,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../cookbooks/pergamino.html" class="pagination-link" aria-label="Pergamino">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Pergamino</span></span>
+      <a href="../python-geoespacial/python-geoespacial.html" class="pagination-link" aria-label="Python Geoespacial">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Python Geoespacial</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../cookbooks/la-plata.html" class="pagination-link" aria-label="La Plata">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">La Plata</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../datos-abiertos/datos-abiertos.html" class="pagination-link" aria-label="Datos Abiertos">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Datos Abiertos</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -898,7 +975,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
 <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></p>
-<div class="toc-actions"><ul><li><a href="https://github.com/nlebovits/datos-escala-humana/edit/main/cookbooks/esperanza.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nlebovits/datos-escala-humana/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/nlebovits/datos-escala-humana/edit/main/riesgo-climatico/riesgo-climatico.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nlebovits/datos-escala-humana/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
