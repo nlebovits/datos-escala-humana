@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Nissim Lebovits">
 
-<title>Datos a escala humana</title>
+<title>1&nbsp; Python Geoespacial – Datos a escala humana</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,27 +23,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./python-geoespacial/fundamentos.html" rel="next">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../python-geoespacial/vector.html" rel="next">
+<link href="../index.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -74,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -86,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introducción</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python-geoespacial/fundamentos.html">Python Geoespacial</a></li><li class="breadcrumb-item"><a href="../python-geoespacial/fundamentos.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python Geoespacial</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -101,7 +98,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Datos a escala humana</a> 
+      <a href="../">Datos a escala humana</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/nlebovits/datos-escala-humana" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
@@ -140,46 +137,46 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introducción</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Python Geoespacial</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./python-geoespacial/fundamentos.html" class="sidebar-item-text sidebar-link">
+  <a href="../python-geoespacial/fundamentos.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python Geoespacial</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./python-geoespacial/vector.html" class="sidebar-item-text sidebar-link">
+  <a href="../python-geoespacial/vector.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Datos vectoriales</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./python-geoespacial/raster.html" class="sidebar-item-text sidebar-link">
+  <a href="../python-geoespacial/raster.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Datos raster</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./python-geoespacial/analisis-espacial.html" class="sidebar-item-text sidebar-link">
+  <a href="../python-geoespacial/analisis-espacial.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análisis espacial</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./python-geoespacial/unidad_1b_soluciones.html" class="sidebar-item-text sidebar-link">
+  <a href="../python-geoespacial/unidad_1b_soluciones.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ACP 166: Datos abiertos para ciudades resilientes</span></span></a>
   </div>
 </li>
@@ -196,31 +193,31 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./riesgo-climatico/fundamentos.html" class="sidebar-item-text sidebar-link">
+  <a href="../riesgo-climatico/fundamentos.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Riesgo Climático para Ciudades</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./riesgo-climatico/exposicion.html" class="sidebar-item-text sidebar-link">
+  <a href="../riesgo-climatico/exposicion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Exposición</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./riesgo-climatico/vulnerabilidad.html" class="sidebar-item-text sidebar-link">
+  <a href="../riesgo-climatico/vulnerabilidad.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Vulnerabilidad</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./riesgo-climatico/peligro.html" class="sidebar-item-text sidebar-link">
+  <a href="../riesgo-climatico/peligro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Peligro</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./riesgo-climatico/riesgo.html" class="sidebar-item-text sidebar-link">
+  <a href="../riesgo-climatico/riesgo.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Riesgo</span></span></a>
   </div>
 </li>
@@ -237,7 +234,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./datos-abiertos/datos-abiertos.html" class="sidebar-item-text sidebar-link">
+  <a href="../datos-abiertos/datos-abiertos.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Datos Abiertos</span></span></a>
   </div>
 </li>
@@ -254,7 +251,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./datos-accion/datos-accion.html" class="sidebar-item-text sidebar-link">
+  <a href="../datos-accion/datos-accion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Datos a la Acción</span></span></a>
   </div>
 </li>
@@ -271,25 +268,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cookbooks/pergamino.html" class="sidebar-item-text sidebar-link">
+  <a href="../cookbooks/pergamino.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Pergamino</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cookbooks/esperanza.html" class="sidebar-item-text sidebar-link">
+  <a href="../cookbooks/esperanza.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Esperanza</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cookbooks/la-plata.html" class="sidebar-item-text sidebar-link">
+  <a href="../cookbooks/la-plata.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">La Plata</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cookbooks/villa-del-rosario.html" class="sidebar-item-text sidebar-link">
+  <a href="../cookbooks/villa-del-rosario.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Exposición y vulnerabilidad</span></span></a>
   </div>
 </li>
@@ -297,13 +294,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./conclusion.html" class="sidebar-item-text sidebar-link">
+  <a href="../conclusion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Conclusión</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -317,37 +314,28 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a>
+  <li><a href="#por-qué-python-gis" id="toc-por-qué-python-gis" class="nav-link active" data-scroll-target="#por-qué-python-gis"><span class="header-section-number">1.1</span> ¿Por qué Python GIS?</a>
   <ul class="collapse">
-  <li><a href="#sobre-este-libro" id="toc-sobre-este-libro" class="nav-link" data-scroll-target="#sobre-este-libro">Sobre este libro</a></li>
-  <li><a href="#filosofía-práctica-sobre-teoría" id="toc-filosofía-práctica-sobre-teoría" class="nav-link" data-scroll-target="#filosofía-práctica-sobre-teoría">Filosofía: práctica sobre teoría</a></li>
-  <li><a href="#organización" id="toc-organización" class="nav-link" data-scroll-target="#organización">Organización</a></li>
-  <li><a href="#autores" id="toc-autores" class="nav-link" data-scroll-target="#autores">Autor(es)</a></li>
-  <li><a href="#agradecimientos" id="toc-agradecimientos" class="nav-link" data-scroll-target="#agradecimientos">Agradecimientos</a></li>
-  <li><a href="#patrocinadores-del-proyecto" id="toc-patrocinadores-del-proyecto" class="nav-link" data-scroll-target="#patrocinadores-del-proyecto">Patrocinadores del proyecto</a></li>
+  <li><a href="#ventajas-sobre-el-software-de-punto-y-clic" id="toc-ventajas-sobre-el-software-de-punto-y-clic" class="nav-link" data-scroll-target="#ventajas-sobre-el-software-de-punto-y-clic"><span class="header-section-number">1.1.1</span> Ventajas sobre el Software de Punto y Clic</a></li>
   </ul></li>
+  <li><a href="#entradasalida-de-datos-es" id="toc-entradasalida-de-datos-es" class="nav-link" data-scroll-target="#entradasalida-de-datos-es"><span class="header-section-number">1.2</span> Entrada/Salida de Datos (E/S)</a></li>
+  <li><a href="#sistemas-de-referencia-de-coordenadas" id="toc-sistemas-de-referencia-de-coordenadas" class="nav-link" data-scroll-target="#sistemas-de-referencia-de-coordenadas"><span class="header-section-number">1.3</span> Sistemas de Referencia de Coordenadas</a></li>
+  <li><a href="#software-y-bibliotecas-geoespaciales" id="toc-software-y-bibliotecas-geoespaciales" class="nav-link" data-scroll-target="#software-y-bibliotecas-geoespaciales"><span class="header-section-number">1.4</span> Software y Bibliotecas Geoespaciales</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/nlebovits/datos-escala-humana/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nlebovits/datos-escala-humana/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/nlebovits/datos-escala-humana/edit/main/python-geoespacial/fundamentos.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nlebovits/datos-escala-humana/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python-geoespacial/fundamentos.html">Python Geoespacial</a></li><li class="breadcrumb-item"><a href="../python-geoespacial/fundamentos.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python Geoespacial</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Datos a escala humana</h1>
-<p class="subtitle lead">Datos abiertos para ciudades resilientes</p>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python Geoespacial</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Nissim Lebovits </p>
-          </div>
-  </div>
     
   
     
@@ -358,57 +346,22 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introducción" class="level1 unnumbered">
-<h1 class="unnumbered">Introducción</h1>
-<p>🚧 <strong>Estado del Proyecto</strong>: Este libro se encuentra actualmente en las primeras etapas de desarrollo. Esperamos completar un producto mínimo viable para finales de 2025. Consulta la <a href="./project/ROADMAP.md">hoja de ruta</a> para más información.</p>
-<p>Este libro se basa en gran parte en el curso <a href="https://www.fau.unlp.edu.ar/posgrado/curso-datos-abiertos-para-ciudades-resilientes/">Datos Abiertos para Ciudades Resilientes</a> que el autor enseña en la Facultad de Arquitectura y Urbanismo de la Universidad Nacional de La Plata durante el cuatrimestre final de 2025.</p>
-<section id="sobre-este-libro" class="level2">
-<h2 class="anchored" data-anchor-id="sobre-este-libro">Sobre este libro</h2>
-<p><em>Datos a escala humana</em> enseña cómo aprovechar datos globales mediante computación geoespacial nativa de la nube para mitigar el riesgo climático en ciudades.</p>
-<p>Dirigido principalmente a urbanistas, funcionarios municipales, arquitectos y técnicos en entornos con recursos limitados donde los datos locales de alta calidad son escasos o de calidad insuficiente. No asume conocimientos avanzados de SIG. Curso intensivo, no exhaustivo. Proporcionamos recursos para profundizar. La acción y los flujos de trabajo simples y replicables son el enfoque.</p>
-<p>Documento en evolución, actualmente en fase de producto mínimo viable. No es la palabra final y reconocemos que se volverá obsoleto sin desarrollo continuo.</p>
-<p>Usa tecnología geoespacial nativa de la nube. Aunque relativamente nueva, no es difícil y hace las cosas más fáciles. No profundizamos en teoría sino en aplicaciones. Para aprender más, consulta el <a href="https://cloudnativegeo.org/">Cloud-Native Geospatial Forum</a>.</p>
-<p>Escrito primero en español porque casi no existen recursos en español sobre estos temas. El autor no es hablante nativo y ha usado modelos de lenguaje para apoyar la traducción. Si encuentras errores, abre un ticket o contribuye.</p>
+<section id="por-qué-python-gis" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="por-qué-python-gis"><span class="header-section-number">1.1</span> ¿Por qué Python GIS?</h2>
+<section id="ventajas-sobre-el-software-de-punto-y-clic" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="ventajas-sobre-el-software-de-punto-y-clic"><span class="header-section-number">1.1.1</span> Ventajas sobre el Software de Punto y Clic</h3>
 </section>
-<section id="filosofía-práctica-sobre-teoría" class="level2">
-<h2 class="anchored" data-anchor-id="filosofía-práctica-sobre-teoría">Filosofía: práctica sobre teoría</h2>
-<p>Priorizamos la práctica sobre la teoría. Equilibramos la explicación de conceptos espaciales con su implementación. Habrá casos donde no profundizaremos en por qué hacemos algo de cierta manera. Te dejamos explorar con modelos de lenguaje o consultar la documentación. Nos enfocamos en hacer.</p>
-<p>También priorizamos conceptos sobre técnicas. Regresamos deliberadamente a técnicas centrales: verás agregación espacial y estadísticas zonales repetidamente. No profundizaremos en estadística espacial avanzada. Mostramos los conceptos y los repetimos para que se fijen. El objetivo no es crear analistas geoespaciales completamente formados, sino proporcionar flujos de trabajo replicables que entiendas lo suficientemente bien para aplicarlos en tu propio contexto.</p>
 </section>
-<section id="organización" class="level2">
-<h2 class="anchored" data-anchor-id="organización">Organización</h2>
-<p>El libro está organizado en cuatro secciones principales:</p>
-<p><strong>Capítulo 1: Curso intensivo de SIG y Python</strong>. Cubre los fundamentos de trabajar con datos geoespaciales en Python, tanto vectoriales como ráster, y un resumen de las operaciones espaciales básicas que usamos en este libro. También proporcionamos recursos para aprender más sobre Python y SIG.</p>
-<p><strong>Capítulo 2: Datos abiertos</strong>. Explora qué son las mejores fuentes de datos abiertos, diferentes formas de acceder a estos datos y por qué estas herramientas son importantes. Profundiza un poco en formatos de datos nativos de la nube y las diferentes formas de acceder a estos conjuntos de datos, además de evaluar su calidad e idoneidad. Trata tanto cuestiones de epistemología como de programación.</p>
-<p><strong>Capítulo 3: Riesgo climático</strong>. Definimos qué es el riesgo climático, riesgos climáticos comunes para ciudades y las mejores fuentes de datos disponibles. Hablamos sobre cómo calcular el riesgo climático y algunas limitaciones al calcularlo, dados los conjuntos de datos disponibles.</p>
-<p><strong>Capítulo 4: Datos en acción</strong>. Aborda cómo tomar estos conjuntos de datos y vincularlos a políticas concretas y decisiones de infraestructura para proteger a las personas del clima. Abordamos cuestiones de gobernanza, certeza, idoneidad para el propósito, heurísticas, etc.</p>
-<p><strong>Cookbooks</strong>. Los capítulos 1 a 4 están diseñados para ser más pedagógicos, enfocados en la práctica y el aprendizaje de herramientas y conceptos. La sección de Cookbooks presenta ejemplos del mundo real de estudios de caso que el autor llevó a cabo en Argentina durante su beca Fulbright con gobiernos municipales reales, utilizando datos reales para tomar decisiones reales. Estos ejemplos demuestran lo que es posible con las herramientas que exploramos en este libro. Aceptamos contribuciones de ejemplos adicionales de otros contextos.</p>
+<section id="entradasalida-de-datos-es" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="entradasalida-de-datos-es"><span class="header-section-number">1.2</span> Entrada/Salida de Datos (E/S)</h2>
 </section>
-<section id="autores" class="level2">
-<h2 class="anchored" data-anchor-id="autores">Autor(es)</h2>
-<p><em>[Sección por completar]</em></p>
+<section id="sistemas-de-referencia-de-coordenadas" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="sistemas-de-referencia-de-coordenadas"><span class="header-section-number">1.3</span> Sistemas de Referencia de Coordenadas</h2>
 </section>
-<section id="agradecimientos" class="level2">
-<h2 class="anchored" data-anchor-id="agradecimientos">Agradecimientos</h2>
-<p><em>[Sección por completar]</em></p>
-</section>
-<section id="patrocinadores-del-proyecto" class="level2">
-<h2 class="anchored" data-anchor-id="patrocinadores-del-proyecto">Patrocinadores del proyecto</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="public/ciut-logo.png" class="img-fluid figure-img"></p>
-<figcaption>Centro de Investigaciones Urbanas y Territoriales</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="public/fau-logo.png" class="img-fluid figure-img"></p>
-<figcaption>Facultad de Arquitectura y Urbanismo</figcaption>
-</figure>
-</div>
+<section id="software-y-bibliotecas-geoespaciales" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="software-y-bibliotecas-geoespaciales"><span class="header-section-number">1.4</span> Software y Bibliotecas Geoespaciales</h2>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -978,10 +931,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../index.html" class="pagination-link" aria-label="Introducción">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introducción</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./python-geoespacial/fundamentos.html" class="pagination-link" aria-label="Python Geoespacial">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python Geoespacial</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../python-geoespacial/vector.html" class="pagination-link" aria-label="Datos vectoriales">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Datos vectoriales</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -993,44 +949,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
 <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></p>
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/nlebovits/datos-escala-humana/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nlebovits/datos-escala-humana/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/nlebovits/datos-escala-humana/edit/main/python-geoespacial/fundamentos.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nlebovits/datos-escala-humana/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"loop":false,"selector":".lightbox","descPosition":"bottom","closeEffect":"zoom","openEffect":"zoom"});
-(function() {
-  let previousOnload = window.onload;
-  window.onload = () => {
-    if (previousOnload) {
-      previousOnload();
-    }
-    lightboxQuarto.on('slide_before_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      const href = trigger.getAttribute('href');
-      if (href !== null) {
-        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-        if (imgEl !== null) {
-          const srcAttr = imgEl.getAttribute("src");
-          if (srcAttr && srcAttr.startsWith("data:")) {
-            slideConfig.href = srcAttr;
-          }
-        }
-      } 
-    });
-  
-    lightboxQuarto.on('slide_after_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(slideNode);
-      }
-    });
-  
-  };
-  
-})();
-          </script>
 
 
 

@@ -21,11 +21,12 @@ book:
         - python-geoespacial/vector.qmd
         - python-geoespacial/raster.qmd
         - python-geoespacial/analisis-espacial.qmd
+        - python-geoespacial/unidad_1b_soluciones.ipynb
     - part: Riesgo Climático para Ciudades
       chapters:
         - riesgo-climatico/fundamentos.qmd
-        - riesgo-climatico/exposicion.qmd
-        - riesgo-climatico/vulnerabilidad.qmd
+        - riesgo-climatico/exposicion.ipynb
+        - riesgo-climatico/vulnerabilidad.ipynb
         - riesgo-climatico/peligro.qmd
         - riesgo-climatico/riesgo.qmd
     - part: Datos Abiertos
@@ -37,9 +38,9 @@ book:
     - part: Cookbooks
       chapters:
         - cookbooks/pergamino.qmd
-        - cookbooks/esperanza.qmd
+        - cookbooks/esperanza.ipynb
         - cookbooks/la-plata.qmd
-        - cookbooks/villa-del-rosario.qmd
+        - cookbooks/villa-del-rosario.ipynb
     - conclusion.qmd
     - references.qmd
   sidebar:
@@ -55,6 +56,11 @@ book:
 
 
 bibliography: references.bib
+
+execute:
+  freeze: auto  # Only re-execute when source changes
+  cache: true   # Cache computation results
+  daemon: true  # Use Jupyter daemon for faster startup
 
 format:
   html:

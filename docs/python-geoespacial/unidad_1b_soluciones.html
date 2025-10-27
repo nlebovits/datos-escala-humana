@@ -1,0 +1,2661 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>5&nbsp; ACP 166: Datos abiertos para ciudades resilientes – Datos a escala humana</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../riesgo-climatico/fundamentos.html" rel="next">
+<link href="../python-geoespacial/analisis-espacial.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python-geoespacial/fundamentos.html">Python Geoespacial</a></li><li class="breadcrumb-item"><a href="../python-geoespacial/unidad_1b_soluciones.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ACP 166: Datos abiertos para ciudades resilientes</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Datos a escala humana</a> 
+        <div class="sidebar-tools-main tools-wide">
+    <a href="https://github.com/nlebovits/datos-escala-humana" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <div class="dropdown">
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
+      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
+              <i class="bi bi-twitter pe-1"></i>
+            Twitter
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.facebook.com/sharer/sharer.php?u=|url|">
+              <i class="bi bi-facebook pe-1"></i>
+            Facebook
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item sidebar-tools-main-item" href="https://www.linkedin.com/sharing/share-offsite/?url=|url|">
+              <i class="bi bi-linkedin pe-1"></i>
+            LinkedIn
+            </a>
+          </li>
+      </ul>
+    </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introducción</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Python Geoespacial</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python-geoespacial/fundamentos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python Geoespacial</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python-geoespacial/vector.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Datos vectoriales</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python-geoespacial/raster.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Datos raster</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python-geoespacial/analisis-espacial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análisis espacial</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python-geoespacial/unidad_1b_soluciones.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ACP 166: Datos abiertos para ciudades resilientes</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Riesgo Climático para Ciudades</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../riesgo-climatico/fundamentos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Riesgo Climático para Ciudades</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../riesgo-climatico/exposicion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Exposición</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../riesgo-climatico/vulnerabilidad.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Vulnerabilidad</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../riesgo-climatico/peligro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Peligro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../riesgo-climatico/riesgo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Riesgo</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Datos Abiertos</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../datos-abiertos/datos-abiertos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Datos Abiertos</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Datos a la Acción</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../datos-accion/datos-accion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Datos a la Acción</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Cookbooks</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../cookbooks/pergamino.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pergamino</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../cookbooks/esperanza.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Esperanza</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../cookbooks/la-plata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">La Plata</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../cookbooks/villa-del-rosario.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Exposición y vulnerabilidad</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conclusión</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#unidad-1b-fundamentos-de-gis-en-python" id="toc-unidad-1b-fundamentos-de-gis-en-python" class="nav-link active" data-scroll-target="#unidad-1b-fundamentos-de-gis-en-python"><span class="header-section-number">5.0.1</span> Unidad 1B: Fundamentos de GIS en Python</a></li>
+  <li><a href="#sección-1-datos-vectoriales" id="toc-sección-1-datos-vectoriales" class="nav-link" data-scroll-target="#sección-1-datos-vectoriales"><span class="header-section-number">5.1</span> Sección 1: Datos Vectoriales</a>
+  <ul class="collapse">
+  <li><a href="#módulos-y-constantes" id="toc-módulos-y-constantes" class="nav-link" data-scroll-target="#módulos-y-constantes"><span class="header-section-number">5.1.1</span> 1.1: Módulos y constantes</a></li>
+  <li><a href="#importar-datos-de-partidos" id="toc-importar-datos-de-partidos" class="nav-link" data-scroll-target="#importar-datos-de-partidos"><span class="header-section-number">5.1.2</span> 1.2: Importar datos de partidos</a></li>
+  <li><a href="#datos-de-cuencas" id="toc-datos-de-cuencas" class="nav-link" data-scroll-target="#datos-de-cuencas"><span class="header-section-number">5.1.3</span> 1.3: Datos de cuencas</a></li>
+  <li><a href="#cuestiones-analíticas" id="toc-cuestiones-analíticas" class="nav-link" data-scroll-target="#cuestiones-analíticas"><span class="header-section-number">5.1.4</span> 1.4: Cuestiones analíticas</a></li>
+  </ul></li>
+  <li><a href="#sección-2-datos-raster" id="toc-sección-2-datos-raster" class="nav-link" data-scroll-target="#sección-2-datos-raster"><span class="header-section-number">5.2</span> Sección 2: Datos raster</a>
+  <ul class="collapse">
+  <li><a href="#modelo-digital-de-superficie" id="toc-modelo-digital-de-superficie" class="nav-link" data-scroll-target="#modelo-digital-de-superficie"><span class="header-section-number">5.2.1</span> 2.1 Modelo digital de superficie</a></li>
+  <li><a href="#cobertura-del-suelo" id="toc-cobertura-del-suelo" class="nav-link" data-scroll-target="#cobertura-del-suelo"><span class="header-section-number">5.2.2</span> 2.2: Cobertura del suelo</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.dev/nlebovits/datos-escala-humana/blob/main/python-geoespacial/unidad_1b_soluciones.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nlebovits/datos-escala-humana/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python-geoespacial/fundamentos.html">Python Geoespacial</a></li><li class="breadcrumb-item"><a href="../python-geoespacial/unidad_1b_soluciones.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ACP 166: Datos abiertos para ciudades resilientes</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ACP 166: Datos abiertos para ciudades resilientes</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="unidad-1b-fundamentos-de-gis-en-python" class="level3" data-number="5.0.1">
+<h3 data-number="5.0.1" class="anchored" data-anchor-id="unidad-1b-fundamentos-de-gis-en-python"><span class="header-section-number">5.0.1</span> Unidad 1B: Fundamentos de GIS en Python</h3>
+<section id="de-octubre-2025" class="level4" data-number="5.0.1.1">
+<h4 data-number="5.0.1.1" class="anchored" data-anchor-id="de-octubre-2025"><span class="header-section-number">5.0.1.1</span> 29 de octubre 2025</h4>
+<p>¡Bienvenidos a ‘Datos abiertos para ciudades resilientes’! En esta primera clase, vamos a explorar los fundamentos del GIS en Python: datos vectoriales y raster, sistemas de referencia de coordenadas, importación de datos, visualizaciones básicas, operaciones y análisis básicos y cómo aprender más. Trabajamos con datos reales: datos de departamentos y cuencas de la Provincia de Buenos Aires, y datos de elevación y cobertura del suelo de Copernicus y MapBiomas, respectivamente.</p>
+<p><em>Para completar el taller, ejecutá las celdas en secuencia, asegurándote de completar los fragmentos de código faltantes marcados con comentarios TODO y las instrucciones correspondientes.</em></p>
+</section>
+</section>
+<section id="sección-1-datos-vectoriales" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="sección-1-datos-vectoriales"><span class="header-section-number">5.1</span> Sección 1: Datos Vectoriales</h2>
+<section id="módulos-y-constantes" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="módulos-y-constantes"><span class="header-section-number">5.1.1</span> 1.1: Módulos y constantes</h3>
+<p>Para comenzar tenemos que importar los módulos que vamos a usar. Cada módulo corresponde a una funcionalidad que usamos en este análisis. Por ejemplo, <code>geopandas</code> para la manipulación de datos vectoriales en Python.</p>
+<div id="1727e02e" class="cell" data-execution_count="11">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ! pip install geopandas rioxarray rasterstats owslib matplotlib numpy planetary-computer pystac-client odc-stac</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="1da3ce2b" class="cell" data-execution_count="12">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> io <span class="im">import</span> StringIO</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> io <span class="im">import</span> BytesIO</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> owslib.wfs <span class="im">import</span> WebFeatureService</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rioxarray</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rasterstats <span class="im">import</span> zonal_stats</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.colors <span class="im">as</span> mcolors</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> planetary_computer</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pystac_client</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> odc.stac <span class="im">import</span> load</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Luego definimos nuestros CRS (sistemas de referencia de coordenadas). Usamos dos: EPSG 5348 (Posgar 7 para La Plata), que se mide en metros para los análisis específicos, y EPSG 4326, el sistema estándar de longitud y latitud para las consultas de los API.</p>
+<div id="dd66e618" class="cell" data-execution_count="13">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>USE_CRS <span class="op">=</span> <span class="st">"EPSG:5348"</span>  <span class="co"># POSGAR 2007 / Argentina 4</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>WGS84_CRS <span class="op">=</span> <span class="st">"EPSG:4326"</span>  <span class="co"># para los API</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="importar-datos-de-partidos" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="importar-datos-de-partidos"><span class="header-section-number">5.1.2</span> 1.2: Importar datos de partidos</h3>
+<p>Importamos los datos desde un WFS (Web Feature Service), un servidor donde se encuentran los datos de ARBA en formato vectorial. Conectamos mediante <code>owslib</code> e importamos los datos de todos los departamentos en la provincia de Buenos Aires.</p>
+<p>Los leemos mediante <code>geopandas</code> (GPD) y los convertimos a la proyección EPSG 5348.</p>
+<div id="30cd96cf" class="cell" data-execution_count="14">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar partidos desde el servicio WFS de ARBA GeoServer</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> os.path.exists(<span class="st">"pba_partidos.geojson"</span>):</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    partidos <span class="op">=</span> gpd.read_file(<span class="st">"pba_partidos.geojson"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Conectar al servicio WFS (Web Feature Service)</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    wfs_url <span class="op">=</span> <span class="st">"https://geo.arba.gov.ar/geoserver/idera/wfs"</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    wfs <span class="op">=</span> WebFeatureService(url<span class="op">=</span>wfs_url, version<span class="op">=</span><span class="st">"2.0.0"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Solicitar la capa de Departamento (partidos)</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> wfs.getfeature(</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        typename<span class="op">=</span><span class="st">"idera:Departamento"</span>,</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        srsname<span class="op">=</span><span class="st">"EPSG:5347"</span>  <span class="co"># CRS original</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convertir respuesta WFS a GeoDataFrame</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    partidos <span class="op">=</span> gpd.read_file(BytesIO(response.read()))</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Guardar en caché para uso futuro</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    partidos.to_file(<span class="st">"pba_partidos.geojson"</span>, driver<span class="op">=</span><span class="st">"GeoJSON"</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Reproyectar al CRS de trabajo</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>partidos <span class="op">=</span> partidos.to_crs(USE_CRS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Podemos ver las primeras 5 observaciones en <code>partidos</code> mediante <code>.head()</code>…</p>
+<div id="0ca55e71" class="cell" data-execution_count="15">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>partidos.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">gml_id</th>
+<th data-quarto-table-cell-role="th">cca</th>
+<th data-quarto-table-cell-role="th">cde</th>
+<th data-quarto-table-cell-role="th">fna</th>
+<th data-quarto-table-cell-role="th">gna</th>
+<th data-quarto-table-cell-role="th">nam</th>
+<th data-quarto-table-cell-role="th">sag</th>
+<th data-quarto-table-cell-role="th">ara3</th>
+<th data-quarto-table-cell-role="th">arl</th>
+<th data-quarto-table-cell-role="th">geometry</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Departamento.546</td>
+<td>131</td>
+<td>06760</td>
+<td>Partido de San Miguel</td>
+<td>Partido</td>
+<td>San Miguel</td>
+<td>ARBA</td>
+<td>82.06</td>
+<td>82.80</td>
+<td>MULTIPOLYGON (((6343805.512 6177880.325, 63420...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Departamento.433</td>
+<td>004</td>
+<td>06035</td>
+<td>Partido de Avellaneda</td>
+<td>Partido</td>
+<td>Avellaneda</td>
+<td>ARBA</td>
+<td>57.27</td>
+<td>52.48</td>
+<td>MULTIPOLYGON (((6374002.895 6164551.5, 6374068...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Departamento.434</td>
+<td>090</td>
+<td>06686</td>
+<td>Partido de Rojas</td>
+<td>Partido</td>
+<td>Rojas</td>
+<td>ARBA</td>
+<td>2060.72</td>
+<td>1978.87</td>
+<td>MULTIPOLYGON (((6128472.001 6214278.169, 61285...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Departamento.435</td>
+<td>046</td>
+<td>06364</td>
+<td>Partido de General Rodríguez</td>
+<td>Partido</td>
+<td>General Rodríguez</td>
+<td>ARBA</td>
+<td>365.40</td>
+<td>360.14</td>
+<td>MULTIPOLYGON (((6327496.29 6167316.466, 632748...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Departamento.485</td>
+<td>031</td>
+<td>06266</td>
+<td>Partido de Exaltación de la Cruz</td>
+<td>Partido</td>
+<td>Exaltación de la Cruz</td>
+<td>ARBA</td>
+<td>636.36</td>
+<td>634.17</td>
+<td>MULTIPOLYGON (((6286757.47 6218024.36, 6286781...</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>…y mapearlos de manera básica con <code>.plot()</code>. Van a ver que los datos incluyen todos los partidos de la provincia de Buenos Aires, mucho más de lo que necesitamos.</p>
+<div id="40de2050" class="cell" data-execution_count="16">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>partidos.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="unidad_1b_soluciones_files/figure-html/cell-7-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="unidad_1b_soluciones_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Los datos de <code>partidos</code> tienen varios atributos: código del departamento, nombre del departamento y geometría. Para sacar solo los datos del Partido de La Plata, podemos filtrarlos por la observación donde la columna “fna” corresponde a “Partido de La Plata”.</p>
+<div id="be5331e1" class="cell" data-execution_count="17">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: filtrar partidos por la columna "fna" para la observación "Partido de La Plata"</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># el geodataframe resultante tiene que llamarse "la_plata"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>la_plata <span class="op">=</span> partidos[partidos[<span class="st">"fna"</span>] <span class="op">==</span> <span class="st">"Partido de La Plata"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="62bb829b" class="cell" data-execution_count="18">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: mostrar las primeras 5 observaciones de la_plata</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>la_plata.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">gml_id</th>
+<th data-quarto-table-cell-role="th">cca</th>
+<th data-quarto-table-cell-role="th">cde</th>
+<th data-quarto-table-cell-role="th">fna</th>
+<th data-quarto-table-cell-role="th">gna</th>
+<th data-quarto-table-cell-role="th">nam</th>
+<th data-quarto-table-cell-role="th">sag</th>
+<th data-quarto-table-cell-role="th">ara3</th>
+<th data-quarto-table-cell-role="th">arl</th>
+<th data-quarto-table-cell-role="th">geometry</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">22</td>
+<td>Departamento.496</td>
+<td>055</td>
+<td>06441</td>
+<td>Partido de La Plata</td>
+<td>Partido</td>
+<td>La Plata</td>
+<td>ARBA</td>
+<td>892.63</td>
+<td>942.23</td>
+<td>MULTIPOLYGON (((6395811.772 6128078.545, 63970...</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Sin embargo, al mapearlo vemos que incluye no solo la zona urbana sino también una isla que es técnicamente parte del partido.</p>
+<div id="2de3ac71" class="cell" data-execution_count="19">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>la_plata.plot(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">12</span>)) <span class="co"># asi adjustamos el tamaño de la figura</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="unidad_1b_soluciones_files/figure-html/cell-10-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="unidad_1b_soluciones_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Al examinar el tipo de geometría, vemos que tenemos un multipolígono. La geometría puede ser un punto, una línea, un polígono o un multipolígono (las formas más comunes).</p>
+<div id="0407a055" class="cell" data-execution_count="20">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: imprimí el tipo de geometría de la_plata</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(la_plata.geometry.iloc[<span class="dv">0</span>].geom_type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>MultiPolygon</code></pre>
+</div>
+</div>
+<p>Queremos eliminar la isla porque no corresponde a nuestro análisis. Extraemos la geometría más grande de las dos. Esto es específico de nuestro análisis—no necesitan hacerlo normalmente.</p>
+<div id="6d41161f" class="cell" data-execution_count="21">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtener la geometría principal y mantener solo el polígono más grande</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Esto elimina pequeñas islas que aparecen en los datos</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>la_plata <span class="op">=</span> la_plata.copy()</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>main_geom <span class="op">=</span> la_plata.geometry.iloc[<span class="dv">0</span>]</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>la_plata.loc[la_plata.index[<span class="dv">0</span>], <span class="st">"geometry"</span>] <span class="op">=</span> <span class="bu">max</span>(main_geom.geoms, key<span class="op">=</span><span class="kw">lambda</span> p: p.area)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Al chequear la geometría nuevamente, vemos que ahora es un polígono simple y aparece únicamente el partido de La Plata sin la isla.</p>
+<div id="a66092be" class="cell" data-execution_count="22">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: imprimí (de nuevo) el tipo de geometría de la_plata</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(la_plata.geometry.iloc[<span class="dv">0</span>].geom_type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Polygon</code></pre>
+</div>
+</div>
+<div id="d1503b4f" class="cell" data-execution_count="23">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: ploteá la_plata con un tamaño de figura de 12x12</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>la_plata.plot(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="unidad_1b_soluciones_files/figure-html/cell-14-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="unidad_1b_soluciones_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="datos-de-cuencas" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="datos-de-cuencas"><span class="header-section-number">5.1.3</span> 1.3: Datos de cuencas</h3>
+<p>Importamos las cuencas de la Provincia de Buenos Aires desde un servidor de ArcGIS que contiene los datos más recientes (2023).</p>
+<div id="ca1152b0" class="cell" data-execution_count="24">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar cuencas de Buenos Aires desde caché o ArcGIS REST API</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> os.path.exists(<span class="st">"cuencas_buenos_aires.geojson"</span>):</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    cuencas <span class="op">=</span> gpd.read_file(<span class="st">"cuencas_buenos_aires.geojson"</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Parámetros para consultar todas las features en formato GeoJSON</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    params <span class="op">=</span> {<span class="st">"where"</span>: <span class="st">"1=1"</span>, <span class="st">"outFields"</span>: <span class="st">"*"</span>, <span class="st">"f"</span>: <span class="st">"geojson"</span>}</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Consultar el servicio de cuencas de Buenos Aires (2023)</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    cuencas_response <span class="op">=</span> requests.get(</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"https://services1.arcgis.com/atxllciEI8CHWvwW/ArcGIS/rest/services/Cuencas_BuenosAires_2023/FeatureServer/0/query"</span>, </span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>        params<span class="op">=</span>params</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Guardar respuesta en caché para uso futuro</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> <span class="bu">open</span>(<span class="st">"cuencas_buenos_aires.geojson"</span>, <span class="st">"w"</span>, encoding<span class="op">=</span><span class="st">"utf-8"</span>) <span class="im">as</span> f:</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>        f.write(cuencas_response.text)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Cargar los datos desde la respuesta</span></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>    cuencas <span class="op">=</span> gpd.read_file(StringIO(cuencas_response.text))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="d72023ec" class="cell" data-execution_count="25">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: reproyectar las cuencas a USE_CRS</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>cuencas <span class="op">=</span> cuencas.to_crs(USE_CRS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Al mapearlas, corresponden a la provincia completa.</p>
+<div id="b6d4ccdf" class="cell" data-execution_count="26">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: ploteá la_plata con un tamaño de figura dd 10x10</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>cuencas.plot(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="unidad_1b_soluciones_files/figure-html/cell-17-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="unidad_1b_soluciones_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="301c058e" class="cell" data-execution_count="27">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: imprimí las primeras 5 observaciones de cuencas</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>cuencas.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">FID</th>
+<th data-quarto-table-cell-role="th">Shape_Leng</th>
+<th data-quarto-table-cell-role="th">Cuenca</th>
+<th data-quarto-table-cell-role="th">Sistema</th>
+<th data-quarto-table-cell-role="th">Subcuenca</th>
+<th data-quarto-table-cell-role="th">RegiónHí</th>
+<th data-quarto-table-cell-role="th">Superficie</th>
+<th data-quarto-table-cell-role="th">FuenteEdic</th>
+<th data-quarto-table-cell-role="th">Observacio</th>
+<th data-quarto-table-cell-role="th">Jurisdicci</th>
+<th data-quarto-table-cell-role="th">FechaEdici</th>
+<th data-quarto-table-cell-role="th">Porcentaje</th>
+<th data-quarto-table-cell-role="th">Shape__Area</th>
+<th data-quarto-table-cell-role="th">Shape__Length</th>
+<th data-quarto-table-cell-role="th">geometry</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>64739.954408</td>
+<td>Cuenca Río Arrecifes</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td></td>
+<td>7681,344444792</td>
+<td>COHIFE - Comisión Mapa de cuencas</td>
+<td></td>
+<td>Buenos Aires</td>
+<td>1696906800000</td>
+<td>100.000000</td>
+<td>0.007466</td>
+<td>0.533819</td>
+<td>MULTIPOLYGON (((6268131.732 6256973.822, 62681...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>262235.241263</td>
+<td>Cuenca Río Arrecifes</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td></td>
+<td>82870,3624883858</td>
+<td>COHIFE - Comisión Mapa de cuencas</td>
+<td></td>
+<td>Buenos Aires</td>
+<td>1696906800000</td>
+<td>100.000000</td>
+<td>0.080610</td>
+<td>2.168381</td>
+<td>MULTIPOLYGON (((6213496.653 6264169.857, 62134...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>594892.298067</td>
+<td>Cuenca Río Arrecifes</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td></td>
+<td>238690,056943605</td>
+<td>COHIFE - Comisión Mapa de cuencas</td>
+<td></td>
+<td>Buenos Aires</td>
+<td>1696906800000</td>
+<td>85.608089</td>
+<td>0.232548</td>
+<td>4.902046</td>
+<td>MULTIPOLYGON (((6156795.443 6232763.779, 61568...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>331224.014317</td>
+<td>Cuenca Río Arrecifes</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td></td>
+<td>194549,510611065</td>
+<td>COHIFE - Comisión Mapa de cuencas</td>
+<td></td>
+<td>Buenos Aires</td>
+<td>1696906800000</td>
+<td>100.000000</td>
+<td>0.189737</td>
+<td>2.716846</td>
+<td>MULTIPOLYGON (((6264237.019 6251011.577, 62642...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>148503.122930</td>
+<td>Cuenca Río Arrecifes</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td></td>
+<td>33652,5242803464</td>
+<td>COHIFE - Comisión Mapa de cuencas</td>
+<td></td>
+<td>Buenos Aires</td>
+<td>1696906800000</td>
+<td>100.000000</td>
+<td>0.032931</td>
+<td>1.218285</td>
+<td>POLYGON ((6158735.927 6188394.083, 6158735.816...</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>¿Cómo filtramos estas cuencas para incluir solo la zona de La Plata? Podríamos filtrar por atributos, pero tendríamos que saber el nombre exacto de cada cuenca.</p>
+<p>Otra opción es realizar una intersección espacial: filtramos solamente las geometrías que intersectan con la zona de La Plata.</p>
+<p>Existen varias maneras de hacer intersecciones geoespaciales usando spatial predicates (predicados espaciales): las que tocan la zona, las que están completamente dentro, las que están fuera, etc. Pueden consultar la documentación para más información.</p>
+<p>Aquí analizamos cada cuenca que está dentro o toca el partido de La Plata, y creamos un mapa con las cuencas superpuestas.</p>
+<div id="c6dbcb68" class="cell" data-execution_count="28">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar cuencas que intersectan con La Plata (preserva las geometrías completas de las cuencas)</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>cuencas <span class="op">=</span> cuencas[cuencas.intersects(la_plata.geometry.union_all())]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="1da3e04d" class="cell" data-execution_count="29">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: ploteá cuencas como capa base y la_plata como contorno negro punteado y sin relleno, todo en un solo gráfico de tamaño</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> cuencas.plot(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">12</span>))</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>la_plata.plot(ax<span class="op">=</span>ax, edgecolor<span class="op">=</span><span class="st">'black'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, facecolor<span class="op">=</span><span class="st">'none'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="unidad_1b_soluciones_files/figure-html/cell-20-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5"><img src="unidad_1b_soluciones_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="cuestiones-analíticas" class="level3" data-number="5.1.4">
+<h3 data-number="5.1.4" class="anchored" data-anchor-id="cuestiones-analíticas"><span class="header-section-number">5.1.4</span> 1.4: Cuestiones analíticas</h3>
+<p>¿Cuáles son las cuencas que intersectan con La Plata y cuántas hay?</p>
+<div id="8ac8b1f7" class="cell" data-execution_count="30">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: imprimí el número de observaciones de cuencas</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>cuencas.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<pre><code>(10, 15)</code></pre>
+</div>
+</div>
+<div id="464347b7" class="cell" data-execution_count="31">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: imprimí todas las observaciones de cuencas</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>cuencas</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">FID</th>
+<th data-quarto-table-cell-role="th">Shape_Leng</th>
+<th data-quarto-table-cell-role="th">Cuenca</th>
+<th data-quarto-table-cell-role="th">Sistema</th>
+<th data-quarto-table-cell-role="th">Subcuenca</th>
+<th data-quarto-table-cell-role="th">RegiónHí</th>
+<th data-quarto-table-cell-role="th">Superficie</th>
+<th data-quarto-table-cell-role="th">FuenteEdic</th>
+<th data-quarto-table-cell-role="th">Observacio</th>
+<th data-quarto-table-cell-role="th">Jurisdicci</th>
+<th data-quarto-table-cell-role="th">FechaEdici</th>
+<th data-quarto-table-cell-role="th">Porcentaje</th>
+<th data-quarto-table-cell-role="th">Shape__Area</th>
+<th data-quarto-table-cell-role="th">Shape__Length</th>
+<th data-quarto-table-cell-role="th">geometry</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">32</td>
+<td>33</td>
+<td>19236.244516</td>
+<td>Cuenca Arroyo Rodriguez-Don Carlos</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>887,068225196789</td>
+<td>COHIFE - Comisión Mapa de cuencas</td>
+<td></td>
+<td>Buenos Aires</td>
+<td>1696906800000</td>
+<td>100.0</td>
+<td>0.000871</td>
+<td>0.150773</td>
+<td>POLYGON ((6407121.684 6137599.948, 6407055.463...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">34</td>
+<td>35</td>
+<td>39820.331396</td>
+<td>Cuenca Arroyo del Gato</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>5273,32277290421</td>
+<td>COHIFE - Comisión Mapa de cuencas</td>
+<td></td>
+<td>Buenos Aires</td>
+<td>1696906800000</td>
+<td>100.0</td>
+<td>0.005181</td>
+<td>0.317383</td>
+<td>POLYGON ((6413898.815 6133667.85, 6413925.461 ...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">35</td>
+<td>36</td>
+<td>43000.322580</td>
+<td>Cuenca Arroyo del Gato</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>4271,19872965366</td>
+<td>COHIFE - Comisión Mapa de cuencas</td>
+<td></td>
+<td>Buenos Aires</td>
+<td>1696906800000</td>
+<td>100.0</td>
+<td>0.004197</td>
+<td>0.345024</td>
+<td>POLYGON ((6409320.586 6139510.939, 6409310.476...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">36</td>
+<td>37</td>
+<td>38674.846450</td>
+<td>Cuenca Arroyo Rodriguez-Don Carlos</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>3286,50875162584</td>
+<td>COHIFE - Comisión Mapa de cuencas</td>
+<td></td>
+<td>Buenos Aires</td>
+<td>1696906800000</td>
+<td>100.0</td>
+<td>0.003229</td>
+<td>0.302683</td>
+<td>POLYGON ((6405838.386 6140621.104, 6405831.584...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">38</td>
+<td>39</td>
+<td>49909.960338</td>
+<td>Cuenca Arroyo Martín-Carnaval</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>8009,03092658122</td>
+<td>COHIFE - Comisión Mapa de cuencas</td>
+<td></td>
+<td>Buenos Aires</td>
+<td>1696906800000</td>
+<td>100.0</td>
+<td>0.007868</td>
+<td>0.403494</td>
+<td>POLYGON ((6399462.032 6143111.659, 6399475.211...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">53</td>
+<td>54</td>
+<td>46705.062925</td>
+<td>Cuenca Arroyo Pereyra</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>6058,43053467506</td>
+<td>COHIFE - Comisión Mapa de cuencas</td>
+<td></td>
+<td>Buenos Aires</td>
+<td>1696906800000</td>
+<td>100.0</td>
+<td>0.005949</td>
+<td>0.375855</td>
+<td>POLYGON ((6399462.032 6143111.659, 6399389.256...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">54</td>
+<td>55</td>
+<td>133540.695640</td>
+<td>Cuenca Arroyo El Pescado</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>35801,0766550378</td>
+<td>COHIFE - Comisión Mapa de cuencas</td>
+<td></td>
+<td>Buenos Aires</td>
+<td>1696906800000</td>
+<td>100.0</td>
+<td>0.035204</td>
+<td>1.093985</td>
+<td>POLYGON ((6434443.863 6135013.288, 6434453.92 ...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">72</td>
+<td>73</td>
+<td>196378.882637</td>
+<td>Area de Bañados</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>44765,3597785269</td>
+<td>COHIFE - Comisión Mapa de cuencas</td>
+<td></td>
+<td>Buenos Aires</td>
+<td>1696906800000</td>
+<td>100.0</td>
+<td>0.043929</td>
+<td>1.624145</td>
+<td>POLYGON ((6430875.128 6137122.557, 6430140.185...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">83</td>
+<td>84</td>
+<td>539510.943789</td>
+<td>Cuenca Río Samborombón</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>564984,698530456</td>
+<td>COHIFE - Comisión Mapa de cuencas</td>
+<td></td>
+<td>Buenos Aires</td>
+<td>1696906800000</td>
+<td>100.0</td>
+<td>0.557467</td>
+<td>4.467349</td>
+<td>POLYGON ((6379880.019 6137071.96, 6379888.632 ...</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">129</td>
+<td>130</td>
+<td>32606.204061</td>
+<td>Cuenca A° Maldonado</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>3580,67937557204</td>
+<td>COHIFE - Comisión Mapa de cuencas</td>
+<td></td>
+<td>Buenos Aires</td>
+<td>1696906800000</td>
+<td>100.0</td>
+<td>0.003518</td>
+<td>0.266847</td>
+<td>POLYGON ((6417851.324 6129322.069, 6417844.749...</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Para saber el área en metros cuadrados de cada zona, calculamos el área y ordenamos los resultados de mayor a menor.</p>
+<div id="57113291" class="cell" data-execution_count="32">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: agregar una columna con el área en metros cuadrados </span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>cuencas[<span class="st">'area_m'</span>] <span class="op">=</span> cuencas.geometry.area</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: ordenar las observaciones por área de mayor a menor</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>cuencas <span class="op">=</span> cuencas.sort_values(<span class="st">'area_m'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: mostrar las primeras 5 observaciones de cuencas</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>cuencas[[<span class="st">'Cuenca'</span>, <span class="st">'area_m'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>/home/nissim/Documents/dev/fulbright/ciut-riesgo/.venv/lib/python3.12/site-packages/geopandas/geodataframe.py:1819: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  super().__setitem__(key, value)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Cuenca</th>
+<th data-quarto-table-cell-role="th">area_m</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">83</td>
+<td>Cuenca Río Samborombón</td>
+<td>5.626548e+09</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">72</td>
+<td>Area de Bañados</td>
+<td>4.457880e+08</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">54</td>
+<td>Cuenca Arroyo El Pescado</td>
+<td>3.564201e+08</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">38</td>
+<td>Cuenca Arroyo Martín-Carnaval</td>
+<td>7.978092e+07</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">53</td>
+<td>Cuenca Arroyo Pereyra</td>
+<td>6.035630e+07</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">34</td>
+<td>Cuenca Arroyo del Gato</td>
+<td>5.251302e+07</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">35</td>
+<td>Cuenca Arroyo del Gato</td>
+<td>4.253879e+07</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">129</td>
+<td>Cuenca A° Maldonado</td>
+<td>3.565223e+07</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">36</td>
+<td>Cuenca Arroyo Rodriguez-Don Carlos</td>
+<td>3.273456e+07</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">32</td>
+<td>Cuenca Arroyo Rodriguez-Don Carlos</td>
+<td>8.834710e+06</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="sección-2-datos-raster" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="sección-2-datos-raster"><span class="header-section-number">5.2</span> Sección 2: Datos raster</h2>
+<section id="modelo-digital-de-superficie" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="modelo-digital-de-superficie"><span class="header-section-number">5.2.1</span> 2.1 Modelo digital de superficie</h3>
+<p>Trabajamos con datos de DSM (Modelo Digital de Superficie) que provienen de Copernicus (Agencia Espacial Europea) <a href="https://radiantearth.github.io/stac-browser/#/external/s3.eu-central-1.wasabisys.com/stac/openlandmap/dsm_glo30/collection.json">almacenados en Open Land Map</a>.</p>
+<p>Usamos un Cloud Optimized GeoTIFF (GeoTIFF Optimizado para la Nube), un formato diseñado para facilitar el trabajo en la nube, junto con el módulo <code>rioxarray</code> para importar solamente los datos necesarios de manera eficaz. En lugar de importar todos los datos globales (varios terabytes), importamos únicamente nuestra área de interés mediante lazy loading (carga perezosa). Esto significa que no descargamos los datos hasta haberlos filtrado, usando así solamente la memoria y poder computacional esencial.</p>
+<div id="9af4315a" class="cell" data-execution_count="33">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Conectar al catálogo de Microsoft Planetary Computer</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Planetary Computer es una plataforma que provee acceso gratuito a datasets globales</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>catalog <span class="op">=</span> pystac_client.Client.<span class="bu">open</span>(</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://planetarycomputer.microsoft.com/api/stac/v1"</span>,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    modifier<span class="op">=</span>planetary_computer.sign_inplace,  <span class="co"># Firma automáticamente las solicitudes</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Reproyectar las cuencas al CRS del raster (EPSG:4326)</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Necesitamos esto para buscar los datos correctos en el catálogo</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>cuencas_4326 <span class="op">=</span> cuencas.to_crs(<span class="st">"EPSG:4326"</span>)</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Obtener el bounding box (caja delimitadora) de nuestras cuencas</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="co"># bbox define el área geográfica de interés: [min_x, min_y, max_x, max_y]</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>bbox <span class="op">=</span> cuencas_4326.total_bounds</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Buscar el Modelo Digital de Superficie (DSM) de Copernicus para nuestra área</span></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a><span class="co"># cop-dem-glo-30 es el mismo dataset global de elevación que usábamos de OpenLandMap</span></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>search <span class="op">=</span> catalog.search(</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>    collections<span class="op">=</span>[<span class="st">"cop-dem-glo-30"</span>],  <span class="co"># Copernicus DEM Global 30m</span></span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>    bbox<span class="op">=</span>bbox,  <span class="co"># Limitamos la búsqueda a nuestro área de interés</span></span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtener los items (archivos) que cubren nuestra área</span></span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>items <span class="op">=</span> <span class="bu">list</span>(search.items())</span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Cargar el DSM usando chunks para procesamiento eficiente en memoria</span></span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a><span class="co"># odc.stac.load descarga y ensambla automáticamente los tiles necesarios</span></span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>dsm <span class="op">=</span> load(</span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>    items,</span>
+<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>    bbox<span class="op">=</span>bbox,</span>
+<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a>    chunks<span class="op">=</span>{<span class="st">"x"</span>: <span class="dv">1024</span>, <span class="st">"y"</span>: <span class="dv">1024</span>},  <span class="co"># Procesamiento por bloques para eficiencia</span></span>
+<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a><span class="co"># 6. Extraer la banda de elevación y convertir a DataArray para usar con rioxarray</span></span>
+<span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a><span class="co"># El resultado de load() es un Dataset; necesitamos el DataArray de elevación</span></span>
+<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a>dsm <span class="op">=</span> dsm[<span class="st">"data"</span>].squeeze()  <span class="co"># squeeze() elimina dimensiones extra</span></span>
+<span id="cb27-37"><a href="#cb27-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-38"><a href="#cb27-38" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. Recortar el raster a las geometrías exactas de las cuencas</span></span>
+<span id="cb27-39"><a href="#cb27-39" aria-hidden="true" tabindex="-1"></a>dsm_clipped <span class="op">=</span> dsm.rio.clip(cuencas_4326.geometry)</span>
+<span id="cb27-40"><a href="#cb27-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-41"><a href="#cb27-41" aria-hidden="true" tabindex="-1"></a><span class="co"># 8. Reproyectar el área recortada al CRS de trabajo (POSGAR 7)</span></span>
+<span id="cb27-42"><a href="#cb27-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Esto es más eficiente porque reproyectamos solo el área de interés</span></span>
+<span id="cb27-43"><a href="#cb27-43" aria-hidden="true" tabindex="-1"></a>dsm_clipped_reproj <span class="op">=</span> dsm_clipped.rio.reproject(dst_crs<span class="op">=</span>USE_CRS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Los datos de elevación son un ejemplo de datos continuos, lo que significa que los valores pueden tomar cualquier número dentro de un rango (incluyendo decimales). Estos valores se almacenan como floats (números de punto flotante) en vez de enteros, permitiendo representar mediciones precisas como 15.7 metros o 23.42 metros de elevación.</p>
+<div id="d117d6d0" class="cell">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: ploteá dsm_clipped_reproj con .plot(), robust=True y cmap='terrain'</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>dsm_clipped_reproj.plot(robust<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'terrain'</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">12</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="unidad_1b_soluciones_files/figure-html/cell-25-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6"><img src="unidad_1b_soluciones_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Para conocer la distribución de valores (promedio, máximo, mínimo, mediano), podemos crear un histograma.</p>
+<div id="5dd44704" class="cell" data-execution_count="41">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: imprimí los valores minimo, maximo, mediano y promedio de dsm_clipped_reproj</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Min: </span><span class="sc">{</span>dsm_clipped_reproj<span class="sc">.</span><span class="bu">min</span>()<span class="sc">.</span>values<span class="sc">}</span><span class="ss">, Max: </span><span class="sc">{</span>dsm_clipped_reproj<span class="sc">.</span><span class="bu">max</span>()<span class="sc">.</span>values<span class="sc">}</span><span class="ss">, Median: </span><span class="sc">{</span>dsm_clipped_reproj<span class="sc">.</span>median()<span class="sc">.</span>values<span class="sc">}</span><span class="ss">, Mean: </span><span class="sc">{</span>dsm_clipped_reproj<span class="sc">.</span>mean()<span class="sc">.</span>values<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Min: -4.3202924728393555, Max: 56.864131927490234, Median: 14.23167085647583, Mean: 14.652371406555176</code></pre>
+</div>
+</div>
+<div id="dd8f219c" class="cell" data-execution_count="42">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Crea un histograma de los valores de elevación usando dsm_clipped_reproj.plot.hist() con 50 bins</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Agrega etiquetas para los ejes x ('Elevación (m)') y y ('Frecuencia'), y un título descriptivo</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>dsm_clipped_reproj.plot.hist(bins<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Elevación (m)'</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Frecuencia'</span>)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Distribución de Valores de Elevación'</span>)</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="unidad_1b_soluciones_files/figure-html/cell-27-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7"><img src="unidad_1b_soluciones_files/figure-html/cell-27-output-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Para saber cómo varían los valores en las distintas cuencas, usamos estadística zonal, calculando el mínimo, máximo, mediano y promedio por cuenca. Podemos crear un gráfico para visualizar, por ejemplo, cuál cuenca tiene la elevación promedio más baja o la mediana más alta.</p>
+<div id="a04ad771" class="cell" data-execution_count="44">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear una copia independiente de cuencas para evitar modificar el original</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>cuencas <span class="op">=</span> cuencas.copy()</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Extraer estadísticas de elevación (min, mean, median, max) para cada polígono de cuenca</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>stats <span class="op">=</span> zonal_stats(</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>    cuencas,                      <span class="co"># Polígonos de las cuencas</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    dsm_clipped_reproj.values,    <span class="co"># Valores del raster (sin [0])</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    affine<span class="op">=</span>dsm_clipped_reproj.rio.transform(),  <span class="co"># Transformación geoespacial del raster</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>    stats<span class="op">=</span>[<span class="st">'min'</span>, <span class="st">'mean'</span>, <span class="st">'median'</span>, <span class="st">'max'</span>],  <span class="co"># Estadísticas a calcular</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>    nodata<span class="op">=</span>np.nan                 <span class="co"># Valor a ignorar (NoData)</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Agregar las estadísticas calculadas como nuevas columnas en el GeoDataFrame</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>cuencas[<span class="st">'dsm_min'</span>] <span class="op">=</span> [s[<span class="st">'min'</span>] <span class="cf">for</span> s <span class="kw">in</span> stats]</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a>cuencas[<span class="st">'dsm_mean'</span>] <span class="op">=</span> [s[<span class="st">'mean'</span>] <span class="cf">for</span> s <span class="kw">in</span> stats]</span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>cuencas[<span class="st">'dsm_median'</span>] <span class="op">=</span> [s[<span class="st">'median'</span>] <span class="cf">for</span> s <span class="kw">in</span> stats]</span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>cuencas[<span class="st">'dsm_max'</span>] <span class="op">=</span> [s[<span class="st">'max'</span>] <span class="cf">for</span> s <span class="kw">in</span> stats]</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Mostrar columnas seleccionadas con información de cuencas y estadísticas de elevación</span></span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a>cuencas[[<span class="st">"Cuenca"</span>, <span class="st">"Sistema"</span>, <span class="st">"Subcuenca"</span>, <span class="st">"RegiónHí"</span>, <span class="st">"dsm_min"</span>, <span class="st">"dsm_mean"</span>, <span class="st">"dsm_median"</span>, <span class="st">"dsm_max"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="44">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Cuenca</th>
+<th data-quarto-table-cell-role="th">Sistema</th>
+<th data-quarto-table-cell-role="th">Subcuenca</th>
+<th data-quarto-table-cell-role="th">RegiónHí</th>
+<th data-quarto-table-cell-role="th">dsm_min</th>
+<th data-quarto-table-cell-role="th">dsm_mean</th>
+<th data-quarto-table-cell-role="th">dsm_median</th>
+<th data-quarto-table-cell-role="th">dsm_max</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">83</td>
+<td>Cuenca Río Samborombón</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>0.000000</td>
+<td>15.002222</td>
+<td>14.440168</td>
+<td>56.864132</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">72</td>
+<td>Area de Bañados</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>-3.647730</td>
+<td>5.941934</td>
+<td>3.415808</td>
+<td>37.641655</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">54</td>
+<td>Cuenca Arroyo El Pescado</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>0.000000</td>
+<td>14.736844</td>
+<td>15.591372</td>
+<td>47.508526</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">38</td>
+<td>Cuenca Arroyo Martín-Carnaval</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>1.560721</td>
+<td>21.881409</td>
+<td>22.887115</td>
+<td>52.470333</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">53</td>
+<td>Cuenca Arroyo Pereyra</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>2.410506</td>
+<td>22.778730</td>
+<td>23.634939</td>
+<td>44.905403</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">34</td>
+<td>Cuenca Arroyo del Gato</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>2.931544</td>
+<td>19.543804</td>
+<td>20.404808</td>
+<td>52.557846</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">35</td>
+<td>Cuenca Arroyo del Gato</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>-4.320292</td>
+<td>19.691474</td>
+<td>20.535738</td>
+<td>41.652542</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">129</td>
+<td>Cuenca A° Maldonado</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>1.640185</td>
+<td>17.657394</td>
+<td>18.716934</td>
+<td>36.001190</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">36</td>
+<td>Cuenca Arroyo Rodriguez-Don Carlos</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>3.994384</td>
+<td>21.402138</td>
+<td>21.700775</td>
+<td>39.326633</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">32</td>
+<td>Cuenca Arroyo Rodriguez-Don Carlos</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>-1.119239</td>
+<td>16.013293</td>
+<td>16.204729</td>
+<td>32.383595</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="c9bb44a4" class="cell" data-execution_count="45">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Crea un gráfico de barras de la elevación mediana por cuenca:</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># - Usa cuencas.plot(kind='bar', x='Cuenca', y='dsm_median', figsize=(12, 6), legend=False)</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># - Agrega etiquetas: plt.xlabel('Cuenca') y plt.ylabel('Elevación Mediana (m)')</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># - Rota las etiquetas del eje x: plt.xticks(rotation=45, ha='right')</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>cuencas.plot(kind<span class="op">=</span><span class="st">'bar'</span>, x<span class="op">=</span><span class="st">'Cuenca'</span>, y<span class="op">=</span><span class="st">'dsm_median'</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>), legend<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Cuenca'</span>)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Elevación Mediana (m)'</span>)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="unidad_1b_soluciones_files/figure-html/cell-29-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8"><img src="unidad_1b_soluciones_files/figure-html/cell-29-output-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="cobertura-del-suelo" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="cobertura-del-suelo"><span class="header-section-number">5.2.2</span> 2.2: Cobertura del suelo</h3>
+<p>Los datos anteriores eran continuos (float, números con decimales). Los rasters también pueden tener datos categóricos, codificados con números enteros que representan categorías.</p>
+<p>Importamos datos de cobertura del suelo del proyecto MapBiomas, que tiene información de Argentina desde 1998 hasta 2022. Son los datos más confiables a 30 metros de resolución disponibles actualmente.</p>
+<div id="48212262" class="cell">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: Cargar y procesar el raster de cobertura del suelo MapBiomas 2022</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Sigue el MISMO PATRÓN que usamos para el DSM arriba</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Define la URL del raster como suelo_2022_ruta</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>suelo_2022_ruta <span class="op">=</span> <span class="st">"https://storage.googleapis.com/mapbiomas-public/initiatives/argentina/collection-1/coverage/argentina_coverage_2022.tif"</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Abre el raster con rioxarray y chunks de 1024x1024</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>suelo_2022 <span class="op">=</span> rioxarray.open_rasterio(</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>    suelo_2022_ruta,</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>    chunks<span class="op">=</span>{<span class="st">"x"</span>: <span class="dv">1024</span>, <span class="st">"y"</span>: <span class="dv">1024</span>},</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Recorta PRIMERO en el CRS nativo del raster (EPSG:4326) y guarda el resultado en suelo_2022_clipped</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>suelo_2022_clipped <span class="op">=</span> suelo_2022.rio.clip(</span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>    cuencas_4326.geometry.values, </span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>    from_disk<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Reproyecta el área recortada al USE_CRS de trabajo (POSGAR 7) y guarda el resultado final en suelo_2022</span></span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>suelo_2022 <span class="op">=</span> suelo_2022_clipped.rio.reproject(dst_crs<span class="op">=</span>USE_CRS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="32b12b8e" class="cell" data-execution_count="61">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Enmascarar valores NoData (255) para excluirlos de la visualización</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co"># MapBiomas usa 255 como NoData además del NoData estándar</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>suelo_2022_masked <span class="op">=</span> suelo_2022.where(</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    (suelo_2022 <span class="op">!=</span> suelo_2022.rio.nodata) <span class="op">&amp;</span> (suelo_2022 <span class="op">!=</span> <span class="dv">255</span>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Al plotearlos inicialmente, no es evidente a qué corresponde cada valor.</p>
+<div id="2c23780d" class="cell" data-execution_count="62">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">TODO</span><span class="co">: ploteá suelo_2022_masked con .plot()</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>suelo_2022_masked.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="unidad_1b_soluciones_files/figure-html/cell-32-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9"><img src="unidad_1b_soluciones_files/figure-html/cell-32-output-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Les proporciono un diccionario del proyecto MapBiomas que traduce entre valores numéricos, categorías y colores. Con esto podemos mapear los datos correctamente.</p>
+<p>Ahora vemos un mapa coherente de la cobertura del suelo: zonas urbanizadas, agrícolas, naturales y cuerpos de agua. Discutan con un compañero si los datos parecen lógicos y si pueden identificar el casco urbano, City Bell, Berisso y Ensenada.</p>
+<div id="f2a3e2d1" class="cell" data-execution_count="63">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definir categorías de cobertura del suelo con sus IDs y colores MapBiomas</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>categorias <span class="op">=</span> {</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Leñosa cerrada'</span>: {<span class="st">'ids'</span>: [<span class="dv">3</span>], <span class="st">'color'</span>: <span class="st">'#1f8d49'</span>},</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Leñosa abierta'</span>: {<span class="st">'ids'</span>: [<span class="dv">4</span>], <span class="st">'color'</span>: <span class="st">'#7dc975'</span>},</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Leñosa dispersa'</span>: {<span class="st">'ids'</span>: [<span class="dv">45</span>], <span class="st">'color'</span>: <span class="st">'#807a40'</span>},</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Leñosa inundable'</span>: {<span class="st">'ids'</span>: [<span class="dv">6</span>], <span class="st">'color'</span>: <span class="st">'#026975'</span>},</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Vegetación no leñosa inundable'</span>: {<span class="st">'ids'</span>: [<span class="dv">11</span>], <span class="st">'color'</span>: <span class="st">'#519799'</span>},</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pastizal'</span>: {<span class="st">'ids'</span>: [<span class="dv">12</span>], <span class="st">'color'</span>: <span class="st">'#d6bc74'</span>},</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Estepa'</span>: {<span class="st">'ids'</span>: [<span class="dv">63</span>], <span class="st">'color'</span>: <span class="st">'#ebf8b5'</span>},</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pastura'</span>: {<span class="st">'ids'</span>: [<span class="dv">15</span>], <span class="st">'color'</span>: <span class="st">'#edde8e'</span>},</span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Agricultura'</span>: {<span class="st">'ids'</span>: [<span class="dv">18</span>], <span class="st">'color'</span>: <span class="st">'#e974ed'</span>},</span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Plantación forestal'</span>: {<span class="st">'ids'</span>: [<span class="dv">9</span>], <span class="st">'color'</span>: <span class="st">'#7a5900'</span>},</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Cultivo arbustivo'</span>: {<span class="st">'ids'</span>: [<span class="dv">36</span>], <span class="st">'color'</span>: <span class="st">'#d082de'</span>},</span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Mosaico agropecuario'</span>: {<span class="st">'ids'</span>: [<span class="dv">21</span>], <span class="st">'color'</span>: <span class="st">'#ffefc3'</span>},</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Área sin vegetación'</span>: {<span class="st">'ids'</span>: [<span class="dv">22</span>], <span class="st">'color'</span>: <span class="st">'#d4271e'</span>},</span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Río, lago u océano'</span>: {<span class="st">'ids'</span>: [<span class="dv">33</span>], <span class="st">'color'</span>: <span class="st">'#2532e4'</span>},</span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Hielo y nieve en superficie'</span>: {<span class="st">'ids'</span>: [<span class="dv">34</span>], <span class="st">'color'</span>: <span class="st">'#93dfe6'</span>},</span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">'No observado'</span>: {<span class="st">'ids'</span>: [<span class="dv">27</span>], <span class="st">'color'</span>: <span class="st">'#ffffff'</span>}</span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Obtener los IDs únicos presentes en los datos</span></span>
+<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>valores_unicos <span class="op">=</span> np.unique(suelo_2022_masked.values[<span class="op">~</span>np.isnan(suelo_2022_masked.values)]).astype(<span class="bu">int</span>)</span>
+<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a>ids_presentes <span class="op">=</span> <span class="bu">set</span>(valores_unicos)</span>
+<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar solo las categorías que aparecen en nuestros datos</span></span>
+<span id="cb37-26"><a href="#cb37-26" aria-hidden="true" tabindex="-1"></a>categorias_presentes <span class="op">=</span> {</span>
+<span id="cb37-27"><a href="#cb37-27" aria-hidden="true" tabindex="-1"></a>    nombre: info </span>
+<span id="cb37-28"><a href="#cb37-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> nombre, info <span class="kw">in</span> categorias.items()</span>
+<span id="cb37-29"><a href="#cb37-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">any</span>(<span class="bu">id</span> <span class="kw">in</span> ids_presentes <span class="cf">for</span> <span class="bu">id</span> <span class="kw">in</span> info[<span class="st">'ids'</span>])</span>
+<span id="cb37-30"><a href="#cb37-30" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb37-31"><a href="#cb37-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-32"><a href="#cb37-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear mapa de colores: asignar cada ID de píxel a su color correspondiente</span></span>
+<span id="cb37-33"><a href="#cb37-33" aria-hidden="true" tabindex="-1"></a>colores_por_id <span class="op">=</span> {}</span>
+<span id="cb37-34"><a href="#cb37-34" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> info <span class="kw">in</span> categorias.values():</span>
+<span id="cb37-35"><a href="#cb37-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> id_pixel <span class="kw">in</span> info[<span class="st">'ids'</span>]:</span>
+<span id="cb37-36"><a href="#cb37-36" aria-hidden="true" tabindex="-1"></a>        colores_por_id[id_pixel] <span class="op">=</span> info[<span class="st">'color'</span>]</span>
+<span id="cb37-37"><a href="#cb37-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-38"><a href="#cb37-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Construir el colormap para matplotlib</span></span>
+<span id="cb37-39"><a href="#cb37-39" aria-hidden="true" tabindex="-1"></a>ids_ordenados <span class="op">=</span> <span class="bu">sorted</span>(colores_por_id.keys())</span>
+<span id="cb37-40"><a href="#cb37-40" aria-hidden="true" tabindex="-1"></a>cmap <span class="op">=</span> mcolors.ListedColormap([colores_por_id[i] <span class="cf">for</span> i <span class="kw">in</span> ids_ordenados])</span>
+<span id="cb37-41"><a href="#cb37-41" aria-hidden="true" tabindex="-1"></a>norm <span class="op">=</span> mcolors.BoundaryNorm(ids_ordenados, cmap.N)</span>
+<span id="cb37-42"><a href="#cb37-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-43"><a href="#cb37-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar el raster de cobertura del suelo</span></span>
+<span id="cb37-44"><a href="#cb37-44" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">20</span>))</span>
+<span id="cb37-45"><a href="#cb37-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-46"><a href="#cb37-46" aria-hidden="true" tabindex="-1"></a>suelo_2022_masked.plot(</span>
+<span id="cb37-47"><a href="#cb37-47" aria-hidden="true" tabindex="-1"></a>    ax<span class="op">=</span>ax,</span>
+<span id="cb37-48"><a href="#cb37-48" aria-hidden="true" tabindex="-1"></a>    cmap<span class="op">=</span>cmap,</span>
+<span id="cb37-49"><a href="#cb37-49" aria-hidden="true" tabindex="-1"></a>    norm<span class="op">=</span>norm,</span>
+<span id="cb37-50"><a href="#cb37-50" aria-hidden="true" tabindex="-1"></a>    add_colorbar<span class="op">=</span><span class="va">False</span></span>
+<span id="cb37-51"><a href="#cb37-51" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb37-52"><a href="#cb37-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-53"><a href="#cb37-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear leyenda solo con las categorías presentes</span></span>
+<span id="cb37-54"><a href="#cb37-54" aria-hidden="true" tabindex="-1"></a>leyenda <span class="op">=</span> [</span>
+<span id="cb37-55"><a href="#cb37-55" aria-hidden="true" tabindex="-1"></a>    plt.Rectangle((<span class="dv">0</span>,<span class="dv">0</span>), <span class="dv">1</span>, <span class="dv">1</span>, facecolor<span class="op">=</span>info[<span class="st">'color'</span>], label<span class="op">=</span>nombre) </span>
+<span id="cb37-56"><a href="#cb37-56" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> nombre, info <span class="kw">in</span> categorias_presentes.items()</span>
+<span id="cb37-57"><a href="#cb37-57" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb37-58"><a href="#cb37-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-59"><a href="#cb37-59" aria-hidden="true" tabindex="-1"></a>ax.legend(handles<span class="op">=</span>leyenda, loc<span class="op">=</span><span class="st">'lower center'</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.5</span>, <span class="op">-</span><span class="fl">0.1</span>), </span>
+<span id="cb37-60"><a href="#cb37-60" aria-hidden="true" tabindex="-1"></a>          ncol<span class="op">=</span><span class="dv">3</span>, frameon<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb37-61"><a href="#cb37-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-62"><a href="#cb37-62" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Cobertura del Suelo - MapBiomas 2022'</span>)</span>
+<span id="cb37-63"><a href="#cb37-63" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb37-64"><a href="#cb37-64" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="unidad_1b_soluciones_files/figure-html/cell-33-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10"><img src="unidad_1b_soluciones_files/figure-html/cell-33-output-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Podemos analizar la distribución calculando el porcentaje de cada clase de cobertura.</p>
+<div id="99a0eca0" class="cell" data-execution_count="64">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Analizar la distribución de cobertura del suelo en toda el área de estudio</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 1: Extraer valores del raster y eliminar NoData</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>valores <span class="op">=</span> suelo_2022_masked.values.flatten()</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>valores <span class="op">=</span> valores[<span class="op">~</span>np.isnan(valores)]</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Total de píxeles válidos: </span><span class="sc">{</span><span class="bu">len</span>(valores)<span class="sc">:,}</span><span class="ss">"</span>)</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Rango de valores: </span><span class="sc">{</span>valores<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:.0f}</span><span class="ss"> - </span><span class="sc">{</span>valores<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.0f}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Total de píxeles válidos: 22,224,274
+Rango de valores: 0 - 33</code></pre>
+</div>
+</div>
+<div id="094a9a4b" class="cell" data-execution_count="65">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 2: Contar píxeles de cada ID único</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>ids_unicos, conteos <span class="op">=</span> np.unique(valores, return_counts<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">IDs únicos encontrados: </span><span class="sc">{</span>ids_unicos<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Conteo por ID:"</span>)</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> id_pixel, conteo <span class="kw">in</span> <span class="bu">zip</span>(ids_unicos, conteos):</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  ID </span><span class="sc">{</span>id_pixel<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>conteo<span class="sc">:,}</span><span class="ss"> píxeles"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+IDs únicos encontrados: [ 0.  3.  4.  9. 11. 12. 15. 18. 22. 33.]
+Conteo por ID:
+  ID 0.0: 12,667,423 píxeles
+  ID 3.0: 132,117 píxeles
+  ID 4.0: 123,848 píxeles
+  ID 9.0: 57,940 píxeles
+  ID 11.0: 408,544 píxeles
+  ID 12.0: 5,256,181 píxeles
+  ID 15.0: 3,017,618 píxeles
+  ID 18.0: 271,637 píxeles
+  ID 22.0: 274,195 píxeles
+  ID 33.0: 14,771 píxeles</code></pre>
+</div>
+</div>
+<div id="6d1301a4" class="cell" data-execution_count="66">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 3: Agrupar IDs por categoría de cobertura</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>conteos_por_categoria <span class="op">=</span> {}</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> nombre, info <span class="kw">in</span> categorias.items():</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sumar píxeles de todos los IDs que pertenecen a esta categoría</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    total <span class="op">=</span> <span class="bu">sum</span>(conteos[ids_unicos <span class="op">==</span> id_pixel][<span class="dv">0</span>] <span class="cf">if</span> id_pixel <span class="kw">in</span> ids_unicos <span class="cf">else</span> <span class="dv">0</span> </span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>                <span class="cf">for</span> id_pixel <span class="kw">in</span> info[<span class="st">'ids'</span>])</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> total <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>        conteos_por_categoria[nombre] <span class="op">=</span> {</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>            <span class="st">'conteo'</span>: total,</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>            <span class="st">'color'</span>: info[<span class="st">'color'</span>]</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Categorías encontradas: </span><span class="sc">{</span><span class="bu">len</span>(conteos_por_categoria)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> nombre, datos <span class="kw">in</span> conteos_por_categoria.items():</span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>nombre<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>datos[<span class="st">'conteo'</span>]<span class="sc">:,}</span><span class="ss"> píxeles"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Categorías encontradas: 9
+  Leñosa cerrada: 132,117 píxeles
+  Leñosa abierta: 123,848 píxeles
+  Vegetación no leñosa inundable: 408,544 píxeles
+  Pastizal: 5,256,181 píxeles
+  Pastura: 3,017,618 píxeles
+  Agricultura: 271,637 píxeles
+  Plantación forestal: 57,940 píxeles
+  Área sin vegetación: 274,195 píxeles
+  Río, lago u océano: 14,771 píxeles</code></pre>
+</div>
+</div>
+<div id="bb89517c" class="cell" data-execution_count="67">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 4: Calcular porcentajes</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>total_pixeles <span class="op">=</span> <span class="bu">sum</span>(cat[<span class="st">'conteo'</span>] <span class="cf">for</span> cat <span class="kw">in</span> conteos_por_categoria.values())</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> nombre <span class="kw">in</span> conteos_por_categoria:</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    porcentaje <span class="op">=</span> (conteos_por_categoria[nombre][<span class="st">'conteo'</span>] <span class="op">/</span> total_pixeles) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    conteos_por_categoria[nombre][<span class="st">'porcentaje'</span>] <span class="op">=</span> porcentaje</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Distribución porcentual:"</span>)</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> nombre, datos <span class="kw">in</span> conteos_por_categoria.items():</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  </span><span class="sc">{</span>nombre<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>datos[<span class="st">'porcentaje'</span>]<span class="sc">:.2f}</span><span class="ss">%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Distribución porcentual:
+  Leñosa cerrada: 1.38%
+  Leñosa abierta: 1.30%
+  Vegetación no leñosa inundable: 4.27%
+  Pastizal: 55.00%
+  Pastura: 31.58%
+  Agricultura: 2.84%
+  Plantación forestal: 0.61%
+  Área sin vegetación: 2.87%
+  Río, lago u océano: 0.15%</code></pre>
+</div>
+</div>
+<div id="a19f80bb" class="cell" data-execution_count="68">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 5: Ordenar de mayor a menor porcentaje para visualización</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>categorias_ordenadas <span class="op">=</span> <span class="bu">sorted</span>(conteos_por_categoria.items(), </span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>                               key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">1</span>][<span class="st">'porcentaje'</span>], </span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>                               reverse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Top 5 coberturas más frecuentes:"</span>)</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, (nombre, datos) <span class="kw">in</span> <span class="bu">enumerate</span>(categorias_ordenadas[:<span class="dv">5</span>], <span class="dv">1</span>):</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">. </span><span class="sc">{</span>nombre<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>datos[<span class="st">'porcentaje'</span>]<span class="sc">:.2f}</span><span class="ss">%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Top 5 coberturas más frecuentes:
+1. Pastizal: 55.00%
+2. Pastura: 31.58%
+3. Vegetación no leñosa inundable: 4.27%
+4. Área sin vegetación: 2.87%
+5. Agricultura: 2.84%</code></pre>
+</div>
+</div>
+<div id="83f03224" class="cell" data-execution_count="69">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear gráfico de barras horizontal</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">8</span>))</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>nombres <span class="op">=</span> [cat[<span class="dv">0</span>] <span class="cf">for</span> cat <span class="kw">in</span> categorias_ordenadas]</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>porcentajes <span class="op">=</span> [cat[<span class="dv">1</span>][<span class="st">'porcentaje'</span>] <span class="cf">for</span> cat <span class="kw">in</span> categorias_ordenadas]</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>colores <span class="op">=</span> [cat[<span class="dv">1</span>][<span class="st">'color'</span>] <span class="cf">for</span> cat <span class="kw">in</span> categorias_ordenadas]</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>barras <span class="op">=</span> ax.barh(nombres, porcentajes, color<span class="op">=</span>colores, edgecolor<span class="op">=</span><span class="st">'black'</span>)</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Porcentaje (%)'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Tipo de Cobertura'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Distribución de Cobertura del Suelo - La Plata (MapBiomas 2022)'</span>, </span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>             fontsize<span class="op">=</span><span class="dv">14</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>, axis<span class="op">=</span><span class="st">'x'</span>)</span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Agregar etiquetas de porcentaje en las barras</span></span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> barra, pct <span class="kw">in</span> <span class="bu">zip</span>(barras, porcentajes):</span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a>    ax.text(pct <span class="op">+</span> <span class="fl">0.5</span>, barra.get_y() <span class="op">+</span> barra.get_height()<span class="op">/</span><span class="dv">2</span>, </span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a>            <span class="ss">f'</span><span class="sc">{</span>pct<span class="sc">:.1f}</span><span class="ss">%'</span>, va<span class="op">=</span><span class="st">'center'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="unidad_1b_soluciones_files/figure-html/cell-39-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-11"><img src="unidad_1b_soluciones_files/figure-html/cell-39-output-1.png" class="img-fluid figure-img"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Finalmente, hacemos estadísticas zonales para extraer la clase dominante y segunda clase dominante por cuenca.</p>
+<div id="88cf95d2" class="cell" data-execution_count="70">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Analizar la cobertura del suelo dominante por cuenca usando estadísticas zonales</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 1: Crear mapeo de IDs de píxel a categorías</span></span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>pixel_a_categoria <span class="op">=</span> {}</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> nombre, info <span class="kw">in</span> categorias.items():</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> id_pixel <span class="kw">in</span> info[<span class="st">'ids'</span>]:</span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>        pixel_a_categoria[id_pixel] <span class="op">=</span> nombre</span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Mapeo creado para </span><span class="sc">{</span><span class="bu">len</span>(pixel_a_categoria)<span class="sc">}</span><span class="ss"> IDs de píxel"</span>)</span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Ejemplo: ID 3 → </span><span class="sc">{</span>pixel_a_categoria<span class="sc">.</span>get(<span class="dv">3</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mapeo creado para 16 IDs de píxel
+Ejemplo: ID 3 → Leñosa cerrada</code></pre>
+</div>
+</div>
+<div id="c168afdc" class="cell">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 2: Calcular estadísticas zonales categóricas</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Esto cuenta cuántos píxeles de cada clase hay en cada cuenca</span></span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>estadisticas_cuencas <span class="op">=</span> zonal_stats(</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>    cuencas,</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    suelo_2022_masked.values[<span class="dv">0</span>],</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>    affine<span class="op">=</span>suelo_2022_masked.rio.transform(),</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>    categorical<span class="op">=</span><span class="va">True</span>,  <span class="co"># Contar píxeles por categoría</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>    nodata<span class="op">=</span><span class="dv">0</span>  <span class="co"># MapBiomas usa 0 para NoData</span></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Estadísticas calculadas para </span><span class="sc">{</span><span class="bu">len</span>(estadisticas_cuencas)<span class="sc">}</span><span class="ss"> cuencas"</span>)</span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Ejemplo de resultado para la primera cuenca:"</span>)</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  IDs presentes: </span><span class="sc">{</span><span class="bu">list</span>(estadisticas_cuencas[<span class="dv">0</span>].keys())<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Conteos: </span><span class="sc">{</span><span class="bu">list</span>(estadisticas_cuencas[<span class="dv">0</span>].values())<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Estadísticas calculadas para 10 cuencas
+
+Ejemplo de resultado para la primera cuenca:
+  IDs presentes: [3.0, 4.0, 9.0, 11.0, 12.0, 15.0, 18.0, 22.0, 33.0]
+  Conteos: [36326, 70874, 24574, 384685, 4473355, 2708555, 223092, 52982, 4363]</code></pre>
+</div>
+</div>
+<div id="7ae065fc" class="cell">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 4: Identificar cobertura dominante y segunda más común por cuenca</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>cobertura_dominante <span class="op">=</span> []</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>cobertura_secundaria <span class="op">=</span> []</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> estadisticas <span class="kw">in</span> estadisticas_cuencas:</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> estadisticas:</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Ordenar por conteo de píxeles (mayor a menor)</span></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>        clases_ordenadas <span class="op">=</span> <span class="bu">sorted</span>(estadisticas.items(), key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Obtener clase dominante (primera)</span></span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>        id_dominante <span class="op">=</span> clases_ordenadas[<span class="dv">0</span>][<span class="dv">0</span>]</span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>        clase_dominante <span class="op">=</span> pixel_a_categoria.get(id_dominante, <span class="st">'Desconocido'</span>)</span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>        cobertura_dominante.append(clase_dominante)</span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Obtener segunda clase más común</span></span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(clases_ordenadas) <span class="op">&gt;</span> <span class="dv">1</span>:</span>
+<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a>            id_secundario <span class="op">=</span> clases_ordenadas[<span class="dv">1</span>][<span class="dv">0</span>]</span>
+<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a>            clase_secundaria <span class="op">=</span> pixel_a_categoria.get(id_secundario, <span class="st">'Desconocido'</span>)</span>
+<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a>            cobertura_secundaria.append(clase_secundaria)</span>
+<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a>            cobertura_secundaria.append(<span class="st">'N/A'</span>)</span>
+<span id="cb53-22"><a href="#cb53-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb53-23"><a href="#cb53-23" aria-hidden="true" tabindex="-1"></a>        cobertura_dominante.append(<span class="st">'Sin Datos'</span>)</span>
+<span id="cb53-24"><a href="#cb53-24" aria-hidden="true" tabindex="-1"></a>        cobertura_secundaria.append(<span class="st">'Sin Datos'</span>)</span>
+<span id="cb53-25"><a href="#cb53-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-26"><a href="#cb53-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Coberturas identificadas:"</span>)</span>
+<span id="cb53-27"><a href="#cb53-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Dominantes únicas: </span><span class="sc">{</span><span class="bu">set</span>(cobertura_dominante)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb53-28"><a href="#cb53-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Secundarias únicas: </span><span class="sc">{</span><span class="bu">set</span>(cobertura_secundaria)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Coberturas identificadas:
+  Dominantes únicas: {'Pastizal', 'Área sin vegetación'}
+  Secundarias únicas: {'Pastizal', 'Pastura', 'Área sin vegetación', 'Leñosa cerrada'}</code></pre>
+</div>
+</div>
+<div id="b3802932" class="cell" data-execution_count="73">
+<details class="code-fold">
+<summary>Mostrar código</summary>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paso 5: Agregar resultados al GeoDataFrame y ordenar por área</span></span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>cuencas[<span class="st">'cobertura_dominante'</span>] <span class="op">=</span> cobertura_dominante</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>cuencas[<span class="st">'cobertura_secundaria'</span>] <span class="op">=</span> cobertura_secundaria</span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a>cuencas <span class="op">=</span> cuencas.sort_values(<span class="st">'area_m'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Resultados por cuenca (ordenadas por área):"</span>)</span>
+<span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>cuencas[[<span class="st">"Cuenca"</span>, <span class="st">"Sistema"</span>, <span class="st">"Subcuenca"</span>, <span class="st">"RegiónHí"</span>, <span class="st">"area_m"</span>, <span class="st">'cobertura_dominante'</span>, <span class="st">'cobertura_secundaria'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Resultados por cuenca (ordenadas por área):</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="73">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Cuenca</th>
+<th data-quarto-table-cell-role="th">Sistema</th>
+<th data-quarto-table-cell-role="th">Subcuenca</th>
+<th data-quarto-table-cell-role="th">RegiónHí</th>
+<th data-quarto-table-cell-role="th">area_m</th>
+<th data-quarto-table-cell-role="th">cobertura_dominante</th>
+<th data-quarto-table-cell-role="th">cobertura_secundaria</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">83</td>
+<td>Cuenca Río Samborombón</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>5.643661e+09</td>
+<td>Pastizal</td>
+<td>Pastura</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">72</td>
+<td>Area de Bañados</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>4.471614e+08</td>
+<td>Pastizal</td>
+<td>Área sin vegetación</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">54</td>
+<td>Cuenca Arroyo El Pescado</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>3.574595e+08</td>
+<td>Pastizal</td>
+<td>Pastura</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">38</td>
+<td>Cuenca Arroyo Martín-Carnaval</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>8.003825e+07</td>
+<td>Pastizal</td>
+<td>Pastura</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">53</td>
+<td>Cuenca Arroyo Pereyra</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>6.055430e+07</td>
+<td>Pastizal</td>
+<td>Leñosa cerrada</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">34</td>
+<td>Cuenca Arroyo del Gato</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>5.267390e+07</td>
+<td>Área sin vegetación</td>
+<td>Pastizal</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">35</td>
+<td>Cuenca Arroyo del Gato</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>4.267169e+07</td>
+<td>Pastizal</td>
+<td>Área sin vegetación</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">129</td>
+<td>Cuenca A° Maldonado</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>3.575884e+07</td>
+<td>Pastizal</td>
+<td>Área sin vegetación</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">36</td>
+<td>Cuenca Arroyo Rodriguez-Don Carlos</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>3.283828e+07</td>
+<td>Pastizal</td>
+<td>Pastura</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">32</td>
+<td>Cuenca Arroyo Rodriguez-Don Carlos</td>
+<td>REGION NORESTE</td>
+<td></td>
+<td>Vertiente Río de La Plata y Samborombón</td>
+<td>8.862363e+06</td>
+<td>Pastizal</td>
+<td>Pastura</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>La próxima semana seguimos con análisis más profundos y operaciones más complejas, incorporando más fuentes de Argentina y globales para profundizar en el análisis de datos geoespaciales aplicados a los riesgos climáticos.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/nlebovits\.github\.io\/datos-escala-humana\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../python-geoespacial/analisis-espacial.html" class="pagination-link" aria-label="Análisis espacial">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análisis espacial</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../riesgo-climatico/fundamentos.html" class="pagination-link" aria-label="Riesgo Climático para Ciudades">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Riesgo Climático para Ciudades</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© <a href="https://nlebovits.github.io">Nissim Lebovits</a>, 2025</p>
+</div>   
+    <div class="nav-footer-center">
+<p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/nlebovits/datos-escala-humana/blob/main/python-geoespacial/unidad_1b_soluciones.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nlebovits/datos-escala-humana/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","loop":false,"openEffect":"zoom","descPosition":"bottom"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>

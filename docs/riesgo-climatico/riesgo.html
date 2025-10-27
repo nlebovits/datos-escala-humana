@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Python Geoespacial – Datos a escala humana</title>
+<title>10&nbsp; Riesgo – Datos a escala humana</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +23,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./02-riesgo-climatico.html" rel="next">
-<link href="./intro.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../datos-abiertos/datos-abiertos.html" rel="next">
+<link href="../riesgo-climatico/peligro.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -72,10 +71,10 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -84,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-python-geoespacial.html">Python Geoespacial</a></li><li class="breadcrumb-item"><a href="./01-python-geoespacial.html"><span class="chapter-title">Python Geoespacial</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../riesgo-climatico/fundamentos.html">Riesgo Climático para Ciudades</a></li><li class="breadcrumb-item"><a href="../riesgo-climatico/riesgo.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Riesgo</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -96,10 +95,10 @@ ul.task-list li input[type="checkbox"] {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Datos a escala humana</a> 
+      <a href="../">Datos a escala humana</a> 
         <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/nlebovits/datos-escala-humana" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
@@ -138,27 +137,47 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introducción</span></a>
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introducción</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Python Geoespacial</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-python-geoespacial.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Python Geoespacial</span></a>
+  <a href="../python-geoespacial/fundamentos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python Geoespacial</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python-geoespacial/vector.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Datos vectoriales</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python-geoespacial/raster.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Datos raster</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python-geoespacial/analisis-espacial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análisis espacial</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../python-geoespacial/unidad_1b_soluciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">ACP 166: Datos abiertos para ciudades resilientes</span></span></a>
   </div>
 </li>
       </ul>
@@ -174,67 +193,114 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-riesgo-climatico.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Riesgo Climático para Ciudades</span></a>
+  <a href="../riesgo-climatico/fundamentos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Riesgo Climático para Ciudades</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../riesgo-climatico/exposicion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Exposición</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../riesgo-climatico/vulnerabilidad.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Vulnerabilidad</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../riesgo-climatico/peligro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Peligro</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../riesgo-climatico/riesgo.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Riesgo</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Datos Abiertos</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-datos-abiertos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Datos Abiertos</span></a>
+  <a href="../datos-abiertos/datos-abiertos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Datos Abiertos</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
  <span class="menu-text">Datos a la Acción</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-datos-accion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Datos a la Acción</span></a>
+  <a href="../datos-accion/datos-accion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Datos a la Acción</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
  <span class="menu-text">Cookbooks</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./cookbooks/pergamino.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Pergamino</span></a>
+  <a href="../cookbooks/pergamino.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pergamino</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../cookbooks/esperanza.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Esperanza</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../cookbooks/la-plata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">La Plata</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../cookbooks/villa-del-rosario.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Exposición y vulnerabilidad</span></span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./conclusion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Conclusión</span></a>
+  <a href="../conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Conclusión</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="../references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -248,41 +314,30 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#por-qué-python-gis" id="toc-por-qué-python-gis" class="nav-link active" data-scroll-target="#por-qué-python-gis">¿Por qué Python GIS?</a>
+  <li><a href="#combinando-factores-para-obtener-impacto" id="toc-combinando-factores-para-obtener-impacto" class="nav-link active" data-scroll-target="#combinando-factores-para-obtener-impacto"><span class="header-section-number">10.0.1</span> Combinando Factores para Obtener Impacto</a></li>
+  <li><a href="#cálculo-del-riesgo" id="toc-cálculo-del-riesgo" class="nav-link" data-scroll-target="#cálculo-del-riesgo"><span class="header-section-number">10.0.2</span> Cálculo del Riesgo</a></li>
+  <li><a href="#cambio-climático-y-riesgo-de-desastres" id="toc-cambio-climático-y-riesgo-de-desastres" class="nav-link" data-scroll-target="#cambio-climático-y-riesgo-de-desastres"><span class="header-section-number">10.1</span> Cambio Climático y Riesgo de Desastres</a></li>
+  <li><a href="#efectos-específicos-en-ciudades" id="toc-efectos-específicos-en-ciudades" class="nav-link" data-scroll-target="#efectos-específicos-en-ciudades"><span class="header-section-number">10.2</span> Efectos Específicos en Ciudades</a>
   <ul class="collapse">
-  <li><a href="#ventajas-sobre-el-software-de-punto-y-clic" id="toc-ventajas-sobre-el-software-de-punto-y-clic" class="nav-link" data-scroll-target="#ventajas-sobre-el-software-de-punto-y-clic">Ventajas sobre el Software de Punto y Clic</a></li>
+  <li><a href="#características-urbanas-que-aumentan-el-riesgo" id="toc-características-urbanas-que-aumentan-el-riesgo" class="nav-link" data-scroll-target="#características-urbanas-que-aumentan-el-riesgo"><span class="header-section-number">10.2.1</span> Características Urbanas que Aumentan el Riesgo</a></li>
+  <li><a href="#infraestructura-crítica" id="toc-infraestructura-crítica" class="nav-link" data-scroll-target="#infraestructura-crítica"><span class="header-section-number">10.2.2</span> Infraestructura Crítica</a></li>
   </ul></li>
-  <li><a href="#entradasalida-de-datos-es" id="toc-entradasalida-de-datos-es" class="nav-link" data-scroll-target="#entradasalida-de-datos-es">Entrada/Salida de Datos (E/S)</a>
+  <li><a href="#tipos-comunes-de-peligros-para-ciudades" id="toc-tipos-comunes-de-peligros-para-ciudades" class="nav-link" data-scroll-target="#tipos-comunes-de-peligros-para-ciudades"><span class="header-section-number">10.3</span> Tipos Comunes de Peligros para Ciudades</a>
   <ul class="collapse">
-  <li><a href="#datos-vectoriales" id="toc-datos-vectoriales" class="nav-link" data-scroll-target="#datos-vectoriales">Datos Vectoriales</a></li>
-  <li><a href="#datos-raster" id="toc-datos-raster" class="nav-link" data-scroll-target="#datos-raster">Datos Raster</a></li>
+  <li><a href="#inundaciones-urbanas" id="toc-inundaciones-urbanas" class="nav-link" data-scroll-target="#inundaciones-urbanas"><span class="header-section-number">10.3.1</span> Inundaciones Urbanas</a></li>
+  <li><a href="#olas-de-calor" id="toc-olas-de-calor" class="nav-link" data-scroll-target="#olas-de-calor"><span class="header-section-number">10.3.2</span> Olas de Calor</a></li>
+  <li><a href="#tormentas-intensas" id="toc-tormentas-intensas" class="nav-link" data-scroll-target="#tormentas-intensas"><span class="header-section-number">10.3.3</span> Tormentas Intensas</a></li>
+  <li><a href="#elevación-del-nivel-del-mar" id="toc-elevación-del-nivel-del-mar" class="nav-link" data-scroll-target="#elevación-del-nivel-del-mar"><span class="header-section-number">10.3.4</span> Elevación del Nivel del Mar</a></li>
   </ul></li>
-  <li><a href="#sistemas-de-referencia-de-coordenadas" id="toc-sistemas-de-referencia-de-coordenadas" class="nav-link" data-scroll-target="#sistemas-de-referencia-de-coordenadas">Sistemas de Referencia de Coordenadas</a></li>
-  <li><a href="#software-y-bibliotecas-geoespaciales" id="toc-software-y-bibliotecas-geoespaciales" class="nav-link" data-scroll-target="#software-y-bibliotecas-geoespaciales">Software y Bibliotecas Geoespaciales</a></li>
-  <li><a href="#lectura-y-visualización-de-datos-geoespaciales" id="toc-lectura-y-visualización-de-datos-geoespaciales" class="nav-link" data-scroll-target="#lectura-y-visualización-de-datos-geoespaciales">Lectura y Visualización de Datos Geoespaciales</a>
-  <ul class="collapse">
-  <li><a href="#importación-de-datos" id="toc-importación-de-datos" class="nav-link" data-scroll-target="#importación-de-datos">Importación de Datos</a></li>
-  <li><a href="#visualización-básica" id="toc-visualización-básica" class="nav-link" data-scroll-target="#visualización-básica">Visualización Básica</a></li>
-  </ul></li>
-  <li><a href="#operaciones-espaciales-básicas" id="toc-operaciones-espaciales-básicas" class="nav-link" data-scroll-target="#operaciones-espaciales-básicas">Operaciones Espaciales Básicas</a>
-  <ul class="collapse">
-  <li><a href="#reproyecciones" id="toc-reproyecciones" class="nav-link" data-scroll-target="#reproyecciones">Reproyecciones</a></li>
-  <li><a href="#operaciones-de-recorte" id="toc-operaciones-de-recorte" class="nav-link" data-scroll-target="#operaciones-de-recorte">Operaciones de Recorte</a></li>
-  <li><a href="#superposiciones-espaciales" id="toc-superposiciones-espaciales" class="nav-link" data-scroll-target="#superposiciones-espaciales">Superposiciones Espaciales</a></li>
-  <li><a href="#estadísticas-zonales" id="toc-estadísticas-zonales" class="nav-link" data-scroll-target="#estadísticas-zonales">Estadísticas Zonales</a></li>
-  <li><a href="#agregaciones-espaciales-básicas" id="toc-agregaciones-espaciales-básicas" class="nav-link" data-scroll-target="#agregaciones-espaciales-básicas">Agregaciones Espaciales Básicas</a></li>
-  <li><a href="#extracción-de-raster" id="toc-extracción-de-raster" class="nav-link" data-scroll-target="#extracción-de-raster">Extracción de Raster</a></li>
-  </ul></li>
-  <li><a href="#recursos-adicionales-y-aprendizaje-avanzado" id="toc-recursos-adicionales-y-aprendizaje-avanzado" class="nav-link" data-scroll-target="#recursos-adicionales-y-aprendizaje-avanzado">Recursos Adicionales y Aprendizaje Avanzado</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/nlebovits/datos-escala-humana/edit/main/01-python-geoespacial.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nlebovits/datos-escala-humana/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/nlebovits/datos-escala-humana/edit/main/riesgo-climatico/riesgo.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nlebovits/datos-escala-humana/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-python-geoespacial.html">Python Geoespacial</a></li><li class="breadcrumb-item"><a href="./01-python-geoespacial.html"><span class="chapter-title">Python Geoespacial</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../riesgo-climatico/fundamentos.html">Riesgo Climático para Ciudades</a></li><li class="breadcrumb-item"><a href="../riesgo-climatico/riesgo.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Riesgo</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">Python Geoespacial</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Riesgo</span></h1>
 </div>
 
 
@@ -299,61 +354,40 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="por-qué-python-gis" class="level2">
-<h2 class="anchored" data-anchor-id="por-qué-python-gis">¿Por qué Python GIS?</h2>
-<section id="ventajas-sobre-el-software-de-punto-y-clic" class="level3">
-<h3 class="anchored" data-anchor-id="ventajas-sobre-el-software-de-punto-y-clic">Ventajas sobre el Software de Punto y Clic</h3>
+<section id="combinando-factores-para-obtener-impacto" class="level3" data-number="10.0.1">
+<h3 data-number="10.0.1" class="anchored" data-anchor-id="combinando-factores-para-obtener-impacto"><span class="header-section-number">10.0.1</span> Combinando Factores para Obtener Impacto</h3>
+</section>
+<section id="cálculo-del-riesgo" class="level3" data-number="10.0.2">
+<h3 data-number="10.0.2" class="anchored" data-anchor-id="cálculo-del-riesgo"><span class="header-section-number">10.0.2</span> Cálculo del Riesgo</h3>
+</section>
+<section id="cambio-climático-y-riesgo-de-desastres" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="cambio-climático-y-riesgo-de-desastres"><span class="header-section-number">10.1</span> Cambio Climático y Riesgo de Desastres</h2>
+</section>
+<section id="efectos-específicos-en-ciudades" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="efectos-específicos-en-ciudades"><span class="header-section-number">10.2</span> Efectos Específicos en Ciudades</h2>
+<section id="características-urbanas-que-aumentan-el-riesgo" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="características-urbanas-que-aumentan-el-riesgo"><span class="header-section-number">10.2.1</span> Características Urbanas que Aumentan el Riesgo</h3>
+</section>
+<section id="infraestructura-crítica" class="level3" data-number="10.2.2">
+<h3 data-number="10.2.2" class="anchored" data-anchor-id="infraestructura-crítica"><span class="header-section-number">10.2.2</span> Infraestructura Crítica</h3>
 </section>
 </section>
-<section id="entradasalida-de-datos-es" class="level2">
-<h2 class="anchored" data-anchor-id="entradasalida-de-datos-es">Entrada/Salida de Datos (E/S)</h2>
-<section id="datos-vectoriales" class="level3">
-<h3 class="anchored" data-anchor-id="datos-vectoriales">Datos Vectoriales</h3>
+<section id="tipos-comunes-de-peligros-para-ciudades" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="tipos-comunes-de-peligros-para-ciudades"><span class="header-section-number">10.3</span> Tipos Comunes de Peligros para Ciudades</h2>
+<section id="inundaciones-urbanas" class="level3" data-number="10.3.1">
+<h3 data-number="10.3.1" class="anchored" data-anchor-id="inundaciones-urbanas"><span class="header-section-number">10.3.1</span> Inundaciones Urbanas</h3>
 </section>
-<section id="datos-raster" class="level3">
-<h3 class="anchored" data-anchor-id="datos-raster">Datos Raster</h3>
+<section id="olas-de-calor" class="level3" data-number="10.3.2">
+<h3 data-number="10.3.2" class="anchored" data-anchor-id="olas-de-calor"><span class="header-section-number">10.3.2</span> Olas de Calor</h3>
 </section>
+<section id="tormentas-intensas" class="level3" data-number="10.3.3">
+<h3 data-number="10.3.3" class="anchored" data-anchor-id="tormentas-intensas"><span class="header-section-number">10.3.3</span> Tormentas Intensas</h3>
 </section>
-<section id="sistemas-de-referencia-de-coordenadas" class="level2">
-<h2 class="anchored" data-anchor-id="sistemas-de-referencia-de-coordenadas">Sistemas de Referencia de Coordenadas</h2>
-</section>
-<section id="software-y-bibliotecas-geoespaciales" class="level2">
-<h2 class="anchored" data-anchor-id="software-y-bibliotecas-geoespaciales">Software y Bibliotecas Geoespaciales</h2>
-</section>
-<section id="lectura-y-visualización-de-datos-geoespaciales" class="level2">
-<h2 class="anchored" data-anchor-id="lectura-y-visualización-de-datos-geoespaciales">Lectura y Visualización de Datos Geoespaciales</h2>
-<section id="importación-de-datos" class="level3">
-<h3 class="anchored" data-anchor-id="importación-de-datos">Importación de Datos</h3>
-</section>
-<section id="visualización-básica" class="level3">
-<h3 class="anchored" data-anchor-id="visualización-básica">Visualización Básica</h3>
-</section>
-</section>
-<section id="operaciones-espaciales-básicas" class="level2">
-<h2 class="anchored" data-anchor-id="operaciones-espaciales-básicas">Operaciones Espaciales Básicas</h2>
-<section id="reproyecciones" class="level3">
-<h3 class="anchored" data-anchor-id="reproyecciones">Reproyecciones</h3>
-</section>
-<section id="operaciones-de-recorte" class="level3">
-<h3 class="anchored" data-anchor-id="operaciones-de-recorte">Operaciones de Recorte</h3>
-</section>
-<section id="superposiciones-espaciales" class="level3">
-<h3 class="anchored" data-anchor-id="superposiciones-espaciales">Superposiciones Espaciales</h3>
-</section>
-<section id="estadísticas-zonales" class="level3">
-<h3 class="anchored" data-anchor-id="estadísticas-zonales">Estadísticas Zonales</h3>
-</section>
-<section id="agregaciones-espaciales-básicas" class="level3">
-<h3 class="anchored" data-anchor-id="agregaciones-espaciales-básicas">Agregaciones Espaciales Básicas</h3>
-</section>
-<section id="extracción-de-raster" class="level3">
-<h3 class="anchored" data-anchor-id="extracción-de-raster">Extracción de Raster</h3>
-</section>
-</section>
-<section id="recursos-adicionales-y-aprendizaje-avanzado" class="level2">
-<h2 class="anchored" data-anchor-id="recursos-adicionales-y-aprendizaje-avanzado">Recursos Adicionales y Aprendizaje Avanzado</h2>
+<section id="elevación-del-nivel-del-mar" class="level3" data-number="10.3.4">
+<h3 data-number="10.3.4" class="anchored" data-anchor-id="elevación-del-nivel-del-mar"><span class="header-section-number">10.3.4</span> Elevación del Nivel del Mar</h3>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -923,13 +957,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./intro.html" class="pagination-link" aria-label="Introducción">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Introducción</span></span>
+      <a href="../riesgo-climatico/peligro.html" class="pagination-link" aria-label="Peligro">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Peligro</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./02-riesgo-climatico.html" class="pagination-link" aria-label="Riesgo Climático para Ciudades">
-        <span class="nav-page-text"><span class="chapter-title">Riesgo Climático para Ciudades</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../datos-abiertos/datos-abiertos.html" class="pagination-link" aria-label="Datos Abiertos">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Datos Abiertos</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -941,7 +975,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
 <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></p>
-<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/nlebovits/datos-escala-humana/edit/main/01-python-geoespacial.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nlebovits/datos-escala-humana/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/nlebovits/datos-escala-humana/edit/main/riesgo-climatico/riesgo.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nlebovits/datos-escala-humana/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
