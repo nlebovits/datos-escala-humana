@@ -49,4 +49,6 @@ términos y condiciones.
 
 ## Patrocinadores del Proyecto
 
-[![Logo CIUT](public/ciut-logo.png)](https://ciut.fau.unlp.edu.ar/)
+[![Centro de Investigaciones Urbanas y Territoriales](public/ciut-logo.png)](https://ciut.fau.unlp.edu.ar/)
+
+[![Facultad de Arquitectura y Urbanismo](public/fau-logo.png)](https://www.fau.unlp.edu.ar/)
