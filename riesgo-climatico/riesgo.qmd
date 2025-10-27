@@ -1,14 +1,4 @@
-# Riesgo Climático para Ciudades
-
-## ¿Qué es el Riesgo Climático?
-
-### Peligros Naturales
-
-### Exposición
-
-### Vulnerabilidad
-
-## Evaluación del Riesgo
+## Riesgo
 
 ### Combinando Factores para Obtener Impacto
 
