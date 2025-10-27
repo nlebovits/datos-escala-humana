@@ -1,0 +1,17 @@
+## Análisis espacial
+
+## Operaciones Espaciales Básicas
+
+### Reproyecciones
+
+### Operaciones de Recorte
+
+### Superposiciones Espaciales
+
+### Estadísticas Zonales
+
+### Agregaciones Espaciales Básicas
+
+### Extracción de Raster
+
+## Recursos Adicionales y Aprendizaje Avanzado
