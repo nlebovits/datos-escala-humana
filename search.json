@@ -1,0 +1,412 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Datos a escala humana",
+    "section": "",
+    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introducción",
+    "section": "",
+    "text": "1.1 De qué trata este libro",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#para-quién-es-este-libro",
+    "href": "intro.html#para-quién-es-este-libro",
+    "title": "1  Introducción",
+    "section": "1.2 Para quién es este libro",
+    "text": "1.2 Para quién es este libro",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#resultados-de-aprendizaje",
+    "href": "intro.html#resultados-de-aprendizaje",
+    "title": "1  Introducción",
+    "section": "1.3 Resultados de aprendizaje",
+    "text": "1.3 Resultados de aprendizaje",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#prerrequisitos",
+    "href": "intro.html#prerrequisitos",
+    "title": "1  Introducción",
+    "section": "1.4 Prerrequisitos",
+    "text": "1.4 Prerrequisitos",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#cómo-está-organizado-este-libro",
+    "href": "intro.html#cómo-está-organizado-este-libro",
+    "title": "1  Introducción",
+    "section": "1.5 Cómo está organizado este libro",
+    "text": "1.5 Cómo está organizado este libro",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#software",
+    "href": "intro.html#software",
+    "title": "1  Introducción",
+    "section": "1.6 Software",
+    "text": "1.6 Software",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#agradecimientos",
+    "href": "intro.html#agradecimientos",
+    "title": "1  Introducción",
+    "section": "1.7 Agradecimientos",
+    "text": "1.7 Agradecimientos",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introducción</span>"
+    ]
+  },
+  {
+    "objectID": "01-python-geoespacial.html",
+    "href": "01-python-geoespacial.html",
+    "title": "2  Python Geoespacial",
+    "section": "",
+    "text": "2.1 ¿Por qué Python GIS?",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Python Geoespacial</span>"
+    ]
+  },
+  {
+    "objectID": "01-python-geoespacial.html#por-qué-python-gis",
+    "href": "01-python-geoespacial.html#por-qué-python-gis",
+    "title": "2  Python Geoespacial",
+    "section": "",
+    "text": "2.1.1 Ventajas sobre el Software de Punto y Clic",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Python Geoespacial</span>"
+    ]
+  },
+  {
+    "objectID": "01-python-geoespacial.html#entradasalida-de-datos-es",
+    "href": "01-python-geoespacial.html#entradasalida-de-datos-es",
+    "title": "2  Python Geoespacial",
+    "section": "2.2 Entrada/Salida de Datos (E/S)",
+    "text": "2.2 Entrada/Salida de Datos (E/S)\n\n2.2.1 Datos Vectoriales\n\n\n2.2.2 Datos Raster",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Python Geoespacial</span>"
+    ]
+  },
+  {
+    "objectID": "01-python-geoespacial.html#sistemas-de-referencia-de-coordenadas",
+    "href": "01-python-geoespacial.html#sistemas-de-referencia-de-coordenadas",
+    "title": "2  Python Geoespacial",
+    "section": "2.3 Sistemas de Referencia de Coordenadas",
+    "text": "2.3 Sistemas de Referencia de Coordenadas",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Python Geoespacial</span>"
+    ]
+  },
+  {
+    "objectID": "01-python-geoespacial.html#software-y-bibliotecas-geoespaciales",
+    "href": "01-python-geoespacial.html#software-y-bibliotecas-geoespaciales",
+    "title": "2  Python Geoespacial",
+    "section": "2.4 Software y Bibliotecas Geoespaciales",
+    "text": "2.4 Software y Bibliotecas Geoespaciales",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Python Geoespacial</span>"
+    ]
+  },
+  {
+    "objectID": "01-python-geoespacial.html#lectura-y-visualización-de-datos-geoespaciales",
+    "href": "01-python-geoespacial.html#lectura-y-visualización-de-datos-geoespaciales",
+    "title": "2  Python Geoespacial",
+    "section": "2.5 Lectura y Visualización de Datos Geoespaciales",
+    "text": "2.5 Lectura y Visualización de Datos Geoespaciales\n\n2.5.1 Importación de Datos\n\n\n2.5.2 Visualización Básica",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Python Geoespacial</span>"
+    ]
+  },
+  {
+    "objectID": "01-python-geoespacial.html#operaciones-espaciales-básicas",
+    "href": "01-python-geoespacial.html#operaciones-espaciales-básicas",
+    "title": "2  Python Geoespacial",
+    "section": "2.6 Operaciones Espaciales Básicas",
+    "text": "2.6 Operaciones Espaciales Básicas\n\n2.6.1 Reproyecciones\n\n\n2.6.2 Operaciones de Recorte\n\n\n2.6.3 Superposiciones Espaciales\n\n\n2.6.4 Estadísticas Zonales\n\n\n2.6.5 Agregaciones Espaciales Básicas\n\n\n2.6.6 Extracción de Raster",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Python Geoespacial</span>"
+    ]
+  },
+  {
+    "objectID": "01-python-geoespacial.html#recursos-adicionales-y-aprendizaje-avanzado",
+    "href": "01-python-geoespacial.html#recursos-adicionales-y-aprendizaje-avanzado",
+    "title": "2  Python Geoespacial",
+    "section": "2.7 Recursos Adicionales y Aprendizaje Avanzado",
+    "text": "2.7 Recursos Adicionales y Aprendizaje Avanzado",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Python Geoespacial</span>"
+    ]
+  },
+  {
+    "objectID": "02-riesgo-climatico.html",
+    "href": "02-riesgo-climatico.html",
+    "title": "3  Riesgo Climático para Ciudades",
+    "section": "",
+    "text": "3.1 ¿Qué es el Riesgo Climático?",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Riesgo Climático para Ciudades</span>"
+    ]
+  },
+  {
+    "objectID": "02-riesgo-climatico.html#qué-es-el-riesgo-climático",
+    "href": "02-riesgo-climatico.html#qué-es-el-riesgo-climático",
+    "title": "3  Riesgo Climático para Ciudades",
+    "section": "",
+    "text": "3.1.1 Peligros Naturales\n\n\n3.1.2 Exposición\n\n\n3.1.3 Vulnerabilidad",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Riesgo Climático para Ciudades</span>"
+    ]
+  },
+  {
+    "objectID": "02-riesgo-climatico.html#evaluación-del-riesgo",
+    "href": "02-riesgo-climatico.html#evaluación-del-riesgo",
+    "title": "3  Riesgo Climático para Ciudades",
+    "section": "3.2 Evaluación del Riesgo",
+    "text": "3.2 Evaluación del Riesgo\n\n3.2.1 Combinando Factores para Obtener Impacto\n\n\n3.2.2 Cálculo del Riesgo",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Riesgo Climático para Ciudades</span>"
+    ]
+  },
+  {
+    "objectID": "02-riesgo-climatico.html#cambio-climático-y-riesgo-de-desastres",
+    "href": "02-riesgo-climatico.html#cambio-climático-y-riesgo-de-desastres",
+    "title": "3  Riesgo Climático para Ciudades",
+    "section": "3.3 Cambio Climático y Riesgo de Desastres",
+    "text": "3.3 Cambio Climático y Riesgo de Desastres",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Riesgo Climático para Ciudades</span>"
+    ]
+  },
+  {
+    "objectID": "02-riesgo-climatico.html#efectos-específicos-en-ciudades",
+    "href": "02-riesgo-climatico.html#efectos-específicos-en-ciudades",
+    "title": "3  Riesgo Climático para Ciudades",
+    "section": "3.4 Efectos Específicos en Ciudades",
+    "text": "3.4 Efectos Específicos en Ciudades\n\n3.4.1 Características Urbanas que Aumentan el Riesgo\n\n\n3.4.2 Infraestructura Crítica",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Riesgo Climático para Ciudades</span>"
+    ]
+  },
+  {
+    "objectID": "02-riesgo-climatico.html#tipos-comunes-de-peligros-para-ciudades",
+    "href": "02-riesgo-climatico.html#tipos-comunes-de-peligros-para-ciudades",
+    "title": "3  Riesgo Climático para Ciudades",
+    "section": "3.5 Tipos Comunes de Peligros para Ciudades",
+    "text": "3.5 Tipos Comunes de Peligros para Ciudades\n\n3.5.1 Inundaciones Urbanas\n\n\n3.5.2 Olas de Calor\n\n\n3.5.3 Tormentas Intensas\n\n\n3.5.4 Elevación del Nivel del Mar",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Riesgo Climático para Ciudades</span>"
+    ]
+  },
+  {
+    "objectID": "03-datos-abiertos.html",
+    "href": "03-datos-abiertos.html",
+    "title": "4  Datos Abiertos",
+    "section": "",
+    "text": "4.1 Qué son los Datos Abiertos",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Datos Abiertos</span>"
+    ]
+  },
+  {
+    "objectID": "03-datos-abiertos.html#fuentes-comunes-de-datos-abiertos",
+    "href": "03-datos-abiertos.html#fuentes-comunes-de-datos-abiertos",
+    "title": "4  Datos Abiertos",
+    "section": "4.2 Fuentes Comunes de Datos Abiertos",
+    "text": "4.2 Fuentes Comunes de Datos Abiertos",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Datos Abiertos</span>"
+    ]
+  },
+  {
+    "objectID": "03-datos-abiertos.html#cómo-encontrar-datos-abiertos",
+    "href": "03-datos-abiertos.html#cómo-encontrar-datos-abiertos",
+    "title": "4  Datos Abiertos",
+    "section": "4.3 Cómo Encontrar Datos Abiertos",
+    "text": "4.3 Cómo Encontrar Datos Abiertos",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Datos Abiertos</span>"
+    ]
+  },
+  {
+    "objectID": "03-datos-abiertos.html#cómo-entender-los-datos-abiertos",
+    "href": "03-datos-abiertos.html#cómo-entender-los-datos-abiertos",
+    "title": "4  Datos Abiertos",
+    "section": "4.4 Cómo Entender los Datos Abiertos",
+    "text": "4.4 Cómo Entender los Datos Abiertos",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Datos Abiertos</span>"
+    ]
+  },
+  {
+    "objectID": "03-datos-abiertos.html#qué-se-puede-y-no-se-puede-hacer-con-los-datos-abiertos",
+    "href": "03-datos-abiertos.html#qué-se-puede-y-no-se-puede-hacer-con-los-datos-abiertos",
+    "title": "4  Datos Abiertos",
+    "section": "4.5 Qué se Puede y No se Puede Hacer con los Datos Abiertos",
+    "text": "4.5 Qué se Puede y No se Puede Hacer con los Datos Abiertos",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Datos Abiertos</span>"
+    ]
+  },
+  {
+    "objectID": "03-datos-abiertos.html#cómo-evaluar-la-calidad-de-los-datos-abiertos",
+    "href": "03-datos-abiertos.html#cómo-evaluar-la-calidad-de-los-datos-abiertos",
+    "title": "4  Datos Abiertos",
+    "section": "4.6 Cómo Evaluar la Calidad de los Datos Abiertos",
+    "text": "4.6 Cómo Evaluar la Calidad de los Datos Abiertos",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Datos Abiertos</span>"
+    ]
+  },
+  {
+    "objectID": "04-datos-accion.html",
+    "href": "04-datos-accion.html",
+    "title": "5  Datos a la Acción",
+    "section": "",
+    "text": "5.1 Estudio de Caso: Escape from Model Land",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Datos a la Acción</span>"
+    ]
+  },
+  {
+    "objectID": "04-datos-accion.html#comprensión-de-modelos",
+    "href": "04-datos-accion.html#comprensión-de-modelos",
+    "title": "5  Datos a la Acción",
+    "section": "5.2 Comprensión de Modelos",
+    "text": "5.2 Comprensión de Modelos\n\n5.2.1 Modeladores y Usuarios\n\n\n5.2.2 Importancia de la Comunicación de Modelos",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Datos a la Acción</span>"
+    ]
+  },
+  {
+    "objectID": "04-datos-accion.html#toma-de-decisiones-robusta",
+    "href": "04-datos-accion.html#toma-de-decisiones-robusta",
+    "title": "5  Datos a la Acción",
+    "section": "5.3 Toma de Decisiones Robusta",
+    "text": "5.3 Toma de Decisiones Robusta",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Datos a la Acción</span>"
+    ]
+  },
+  {
+    "objectID": "04-datos-accion.html#evaluación-de-riesgos",
+    "href": "04-datos-accion.html#evaluación-de-riesgos",
+    "title": "5  Datos a la Acción",
+    "section": "5.4 Evaluación de Riesgos",
+    "text": "5.4 Evaluación de Riesgos",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Datos a la Acción</span>"
+    ]
+  },
+  {
+    "objectID": "04-datos-accion.html#límites-de-los-modelos",
+    "href": "04-datos-accion.html#límites-de-los-modelos",
+    "title": "5  Datos a la Acción",
+    "section": "5.5 Límites de los Modelos",
+    "text": "5.5 Límites de los Modelos",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Datos a la Acción</span>"
+    ]
+  },
+  {
+    "objectID": "04-datos-accion.html#objetividad-en-el-análisis",
+    "href": "04-datos-accion.html#objetividad-en-el-análisis",
+    "title": "5  Datos a la Acción",
+    "section": "5.6 Objetividad en el Análisis",
+    "text": "5.6 Objetividad en el Análisis",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Datos a la Acción</span>"
+    ]
+  },
+  {
+    "objectID": "04-datos-accion.html#precisión-y-exactitud-de-modelos",
+    "href": "04-datos-accion.html#precisión-y-exactitud-de-modelos",
+    "title": "5  Datos a la Acción",
+    "section": "5.7 Precisión y Exactitud de Modelos",
+    "text": "5.7 Precisión y Exactitud de Modelos",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Datos a la Acción</span>"
+    ]
+  },
+  {
+    "objectID": "04-datos-accion.html#cuándo-los-datos-son-suficientemente-buenos",
+    "href": "04-datos-accion.html#cuándo-los-datos-son-suficientemente-buenos",
+    "title": "5  Datos a la Acción",
+    "section": "5.8 Cuándo los Datos son Suficientemente Buenos",
+    "text": "5.8 Cuándo los Datos son Suficientemente Buenos",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Datos a la Acción</span>"
+    ]
+  },
+  {
+    "objectID": "04-datos-accion.html#transparencia-en-el-proceso",
+    "href": "04-datos-accion.html#transparencia-en-el-proceso",
+    "title": "5  Datos a la Acción",
+    "section": "5.9 Transparencia en el Proceso",
+    "text": "5.9 Transparencia en el Proceso",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Datos a la Acción</span>"
+    ]
+  },
+  {
+    "objectID": "04-datos-accion.html#mejores-prácticas-para-decisiones-robustas",
+    "href": "04-datos-accion.html#mejores-prácticas-para-decisiones-robustas",
+    "title": "5  Datos a la Acción",
+    "section": "5.10 Mejores Prácticas para Decisiones Robustas",
+    "text": "5.10 Mejores Prácticas para Decisiones Robustas\n\n5.10.1 Con Modelos Imperfectos\n\n\n5.10.2 Con Datos Imperfectos",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Datos a la Acción</span>"
+    ]
+  },
+  {
+    "objectID": "04-datos-accion.html#comunicación-en-el-contexto-municipal",
+    "href": "04-datos-accion.html#comunicación-en-el-contexto-municipal",
+    "title": "5  Datos a la Acción",
+    "section": "5.11 Comunicación en el Contexto Municipal",
+    "text": "5.11 Comunicación en el Contexto Municipal",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Datos a la Acción</span>"
+    ]
+  },
+  {
+    "objectID": "04-datos-accion.html#de-datos-a-acción",
+    "href": "04-datos-accion.html#de-datos-a-acción",
+    "title": "5  Datos a la Acción",
+    "section": "5.12 De Datos a Acción",
+    "text": "5.12 De Datos a Acción\n\n5.12.1 Cómo se Usan (o No se Usan) los Datos en el Mundo Real\n\n\n5.12.2 Implicaciones para los Practicantes",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Datos a la Acción</span>"
+    ]
+  },
+  {
+    "objectID": "conclusion.html",
+    "href": "conclusion.html",
+    "title": "6  Conclusión",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Conclusión</span>"
+    ]
+  }
+]
