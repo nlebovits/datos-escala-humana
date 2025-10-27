@@ -7,12 +7,14 @@ Nos comprometemos a hacer de la participación en este proyecto una experiencia 
 ## Estándares de Comportamiento
 
 **Comportamiento aceptable:**
+
 - Uso de lenguaje acogedor e inclusivo
 - Respeto por diferentes puntos de vista
 - Aceptación de críticas constructivas
 - Enfoque en lo mejor para la comunidad
 
 **Comportamiento inaceptable:**
+
 - Lenguaje o imágenes sexualizadas
 - Trolling, comentarios insultantes o ataques personales
 - Acoso público o privado
@@ -23,11 +25,13 @@ Nos comprometemos a hacer de la participación en este proyecto una experiencia 
 Los mantenedores del proyecto tienen la responsabilidad última de hacer cumplir este código de conducta.
 
 **Proceso:**
+
 1. Se emite una advertencia por mala conducta
 2. Si la conducta persiste, se remueve a la persona del proyecto
 
 **Autoridad:**
 Los mantenedores tienen discreción total para:
+
 - Definir qué constituye mala conducta
 - Remover a cualquier persona del proyecto en cualquier momento
 - Aplicar consecuencias sin previa advertencia si la situación lo amerita
