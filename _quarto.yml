@@ -18,16 +18,16 @@ book:
     - intro.qmd
     - part: Python Geoespacial
       chapters:
-        - 01-python-geoespacial.qmd
+        - python-geoespacial/python-geoespacial.qmd
     - part: Riesgo Climático para Ciudades
       chapters:
-        - 02-riesgo-climatico.qmd
+        - riesgo-climatico/riesgo-climatico.qmd
     - part: Datos Abiertos
       chapters:
-        - 03-datos-abiertos.qmd
+        - datos-abiertos/datos-abiertos.qmd
     - part: Datos a la Acción
       chapters:
-        - 04-datos-accion.qmd
+        - datos-accion/datos-accion.qmd
     - part: Cookbooks
       chapters:
         - cookbooks/pergamino.qmd
@@ -65,7 +65,7 @@ format:
     code-copy: true
     code-overflow: wrap
     css: styles.css
-    number-sections: false
+    number-sections: true
     fontsize: "11"
     lightbox: auto
 
