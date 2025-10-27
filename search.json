@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Datos a escala humana",
     "section": "",
-    "text": "Introducción\n🚧 Estado del Proyecto: Este libro se encuentra actualmente en las primeras etapas de desarrollo. Esperamos completar un producto mínimo viable para finales de 2025. Consulta la hoja de ruta para más información.",
+    "text": "Introducción\n🚧 Estado del Proyecto: Este libro se encuentra actualmente en las primeras etapas de desarrollo. Esperamos completar un producto mínimo viable para finales de 2025. Consulta la hoja de ruta para más información.\nEste libro se basa en gran parte en el curso Datos Abiertos para Ciudades Resilientes que el autor enseña en la Facultad de Arquitectura y Urbanismo de la Universidad Nacional de La Plata durante el cuatrimestre final de 2025.",
     "crumbs": [
       "Introducción"
     ]
@@ -30,21 +30,11 @@
     ]
   },
   {
-    "objectID": "index.html#contexto-del-desarrollo",
-    "href": "index.html#contexto-del-desarrollo",
+    "objectID": "index.html#organización",
+    "href": "index.html#organización",
     "title": "Datos a escala humana",
-    "section": "Contexto del desarrollo",
-    "text": "Contexto del desarrollo\nFue desarrollado durante la beca Fulbright del autor en Argentina. Los ejemplos y datos provienen de cuatro estudios de caso reales implementados en gobiernos municipales argentinos. Esperamos incorporar más ejemplos de todo el mundo a medida que se sumen colaboradores.\nEste libro se basa en gran parte en el curso Datos Abiertos para Ciudades Resilientes que el autor, Nassim Libovitz, enseña en la Facultad de Arquitectura y Urbanismo de la Universidad Nacional de La Plata durante el cuatrimestre final de 2025.",
-    "crumbs": [
-      "Introducción"
-    ]
-  },
-  {
-    "objectID": "index.html#cómo-está-organizado-este-libro",
-    "href": "index.html#cómo-está-organizado-este-libro",
-    "title": "Datos a escala humana",
-    "section": "Cómo está organizado este libro",
-    "text": "Cómo está organizado este libro\nEl libro está organizado en cuatro secciones principales:\nCapítulo 1: Curso intensivo de SIG y Python. Cubre los fundamentos de trabajar con datos geoespaciales en Python, tanto vectoriales como ráster, y un resumen de las operaciones espaciales básicas que usamos en este libro. También proporcionamos recursos para aprender más sobre Python y SIG.\nCapítulo 2: Datos abiertos. Explora qué son las mejores fuentes de datos abiertos, diferentes formas de acceder a estos datos y por qué estas herramientas son importantes. Profundiza un poco en formatos de datos nativos de la nube y las diferentes formas de acceder a estos conjuntos de datos, además de evaluar su calidad e idoneidad. Trata tanto cuestiones de epistemología como de programación.\nCapítulo 3: Riesgo climático. Definimos qué es el riesgo climático, riesgos climáticos comunes para ciudades y las mejores fuentes de datos disponibles. Hablamos sobre cómo calcular el riesgo climático y algunas limitaciones al calcularlo, dados los conjuntos de datos disponibles.\nCapítulo 4: Datos en acción. Aborda cómo tomar estos conjuntos de datos y vincularlos a políticas concretas y decisiones de infraestructura para proteger a las personas del clima. Abordamos cuestiones de gobernanza, certeza, idoneidad para el propósito, heurísticas, etc.\nCookbooks. Los capítulos 1 a 4 están diseñados para ser más pedagógicos, enfocados en la práctica y el aprendizaje de herramientas y conceptos. La sección de Cookbooks presenta ejemplos del mundo real de estudios de caso que el autor llevó a cabo en Argentina durante su beca Fulbright con gobiernos municipales reales, utilizando datos reales para tomar decisiones reales. Estos ejemplos demuestran lo que es posible con las herramientas que exploramos en este libro. Aceptamos contribuciones de ejemplos adicionales de otros contextos.",
+    "section": "Organización",
+    "text": "Organización\nEl libro está organizado en cuatro secciones principales:\nCapítulo 1: Curso intensivo de SIG y Python. Cubre los fundamentos de trabajar con datos geoespaciales en Python, tanto vectoriales como ráster, y un resumen de las operaciones espaciales básicas que usamos en este libro. También proporcionamos recursos para aprender más sobre Python y SIG.\nCapítulo 2: Datos abiertos. Explora qué son las mejores fuentes de datos abiertos, diferentes formas de acceder a estos datos y por qué estas herramientas son importantes. Profundiza un poco en formatos de datos nativos de la nube y las diferentes formas de acceder a estos conjuntos de datos, además de evaluar su calidad e idoneidad. Trata tanto cuestiones de epistemología como de programación.\nCapítulo 3: Riesgo climático. Definimos qué es el riesgo climático, riesgos climáticos comunes para ciudades y las mejores fuentes de datos disponibles. Hablamos sobre cómo calcular el riesgo climático y algunas limitaciones al calcularlo, dados los conjuntos de datos disponibles.\nCapítulo 4: Datos en acción. Aborda cómo tomar estos conjuntos de datos y vincularlos a políticas concretas y decisiones de infraestructura para proteger a las personas del clima. Abordamos cuestiones de gobernanza, certeza, idoneidad para el propósito, heurísticas, etc.\nCookbooks. Los capítulos 1 a 4 están diseñados para ser más pedagógicos, enfocados en la práctica y el aprendizaje de herramientas y conceptos. La sección de Cookbooks presenta ejemplos del mundo real de estudios de caso que el autor llevó a cabo en Argentina durante su beca Fulbright con gobiernos municipales reales, utilizando datos reales para tomar decisiones reales. Estos ejemplos demuestran lo que es posible con las herramientas que exploramos en este libro. Aceptamos contribuciones de ejemplos adicionales de otros contextos.",
     "crumbs": [
       "Introducción"
     ]
