@@ -28,6 +28,14 @@ uv sync
 uv run pre-commit install
 ```
 
+## Contribuciones
+
+- We use [`markdownlint-cli2` to manage Markdown formatting in .qmd files](https://github.com/DavidAnson/markdownlint-cli2). To run this before committing, use:
+
+```bash
+uv run markdownlint-cli2 "**/*.qmd"
+```
+
 ## Licenciamiento
 
 Este proyecto utiliza una licencia dual:
