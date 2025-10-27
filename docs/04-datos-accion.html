@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Datos a la Acción – Datos a escala humana</title>
+<title>Datos a la Acción – Datos a escala humana</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,17 +30,19 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./conclusion.html" rel="next">
+<link href="./cookbooks/pergamino.html" rel="next">
 <link href="./03-datos-abiertos.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -70,6 +72,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -81,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-datos-accion.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datos a la Acción</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-datos-accion.html">Datos a la Acción</a></li><li class="breadcrumb-item"><a href="./04-datos-accion.html"><span class="chapter-title">Datos a la Acción</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -97,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Datos a escala humana</a> 
-        <div class="sidebar-tools-main">
+        <div class="sidebar-tools-main tools-wide">
     <a href="https://github.com/nlebovits/datos-escala-humana" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
     <div class="dropdown">
       <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
@@ -122,6 +125,7 @@ ul.task-list li input[type="checkbox"] {
           </li>
       </ul>
     </div>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
       </div>
@@ -140,38 +144,92 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Introducción</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Python Geoespacial</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-python-geoespacial.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Python Geoespacial</span></span></a>
+  <a href="./01-python-geoespacial.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Python Geoespacial</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Riesgo Climático para Ciudades</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-riesgo-climatico.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Riesgo Climático para Ciudades</span></span></a>
+  <a href="./02-riesgo-climatico.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Riesgo Climático para Ciudades</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Datos Abiertos</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-datos-abiertos.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Datos Abiertos</span></span></a>
+  <a href="./03-datos-abiertos.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Datos Abiertos</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Datos a la Acción</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./04-datos-accion.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datos a la Acción</span></span></a>
+  <a href="./04-datos-accion.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Datos a la Acción</span></a>
   </div>
 </li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Cookbooks</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./cookbooks/pergamino.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Pergamino</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./conclusion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conclusión</span></span></a>
+  <a href="./conclusion.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Conclusión</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -190,39 +248,39 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#estudio-de-caso-escape-from-model-land" id="toc-estudio-de-caso-escape-from-model-land" class="nav-link active" data-scroll-target="#estudio-de-caso-escape-from-model-land"><span class="header-section-number">5.1</span> Estudio de Caso: Escape from Model Land</a></li>
-  <li><a href="#comprensión-de-modelos" id="toc-comprensión-de-modelos" class="nav-link" data-scroll-target="#comprensión-de-modelos"><span class="header-section-number">5.2</span> Comprensión de Modelos</a>
+  <li><a href="#estudio-de-caso-escape-from-model-land" id="toc-estudio-de-caso-escape-from-model-land" class="nav-link active" data-scroll-target="#estudio-de-caso-escape-from-model-land">Estudio de Caso: Escape from Model Land</a></li>
+  <li><a href="#comprensión-de-modelos" id="toc-comprensión-de-modelos" class="nav-link" data-scroll-target="#comprensión-de-modelos">Comprensión de Modelos</a>
   <ul class="collapse">
-  <li><a href="#modeladores-y-usuarios" id="toc-modeladores-y-usuarios" class="nav-link" data-scroll-target="#modeladores-y-usuarios"><span class="header-section-number">5.2.1</span> Modeladores y Usuarios</a></li>
-  <li><a href="#importancia-de-la-comunicación-de-modelos" id="toc-importancia-de-la-comunicación-de-modelos" class="nav-link" data-scroll-target="#importancia-de-la-comunicación-de-modelos"><span class="header-section-number">5.2.2</span> Importancia de la Comunicación de Modelos</a></li>
+  <li><a href="#modeladores-y-usuarios" id="toc-modeladores-y-usuarios" class="nav-link" data-scroll-target="#modeladores-y-usuarios">Modeladores y Usuarios</a></li>
+  <li><a href="#importancia-de-la-comunicación-de-modelos" id="toc-importancia-de-la-comunicación-de-modelos" class="nav-link" data-scroll-target="#importancia-de-la-comunicación-de-modelos">Importancia de la Comunicación de Modelos</a></li>
   </ul></li>
-  <li><a href="#toma-de-decisiones-robusta" id="toc-toma-de-decisiones-robusta" class="nav-link" data-scroll-target="#toma-de-decisiones-robusta"><span class="header-section-number">5.3</span> Toma de Decisiones Robusta</a></li>
-  <li><a href="#evaluación-de-riesgos" id="toc-evaluación-de-riesgos" class="nav-link" data-scroll-target="#evaluación-de-riesgos"><span class="header-section-number">5.4</span> Evaluación de Riesgos</a></li>
-  <li><a href="#límites-de-los-modelos" id="toc-límites-de-los-modelos" class="nav-link" data-scroll-target="#límites-de-los-modelos"><span class="header-section-number">5.5</span> Límites de los Modelos</a></li>
-  <li><a href="#objetividad-en-el-análisis" id="toc-objetividad-en-el-análisis" class="nav-link" data-scroll-target="#objetividad-en-el-análisis"><span class="header-section-number">5.6</span> Objetividad en el Análisis</a></li>
-  <li><a href="#precisión-y-exactitud-de-modelos" id="toc-precisión-y-exactitud-de-modelos" class="nav-link" data-scroll-target="#precisión-y-exactitud-de-modelos"><span class="header-section-number">5.7</span> Precisión y Exactitud de Modelos</a></li>
-  <li><a href="#cuándo-los-datos-son-suficientemente-buenos" id="toc-cuándo-los-datos-son-suficientemente-buenos" class="nav-link" data-scroll-target="#cuándo-los-datos-son-suficientemente-buenos"><span class="header-section-number">5.8</span> Cuándo los Datos son Suficientemente Buenos</a></li>
-  <li><a href="#transparencia-en-el-proceso" id="toc-transparencia-en-el-proceso" class="nav-link" data-scroll-target="#transparencia-en-el-proceso"><span class="header-section-number">5.9</span> Transparencia en el Proceso</a></li>
-  <li><a href="#mejores-prácticas-para-decisiones-robustas" id="toc-mejores-prácticas-para-decisiones-robustas" class="nav-link" data-scroll-target="#mejores-prácticas-para-decisiones-robustas"><span class="header-section-number">5.10</span> Mejores Prácticas para Decisiones Robustas</a>
+  <li><a href="#toma-de-decisiones-robusta" id="toc-toma-de-decisiones-robusta" class="nav-link" data-scroll-target="#toma-de-decisiones-robusta">Toma de Decisiones Robusta</a></li>
+  <li><a href="#evaluación-de-riesgos" id="toc-evaluación-de-riesgos" class="nav-link" data-scroll-target="#evaluación-de-riesgos">Evaluación de Riesgos</a></li>
+  <li><a href="#límites-de-los-modelos" id="toc-límites-de-los-modelos" class="nav-link" data-scroll-target="#límites-de-los-modelos">Límites de los Modelos</a></li>
+  <li><a href="#objetividad-en-el-análisis" id="toc-objetividad-en-el-análisis" class="nav-link" data-scroll-target="#objetividad-en-el-análisis">Objetividad en el Análisis</a></li>
+  <li><a href="#precisión-y-exactitud-de-modelos" id="toc-precisión-y-exactitud-de-modelos" class="nav-link" data-scroll-target="#precisión-y-exactitud-de-modelos">Precisión y Exactitud de Modelos</a></li>
+  <li><a href="#cuándo-los-datos-son-suficientemente-buenos" id="toc-cuándo-los-datos-son-suficientemente-buenos" class="nav-link" data-scroll-target="#cuándo-los-datos-son-suficientemente-buenos">Cuándo los Datos son Suficientemente Buenos</a></li>
+  <li><a href="#transparencia-en-el-proceso" id="toc-transparencia-en-el-proceso" class="nav-link" data-scroll-target="#transparencia-en-el-proceso">Transparencia en el Proceso</a></li>
+  <li><a href="#mejores-prácticas-para-decisiones-robustas" id="toc-mejores-prácticas-para-decisiones-robustas" class="nav-link" data-scroll-target="#mejores-prácticas-para-decisiones-robustas">Mejores Prácticas para Decisiones Robustas</a>
   <ul class="collapse">
-  <li><a href="#con-modelos-imperfectos" id="toc-con-modelos-imperfectos" class="nav-link" data-scroll-target="#con-modelos-imperfectos"><span class="header-section-number">5.10.1</span> Con Modelos Imperfectos</a></li>
-  <li><a href="#con-datos-imperfectos" id="toc-con-datos-imperfectos" class="nav-link" data-scroll-target="#con-datos-imperfectos"><span class="header-section-number">5.10.2</span> Con Datos Imperfectos</a></li>
+  <li><a href="#con-modelos-imperfectos" id="toc-con-modelos-imperfectos" class="nav-link" data-scroll-target="#con-modelos-imperfectos">Con Modelos Imperfectos</a></li>
+  <li><a href="#con-datos-imperfectos" id="toc-con-datos-imperfectos" class="nav-link" data-scroll-target="#con-datos-imperfectos">Con Datos Imperfectos</a></li>
   </ul></li>
-  <li><a href="#comunicación-en-el-contexto-municipal" id="toc-comunicación-en-el-contexto-municipal" class="nav-link" data-scroll-target="#comunicación-en-el-contexto-municipal"><span class="header-section-number">5.11</span> Comunicación en el Contexto Municipal</a></li>
-  <li><a href="#de-datos-a-acción" id="toc-de-datos-a-acción" class="nav-link" data-scroll-target="#de-datos-a-acción"><span class="header-section-number">5.12</span> De Datos a Acción</a>
+  <li><a href="#comunicación-en-el-contexto-municipal" id="toc-comunicación-en-el-contexto-municipal" class="nav-link" data-scroll-target="#comunicación-en-el-contexto-municipal">Comunicación en el Contexto Municipal</a></li>
+  <li><a href="#de-datos-a-acción" id="toc-de-datos-a-acción" class="nav-link" data-scroll-target="#de-datos-a-acción">De Datos a Acción</a>
   <ul class="collapse">
-  <li><a href="#cómo-se-usan-o-no-se-usan-los-datos-en-el-mundo-real" id="toc-cómo-se-usan-o-no-se-usan-los-datos-en-el-mundo-real" class="nav-link" data-scroll-target="#cómo-se-usan-o-no-se-usan-los-datos-en-el-mundo-real"><span class="header-section-number">5.12.1</span> Cómo se Usan (o No se Usan) los Datos en el Mundo Real</a></li>
-  <li><a href="#implicaciones-para-los-practicantes" id="toc-implicaciones-para-los-practicantes" class="nav-link" data-scroll-target="#implicaciones-para-los-practicantes"><span class="header-section-number">5.12.2</span> Implicaciones para los Practicantes</a></li>
+  <li><a href="#cómo-se-usan-o-no-se-usan-los-datos-en-el-mundo-real" id="toc-cómo-se-usan-o-no-se-usan-los-datos-en-el-mundo-real" class="nav-link" data-scroll-target="#cómo-se-usan-o-no-se-usan-los-datos-en-el-mundo-real">Cómo se Usan (o No se Usan) los Datos en el Mundo Real</a></li>
+  <li><a href="#implicaciones-para-los-practicantes" id="toc-implicaciones-para-los-practicantes" class="nav-link" data-scroll-target="#implicaciones-para-los-practicantes">Implicaciones para los Practicantes</a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/nlebovits/datos-escala-humana/edit/main/04-datos-accion.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nlebovits/datos-escala-humana/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-datos-accion.html">Datos a la Acción</a></li><li class="breadcrumb-item"><a href="./04-datos-accion.html"><span class="chapter-title">Datos a la Acción</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Datos a la Acción</span></h1>
+<h1 class="title"><span class="chapter-title">Datos a la Acción</span></h1>
 </div>
 
 
@@ -239,58 +297,58 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="estudio-de-caso-escape-from-model-land" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="estudio-de-caso-escape-from-model-land"><span class="header-section-number">5.1</span> Estudio de Caso: Escape from Model Land</h2>
+<section id="estudio-de-caso-escape-from-model-land" class="level2">
+<h2 class="anchored" data-anchor-id="estudio-de-caso-escape-from-model-land">Estudio de Caso: Escape from Model Land</h2>
 </section>
-<section id="comprensión-de-modelos" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="comprensión-de-modelos"><span class="header-section-number">5.2</span> Comprensión de Modelos</h2>
-<section id="modeladores-y-usuarios" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="modeladores-y-usuarios"><span class="header-section-number">5.2.1</span> Modeladores y Usuarios</h3>
+<section id="comprensión-de-modelos" class="level2">
+<h2 class="anchored" data-anchor-id="comprensión-de-modelos">Comprensión de Modelos</h2>
+<section id="modeladores-y-usuarios" class="level3">
+<h3 class="anchored" data-anchor-id="modeladores-y-usuarios">Modeladores y Usuarios</h3>
 </section>
-<section id="importancia-de-la-comunicación-de-modelos" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="importancia-de-la-comunicación-de-modelos"><span class="header-section-number">5.2.2</span> Importancia de la Comunicación de Modelos</h3>
-</section>
-</section>
-<section id="toma-de-decisiones-robusta" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="toma-de-decisiones-robusta"><span class="header-section-number">5.3</span> Toma de Decisiones Robusta</h2>
-</section>
-<section id="evaluación-de-riesgos" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="evaluación-de-riesgos"><span class="header-section-number">5.4</span> Evaluación de Riesgos</h2>
-</section>
-<section id="límites-de-los-modelos" class="level2" data-number="5.5">
-<h2 data-number="5.5" class="anchored" data-anchor-id="límites-de-los-modelos"><span class="header-section-number">5.5</span> Límites de los Modelos</h2>
-</section>
-<section id="objetividad-en-el-análisis" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="objetividad-en-el-análisis"><span class="header-section-number">5.6</span> Objetividad en el Análisis</h2>
-</section>
-<section id="precisión-y-exactitud-de-modelos" class="level2" data-number="5.7">
-<h2 data-number="5.7" class="anchored" data-anchor-id="precisión-y-exactitud-de-modelos"><span class="header-section-number">5.7</span> Precisión y Exactitud de Modelos</h2>
-</section>
-<section id="cuándo-los-datos-son-suficientemente-buenos" class="level2" data-number="5.8">
-<h2 data-number="5.8" class="anchored" data-anchor-id="cuándo-los-datos-son-suficientemente-buenos"><span class="header-section-number">5.8</span> Cuándo los Datos son Suficientemente Buenos</h2>
-</section>
-<section id="transparencia-en-el-proceso" class="level2" data-number="5.9">
-<h2 data-number="5.9" class="anchored" data-anchor-id="transparencia-en-el-proceso"><span class="header-section-number">5.9</span> Transparencia en el Proceso</h2>
-</section>
-<section id="mejores-prácticas-para-decisiones-robustas" class="level2" data-number="5.10">
-<h2 data-number="5.10" class="anchored" data-anchor-id="mejores-prácticas-para-decisiones-robustas"><span class="header-section-number">5.10</span> Mejores Prácticas para Decisiones Robustas</h2>
-<section id="con-modelos-imperfectos" class="level3" data-number="5.10.1">
-<h3 data-number="5.10.1" class="anchored" data-anchor-id="con-modelos-imperfectos"><span class="header-section-number">5.10.1</span> Con Modelos Imperfectos</h3>
-</section>
-<section id="con-datos-imperfectos" class="level3" data-number="5.10.2">
-<h3 data-number="5.10.2" class="anchored" data-anchor-id="con-datos-imperfectos"><span class="header-section-number">5.10.2</span> Con Datos Imperfectos</h3>
+<section id="importancia-de-la-comunicación-de-modelos" class="level3">
+<h3 class="anchored" data-anchor-id="importancia-de-la-comunicación-de-modelos">Importancia de la Comunicación de Modelos</h3>
 </section>
 </section>
-<section id="comunicación-en-el-contexto-municipal" class="level2" data-number="5.11">
-<h2 data-number="5.11" class="anchored" data-anchor-id="comunicación-en-el-contexto-municipal"><span class="header-section-number">5.11</span> Comunicación en el Contexto Municipal</h2>
+<section id="toma-de-decisiones-robusta" class="level2">
+<h2 class="anchored" data-anchor-id="toma-de-decisiones-robusta">Toma de Decisiones Robusta</h2>
 </section>
-<section id="de-datos-a-acción" class="level2" data-number="5.12">
-<h2 data-number="5.12" class="anchored" data-anchor-id="de-datos-a-acción"><span class="header-section-number">5.12</span> De Datos a Acción</h2>
-<section id="cómo-se-usan-o-no-se-usan-los-datos-en-el-mundo-real" class="level3" data-number="5.12.1">
-<h3 data-number="5.12.1" class="anchored" data-anchor-id="cómo-se-usan-o-no-se-usan-los-datos-en-el-mundo-real"><span class="header-section-number">5.12.1</span> Cómo se Usan (o No se Usan) los Datos en el Mundo Real</h3>
+<section id="evaluación-de-riesgos" class="level2">
+<h2 class="anchored" data-anchor-id="evaluación-de-riesgos">Evaluación de Riesgos</h2>
 </section>
-<section id="implicaciones-para-los-practicantes" class="level3" data-number="5.12.2">
-<h3 data-number="5.12.2" class="anchored" data-anchor-id="implicaciones-para-los-practicantes"><span class="header-section-number">5.12.2</span> Implicaciones para los Practicantes</h3>
+<section id="límites-de-los-modelos" class="level2">
+<h2 class="anchored" data-anchor-id="límites-de-los-modelos">Límites de los Modelos</h2>
+</section>
+<section id="objetividad-en-el-análisis" class="level2">
+<h2 class="anchored" data-anchor-id="objetividad-en-el-análisis">Objetividad en el Análisis</h2>
+</section>
+<section id="precisión-y-exactitud-de-modelos" class="level2">
+<h2 class="anchored" data-anchor-id="precisión-y-exactitud-de-modelos">Precisión y Exactitud de Modelos</h2>
+</section>
+<section id="cuándo-los-datos-son-suficientemente-buenos" class="level2">
+<h2 class="anchored" data-anchor-id="cuándo-los-datos-son-suficientemente-buenos">Cuándo los Datos son Suficientemente Buenos</h2>
+</section>
+<section id="transparencia-en-el-proceso" class="level2">
+<h2 class="anchored" data-anchor-id="transparencia-en-el-proceso">Transparencia en el Proceso</h2>
+</section>
+<section id="mejores-prácticas-para-decisiones-robustas" class="level2">
+<h2 class="anchored" data-anchor-id="mejores-prácticas-para-decisiones-robustas">Mejores Prácticas para Decisiones Robustas</h2>
+<section id="con-modelos-imperfectos" class="level3">
+<h3 class="anchored" data-anchor-id="con-modelos-imperfectos">Con Modelos Imperfectos</h3>
+</section>
+<section id="con-datos-imperfectos" class="level3">
+<h3 class="anchored" data-anchor-id="con-datos-imperfectos">Con Datos Imperfectos</h3>
+</section>
+</section>
+<section id="comunicación-en-el-contexto-municipal" class="level2">
+<h2 class="anchored" data-anchor-id="comunicación-en-el-contexto-municipal">Comunicación en el Contexto Municipal</h2>
+</section>
+<section id="de-datos-a-acción" class="level2">
+<h2 class="anchored" data-anchor-id="de-datos-a-acción">De Datos a Acción</h2>
+<section id="cómo-se-usan-o-no-se-usan-los-datos-en-el-mundo-real" class="level3">
+<h3 class="anchored" data-anchor-id="cómo-se-usan-o-no-se-usan-los-datos-en-el-mundo-real">Cómo se Usan (o No se Usan) los Datos en el Mundo Real</h3>
+</section>
+<section id="implicaciones-para-los-practicantes" class="level3">
+<h3 class="anchored" data-anchor-id="implicaciones-para-los-practicantes">Implicaciones para los Practicantes</h3>
 
 
 </section>
@@ -317,6 +375,150 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -720,16 +922,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./03-datos-abiertos.html" class="pagination-link" aria-label="Datos Abiertos">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Datos Abiertos</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Datos Abiertos</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./conclusion.html" class="pagination-link" aria-label="Conclusión">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Conclusión</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./cookbooks/pergamino.html" class="pagination-link" aria-label="Pergamino">
+        <span class="nav-page-text"><span class="chapter-title">Pergamino</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© <a href="https://nlebovits.github.io">Nissim Lebovits</a>, 2025</p>
+</div>   
+    <div class="nav-footer-center">
+<p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></p>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/nlebovits/datos-escala-humana/edit/main/04-datos-accion.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nlebovits/datos-escala-humana/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
 
 
 

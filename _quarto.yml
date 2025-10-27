@@ -1,24 +1,52 @@
 project:
   type: book
   output-dir: docs
+  preview:
+    port: 4200
+    browser: false
 
 book:
   title: "Datos a escala humana"
   subtitle: "Datos abiertos para ciudades resilientes"
   author: "Nissim Lebovits"
-
+  repo-actions: [edit, issue]
   site-url: https://nlebovits.github.io/datos-escala-humana/
   repo-url: https://github.com/nlebovits/datos-escala-humana
   sharing: [twitter, facebook, linkedin]
   chapters:
     - index.qmd
     - intro.qmd
-    - 01-python-geoespacial.qmd
-    - 02-riesgo-climatico.qmd
-    - 03-datos-abiertos.qmd
-    - 04-datos-accion.qmd
+    - part: Python Geoespacial
+      chapters:
+        - 01-python-geoespacial.qmd
+    - part: Riesgo Climático para Ciudades
+      chapters:
+        - 02-riesgo-climatico.qmd
+    - part: Datos Abiertos
+      chapters:
+        - 03-datos-abiertos.qmd
+    - part: Datos a la Acción
+      chapters:
+        - 04-datos-accion.qmd
+    - part: Cookbooks
+      chapters:
+        - cookbooks/pergamino.qmd
+        - cookbooks/esperanza.qmd
+        - cookbooks/la-plata.qmd
+        - cookbooks/villa-del-rosario.qmd
     - conclusion.qmd
     - references.qmd
+  sidebar:
+    pinned: true
+    align: center
+    style: "docked"
+    search: true
+    collapse-level: 2
+  page-footer:
+    right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
+    center: '<a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1">'
+    left: '&copy; [Nissim Lebovits](https://nlebovits.github.io), 2025'
+
 
 bibliography: references.bib
 
@@ -26,12 +54,22 @@ format:
   html:
     toc: true
     toc_float: true
-    theme: cosmo
+    grid:
+      sidebar-width: 400px
+    theme:
+      light: [cosmo, theme.scss] # from https://github.com/sta210-s22/website/blob/main/_quarto.yml
+      dark: [cosmo, theme-dark.scss]
     code-link: true
     code-fold: true
     code-summary: "Mostrar código"
-    number-sections: true
+    code-copy: true
+    code-overflow: wrap
+    css: styles.css
+    number-sections: false
     fontsize: "11"
     lightbox: auto
 
 
+filters:
+  - include-files.lua
+  - quarto

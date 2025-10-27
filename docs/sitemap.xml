@@ -2,34 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nlebovits.github.io/datos-escala-humana/index.html</loc>
-    <lastmod>2025-08-04T22:58:41.373Z</lastmod>
+    <lastmod>2025-10-27T16:51:42.229Z</lastmod>
   </url>
   <url>
     <loc>https://nlebovits.github.io/datos-escala-humana/intro.html</loc>
-    <lastmod>2025-08-21T13:24:07.958Z</lastmod>
+    <lastmod>2025-10-27T16:51:42.229Z</lastmod>
   </url>
   <url>
     <loc>https://nlebovits.github.io/datos-escala-humana/01-python-geoespacial.html</loc>
-    <lastmod>2025-08-21T14:00:35.845Z</lastmod>
+    <lastmod>2025-10-27T16:51:42.217Z</lastmod>
   </url>
   <url>
     <loc>https://nlebovits.github.io/datos-escala-humana/02-riesgo-climatico.html</loc>
-    <lastmod>2025-08-21T13:39:17.653Z</lastmod>
+    <lastmod>2025-10-27T16:51:42.217Z</lastmod>
   </url>
   <url>
     <loc>https://nlebovits.github.io/datos-escala-humana/03-datos-abiertos.html</loc>
-    <lastmod>2025-08-21T14:00:37.595Z</lastmod>
+    <lastmod>2025-10-27T16:51:42.217Z</lastmod>
   </url>
   <url>
     <loc>https://nlebovits.github.io/datos-escala-humana/04-datos-accion.html</loc>
-    <lastmod>2025-08-21T14:00:36.720Z</lastmod>
+    <lastmod>2025-10-27T16:51:42.217Z</lastmod>
   </url>
   <url>
     <loc>https://nlebovits.github.io/datos-escala-humana/conclusion.html</loc>
-    <lastmod>2025-08-21T13:48:16.337Z</lastmod>
+    <lastmod>2025-10-27T16:51:42.224Z</lastmod>
   </url>
   <url>
     <loc>https://nlebovits.github.io/datos-escala-humana/references.html</loc>
-    <lastmod>2025-08-04T22:58:41.374Z</lastmod>
+    <lastmod>2025-10-27T16:51:42.267Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nlebovits.github.io/datos-escala-humana/cookbooks/pergamino.html</loc>
+    <lastmod>2025-10-27T17:06:06.453Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nlebovits.github.io/datos-escala-humana/cookbooks/esperanza.html</loc>
+    <lastmod>2025-10-27T17:14:40.289Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nlebovits.github.io/datos-escala-humana/cookbooks/la-plata.html</loc>
+    <lastmod>2025-10-27T17:14:48.246Z</lastmod>
+  </url>
+  <url>
+    <loc>https://nlebovits.github.io/datos-escala-humana/cookbooks/villa-del-rosario.html</loc>
+    <lastmod>2025-10-27T17:14:53.516Z</lastmod>
   </url>
 </urlset>
