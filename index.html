@@ -342,7 +342,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./python-geoespacial/analisis-espacial.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">analisis-espacial.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análisis espacial</span></span></a>
   </div>
 </li>
       </ul>
@@ -485,10 +485,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#filosofía-práctica-sobre-teoría" id="toc-filosofía-práctica-sobre-teoría" class="nav-link" data-scroll-target="#filosofía-práctica-sobre-teoría">Filosofía: práctica sobre teoría</a></li>
   <li><a href="#contexto-del-desarrollo" id="toc-contexto-del-desarrollo" class="nav-link" data-scroll-target="#contexto-del-desarrollo">Contexto del desarrollo</a></li>
   <li><a href="#cómo-está-organizado-este-libro" id="toc-cómo-está-organizado-este-libro" class="nav-link" data-scroll-target="#cómo-está-organizado-este-libro">Cómo está organizado este libro</a></li>
-  <li><a href="#una-nota-sobre-el-geoespacial-nativo-de-la-nube" id="toc-una-nota-sobre-el-geoespacial-nativo-de-la-nube" class="nav-link" data-scroll-target="#una-nota-sobre-el-geoespacial-nativo-de-la-nube">Una nota sobre el geoespacial nativo de la nube</a></li>
-  <li><a href="#una-nota-sobre-este-libro" id="toc-una-nota-sobre-este-libro" class="nav-link" data-scroll-target="#una-nota-sobre-este-libro">Una nota sobre este libro</a></li>
-  <li><a href="#una-nota-sobre-el-idioma" id="toc-una-nota-sobre-el-idioma" class="nav-link" data-scroll-target="#una-nota-sobre-el-idioma">Una nota sobre el idioma</a></li>
-  <li><a href="#sobre-el-autor" id="toc-sobre-el-autor" class="nav-link" data-scroll-target="#sobre-el-autor">Sobre el autor</a></li>
+  <li><a href="#autores" id="toc-autores" class="nav-link" data-scroll-target="#autores">Autor(es)</a></li>
   <li><a href="#agradecimientos" id="toc-agradecimientos" class="nav-link" data-scroll-target="#agradecimientos">Agradecimientos</a></li>
   <li><a href="#patrocinadores-del-proyecto" id="toc-patrocinadores-del-proyecto" class="nav-link" data-scroll-target="#patrocinadores-del-proyecto">Patrocinadores del proyecto</a></li>
   </ul></li>
@@ -527,23 +524,23 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introducción" class="level1 unnumbered">
 <h1 class="unnumbered">Introducción</h1>
-<p>🚧 <strong>Estado del Proyecto</strong>: Este libro se encuentra actualmente en las primeras etapas de desarrollo. Esperamos completar un MVP (producto mínimo viable) para finales de 2025. Consulta la <a href="./project/ROADMAP.md">Hoja de Ruta</a> para más información.</p>
+<p>🚧 <strong>Estado del Proyecto</strong>: Este libro se encuentra actualmente en las primeras etapas de desarrollo. Esperamos completar un producto mínimo viable para finales de 2025. Consulta la <a href="./project/ROADMAP.md">hoja de ruta</a> para más información.</p>
 <section id="sobre-este-libro" class="level2">
 <h2 class="anchored" data-anchor-id="sobre-este-libro">Sobre este libro</h2>
-<p><em>Datos a escala humana</em> es un libro sobre cómo aprovechar datos globales mediante computación geoespacial nativa de la nube para mitigar el riesgo climático en ciudades.</p>
-<p>Está dirigido principalmente a urbanistas, funcionarios municipales, arquitectos y técnicos en entornos con recursos limitados donde los datos locales de alta calidad son escasos o de calidad insuficiente.</p>
-<p>Este libro no asume conocimientos avanzados de SIG. Es un curso intensivo en estas tecnologías. No pretende ser exhaustivo. Siempre que sea posible, proporcionamos recursos para profundizar. Intentamos ser lo más concisos posible. Este es un libro enfocado en la acción y en flujos de trabajo simples y replicables que permitan a las ciudades mitigar el riesgo climático.</p>
+<p><em>Datos a escala humana</em> enseña cómo aprovechar datos globales mediante computación geoespacial nativa de la nube para mitigar el riesgo climático en ciudades.</p>
+<p>Dirigido principalmente a urbanistas, funcionarios municipales, arquitectos y técnicos en entornos con recursos limitados donde los datos locales de alta calidad son escasos o de calidad insuficiente. No asume conocimientos avanzados de SIG. Curso intensivo, no exhaustivo. Proporcionamos recursos para profundizar. La acción y los flujos de trabajo simples y replicables son el enfoque.</p>
+<p>Documento en evolución, actualmente en fase de producto mínimo viable. No es la palabra final y reconocemos que se volverá obsoleto sin desarrollo continuo.</p>
+<p>Usa tecnología geoespacial nativa de la nube. Aunque relativamente nueva, no es difícil y hace las cosas más fáciles. No profundizamos en teoría sino en aplicaciones. Para aprender más, consulta el <a href="https://cloudnativegeo.org/">Cloud-Native Geospatial Forum</a>.</p>
+<p>Escrito primero en español porque casi no existen recursos en español sobre estos temas. El autor no es hablante nativo y ha usado modelos de lenguaje para apoyar la traducción. Si encuentras errores, abre un ticket o contribuye.</p>
 </section>
 <section id="filosofía-práctica-sobre-teoría" class="level2">
 <h2 class="anchored" data-anchor-id="filosofía-práctica-sobre-teoría">Filosofía: práctica sobre teoría</h2>
-<p>Este libro se centra en la práctica más que en la teoría. Intentamos equilibrar la explicación de conceptos espaciales con su implementación. Habrá casos donde no profundizaremos en por qué hacemos algo de cierta manera o por qué el código está escrito así. Te dejamos explorar con modelos de lenguaje o consultar la documentación. Nos enfocamos en hacer.</p>
-<p>También priorizamos conceptos sobre técnicas. Deliberadamente regresamos varias veces a técnicas centrales: verás agregación espacial y estadísticas zonales repetidamente. Verás gráficos de correlación básicos varias veces. No profundizaremos en estadística espacial avanzada. Mostramos los conceptos y los repetimos para que se fijen, pero no es un estudio sistemático del procesamiento geoespacial sino una construcción paso a paso para usar estas herramientas de manera práctica.</p>
-<p>El objetivo no es crear analistas geoespaciales completamente formados, sino proporcionar flujos de trabajo replicables donde entiendas el procesamiento, los conceptos centrales, la implementación y las políticas asociadas lo suficientemente bien para aplicarlos eficientemente en tu propio contexto sin modificaciones enormes, entendiendo de manera transparente qué está pasando y por qué.</p>
+<p>Priorizamos la práctica sobre la teoría. Equilibramos la explicación de conceptos espaciales con su implementación. Habrá casos donde no profundizaremos en por qué hacemos algo de cierta manera. Te dejamos explorar con modelos de lenguaje o consultar la documentación. Nos enfocamos en hacer.</p>
+<p>También priorizamos conceptos sobre técnicas. Regresamos deliberadamente a técnicas centrales: verás agregación espacial y estadísticas zonales repetidamente. No profundizaremos en estadística espacial avanzada. Mostramos los conceptos y los repetimos para que se fijen. El objetivo no es crear analistas geoespaciales completamente formados, sino proporcionar flujos de trabajo replicables que entiendas lo suficientemente bien para aplicarlos en tu propio contexto.</p>
 </section>
 <section id="contexto-del-desarrollo" class="level2">
 <h2 class="anchored" data-anchor-id="contexto-del-desarrollo">Contexto del desarrollo</h2>
-<p>Este libro fue desarrollado durante la beca Fulbright del autor en Argentina. Los ejemplos y datos provienen principalmente de Argentina como resultado del enfoque en cuatro estudios de caso reales desarrollados e implementados en gobiernos municipales de cuatro ciudades argentinas.</p>
-<p>Esperamos que este libro incorpore más ejemplos de todo el mundo a medida que se sumen más colaboradores. Por ahora, el material está principalmente en español y los estudios de caso provienen de Argentina.</p>
+<p>Fue desarrollado durante la beca Fulbright del autor en Argentina. Los ejemplos y datos provienen de cuatro estudios de caso reales implementados en gobiernos municipales argentinos. Esperamos incorporar más ejemplos de todo el mundo a medida que se sumen colaboradores.</p>
 </section>
 <section id="cómo-está-organizado-este-libro" class="level2">
 <h2 class="anchored" data-anchor-id="cómo-está-organizado-este-libro">Cómo está organizado este libro</h2>
@@ -553,26 +550,8 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Capítulo 3: Riesgo climático</strong>. Definimos qué es el riesgo climático, riesgos climáticos comunes para ciudades y las mejores fuentes de datos disponibles. Hablamos sobre cómo calcular el riesgo climático y algunas limitaciones al calcularlo, dados los conjuntos de datos disponibles.</p>
 <p><strong>Capítulo 4: Datos en acción</strong>. Aborda cómo tomar estos conjuntos de datos y vincularlos a políticas concretas y decisiones de infraestructura para proteger a las personas del clima. Abordamos cuestiones de gobernanza, certeza, idoneidad para el propósito, heurísticas, etc.</p>
 </section>
-<section id="una-nota-sobre-el-geoespacial-nativo-de-la-nube" class="level2">
-<h2 class="anchored" data-anchor-id="una-nota-sobre-el-geoespacial-nativo-de-la-nube">Una nota sobre el geoespacial nativo de la nube</h2>
-<p>El geoespacial nativo de la nube es relativamente nuevo en el mundo de la tecnología geoespacial. Muchos gobiernos municipales están acostumbrados a trabajar con formatos como shapefiles de hace más de una década. Lo nativo de la nube representa un cambio importante en cómo se hacen las cosas geoespaciales.</p>
-<p>Es particularmente importante para este trabajo porque desbloquea el acceso a conjuntos de datos de terabytes o incluso petabytes de manera eficiente y escalable para gobiernos municipales que de otra manera no tendrían los recursos para procesarlos.</p>
-<p>Dicho esto, reconocemos que muchas personas en los gobiernos municipales se sienten intimidadas por lo nativo de la nube. Este libro intenta no tratar lo nativo de la nube como algo especial o inusual y en su lugar destacar el hecho de que no es realmente tan difícil trabajar con ello, es una mejor práctica y en realidad hace las cosas más fáciles en lugar de más difíciles.</p>
-<p>Por lo tanto, no profundiza en cuestiones de qué son los formatos geoespaciales nativos de la nube o cómo se hace el proceso, sino que se enfoca en aplicaciones. No es un libro de teoría, es un libro aplicado.</p>
-<p>Si te interesa aprender más sobre tecnología geoespacial nativa de la nube, consulta el <a href="https://cloudnativegeo.org/">Cloud-Native Geospatial Forum</a> y los recursos asociados.</p>
-</section>
-<section id="una-nota-sobre-este-libro" class="level2">
-<h2 class="anchored" data-anchor-id="una-nota-sobre-este-libro">Una nota sobre este libro</h2>
-<p>Este libro pretende ser un documento en evolución. Actualmente se encuentra en una fase de producto mínimo viable, cuyo objetivo es demostrar la utilidad de tener un recurso como este y, con suerte, generar una comunidad a su alrededor que pueda sostener este esfuerzo a largo plazo.</p>
-<p>No pretende ser la palabra final sobre ninguno de estos temas y reconocemos que libros como este se vuelven obsoletos rápidamente en un mundo de tecnología en rápida evolución si no son respaldados por un desarrollo robusto.</p>
-</section>
-<section id="una-nota-sobre-el-idioma" class="level2">
-<h2 class="anchored" data-anchor-id="una-nota-sobre-el-idioma">Una nota sobre el idioma</h2>
-<p>Este libro también está escrito primero en español. Específicamente, no hay recursos disponibles en español. Casi todos los recursos disponibles sobre datos abiertos en Python y herramientas nativas de la nube están en inglés. Este libro busca cerrar esa brecha proporcionando esta información en español, sabiendo que será mucho más fácil obtener financiamiento para una traducción al inglés.</p>
-<p>Dicho esto, el autor no es hablante nativo de español y ha usado modelos de lenguaje grande para apoyar la traducción cuando sea posible en este libro. Si encuentras errores que crees que vale la pena corregir, ya sea de traducción o de cualquier otra cosa, considera abrir un ticket o contribuir sustantivamente al proyecto. Consulta nuestra <a href="./project/CONTRIBUTING.md">Guía de Contribución</a>.</p>
-</section>
-<section id="sobre-el-autor" class="level2">
-<h2 class="anchored" data-anchor-id="sobre-el-autor">Sobre el autor</h2>
+<section id="autores" class="level2">
+<h2 class="anchored" data-anchor-id="autores">Autor(es)</h2>
 <p><em>[Sección por completar]</em></p>
 </section>
 <section id="agradecimientos" class="level2">
@@ -587,7 +566,12 @@ ul.task-list li input[type="checkbox"] {
 <figcaption>Centro de Investigaciones Urbanas y Territoriales</figcaption>
 </figure>
 </div>
-<p><em>Centro de Investigaciones Urbanas y Territoriales</em></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="public/fau-logo.png" class="img-fluid figure-img"></p>
+<figcaption>Facultad de Arquitectura y Urbanismo</figcaption>
+</figure>
+</div>
 
 
 </section>

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>analisis-espacial – Datos a escala humana</title>
+<title>4&nbsp; Análisis espacial – Datos a escala humana</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -249,7 +249,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python-geoespacial/fundamentos.html">Python Geoespacial</a></li><li class="breadcrumb-item"><a href="../python-geoespacial/analisis-espacial.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">analisis-espacial.html</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python-geoespacial/fundamentos.html">Python Geoespacial</a></li><li class="breadcrumb-item"><a href="../python-geoespacial/analisis-espacial.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análisis espacial</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -339,7 +339,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../python-geoespacial/analisis-espacial.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">analisis-espacial.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análisis espacial</span></span></a>
   </div>
 </li>
       </ul>
@@ -471,18 +471,73 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#operaciones-espaciales-básicas" id="toc-operaciones-espaciales-básicas" class="nav-link active" data-scroll-target="#operaciones-espaciales-básicas"><span class="header-section-number">4.1</span> Operaciones Espaciales Básicas</a>
+  <ul class="collapse">
+  <li><a href="#reproyecciones" id="toc-reproyecciones" class="nav-link" data-scroll-target="#reproyecciones"><span class="header-section-number">4.1.1</span> Reproyecciones</a></li>
+  <li><a href="#operaciones-de-recorte" id="toc-operaciones-de-recorte" class="nav-link" data-scroll-target="#operaciones-de-recorte"><span class="header-section-number">4.1.2</span> Operaciones de Recorte</a></li>
+  <li><a href="#superposiciones-espaciales" id="toc-superposiciones-espaciales" class="nav-link" data-scroll-target="#superposiciones-espaciales"><span class="header-section-number">4.1.3</span> Superposiciones Espaciales</a></li>
+  <li><a href="#estadísticas-zonales" id="toc-estadísticas-zonales" class="nav-link" data-scroll-target="#estadísticas-zonales"><span class="header-section-number">4.1.4</span> Estadísticas Zonales</a></li>
+  <li><a href="#agregaciones-espaciales-básicas" id="toc-agregaciones-espaciales-básicas" class="nav-link" data-scroll-target="#agregaciones-espaciales-básicas"><span class="header-section-number">4.1.5</span> Agregaciones Espaciales Básicas</a></li>
+  <li><a href="#extracción-de-raster" id="toc-extracción-de-raster" class="nav-link" data-scroll-target="#extracción-de-raster"><span class="header-section-number">4.1.6</span> Extracción de Raster</a></li>
+  </ul></li>
+  <li><a href="#recursos-adicionales-y-aprendizaje-avanzado" id="toc-recursos-adicionales-y-aprendizaje-avanzado" class="nav-link" data-scroll-target="#recursos-adicionales-y-aprendizaje-avanzado"><span class="header-section-number">4.2</span> Recursos Adicionales y Aprendizaje Avanzado</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/nlebovits/datos-escala-humana/edit/main/python-geoespacial/analisis-espacial.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nlebovits/datos-escala-humana/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python-geoespacial/fundamentos.html">Python Geoespacial</a></li><li class="breadcrumb-item"><a href="../python-geoespacial/analisis-espacial.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">analisis-espacial.html</span></a></li></ol></nav></header>
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../python-geoespacial/fundamentos.html">Python Geoespacial</a></li><li class="breadcrumb-item"><a href="../python-geoespacial/analisis-espacial.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análisis espacial</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análisis espacial</span></h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
 
 
+</header>
 
 
+<section id="operaciones-espaciales-básicas" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="operaciones-espaciales-básicas"><span class="header-section-number">4.1</span> Operaciones Espaciales Básicas</h2>
+<section id="reproyecciones" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="reproyecciones"><span class="header-section-number">4.1.1</span> Reproyecciones</h3>
+</section>
+<section id="operaciones-de-recorte" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="operaciones-de-recorte"><span class="header-section-number">4.1.2</span> Operaciones de Recorte</h3>
+</section>
+<section id="superposiciones-espaciales" class="level3" data-number="4.1.3">
+<h3 data-number="4.1.3" class="anchored" data-anchor-id="superposiciones-espaciales"><span class="header-section-number">4.1.3</span> Superposiciones Espaciales</h3>
+</section>
+<section id="estadísticas-zonales" class="level3" data-number="4.1.4">
+<h3 data-number="4.1.4" class="anchored" data-anchor-id="estadísticas-zonales"><span class="header-section-number">4.1.4</span> Estadísticas Zonales</h3>
+</section>
+<section id="agregaciones-espaciales-básicas" class="level3" data-number="4.1.5">
+<h3 data-number="4.1.5" class="anchored" data-anchor-id="agregaciones-espaciales-básicas"><span class="header-section-number">4.1.5</span> Agregaciones Espaciales Básicas</h3>
+</section>
+<section id="extracción-de-raster" class="level3" data-number="4.1.6">
+<h3 data-number="4.1.6" class="anchored" data-anchor-id="extracción-de-raster"><span class="header-section-number">4.1.6</span> Extracción de Raster</h3>
+</section>
+</section>
+<section id="recursos-adicionales-y-aprendizaje-avanzado" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="recursos-adicionales-y-aprendizaje-avanzado"><span class="header-section-number">4.2</span> Recursos Adicionales y Aprendizaje Avanzado</h2>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -918,7 +973,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
 <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></p>
-<div class="toc-actions"><ul><li><a href="https://github.com/nlebovits/datos-escala-humana/edit/main/python-geoespacial/analisis-espacial.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nlebovits/datos-escala-humana/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+<div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/nlebovits/datos-escala-humana/edit/main/python-geoespacial/analisis-espacial.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/nlebovits/datos-escala-humana/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

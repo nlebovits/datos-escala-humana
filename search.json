@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Datos a escala humana",
     "section": "",
-    "text": "Introducción\n🚧 Estado del Proyecto: Este libro se encuentra actualmente en las primeras etapas de desarrollo. Esperamos completar un MVP (producto mínimo viable) para finales de 2025. Consulta la Hoja de Ruta para más información.",
+    "text": "Introducción\n🚧 Estado del Proyecto: Este libro se encuentra actualmente en las primeras etapas de desarrollo. Esperamos completar un producto mínimo viable para finales de 2025. Consulta la hoja de ruta para más información.",
     "crumbs": [
       "Introducción"
     ]
@@ -14,7 +14,7 @@
     "href": "index.html#sobre-este-libro",
     "title": "Datos a escala humana",
     "section": "Sobre este libro",
-    "text": "Sobre este libro\nDatos a escala humana es un libro sobre cómo aprovechar datos globales mediante computación geoespacial nativa de la nube para mitigar el riesgo climático en ciudades.\nEstá dirigido principalmente a urbanistas, funcionarios municipales, arquitectos y técnicos en entornos con recursos limitados donde los datos locales de alta calidad son escasos o de calidad insuficiente.\nEste libro no asume conocimientos avanzados de SIG. Es un curso intensivo en estas tecnologías. No pretende ser exhaustivo. Siempre que sea posible, proporcionamos recursos para profundizar. Intentamos ser lo más concisos posible. Este es un libro enfocado en la acción y en flujos de trabajo simples y replicables que permitan a las ciudades mitigar el riesgo climático.",
+    "text": "Sobre este libro\nDatos a escala humana enseña cómo aprovechar datos globales mediante computación geoespacial nativa de la nube para mitigar el riesgo climático en ciudades.\nDirigido principalmente a urbanistas, funcionarios municipales, arquitectos y técnicos en entornos con recursos limitados donde los datos locales de alta calidad son escasos o de calidad insuficiente. No asume conocimientos avanzados de SIG. Curso intensivo, no exhaustivo. Proporcionamos recursos para profundizar. La acción y los flujos de trabajo simples y replicables son el enfoque.\nDocumento en evolución, actualmente en fase de producto mínimo viable. No es la palabra final y reconocemos que se volverá obsoleto sin desarrollo continuo.\nUsa tecnología geoespacial nativa de la nube. Aunque relativamente nueva, no es difícil y hace las cosas más fáciles. No profundizamos en teoría sino en aplicaciones. Para aprender más, consulta el Cloud-Native Geospatial Forum.\nEscrito primero en español porque casi no existen recursos en español sobre estos temas. El autor no es hablante nativo y ha usado modelos de lenguaje para apoyar la traducción. Si encuentras errores, abre un ticket o contribuye.",
     "crumbs": [
       "Introducción"
     ]
@@ -24,7 +24,7 @@
     "href": "index.html#filosofía-práctica-sobre-teoría",
     "title": "Datos a escala humana",
     "section": "Filosofía: práctica sobre teoría",
-    "text": "Filosofía: práctica sobre teoría\nEste libro se centra en la práctica más que en la teoría. Intentamos equilibrar la explicación de conceptos espaciales con su implementación. Habrá casos donde no profundizaremos en por qué hacemos algo de cierta manera o por qué el código está escrito así. Te dejamos explorar con modelos de lenguaje o consultar la documentación. Nos enfocamos en hacer.\nTambién priorizamos conceptos sobre técnicas. Deliberadamente regresamos varias veces a técnicas centrales: verás agregación espacial y estadísticas zonales repetidamente. Verás gráficos de correlación básicos varias veces. No profundizaremos en estadística espacial avanzada. Mostramos los conceptos y los repetimos para que se fijen, pero no es un estudio sistemático del procesamiento geoespacial sino una construcción paso a paso para usar estas herramientas de manera práctica.\nEl objetivo no es crear analistas geoespaciales completamente formados, sino proporcionar flujos de trabajo replicables donde entiendas el procesamiento, los conceptos centrales, la implementación y las políticas asociadas lo suficientemente bien para aplicarlos eficientemente en tu propio contexto sin modificaciones enormes, entendiendo de manera transparente qué está pasando y por qué.",
+    "text": "Filosofía: práctica sobre teoría\nPriorizamos la práctica sobre la teoría. Equilibramos la explicación de conceptos espaciales con su implementación. Habrá casos donde no profundizaremos en por qué hacemos algo de cierta manera. Te dejamos explorar con modelos de lenguaje o consultar la documentación. Nos enfocamos en hacer.\nTambién priorizamos conceptos sobre técnicas. Regresamos deliberadamente a técnicas centrales: verás agregación espacial y estadísticas zonales repetidamente. No profundizaremos en estadística espacial avanzada. Mostramos los conceptos y los repetimos para que se fijen. El objetivo no es crear analistas geoespaciales completamente formados, sino proporcionar flujos de trabajo replicables que entiendas lo suficientemente bien para aplicarlos en tu propio contexto.",
     "crumbs": [
       "Introducción"
     ]
@@ -34,7 +34,7 @@
     "href": "index.html#contexto-del-desarrollo",
     "title": "Datos a escala humana",
     "section": "Contexto del desarrollo",
-    "text": "Contexto del desarrollo\nEste libro fue desarrollado durante la beca Fulbright del autor en Argentina. Los ejemplos y datos provienen principalmente de Argentina como resultado del enfoque en cuatro estudios de caso reales desarrollados e implementados en gobiernos municipales de cuatro ciudades argentinas.\nEsperamos que este libro incorpore más ejemplos de todo el mundo a medida que se sumen más colaboradores. Por ahora, el material está principalmente en español y los estudios de caso provienen de Argentina.",
+    "text": "Contexto del desarrollo\nFue desarrollado durante la beca Fulbright del autor en Argentina. Los ejemplos y datos provienen de cuatro estudios de caso reales implementados en gobiernos municipales argentinos. Esperamos incorporar más ejemplos de todo el mundo a medida que se sumen colaboradores.",
     "crumbs": [
       "Introducción"
     ]
@@ -50,41 +50,11 @@
     ]
   },
   {
-    "objectID": "index.html#una-nota-sobre-el-geoespacial-nativo-de-la-nube",
-    "href": "index.html#una-nota-sobre-el-geoespacial-nativo-de-la-nube",
+    "objectID": "index.html#autores",
+    "href": "index.html#autores",
     "title": "Datos a escala humana",
-    "section": "Una nota sobre el geoespacial nativo de la nube",
-    "text": "Una nota sobre el geoespacial nativo de la nube\nEl geoespacial nativo de la nube es relativamente nuevo en el mundo de la tecnología geoespacial. Muchos gobiernos municipales están acostumbrados a trabajar con formatos como shapefiles de hace más de una década. Lo nativo de la nube representa un cambio importante en cómo se hacen las cosas geoespaciales.\nEs particularmente importante para este trabajo porque desbloquea el acceso a conjuntos de datos de terabytes o incluso petabytes de manera eficiente y escalable para gobiernos municipales que de otra manera no tendrían los recursos para procesarlos.\nDicho esto, reconocemos que muchas personas en los gobiernos municipales se sienten intimidadas por lo nativo de la nube. Este libro intenta no tratar lo nativo de la nube como algo especial o inusual y en su lugar destacar el hecho de que no es realmente tan difícil trabajar con ello, es una mejor práctica y en realidad hace las cosas más fáciles en lugar de más difíciles.\nPor lo tanto, no profundiza en cuestiones de qué son los formatos geoespaciales nativos de la nube o cómo se hace el proceso, sino que se enfoca en aplicaciones. No es un libro de teoría, es un libro aplicado.\nSi te interesa aprender más sobre tecnología geoespacial nativa de la nube, consulta el Cloud-Native Geospatial Forum y los recursos asociados.",
-    "crumbs": [
-      "Introducción"
-    ]
-  },
-  {
-    "objectID": "index.html#una-nota-sobre-este-libro",
-    "href": "index.html#una-nota-sobre-este-libro",
-    "title": "Datos a escala humana",
-    "section": "Una nota sobre este libro",
-    "text": "Una nota sobre este libro\nEste libro pretende ser un documento en evolución. Actualmente se encuentra en una fase de producto mínimo viable, cuyo objetivo es demostrar la utilidad de tener un recurso como este y, con suerte, generar una comunidad a su alrededor que pueda sostener este esfuerzo a largo plazo.\nNo pretende ser la palabra final sobre ninguno de estos temas y reconocemos que libros como este se vuelven obsoletos rápidamente en un mundo de tecnología en rápida evolución si no son respaldados por un desarrollo robusto.",
-    "crumbs": [
-      "Introducción"
-    ]
-  },
-  {
-    "objectID": "index.html#una-nota-sobre-el-idioma",
-    "href": "index.html#una-nota-sobre-el-idioma",
-    "title": "Datos a escala humana",
-    "section": "Una nota sobre el idioma",
-    "text": "Una nota sobre el idioma\nEste libro también está escrito primero en español. Específicamente, no hay recursos disponibles en español. Casi todos los recursos disponibles sobre datos abiertos en Python y herramientas nativas de la nube están en inglés. Este libro busca cerrar esa brecha proporcionando esta información en español, sabiendo que será mucho más fácil obtener financiamiento para una traducción al inglés.\nDicho esto, el autor no es hablante nativo de español y ha usado modelos de lenguaje grande para apoyar la traducción cuando sea posible en este libro. Si encuentras errores que crees que vale la pena corregir, ya sea de traducción o de cualquier otra cosa, considera abrir un ticket o contribuir sustantivamente al proyecto. Consulta nuestra Guía de Contribución.",
-    "crumbs": [
-      "Introducción"
-    ]
-  },
-  {
-    "objectID": "index.html#sobre-el-autor",
-    "href": "index.html#sobre-el-autor",
-    "title": "Datos a escala humana",
-    "section": "Sobre el autor",
-    "text": "Sobre el autor\n[Sección por completar]",
+    "section": "Autor(es)",
+    "text": "Autor(es)\n[Sección por completar]",
     "crumbs": [
       "Introducción"
     ]
@@ -104,7 +74,7 @@
     "href": "index.html#patrocinadores-del-proyecto",
     "title": "Datos a escala humana",
     "section": "Patrocinadores del proyecto",
-    "text": "Patrocinadores del proyecto\n\n\n\nCentro de Investigaciones Urbanas y Territoriales\n\n\nCentro de Investigaciones Urbanas y Territoriales",
+    "text": "Patrocinadores del proyecto\n\n\n\nCentro de Investigaciones Urbanas y Territoriales\n\n\n\n\n\nFacultad de Arquitectura y Urbanismo",
     "crumbs": [
       "Introducción"
     ]
@@ -162,6 +132,39 @@
     "crumbs": [
       "Python Geoespacial",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Python Geoespacial</span>"
+    ]
+  },
+  {
+    "objectID": "python-geoespacial/analisis-espacial.html",
+    "href": "python-geoespacial/analisis-espacial.html",
+    "title": "4  Análisis espacial",
+    "section": "",
+    "text": "4.1 Operaciones Espaciales Básicas",
+    "crumbs": [
+      "Python Geoespacial",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Análisis espacial</span>"
+    ]
+  },
+  {
+    "objectID": "python-geoespacial/analisis-espacial.html#operaciones-espaciales-básicas",
+    "href": "python-geoespacial/analisis-espacial.html#operaciones-espaciales-básicas",
+    "title": "4  Análisis espacial",
+    "section": "",
+    "text": "4.1.1 Reproyecciones\n\n\n4.1.2 Operaciones de Recorte\n\n\n4.1.3 Superposiciones Espaciales\n\n\n4.1.4 Estadísticas Zonales\n\n\n4.1.5 Agregaciones Espaciales Básicas\n\n\n4.1.6 Extracción de Raster",
+    "crumbs": [
+      "Python Geoespacial",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Análisis espacial</span>"
+    ]
+  },
+  {
+    "objectID": "python-geoespacial/analisis-espacial.html#recursos-adicionales-y-aprendizaje-avanzado",
+    "href": "python-geoespacial/analisis-espacial.html#recursos-adicionales-y-aprendizaje-avanzado",
+    "title": "4  Análisis espacial",
+    "section": "4.2 Recursos Adicionales y Aprendizaje Avanzado",
+    "text": "4.2 Recursos Adicionales y Aprendizaje Avanzado",
+    "crumbs": [
+      "Python Geoespacial",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Análisis espacial</span>"
     ]
   },
   {
