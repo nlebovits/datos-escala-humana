@@ -1,0 +1,16 @@
+# Configuration for markdownlint-cli2
+globs:
+  - "**/*.{md,qmd}"
+  - "!.venv/**"
+  - "!venv/**"
+  - "!node_modules/**"
+  - "!_book/**"
+  - "!docs/**"
+  - "!README_files/**"
+  - "!README.md"
+  - "!project/CODE_OF_CONDUCT.md"
+  - "!project/CONTRIBUTING.md"
+  - "!project/ROADMAP.md"
+
+fix: true
+
