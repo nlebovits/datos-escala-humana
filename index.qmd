@@ -1,6 +1,6 @@
 # Introducción {.unnumbered}
 
-🚧 **Estado del Proyecto**: Este libro se encuentra actualmente en las primeras etapas de desarrollo. Esperamos completar un MVP (producto mínimo viable) para finales de octubre de 2025. Consulta la [Hoja de Ruta](/project/ROADMAP.md) para más información.
+🚧 **Estado del Proyecto**: Este libro se encuentra actualmente en las primeras etapas de desarrollo. Esperamos completar un MVP (producto mínimo viable) para finales de 2025. Consulta la [Hoja de Ruta](/project/ROADMAP.md) para más información.
 
 ## Sobre este libro
 

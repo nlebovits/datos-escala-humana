@@ -24,7 +24,7 @@ book:
     - part: Riesgo Climático para Ciudades
       chapters:
         - riesgo-climatico/fundamentos.qmd
-        - riesgo-climaticos/exposicion.qmd
+        - riesgo-climatico/exposicion.qmd
         - riesgo-climatico/vulnerabilidad.qmd
         - riesgo-climatico/peligro.qmd
         - riesgo-climatico/riesgo.qmd
