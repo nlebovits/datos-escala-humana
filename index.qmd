@@ -2,6 +2,8 @@
 
 🚧 **Estado del Proyecto**: Este libro se encuentra actualmente en las primeras etapas de desarrollo. Esperamos completar un producto mínimo viable para finales de 2025. Consulta la [hoja de ruta](/project/ROADMAP.md) para más información.
 
+Este libro se basa en gran parte en el curso [Datos Abiertos para Ciudades Resilientes](https://www.fau.unlp.edu.ar/posgrado/curso-datos-abiertos-para-ciudades-resilientes/) que el autor enseña en la Facultad de Arquitectura y Urbanismo de la Universidad Nacional de La Plata durante el cuatrimestre final de 2025.
+
 ## Sobre este libro
 
 _Datos a escala humana_ enseña cómo aprovechar datos globales mediante computación geoespacial nativa de la nube para mitigar el riesgo climático en ciudades.
@@ -20,13 +22,7 @@ Priorizamos la práctica sobre la teoría. Equilibramos la explicación de conce
 
 También priorizamos conceptos sobre técnicas. Regresamos deliberadamente a técnicas centrales: verás agregación espacial y estadísticas zonales repetidamente. No profundizaremos en estadística espacial avanzada. Mostramos los conceptos y los repetimos para que se fijen. El objetivo no es crear analistas geoespaciales completamente formados, sino proporcionar flujos de trabajo replicables que entiendas lo suficientemente bien para aplicarlos en tu propio contexto.
 
-## Contexto del desarrollo
-
-Fue desarrollado durante la beca Fulbright del autor en Argentina. Los ejemplos y datos provienen de cuatro estudios de caso reales implementados en gobiernos municipales argentinos. Esperamos incorporar más ejemplos de todo el mundo a medida que se sumen colaboradores.
-
-Este libro se basa en gran parte en el curso [Datos Abiertos para Ciudades Resilientes](https://www.fau.unlp.edu.ar/posgrado/curso-datos-abiertos-para-ciudades-resilientes/) que el autor, Nassim Libovitz, enseña en la Facultad de Arquitectura y Urbanismo de la Universidad Nacional de La Plata durante el cuatrimestre final de 2025.
-
-## Cómo está organizado este libro
+## Organización
 
 El libro está organizado en cuatro secciones principales:
 
