@@ -15,13 +15,19 @@ book:
   sharing: [twitter, facebook, linkedin]
   chapters:
     - index.qmd
-    - intro.qmd
     - part: Python Geoespacial
       chapters:
-        - python-geoespacial/python-geoespacial.qmd
+        - python-geoespacial/fundamentos.qmd
+        - python-geoespacial/vector.qmd
+        - python-geoespacial/raster.qmd
+        - python-geoespacial/analisis-espacial.qmd
     - part: Riesgo Climático para Ciudades
       chapters:
-        - riesgo-climatico/riesgo-climatico.qmd
+        - riesgo-climatico/fundamentos.qmd
+        - riesgo-climaticos/exposicion.qmd
+        - riesgo-climatico/vulnerabilidad.qmd
+        - riesgo-climatico/peligro.qmd
+        - riesgo-climatico/riesgo.qmd
     - part: Datos Abiertos
       chapters:
         - datos-abiertos/datos-abiertos.qmd

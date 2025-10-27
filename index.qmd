@@ -1,5 +1,75 @@
-# Preface {.unnumbered}
+# Introducción {.unnumbered}
 
-This is a Quarto book.
+🚧 **Estado del Proyecto**: Este libro se encuentra actualmente en las primeras etapas de desarrollo. Esperamos completar un MVP (producto mínimo viable) para finales de octubre de 2025. Consulta la [Hoja de Ruta](/project/ROADMAP.md) para más información.
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+## Sobre este libro
+
+*Datos a escala humana* es un libro sobre cómo aprovechar datos globales mediante computación geoespacial nativa de la nube para mitigar el riesgo climático en ciudades.
+
+Está dirigido principalmente a urbanistas, funcionarios municipales, arquitectos y técnicos en entornos con recursos limitados donde los datos locales de alta calidad son escasos o de calidad insuficiente.
+
+Este libro no asume conocimientos avanzados de SIG. Es un curso intensivo en estas tecnologías. No pretende ser exhaustivo. Siempre que sea posible, proporcionamos recursos para profundizar. Intentamos ser lo más concisos posible. Este es un libro enfocado en la acción y en flujos de trabajo simples y replicables que permitan a las ciudades mitigar el riesgo climático.
+
+## Filosofía: práctica sobre teoría
+
+Este libro se centra en la práctica más que en la teoría. Intentamos equilibrar la explicación de conceptos espaciales con su implementación. Habrá casos donde no profundizaremos en por qué hacemos algo de cierta manera o por qué el código está escrito así. Te dejamos explorar con modelos de lenguaje o consultar la documentación. Nos enfocamos en hacer.
+
+También priorizamos conceptos sobre técnicas. Deliberadamente regresamos varias veces a técnicas centrales: verás agregación espacial y estadísticas zonales repetidamente. Verás gráficos de correlación básicos varias veces. No profundizaremos en estadística espacial avanzada. Mostramos los conceptos y los repetimos para que se fijen, pero no es un estudio sistemático del procesamiento geoespacial sino una construcción paso a paso para usar estas herramientas de manera práctica.
+
+El objetivo no es crear analistas geoespaciales completamente formados, sino proporcionar flujos de trabajo replicables donde entiendas el procesamiento, los conceptos centrales, la implementación y las políticas asociadas lo suficientemente bien para aplicarlos eficientemente en tu propio contexto sin modificaciones enormes, entendiendo de manera transparente qué está pasando y por qué.
+
+## Contexto del desarrollo
+
+Este libro fue desarrollado durante la beca Fulbright del autor en Argentina. Los ejemplos y datos provienen principalmente de Argentina como resultado del enfoque en cuatro estudios de caso reales desarrollados e implementados en gobiernos municipales de cuatro ciudades argentinas.
+
+Esperamos que este libro incorpore más ejemplos de todo el mundo a medida que se sumen más colaboradores. Por ahora, el material está principalmente en español y los estudios de caso provienen de Argentina.
+
+## Cómo está organizado este libro
+
+El libro está organizado en cuatro secciones principales:
+
+**Sección 1: Curso intensivo de SIG y Python**. Cubre los fundamentos de trabajar con datos geoespaciales en Python, tanto vectoriales como ráster, y un resumen de las operaciones espaciales básicas que usamos en este libro. También proporcionamos recursos para aprender más sobre Python y SIG.
+
+**Capítulo 2: Datos abiertos**. Explora qué son las mejores fuentes de datos abiertos, diferentes formas de acceder a estos datos y por qué estas herramientas son importantes. Profundiza un poco en formatos de datos nativos de la nube y las diferentes formas de acceder a estos conjuntos de datos, además de evaluar su calidad e idoneidad. Trata tanto cuestiones de epistemología como de programación.
+
+**Capítulo 3: Riesgo climático**. Definimos qué es el riesgo climático, riesgos climáticos comunes para ciudades y las mejores fuentes de datos disponibles. Hablamos sobre cómo calcular el riesgo climático y algunas limitaciones al calcularlo, dados los conjuntos de datos disponibles.
+
+**Capítulo 4: Datos en acción**. Aborda cómo tomar estos conjuntos de datos y vincularlos a políticas concretas y decisiones de infraestructura para proteger a las personas del clima. Abordamos cuestiones de gobernanza, certeza, idoneidad para el propósito, heurísticas, etc.
+
+## Una nota sobre el geoespacial nativo de la nube
+
+El geoespacial nativo de la nube es relativamente nuevo en el mundo de la tecnología geoespacial. Muchos gobiernos municipales están acostumbrados a trabajar con formatos como shapefiles de hace más de una década. Lo nativo de la nube representa un cambio importante en cómo se hacen las cosas geoespaciales.
+
+Es particularmente importante para este trabajo porque desbloquea el acceso a conjuntos de datos de terabytes o incluso petabytes de manera eficiente y escalable para gobiernos municipales que de otra manera no tendrían los recursos para procesarlos.
+
+Dicho esto, reconocemos que muchas personas en los gobiernos municipales se sienten intimidadas por lo nativo de la nube. Este libro intenta no tratar lo nativo de la nube como algo especial o inusual y en su lugar destacar el hecho de que no es realmente tan difícil trabajar con ello, es una mejor práctica y en realidad hace las cosas más fáciles en lugar de más difíciles.
+
+Por lo tanto, no profundiza en cuestiones de qué son los formatos geoespaciales nativos de la nube o cómo se hace el proceso, sino que se enfoca en aplicaciones. No es un libro de teoría, es un libro aplicado.
+
+Si te interesa aprender más sobre tecnología geoespacial nativa de la nube, consulta el [Cloud-Native Geospatial Forum](https://cloudnativegeo.org/) y los recursos asociados.
+
+## Una nota sobre este libro
+
+Este libro pretende ser un documento en evolución. Actualmente se encuentra en una fase de producto mínimo viable, cuyo objetivo es demostrar la utilidad de tener un recurso como este y, con suerte, generar una comunidad a su alrededor que pueda sostener este esfuerzo a largo plazo.
+
+No pretende ser la palabra final sobre ninguno de estos temas y reconocemos que libros como este se vuelven obsoletos rápidamente en un mundo de tecnología en rápida evolución si no son respaldados por un desarrollo robusto.
+
+## Una nota sobre el idioma
+
+Este libro también está escrito primero en español. Específicamente, no hay recursos disponibles en español. Casi todos los recursos disponibles sobre datos abiertos en Python y herramientas nativas de la nube están en inglés. Este libro busca cerrar esa brecha proporcionando esta información en español, sabiendo que será mucho más fácil obtener financiamiento para una traducción al inglés.
+
+Dicho esto, el autor no es hablante nativo de español y ha usado modelos de lenguaje grande para apoyar la traducción cuando sea posible en este libro. Si encuentras errores que crees que vale la pena corregir, ya sea de traducción o de cualquier otra cosa, considera abrir un ticket o contribuir sustantivamente al proyecto. Consulta nuestra [Guía de Contribución](/project/CONTRIBUTING.md).
+
+## Sobre el autor
+
+*[Sección por completar]*
+
+## Agradecimientos
+
+*[Sección por completar]*
+
+## Patrocinadores del proyecto
+
+[![Centro de Investigaciones Urbanas y Territoriales](public/ciut-logo.png)](https://ciut.fau.unlp.edu.ar/)
+
+*Centro de Investigaciones Urbanas y Territoriales*
