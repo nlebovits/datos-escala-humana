@@ -43,6 +43,16 @@ jobs:
       - name: Render English version
         run: quarto render --profile en
 
+      - name: Render language selector
+        run: quarto render index.qmd
+
+      - name: Verify docs structure
+        run: |
+          ls -la docs/
+          ls -la docs/es/ || echo "es/ missing!"
+          ls -la docs/en/ || echo "en/ missing!"
+          du -sh docs/
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
