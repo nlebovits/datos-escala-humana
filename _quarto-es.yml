@@ -1,5 +1,6 @@
 project:
   output-dir: docs/es
+  project-dir: es
 
 book:
   title: "Datos a escala humana"
@@ -9,35 +10,35 @@ book:
   repo-url: https://github.com/nlebovits/datos-escala-humana
   language: es
   chapters:
-    - es/index.qmd
+    - index.qmd
     - part: Python Geoespacial
       chapters:
-        - es/python-geoespacial/fundamentos.qmd
-        - es/python-geoespacial/vector.qmd
-        - es/python-geoespacial/raster.qmd
-        - es/python-geoespacial/analisis-espacial.qmd
-        - es/python-geoespacial/unidad_1b_soluciones.ipynb
+        - python-geoespacial/fundamentos.qmd
+        - python-geoespacial/vector.qmd
+        - python-geoespacial/raster.qmd
+        - python-geoespacial/analisis-espacial.qmd
+        - python-geoespacial/unidad_1b_soluciones.ipynb
     - part: Riesgo Climático para Ciudades
       chapters:
-        - es/riesgo-climatico/fundamentos.qmd
-        - es/riesgo-climatico/exposicion.ipynb
-        - es/riesgo-climatico/vulnerabilidad.ipynb
-        - es/riesgo-climatico/peligro.qmd
-        - es/riesgo-climatico/riesgo.qmd
+        - riesgo-climatico/fundamentos.qmd
+        - riesgo-climatico/exposicion.ipynb
+        - riesgo-climatico/vulnerabilidad.ipynb
+        - riesgo-climatico/peligro.qmd
+        - riesgo-climatico/riesgo.qmd
     - part: Datos Abiertos
       chapters:
-        - es/datos-abiertos/datos-abiertos.qmd
+        - datos-abiertos/datos-abiertos.qmd
     - part: Datos a la Acción
       chapters:
-        - es/datos-accion/datos-accion.qmd
+        - datos-accion/datos-accion.qmd
     - part: Cookbooks
       chapters:
-        - es/cookbooks/pergamino.qmd
-        - es/cookbooks/esperanza.ipynb
-        - es/cookbooks/la-plata.qmd
-        - es/cookbooks/villa-del-rosario.ipynb
-    - es/conclusion.qmd
-    - es/references.qmd
+        - cookbooks/pergamino.qmd
+        - cookbooks/esperanza.ipynb
+        - cookbooks/la-plata.qmd
+        - cookbooks/villa-del-rosario.ipynb
+    - conclusion.qmd
+    - references.qmd
   sidebar:
     pinned: true
     align: center
@@ -46,7 +47,7 @@ book:
     search: true
     collapse-level: 1
     footer: |
-      **Idioma:** [🇪🇸 ES](../es/) | [🇺🇸 EN](../en/)
+      **Idioma:** [🇪🇸 ES](/es/) | [🇺🇸 EN](/en/)
   page-footer:
     right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
     center: '<a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1">'
