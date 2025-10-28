@@ -38,14 +38,7 @@ uv run markdownlint-cli2 "**/*.qmd"
 
 ## Licenciamiento
 
-Este proyecto utiliza una licencia dual:
-
-- **Contenido y documentación**: Licenciados bajo
-  [Creative Commons Attribution 4.0 International (CC BY 4.0)](/LICENSE-CC-BY-4.0)
-- **Código y software**: Licenciados bajo [MIT License](/LICENSE-MIT)
-
-Consulta los archivos de licencia completos para más detalles sobre los
-términos y condiciones.
+Este proyecto utiliza la licencia [Creative Commons Attribution 4.0 International (CC BY 4.0)](/LICENSE).
 
 ## Patrocinadores del Proyecto
 
