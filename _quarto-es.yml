@@ -1,11 +1,11 @@
 project:
-  output-dir: docs/es
+  output-dir: docs
 
 book:
   title: "Datos a escala humana"
   subtitle: "Datos abiertos para ciudades resilientes"
   author: "Nissim Lebovits"
-  site-url: https://nlebovits.github.io/datos-escala-humana/
+  site-url: https://nlebovits.github.io/datos-escala-humana/es/
   repo-url: https://github.com/nlebovits/datos-escala-humana
   language: es
   chapters:
@@ -46,7 +46,7 @@ book:
     search: true
     collapse-level: 1
     footer: |
-      **Idioma:** [🇪🇸 ES](/es/index.html) | [🇺🇸 EN](../en/index.html)
+      **Idioma:** [🇪🇸 ES](index.html) | [🇺🇸 EN](../en/index.html)
   page-footer:
     right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
     center: '<a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1">'
