@@ -13,35 +13,35 @@ book:
   repo-url: https://github.com/nlebovits/datos-escala-humana
   language: en
   chapters:
-    - index.qmd
+    - en/index.qmd
     - part: Geospatial Python
       chapters:
-        - python-geospatial/fundamentals.qmd
-        - python-geospatial/vector.qmd
-        - python-geospatial/raster.qmd
-        - python-geospatial/spatial-analysis.qmd
-        - python-geospatial/unit_1b_solutions.ipynb
+        - en/python-geospatial/fundamentals.qmd
+        - en/python-geospatial/vector.qmd
+        - en/python-geospatial/raster.qmd
+        - en/python-geospatial/spatial-analysis.qmd
+        - en/python-geospatial/unit_1b_solutions.ipynb
     - part: Climate Risk for Cities
       chapters:
-        - climate-risk/fundamentals.qmd
-        - climate-risk/exposure.ipynb
-        - climate-risk/vulnerability.ipynb
-        - climate-risk/hazard.qmd
-        - climate-risk/risk.qmd
+        - en/climate-risk/fundamentals.qmd
+        - en/climate-risk/exposure.ipynb
+        - en/climate-risk/vulnerability.ipynb
+        - en/climate-risk/hazard.qmd
+        - en/climate-risk/risk.qmd
     - part: Open Data
       chapters:
-        - open-data/open-data.qmd
+        - en/open-data/open-data.qmd
     - part: Data to Action
       chapters:
-        - data-to-action/data-to-action.qmd
+        - en/data-to-action/data-to-action.qmd
     - part: Cookbooks
       chapters:
-        - cookbooks/pergamino.qmd
-        - cookbooks/esperanza.ipynb
-        - cookbooks/la-plata.qmd
-        - cookbooks/villa-del-rosario.ipynb
-    - conclusion.qmd
-    - references.qmd
+        - en/cookbooks/pergamino.qmd
+        - en/cookbooks/esperanza.ipynb
+        - en/cookbooks/la-plata.qmd
+        - en/cookbooks/villa-del-rosario.ipynb
+    - en/conclusion.qmd
+    - en/references.qmd
   sidebar:
     pinned: true
     align: center
