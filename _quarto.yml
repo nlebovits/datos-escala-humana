@@ -5,7 +5,8 @@ project:
     browser: false
 
 book:
-  chapters: []
+  chapters:
+    - index.qmd
 
 bibliography: references.bib
 

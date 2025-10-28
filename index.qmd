@@ -6,5 +6,5 @@ output-dir: docs
 
 This page should not be visible. Please select a language:
 
-- [Español](es/)
-- [English](en/)
+- [Español](/es/)
+- [English](/en/)
