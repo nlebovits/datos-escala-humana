@@ -1,5 +1,5 @@
 project:
-  output-dir: docs/es
+  output-dir: docs
 
 book:
   title: "Datos a escala humana"

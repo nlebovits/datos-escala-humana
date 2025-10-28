@@ -1,48 +1,60 @@
-# Multilingual Quarto Book Publishing
-# Based on: https://github.com/cloudnativegeo/cloud-optimized-geospatial-formats-guide/blob/main/.github/workflows/quarto-publish.yml
+name: Render and Publish Multilingual Book
 
 on:
   push:
     branches: main
   workflow_dispatch:
 
-name: Render and Publish Multilingual Book
-
 permissions:
-  contents: write
+  contents: read
   pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+      
+      - name: Install Python dependencies
+        run: uv sync
+
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
-          # To install LaTeX to build PDF book
           tinytex: true
-          # uncomment below and fill to pin a version
-          # version: 0.9.600
-
-      # add software dependencies here (e.g., Python, R, etc.)
 
       - name: Render Spanish version
-        uses: quarto-dev/quarto-actions/render@v2
-        with:
-          to: html
-          profile: es
+        run: quarto render --profile es
 
       - name: Render English version
-        uses: quarto-dev/quarto-actions/render@v2
-        with:
-          to: html
-          profile: en
+        run: quarto render --profile en
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
+          path: ./docs
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
