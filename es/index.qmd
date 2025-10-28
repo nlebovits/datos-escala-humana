@@ -1,0 +1,52 @@
+# Introducción {.unnumbered}
+
+🚧 **Estado del Proyecto**: Este libro se encuentra actualmente en las primeras etapas de desarrollo. Esperamos completar un producto mínimo viable para finales de 2025. Consulta la [hoja de ruta](/project/ROADMAP.md) para más información.
+
+Este libro se basa en gran parte en el curso [Datos Abiertos para Ciudades Resilientes](https://www.fau.unlp.edu.ar/posgrado/curso-datos-abiertos-para-ciudades-resilientes/) que el autor enseña en la Facultad de Arquitectura y Urbanismo de la Universidad Nacional de La Plata durante el cuatrimestre final de 2025.
+
+## Sobre este libro
+
+_Datos a escala humana_ enseña cómo aprovechar datos globales mediante computación geoespacial nativa de la nube para mitigar el riesgo climático en ciudades.
+
+Dirigido principalmente a urbanistas, funcionarios municipales, arquitectos y técnicos en entornos con recursos limitados donde los datos locales de alta calidad son escasos o de calidad insuficiente. No asume conocimientos avanzados de SIG. Curso intensivo, no exhaustivo. Proporcionamos recursos para profundizar. La acción y los flujos de trabajo simples y replicables son el enfoque.
+
+Documento en evolución, actualmente en fase de producto mínimo viable. No es la palabra final y reconocemos que se volverá obsoleto sin desarrollo continuo.
+
+Usa tecnología geoespacial nativa de la nube. Aunque relativamente nueva, no es difícil y hace las cosas más fáciles. No profundizamos en teoría sino en aplicaciones. Para aprender más, consulta el [Cloud-Native Geospatial Forum](https://cloudnativegeo.org/).
+
+Escrito primero en español porque casi no existen recursos en español sobre estos temas. El autor no es hablante nativo y ha usado modelos de lenguaje para apoyar la traducción. Si encuentras errores, abre un ticket o contribuye.
+
+## Filosofía: práctica sobre teoría
+
+Priorizamos la práctica sobre la teoría. Equilibramos la explicación de conceptos espaciales con su implementación. Habrá casos donde no profundizaremos en por qué hacemos algo de cierta manera. Te dejamos explorar con modelos de lenguaje o consultar la documentación. Nos enfocamos en hacer.
+
+También priorizamos conceptos sobre técnicas. Regresamos deliberadamente a técnicas centrales: verás agregación espacial y estadísticas zonales repetidamente. No profundizaremos en estadística espacial avanzada. Mostramos los conceptos y los repetimos para que se fijen. El objetivo no es crear analistas geoespaciales completamente formados, sino proporcionar flujos de trabajo replicables que entiendas lo suficientemente bien para aplicarlos en tu propio contexto.
+
+## Organización
+
+El libro está organizado en cuatro secciones principales:
+
+**Capítulo 1: Curso intensivo de SIG y Python**. Cubre los fundamentos de trabajar con datos geoespaciales en Python, tanto vectoriales como ráster, y un resumen de las operaciones espaciales básicas que usamos en este libro. También proporcionamos recursos para aprender más sobre Python y SIG.
+
+**Capítulo 2: Datos abiertos**. Explora qué son las mejores fuentes de datos abiertos, diferentes formas de acceder a estos datos y por qué estas herramientas son importantes. Profundiza un poco en formatos de datos nativos de la nube y las diferentes formas de acceder a estos conjuntos de datos, además de evaluar su calidad e idoneidad. Trata tanto cuestiones de epistemología como de programación.
+
+**Capítulo 3: Riesgo climático**. Definimos qué es el riesgo climático, riesgos climáticos comunes para ciudades y las mejores fuentes de datos disponibles. Hablamos sobre cómo calcular el riesgo climático y algunas limitaciones al calcularlo, dados los conjuntos de datos disponibles.
+
+**Capítulo 4: Datos en acción**. Aborda cómo tomar estos conjuntos de datos y vincularlos a políticas concretas y decisiones de infraestructura para proteger a las personas del clima. Abordamos cuestiones de gobernanza, certeza, idoneidad para el propósito, heurísticas, etc.
+
+**Cookbooks**. Los capítulos 1 a 4 están diseñados para ser más pedagógicos, enfocados en la práctica y el aprendizaje de herramientas y conceptos. La sección de Cookbooks presenta ejemplos del mundo real de estudios de caso que el autor llevó a cabo en Argentina durante su beca Fulbright con gobiernos municipales reales, utilizando datos reales para tomar decisiones reales. Estos ejemplos demuestran lo que es posible con las herramientas que exploramos en este libro. Aceptamos contribuciones de ejemplos adicionales de otros contextos.
+
+
+## Autor(es)
+
+*[Sección por completar]*
+
+## Agradecimientos
+
+*[Sección por completar]*
+
+## Patrocinadores del proyecto
+
+[![Centro de Investigaciones Urbanas y Territoriales](../public/ciut-logo.png)](https://ciut.fau.unlp.edu.ar/)
+
+[![Facultad de Arquitectura y Urbanismo](../public/fau-logo.png)](https://www.fau.unlp.edu.ar/)

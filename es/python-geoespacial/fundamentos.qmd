@@ -1,0 +1,11 @@
+## Python Geoespacial
+
+## ¿Por qué Python GIS?
+
+### Ventajas sobre el Software de Punto y Clic
+
+## Entrada/Salida de Datos (E/S)
+
+## Sistemas de Referencia de Coordenadas
+
+## Software y Bibliotecas Geoespaciales

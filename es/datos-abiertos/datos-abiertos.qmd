@@ -1,0 +1,13 @@
+# Datos Abiertos
+
+## Qué son los Datos Abiertos
+
+## Fuentes Comunes de Datos Abiertos
+
+## Cómo Encontrar Datos Abiertos
+
+## Cómo Entender los Datos Abiertos
+
+## Qué se Puede y No se Puede Hacer con los Datos Abiertos
+
+## Cómo Evaluar la Calidad de los Datos Abiertos
