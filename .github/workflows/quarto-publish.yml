@@ -34,8 +34,6 @@ jobs:
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-        with:
-          tinytex: true
 
       - name: Render Spanish version
         run: quarto render --profile es
@@ -45,13 +43,6 @@ jobs:
 
       - name: Render language selector
         run: quarto render index.qmd
-
-      - name: Verify docs structure
-        run: |
-          ls -la docs/
-          ls -la docs/es/ || echo "es/ missing!"
-          ls -la docs/en/ || echo "en/ missing!"
-          du -sh docs/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
