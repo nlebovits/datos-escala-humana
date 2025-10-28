@@ -1,0 +1,37 @@
+# Datos a la Acción
+
+## Estudio de Caso: Escape from Model Land
+
+## Comprensión de Modelos
+
+### Modeladores y Usuarios
+
+### Importancia de la Comunicación de Modelos
+
+## Toma de Decisiones Robusta
+
+## Evaluación de Riesgos
+
+## Límites de los Modelos
+
+## Objetividad en el Análisis
+
+## Precisión y Exactitud de Modelos
+
+## Cuándo los Datos son Suficientemente Buenos
+
+## Transparencia en el Proceso
+
+## Mejores Prácticas para Decisiones Robustas
+
+### Con Modelos Imperfectos
+
+### Con Datos Imperfectos
+
+## Comunicación en el Contexto Municipal
+
+## De Datos a Acción
+
+### Cómo se Usan (o No se Usan) los Datos en el Mundo Real
+
+### Implicaciones para los Practicantes

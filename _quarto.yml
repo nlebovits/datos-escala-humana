@@ -4,6 +4,10 @@ project:
     port: 4200
     browser: false
 
+book:
+  chapters:
+    - index.qmd
+
 bibliography: references.bib
 
 execute:

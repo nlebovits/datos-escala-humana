@@ -47,6 +47,6 @@ El libro está organizado en cuatro secciones principales:
 
 ## Patrocinadores del proyecto
 
-[![Centro de Investigaciones Urbanas y Territoriales](public/ciut-logo.png)](https://ciut.fau.unlp.edu.ar/)
+[![Centro de Investigaciones Urbanas y Territoriales](../public/ciut-logo.png)](https://ciut.fau.unlp.edu.ar/)
 
-[![Facultad de Arquitectura y Urbanismo](public/fau-logo.png)](https://www.fau.unlp.edu.ar/)
+[![Facultad de Arquitectura y Urbanismo](../public/fau-logo.png)](https://www.fau.unlp.edu.ar/)
