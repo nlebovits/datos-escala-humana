@@ -1,6 +1,9 @@
 project:
+  type: book
   output-dir: docs/es
-  project-dir: es
+
+execute:
+  execute-dir: es
 
 book:
   title: "Datos a escala humana"
