@@ -1,6 +1,10 @@
+---
+output-dir: docs
+---
+
 # Welcome {.unnumbered}
 
 This page should not be visible. Please select a language:
 
-- [Español](/es/index.html)
-- [English](/en/index.html)
+- [Español](es/)
+- [English](en/)
