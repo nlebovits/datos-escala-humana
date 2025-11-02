@@ -25,8 +25,7 @@ format:
       light: [cosmo, theme.scss] # from https://github.com/sta210-s22/website/blob/main/_quarto.yml
       dark: [cosmo, theme-dark.scss]
     code-link: true
-    code-fold: true
-    code-summary: "Mostrar código"
+    code-fold: false
     code-copy: true
     code-overflow: wrap
     css: styles.css
