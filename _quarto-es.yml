@@ -18,6 +18,10 @@ book:
         - es/python-geoespacial/raster.qmd
         - es/python-geoespacial/analisis-espacial.qmd
         - es/python-geoespacial/unidad_1b_soluciones.ipynb
+    - part: Datos Abiertos
+      chapters:
+        - es/datos-abiertos/datos-abiertos.qmd
+        - es/datos-abiertos/unidad_2_soluciones.ipynb
     - part: Riesgo Climático para Ciudades
       chapters:
         - es/riesgo-climatico/fundamentos.qmd
@@ -25,9 +29,6 @@ book:
         - es/riesgo-climatico/vulnerabilidad.ipynb
         - es/riesgo-climatico/peligro.qmd
         - es/riesgo-climatico/riesgo.qmd
-    - part: Datos Abiertos
-      chapters:
-        - es/datos-abiertos/datos-abiertos.qmd
     - part: Datos a la Acción
       chapters:
         - es/datos-accion/datos-accion.qmd
