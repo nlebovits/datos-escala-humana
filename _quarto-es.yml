@@ -36,7 +36,7 @@ book:
       chapters:
         - es/cookbooks/pergamino.ipynb
         - es/cookbooks/esperanza.ipynb
-        - es/cookbooks/la-plata.ipynb
+        # - es/cookbooks/la-plata.ipynb
         - es/cookbooks/villa-del-rosario.ipynb
     - es/conclusion.qmd
     - es/references.qmd
