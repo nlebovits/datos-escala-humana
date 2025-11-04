@@ -29,6 +29,7 @@ book:
         - es/riesgo-climatico/vulnerabilidad.ipynb
         - es/riesgo-climatico/peligro.qmd
         - es/riesgo-climatico/riesgo.qmd
+        - es/riesgo-climatico/unidad_3_soluciones.ipynb
     - part: Datos a la Acción
       chapters:
         - es/datos-accion/datos-accion.qmd
