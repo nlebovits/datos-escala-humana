@@ -3,6 +3,7 @@ data/
 *.geojson
 *.parquet
 *.tif
+*.tif.aux.xml
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
