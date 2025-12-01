@@ -59,3 +59,58 @@ Hay diferentes formas de hacer esto según el uso previsto de los datos. La met�
 Siempre necesitas un CRS para tus datos. Siempre debes saber cuál es el CRS de tus datos. Debes elegirlo apropiadamente para el contexto: a veces querrás el CRS local, a veces Web Mercator, a veces WGS 84.
 
 Cuando hay problemas en análisis geoespacial, a menudo están relacionados con el CRS. Al resolver problemas, una de las primeras cosas que debes verificar es si es un problema de CRS.
+
+
+## Datos vectoriales
+
+Los datos vectoriales están compuestos de ubicaciones geométricas discretas: puntos, líneas o polígonos. Representan características del planeta y asignan atributos a esas cosas en formato tabular.
+
+Obtienes una tabla con diferentes atributos como nombres o valores (población, temperatura, etc.) y luego una columna de geometría que indica la forma física de esa cosa en el espacio. Esta columna de geometría puede contener punto, línea, polígono o multipolígono.
+
+### GeoPandas
+
+GeoPandas es el módulo principal para datos vectoriales en Python, aunque hay otros.
+
+GeoPandas permite operaciones espaciales y no espaciales:
+
+**Operaciones no espaciales**
+
+Filtrado por columnas: buscar columnas con cierto nombre o valor.
+
+**Operaciones espaciales**
+
+Filtrado espacial: buscar columnas dentro de cierta área, fuera de cierta área, etc.
+
+Las operaciones espaciales pueden ser sofisticadas porque funcionan como constructos lógicos. Puedes decir "dame todo lo que está dentro de esto O toca esto O no toca esto O toca esto PERO no se superpone completamente O se superpone completamente PERO no solo toca el exterior".
+
+Esta es un área sutil que requiere pensamiento cuidadoso sobre las diferencias entre operaciones. Por ejemplo, intersección y clip no son lo mismo.
+
+
+## Datos raster
+
+Los datos raster son datos de píxeles. Representan el espacio dividiéndolo en celdas de cuadrícula consistentes. Cada celda tiene un valor.
+
+Las celdas de la cuadrícula tienen una resolución consistente. Los valores pueden ser continuos o categóricos.
+
+Los raster se usan para representar muchos tipos diferentes de datos. En este taller representamos DEM (Modelo Digital de Elevación) y clases de cobertura del suelo: DEM siendo continuo, cobertura del suelo siendo codificada categóricamente.
+
+
+
+
+## Análisis espacial
+
+## Operaciones Espaciales Básicas
+
+### Reproyecciones
+
+### Operaciones de Recorte
+
+### Superposiciones Espaciales
+
+### Estadísticas Zonales
+
+### Agregaciones Espaciales Básicas
+
+### Extracción de Raster
+
+## Recursos Adicionales y Aprendizaje Avanzado

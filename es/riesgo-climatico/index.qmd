@@ -1,0 +1,246 @@
+## Riesgo Climático para Ciudades
+
+### Objetivos
+
+Entender los conceptos clave de exposición, vulnerabilidad, peligro, riesgo, resiliencia, mitigación y adaptación. Aprender cómo medir estos conceptos con datos: enfoques, ejemplos relevantes y limitaciones de la medición cuantitativa.
+
+### ¿Qué es el Riesgo Climático?
+
+El riesgo climático se compone de tres elementos: exposición, vulnerabilidad y peligro.
+
+Puedes pensar en el riesgo como el cruce de tres capas. Cruzar estas tres capas permite generar áreas de riesgo máximo, riesgo según diferentes escenarios, priorización de recursos para mitigación y adaptación, y cuantificación de pérdidas probables (económicas u otras).
+
+El riesgo es complicado y multidimensional. Puedes tener áreas de alta exposición (alta población) pero no riesgo súper alto porque son ricas, como Puerto Madero en Buenos Aires o partes de Miami. Incluso dentro de la misma ciudad como Miami, hay partes con riesgo mucho más alto que otras, aunque tengan exposición y peligro relativamente similares, simplemente porque tienen niveles diferentes de vulnerabilidad.
+
+Tienes otros lugares con población más baja pero vulnerabilidades muy altas que pueden tener alto riesgo.
+
+### Indicadores Clave de Riesgo
+
+- Población total expuesta
+- Población total en condiciones de pobreza que está expuesta
+- Infraestructura crítica expuesta
+- Valor económico expuesto
+- Áreas de riesgo más alto
+- Áreas que están creciendo hacia zonas de riesgo más alto
+
+### Importancia de la Escala
+
+La escala a la que medimos tiene un impacto en cómo entendemos el riesgo. Hay una gran diferencia entre medir a nivel de radio censal versus a nivel de celda de 100 metros versus a nivel de edificio.
+
+Cada uno tiene pros y contras en términos del entendimiento que nos da del espacio. Por ejemplo, un radio censal asume que la población está distribuida uniformemente en un área bastante grande, lo cual casi nunca es verdad. De hecho, sabemos de investigaciones que incluso asumir que la población está distribuida uniformemente en un píxel cuadrado de 100 metros representa mal la exposición al peligro de inundación. [TODO: agregar link al paper]
+
+Por otro lado, las huellas de edificios, especialmente si no tienen altura o uso asociado, son muy difíciles de usar para estimar población total porque no sabes si un edificio es de un piso o siete pisos, residencial o no.
+
+Lo que recomiendo hacer es usar múltiples métodos (huellas de edificios, raster, datos censales) para intentar estimar mejor el riesgo.
+
+## Exposición
+
+### Definición
+
+Según UNDRR [TODO: agregar cita original]: La situación de personas, infraestructura, vivienda, capacidades productivas y otras actividades humanas tangibles ubicadas en áreas propensas a desastres.
+
+La población es la forma típica en que medimos esto en riesgo climático para ciudades, aunque también ambiente construido, agricultura, etc.
+
+### Formas de Medir Exposición
+
+**Datos censales**
+
+En Argentina, esto se hace a menudo con el Censo Argentino de 2022.
+
+**Datos raster globales de población**
+
+- Global Human Settlement Layer (GHSL) 2025: resolución de 100 metros
+- WorldPop 2025: resolución de 100 metros
+
+**Huellas de edificios**
+
+Datos globales de huellas de edificios como los de Overture Maps Foundation.
+
+**Mapas de cobertura del suelo**
+
+Como los datos de MapBiomas 2022 para Argentina.
+
+### Enfoque Recomendado
+
+Cada uno de estos es apropiado en varias condiciones. Lo que generalmente recomiendo hacer es tomar múltiples enfoques y presentar un rango.
+
+Hay varias razones para hacer esto. Principalmente, la escala a la que hacemos esto realmente importa. La escala a la que medimos tiene un impacto en cómo lo entendemos.
+
+### Datos de Infraestructura
+
+Los datos de infraestructura típicamente son mejores a nivel local o nacional. Pero hay conjuntos de datos globales como OpenStreetMap, que deben usarse con precaución, pero en ausencia de otros datos pueden ser efectivos. O Overture Maps Foundation.
+
+
+
+## Vulnerabilidad
+
+### Definición
+
+Según UNDRR [TODO: agregar cita original de 2019]: Las condiciones determinadas por factores o procesos físicos, sociales, económicos o ambientales que aumentan la vulnerabilidad de una persona, comunidad, el bienestar o sistemas ante peligros.
+
+GFDRR dice: Las condiciones socioeconómicas describen la susceptibilidad de diferentes categorías de personas expuestas a peligros.
+
+Básicamente, personas pobres tienen más riesgo que personas ricas, pero puede haber otros factores como edad, raza, salud que pueden todos influir en la vulnerabilidad.
+
+### Factores de Vulnerabilidad
+
+Estos se manifiestan de manera diferente. No son idénticos: riqueza, raza, edad, etnia no están perfectamente correlacionados. Es importante considerar estos diferentes factores.
+
+Sin embargo, estos factores a menudo están altamente correlacionados. Por ejemplo, en Estados Unidos sabemos que raza y riqueza están extremadamente correlacionadas. Entonces, al mirar riqueza, también obtienes una medida bastante buena de diferencia racial.
+
+Por un lado, es importante considerar estos factores por separado. Por otro lado, en ausencia de datos, básicamente puedes usar riqueza como un proxy bastante efectivo para vulnerabilidad. Eso es típicamente lo que terminamos haciendo a nivel global porque no tenemos a menudo datos sociodemográficos muy buenos fuera de un puñado de países del norte global.
+
+### Enfoque en Este Curso
+
+En ausencia de mejores datos, la riqueza es una medida decente. En este curso en particular, priorizamos métricas claras, transparentes y fácilmente explicables en lugar de herramientas complejas como el índice de vulnerabilidad socioeconómica que salió de Estados Unidos. Entonces, tendemos a priorizar medidas como riqueza.
+
+### Limitación de Datos Globales
+
+A nivel global, hay muy pocos conjuntos de datos que tienen indicadores de vulnerabilidad socioeconómica, aparte del Relative Wealth Index, que nuevamente está lejos de ser una medida perfecta.
+
+Estos van a mejorar en los próximos años, seguramente, pero en la actualidad hay muy pocos indicadores de vulnerabilidad. Esta es otra razón por la que priorizamos datos locales cuando están disponibles. Y cuando no los tenemos, usamos las métricas más simples posibles porque simplemente no hay tantas.
+
+
+
+## Peligro
+
+### Definición
+
+Cualquier proceso o fenómeno que puede causar pérdida de vidas humanas, daños u otros impactos en la salud, daños materiales, peligros sociales o degradación económica o del medio ambiente.
+
+El peligro puede ser de origen natural, antropogénico o socionatural.
+
+Estamos hablando de cosas como inundación, sequía, lluvia, olas de calor, aumento de temperaturas, aumento del nivel del mar, retroceso glacial, desertificación, etc.
+
+### Tipos de Datos de Peligro
+
+**Datos Determinísticos**
+
+Basados en índices estadísticos como mediana, máximo y media. Se derivan de eventos históricos o datos de reanálisis para estimar la intensidad del peligro. Estos vienen de eventos históricos.
+
+**Datos Probabilísticos**
+
+Usan simulaciones para generar diferentes escenarios posibles de intensidad del peligro, cada uno asociado con un período de retorno u ocurrencia diferente. Toman en cuenta la incertidumbre y frecuencia.
+
+Los datos probabilísticos a menudo incorporan medidas de datos determinísticos, pero estamos hablando de dos cosas diferentes:
+
+- Datos determinísticos están basados exclusivamente en eventos históricos
+- Datos probabilísticos toman en cuenta simulaciones y modelado
+
+Esto es realmente importante tener en mente.
+
+### Limitaciones de Datos Históricos vs Probabilísticos
+
+Los datos históricos describen el pasado, pero no hablan de eventos futuros.
+
+Los datos probabilísticos hablan de eventos futuros basados en evidencia científica. Reproducen procesos físicos y distribuciones estadísticas de eventos. De esta manera, los modelos probabilísticos pueden superar las limitaciones de registros históricos para generar múltiples escenarios sintéticos posibles que simulan intensidad posible en el futuro.
+
+### Fuentes de Datos
+
+La Global Facility for Disaster Risk Reduction (GFDRR) ofrece un excelente compendio de los mejores conjuntos de datos globales sobre peligros. Junto con explicaciones muy buenas de cómo usarlos y cuáles son las fortalezas y debilidades de cada uno de estos conjuntos de datos.
+
+Hacen un trabajo muy bueno explicando la importancia de ser conscientes de las diferentes formas de usar estos datos. Por ejemplo, la resolución hace una gran diferencia y necesitas comparar múltiples conjuntos de datos.
+
+### Preguntas Importantes al Trabajar con Datos Climáticos
+
+Cuando trabajas con datos climáticos, pregúntate:
+
+- ¿Estos datos son determinísticos o probabilísticos?
+- ¿Cuál es la resolución?
+- ¿Cuál es el período temporal?
+- ¿Cuál es el período de retorno?
+- ¿Cómo toman estos datos la incertidumbre en consideración?
+- ¿Estoy usando estos datos según la forma en que se suponía que debían usarse?
+- ¿Hay factores locales que no están representados en estos conjuntos de datos globales, como defensas contra inundaciones?
+- ¿Cómo voy a validar estos datos de alguna forma?
+
+### Advertencia Importante
+
+Como señala GFDRR: cuando hablamos de peligros naturales, la desinformación puede ser tan mala o peor que la falta de información. Es realmente importante asegurarnos de que estamos representando datos con precisión y reusándolos responsablemente.
+
+
+## Riesgo
+
+### Combinando Factores para Obtener Impacto
+
+El riesgo es la intersección de exposición, vulnerabilidad y peligro.
+
+### Cálculo del Riesgo
+
+[TODO: Expandir esta sección]
+
+## Cambio Climático y Riesgo de Desastres
+
+[TODO: Expandir esta sección]
+
+## Efectos Específicos en Ciudades
+
+### Características Urbanas que Aumentan el Riesgo
+
+[TODO: Expandir esta sección]
+
+### Infraestructura Crítica
+
+[TODO: Expandir esta sección]
+
+## Tipos Comunes de Peligros para Ciudades
+
+### Inundaciones Urbanas
+
+[TODO: Expandir esta sección]
+
+### Olas de Calor
+
+[TODO: Expandir esta sección]
+
+### Tormentas Intensas
+
+[TODO: Expandir esta sección]
+
+### Elevación del Nivel del Mar
+
+[TODO: Expandir esta sección]
+
+
+## Resiliencia, Mitigación y Adaptación
+
+### Resiliencia
+
+La capacidad de un sistema, comunidad o sociedad expuesta a peligros de resistir, absorber, adaptarse, transformarse y recuperarse de los efectos de un peligro de manera oportuna y eficiente, incluyendo la preservación y restauración de sus estructuras y funciones básicas a través de la gestión de riesgo.
+
+Fuente: UNDRR [TODO: agregar cita original]
+
+### Mitigación
+
+Intervenciones para reducir emisiones, reducir el efecto de gases de efecto invernadero o aumentar su captura, reduciendo el efecto o la magnitud del cambio climático.
+
+**Importante**: La mayor parte de lo que hablamos en este curso es adaptación, no mitigación. A menos que estés hablando de reducir emisiones, no estás hablando de mitigación. Estás hablando de adaptación.
+
+### Adaptación
+
+Cambios a sistemas naturales o humanos en respuesta al clima actual o el clima anticipado y sus efectos para reducir riesgo y aprovechar oportunidades.
+
+Ejemplo: casas flotantes en los Países Bajos.
+
+### Enfoques de Adaptación
+
+**Intervenciones Estructurales**
+
+Según UNDRR: Construcciones físicas para evitar posibles impactos o peligros. La aplicación de técnicas de ingeniería o tecnología para lograr resistencia o resiliencia frente a peligros en estructuras o sistemas.
+
+Ejemplos:
+- Canales u otra hidroingeniería
+- Infraestructura gris
+- Infraestructura verde [TODO: agregar explicación de diferencia entre gris y verde]
+
+Hay muchos enfoques diferentes para diferentes cosas.
+
+**Enfoques No Estructurales**
+
+Definición de UNDRR: Enfoques que no involucran construcción física y que usan conocimiento, prácticas o acuerdos para reducir riesgos o impactos de desastres, en particular a través de políticas y leyes, educación pública, construcción de capacidades y educación.
+
+Ejemplos:
+- Sistema de alerta temprana de inundación
+- Plan de reducción de riesgo
+- Plan de reducción de incendios
+- Zona de peligro de inundación donde no está permitido construir nuevas estructuras
