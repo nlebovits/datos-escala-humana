@@ -11,7 +11,7 @@ book:
 bibliography: references.bib
 
 execute:
-  freeze: auto  # Only re-execute when source changes
+  freeze: true  # Use saved outputs, never execute
   cache: true   # Cache computation results
   daemon: true  # Use Jupyter daemon for faster startup
 
