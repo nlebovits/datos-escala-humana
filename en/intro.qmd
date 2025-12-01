@@ -36,14 +36,13 @@ The book is organized into four main sections:
 
 **Cookbooks**. Chapters 1 through 4 are designed to be more pedagogical, focused on practice and learning tools and concepts. The Cookbooks section presents real-world examples of case studies the author carried out in Argentina during his Fulbright fellowship with real municipal governments, using real data to make real decisions. These examples demonstrate what's possible with the tools we explore in this book. We welcome contributions of additional examples from other contexts.
 
-
 ## Author(s)
 
-*[Section to be completed]*
+_[Section to be completed]_
 
 ## Acknowledgments
 
-*[Section to be completed]*
+_[Section to be completed]_
 
 ## Project Sponsors
 

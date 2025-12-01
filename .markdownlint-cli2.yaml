@@ -14,3 +14,14 @@ globs:
 
 fix: true
 
+config:
+  default: true
+  # MD013: Line length - disabled for prose documents with long paragraphs
+  MD013: false
+  # MD041: First line heading - disabled because Quarto files can start with ## (second-level heading)
+  MD041: false
+  # MD036: Emphasis as heading - disabled because emphasis is sometimes used for styling, not structure
+  MD036: false
+  # MD024: Duplicate headings - only check siblings to allow same heading text in different sections
+  MD024:
+    siblings_only: true
