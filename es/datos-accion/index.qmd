@@ -1,37 +1,182 @@
-# Datos a la Acción
+# De los Datos a la Acción
 
-## Estudio de Caso: Escape from Model Land
+## Objetivos
 
-## Comprensión de Modelos
+Entender la incertidumbre en modelos climáticos y de riesgo climático, y herramientas para gestionarla: toma de decisiones robusta bajo incertidumbre profunda y la psicología de la toma de decisiones sobre cambio climático. Comprender cómo implementar estos conceptos para la toma de decisiones municipales.
 
-### Modeladores y Usuarios
+## Incertidumbre
 
-### Importancia de la Comunicación de Modelos
+Hasta ahora hemos hablado de lo que los modelos pueden decirnos. Ahora hablaremos de los límites de lo que esos modelos pueden hacer.
+
+### Qué es la Incertidumbre
+
+Según el U.S. Climate Resilience Toolkit, la incertidumbre es un estado de conocimiento incompleto. La incertidumbre climática proviene de la complejidad de los sistemas climáticos y los modelos para representar esa complejidad, y la imposibilidad de predecir qué decisiones tomará la sociedad.
+
+### Fuentes de Incertidumbre en Modelos Climáticos
+
+**Incertidumbre epistémica**
+
+Proviene de la falta de conocimiento o datos suficientes. Puede reducirse recopilando mejor información o datos de mayor calidad.
+
+**Incertidumbre aleatoria**
+
+Proviene de la naturaleza inherente e impredecible de los sistemas climáticos. No puede reducirse mediante datos, solo puede cuantificarse.
+
+La incertidumbre epistémica surge porque nuestros conjuntos de datos históricos y distribuciones geoespaciales son relativamente limitados en comparación con el alcance general del cambio climático. Sin embargo, incluso con datos históricos perfectos, los modelos climáticos todavía exhibirían incertidumbre aleatoria porque los sistemas climáticos son inherentemente estocásticos.
+
+### Procesos Estocásticos
+
+Un proceso estocástico es un fenómeno que evoluciona a través del tiempo de una manera que es parcialmente aleatoria o impredecible. En el contexto del cambio climático, esto significa que aunque podemos identificar patrones generales como tendencias en temperatura o estaciones, siempre habrá un componente de variabilidad natural que no podemos predecir con exactitud.
+
+Los procesos estocásticos pueden ser estacionarios o no estacionarios:
+
+**Procesos estacionarios**
+
+Sus propiedades estadísticas como la mediana, varianza y variabilidad son generalmente constantes a lo largo del tiempo. Fluctúa alrededor de un estado estable, aunque hay varianza aleatoria.
+
+**Procesos no estacionarios**
+
+Sus propiedades estadísticas cambian a lo largo del tiempo. Pueden tener cambios en tendencias (aumentos o disminuciones), cambios en la varianza, o cambios en patrones generales.
+
+Los resultados climáticos son inherentemente estocásticos, pero el cambio climático significa que además de ser estocásticos, también son no estacionarios. Esto significa que tanto la tendencia general como la media y la varianza están todos sujetos a cambio potencial, lo que los hace aún más difíciles de predecir o, en otras palabras, aumenta la incertidumbre.
+
+### Incertidumbre Social
+
+La incertidumbre social proviene de la imposibilidad de predecir la toma de decisiones humanas o cambios humanos, como cambios demográficos, tecnológicos y transformaciones sociales que determinan quién está expuesto al riesgo y quién tiene capacidad para responder a él.
+
+Esta incertidumbre es tan importante o incluso más importante que la incertidumbre del modelo climático en sí.
+
+**Ejemplos**
+
+- Caída del Muro de Berlín
+- Economía argentina
+- Crisis financiera de 2008
+- Pandemia de COVID
+- Surgimiento de inteligencia artificial en la economía
+
+Todos estos han causado cambios radicales en la sociedad que han sido muy difíciles de predecir y han tenido grandes impactos para el cambio climático también.
 
 ## Toma de Decisiones Robusta
 
-## Evaluación de Riesgos
+Frente a estas incertidumbres fundamentales e irreducibles en el cambio climático y la sociedad, ¿cómo planificamos?
 
-## Límites de los Modelos
+### Limitaciones de la Toma de Decisiones Tradicional
 
-## Objetividad en el Análisis
+Los marcos tradicionales de toma de decisiones buscan identificar un único modelo óptimo y basarse en él. Pero ¿qué pasa si los supuestos de ese modelo óptimo son incorrectos?
 
-## Precisión y Exactitud de Modelos
+**Ejemplos de fracaso**
 
-## Cuándo los Datos son Suficientemente Buenos
+- Colapso de ciudades del Rust Belt que optimizaban para un modelo económico particular basado en industrialización y manufactura
+- Tendencias de calor en Pergamino, Argentina: podías planificar para cierto número de días calurosos por año, pero el cambio climático cambiará radicalmente cuántos días calurosos por año tenemos (no sabemos exactamente cómo)
 
-## Transparencia en el Proceso
+### Dependencia de Trayectoria (Path Dependency)
 
-## Mejores Prácticas para Decisiones Robustas
+Al comprometernos con algo, podemos quedar atrapados en ello por mucho tiempo.
 
-### Con Modelos Imperfectos
+**Ejemplo: La Plata, Argentina**
 
-### Con Datos Imperfectos
+La fundación original de la ciudad en 1888 corresponde a donde la ciudad se inunda hoy. Una decisión tomada hace más de 130 años todavía impacta desafíos infraestructurales y riesgo climático en la ciudad hoy.
 
-## Comunicación en el Contexto Municipal
+### Marco de Toma de Decisiones Robusta
 
-## De Datos a Acción
+¿Cómo planificamos para múltiples futuros posibles? El marco de toma de decisiones robusta bajo incertidumbre profunda.
 
-### Cómo se Usan (o No se Usan) los Datos en el Mundo Real
+Un excelente paper de PNAS, "Coupled Human Natural System Analysis of Freshwater Security Under Climate and Population Change", nos ayuda a contextualizar cuatro pasos:
 
-### Implicaciones para los Practicantes
+1. **Identificar posibles escenarios futuros**
+2. **Explorar un rango de posibles soluciones**
+3. **Seleccionar la solución que funciona mejor bajo una diversidad de numerosos futuros posibles**
+4. **Elegir una implementación que sea flexible y adaptativa**, para no quedar atrapados en algo. Priorizar cambios que puedan revertirse o adaptarse según sea necesario.
+
+### Caso de Estudio: Países Bajos
+
+El nivel del agua representa una amenaza importante en el siglo próximo. El gobierno holandés está evaluando cuatro estrategias de adaptación para gestionar mejor los riesgos:
+
+- Proteger cerrado
+- Proteger abierto
+- Avanzar
+- Acomodar
+
+Consideran cada estrategia según su costo y beneficios bajo diferentes escenarios climáticos. Priorizan estrategias de bajo arrepentimiento que tendrán éxito en un rango de futuros posibles y no generarán dependencia de trayectoria.
+
+El objetivo es combinar estas estrategias, no elegir una única solución, sino combinarlas de manera flexible a lo largo del tiempo, monitoreándolas y adaptándolas según las condiciones cambien.
+
+## La Paradoja del Avestruz
+
+¿Por qué las personas toman malas decisiones frente al cambio climático? Sabiendo todo esto, ¿por qué la gente todavía toma malas decisiones?
+
+### Ejemplo: Philadelphia
+
+Un área en Philadelphia con viviendas de lujo fue rezonificada en 2018 para dar permiso de construir desarrollos de lujo en una llanura de inundación. Predeciblemente, tres años después durante el Huracán Ida, se inundó. Pensarías que aprenderían la lección, pero en 2025, la gente está planeando construir más allí.
+
+### Por Qué Sucede Esto
+
+Como encuentran Robert Meyer y Howard Kunreuther en "The Ostrich Paradox", la psicología cognitiva y la economía conductual sugieren que la mayoría de los errores cometidos al planificar para desastres se deben a ciertas cegueras que hacen que las personas tomen decisiones bajo incertidumbre.
+
+Cuando las personas no están seguras de cuál es la mejor decisión a tomar, tienden a hacer la elección que requiere menos esfuerzo mental.
+
+Meyer y Kunreuther identifican seis fuentes de sesgo y ofrecen una matriz de posibles soluciones. También hablan de diferentes formas de mejorar, como:
+
+- Cambiar la línea de tiempo
+- Inclusión automática
+- Opt-out en lugar de opt-in
+- Incentivos sociales para que las personas se comporten bien
+
+### Cuatro Principios para Planificadores y Sector Público
+
+[TODO: Agregar los cuatro principios específicos]
+
+## Datos en el Mundo Real
+
+¿Cómo hacemos que los tomadores de decisiones políticos implementen las mejores prácticas?
+
+### Entender a tu Usuario
+
+Los políticos tienen diferentes prioridades que los científicos de datos climáticos. Esto no significa que sean malos. El objetivo no es criticar a los políticos, sino simplemente entender que operan con un conjunto diferente de prioridades e incentivos que los tomadores de decisiones climáticas, en particular debido a los sistemas políticos que diseñamos, que de alguna manera les impiden o desincentivan tomar decisiones de las formas en que a los científicos climáticos les gustaría que las tomaran.
+
+**En contraste con científicos climáticos, los políticos:**
+
+- Tienen que ganar elecciones, usualmente cada dos a cuatro años. No tienen el lujo de pensar a menudo en líneas de tiempo de 25 a 100 o 1,000 años debido a estos ciclos electorales. Diseñamos nuestros sistemas políticos para hacer eso.
+- Trabajan en un rango de temas. No es justo esperar que sean expertos en ciencia climática porque no son PhDs en ciencia climática. Tienen que trabajar en una multiplicidad de temas y representar a un electorado diverso. Sería contraproducente que fueran exclusivamente expertos en ciencia climática y no supieran también sobre economía, toma de decisiones políticas, infraestructura de transporte, salud pública o cualquier número de otras cosas sobre las que también tienen que tomar decisiones.
+
+### Cómo Trabajar con Estos Usuarios
+
+**1. Enfatizar lo que los políticos valoran y entienden**
+
+- ¿Puedes darles la oportunidad de ser el héroe?
+- ¿Puedes darles la oportunidad de verse bien?
+- ¿Puedes cuantificar el impacto positivo, especialmente si es económico?
+- Sé claro sobre cuál es el beneficio para ellos y el beneficio general
+- Si puedes ponerlo en términos cuantitativos, mucho mejor
+
+**2. Usar escalas de tiempo políticas**
+
+- Enfatizar beneficios a corto plazo sobre beneficios a largo plazo (aunque también debes hablar de beneficios a largo plazo)
+- En lugar de hablar de posibles escenarios futuros, prioriza eventos recientes cuando puedas
+- Construye sobre cosas que han sucedido recientemente en la memoria
+- Nunca desperdicies una buena crisis: ten un plan listo para implementar cuando algo surja
+
+**3. Comunicar clara y concisamente**
+
+- Usa visuales sobre texto cuando sea posible
+- Los memos de una página son excelentes
+- Haz que tus recomendaciones y beneficios sean muy, muy claros
+
+**4. Cuenta una buena historia**
+
+Alguien quiere sentir que su vida tiene significado, que el trabajo que están haciendo encaja en alguna historia más grande. Cuenta una buena historia.
+
+## Taller
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nlebovits/datos-escala-humana/blob/main/es/datos-accion/taller.ipynb)
+
+El taller integra los conceptos de este capítulo usando el caso de Esperanza, Santa Fe, para analizar riesgo de inundación y proponer intervenciones basadas en principios de toma de decisiones robusta.
+
+## Aprender Más
+
+- Meyer, R., & Kunreuther, H. (2017). *The Ostrich Paradox: Why We Underprepare for Disasters*
+- Hall, J. W., et al. (2019). "Coupled Human-Natural System Analysis of Freshwater Security Under Climate and Population Change." *PNAS*
+- [U.S. Climate Resilience Toolkit](https://toolkit.climate.gov/)
+- Recursos sobre toma de decisiones robusta bajo incertidumbre profunda
+
+[TODO: Expandir con recursos específicos]
