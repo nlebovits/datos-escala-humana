@@ -1,0 +1,42 @@
+## Resiliencia, Mitigación y Adaptación
+
+### Resiliencia
+
+La capacidad de un sistema, comunidad o sociedad expuesta a peligros de resistir, absorber, adaptarse, transformarse y recuperarse de los efectos de un peligro de manera oportuna y eficiente, incluyendo la preservación y restauración de sus estructuras y funciones básicas a través de la gestión de riesgo.
+
+Fuente: UNDRR [TODO: agregar cita original]
+
+### Mitigación
+
+Intervenciones para reducir emisiones, reducir el efecto de gases de efecto invernadero o aumentar su captura, reduciendo el efecto o la magnitud del cambio climático.
+
+**Importante**: La mayor parte de lo que hablamos en este curso es adaptación, no mitigación. A menos que estés hablando de reducir emisiones, no estás hablando de mitigación. Estás hablando de adaptación.
+
+### Adaptación
+
+Cambios a sistemas naturales o humanos en respuesta al clima actual o el clima anticipado y sus efectos para reducir riesgo y aprovechar oportunidades.
+
+Ejemplo: casas flotantes en los Países Bajos.
+
+### Enfoques de Adaptación
+
+**Intervenciones Estructurales**
+
+Según UNDRR: Construcciones físicas para evitar posibles impactos o peligros. La aplicación de técnicas de ingeniería o tecnología para lograr resistencia o resiliencia frente a peligros en estructuras o sistemas.
+
+Ejemplos:
+- Canales u otra hidroingeniería
+- Infraestructura gris
+- Infraestructura verde [TODO: agregar explicación de diferencia entre gris y verde]
+
+Hay muchos enfoques diferentes para diferentes cosas.
+
+**Enfoques No Estructurales**
+
+Definición de UNDRR: Enfoques que no involucran construcción física y que usan conocimiento, prácticas o acuerdos para reducir riesgos o impactos de desastres, en particular a través de políticas y leyes, educación pública, construcción de capacidades y educación.
+
+Ejemplos:
+- Sistema de alerta temprana de inundación
+- Plan de reducción de riesgo
+- Plan de reducción de incendios
+- Zona de peligro de inundación donde no está permitido construir nuevas estructuras

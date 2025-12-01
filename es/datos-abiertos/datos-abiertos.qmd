@@ -1,13 +1,80 @@
-# Datos Abiertos
+# Datos Abiertos para Ciudades y Clima
+
+## Objetivos
+
+Entender qué son los datos abiertos, de dónde vienen, cómo encontrarlos y cómo evaluar su calidad. Comprender las fuentes principales de datos abiertos para riesgo climático y urbano a escala local, nacional y global.
 
 ## Qué son los Datos Abiertos
 
-## Fuentes Comunes de Datos Abiertos
+Los datos abiertos son, en efecto, datos que cualquiera puede usar. Es una definición aproximada, sujeta a interpretación y matices según el contexto, pero generalmente esa es la idea.
 
-## Cómo Encontrar Datos Abiertos
+### Ventajas
 
-## Cómo Entender los Datos Abiertos
+**Gratuitos**: Gobiernos pequeños a menudo no tienen recursos para crear estos datos.
 
-## Qué se Puede y No se Puede Hacer con los Datos Abiertos
+**Estandarizados**: Permiten comparar consistentemente entre regiones y asegurar calidad. Gobiernos pequeños tienen capacidad limitada para crear datos de alta calidad.
 
-## Cómo Evaluar la Calidad de los Datos Abiertos
+**Centralizados**: Una institución centralizada puede asumir esta tarea en lugar de muchos gobiernos pequeños que individualmente no tienen capacidad. Como entidad centralizada, tienen más recursos que entidades individuales, permitiendo acceso a datos que de otra manera no tendrían.
+
+### Crecimiento del Volumen
+
+El volumen de datos abiertos ha aumentado rápidamente. La era de datos abiertos comienza en la década de 2010, pero particularmente en los últimos años ha despegado con el auge del almacenamiento en la nube, modelos de IA y nuevos volúmenes masivos de datos.
+
+## Infraestructura de Datos Geoespaciales
+
+Los datos abiertos se encuentran en infraestructura de datos geoespaciales: cualquier lugar donde se encuentren datos geoespaciales abiertos en internet. Puede ser un catálogo, servidor, aplicación web, lista de páginas o capas.
+
+El objetivo principal es asegurar colaboración y accesibilidad de información geoespacial. Generalmente, buscarás un portal geoespacial abierto a escala nacional y regional.
+
+### Cambios Recientes Importantes
+
+El volumen y la calidad han crecido tremendamente. Muchos de estos datos están disponibles a nivel global. Una gran parte de este curso se enfoca en conjuntos de datos disponibles globalmente para llenar vacíos locales o nacionales.
+
+## Fuentes Principales de Datos Abiertos
+
+Repositorios importantes para explorar:
+
+- OpenStreetMap
+- Google Earth Engine
+- Google Earth Engine Community Catalog
+- OpenLandMap
+- Source Cooperative
+- Microsoft Planetary Computer
+
+Muchos tienen plugins de QGIS para importar datos directamente. Si no, siempre puedes acceder en Python o mediante descarga.
+
+### Limitaciones de Datos Globales
+
+**No tan globales**: Conjuntos de datos globales a menudo vienen de países más ricos del norte global, China y Japón, no de países del sur global.
+
+**Falta de precisión**: Los datos, especialmente derivados de modelos de aprendizaje automático, son tan buenos como comprehensivos. El sesgo sistemático hacia ciertos países y lejos de otros significa que los modelos típicamente son menos precisos o los conjuntos de datos menos comprehensivos en países con menos datos.
+
+Los modelos a menudo tienen mejor desempeño fuera del sur global porque tienen menos datos del sur global.
+
+## Formatos de Archivos Geoespaciales
+
+### Archivos Planos o Estándar
+
+**Ejemplos**: GeoJSON, shapefile.
+
+**Usos**: Trabajo local o visualización web. Pueden considerarse archivos heredados. Excelentes para trabajar sin conexión.
+
+**Limitaciones**: Si quieres trabajar a gran escala con conjuntos de datos globales masivos, GeoJSON o shapefile no es la forma de hacerlo. También son más difíciles de compartir.
+
+GeoJSON está diseñado específicamente para visualización web, pero tiene limitaciones significativas.
+
+### Servidores WMS y WFS
+
+Protocolos estandarizados para mapeo web y visualización de datos. Integración con GIS, pero pueden ser lentos para consultas. Pueden considerarse precursores de formatos nativos de la nube porque fueron el estándar de la industria por mucho tiempo para compartir en línea. Siguen siendo útiles, pero están envejeciendo.
+
+### APIs
+
+Formas flexibles de obtener exactamente los datos que quieres, haciendo datos disponibles a través de un endpoint. Excelentes para flujos de trabajo de programación y aplicaciones web, pero requieren conocimiento técnico. No siempre son tan eficientes como formatos nativos de la nube optimizados.
+
+API y datos geoespaciales nativos de la nube pueden ser compatibles.
+
+### Formatos Optimizados para la Nube
+
+Los mejores para compartir en línea y para datos masivos en vivo. Son un paso adelante sobre formatos de archivo tradicionales, aunque tienen sus propias limitaciones.
+
+**Ventaja principal**: Permiten consultar solo los datos que quieres para tu área de interés. En lugar de tener que descargar gigabytes de archivos, podrías solo descargar megabytes y puedes descargarlos muy eficientemente solo para el área que te importa. Para nuestros propósitos, esta es la ventaja principal.

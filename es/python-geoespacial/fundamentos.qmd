@@ -1,11 +1,61 @@
 ## Python Geoespacial
 
-## ¿Por qué Python GIS?
+### Objetivos
 
-### Ventajas sobre el Software de Punto y Clic
+Desarrollar habilidades básicas en programación GIS para trabajar con datos públicos abiertos sobre riesgo climático en Argentina y el mundo. Aprender sobre tipos de datos geoespaciales, proyecciones, operaciones espaciales, análisis básico y visualización.
 
-## Entrada/Salida de Datos (E/S)
+### ¿Qué es GIS?
 
-## Sistemas de Referencia de Coordenadas
+GIS es software que permite interactuar con datos geoespaciales. Herramientas comunes incluyen ArcGIS, PostGIS, QGIS, GDAL, Earth Engine, R y Python.
 
-## Software y Bibliotecas Geoespaciales
+### Tipos de Software GIS
+
+**Interfaz Gráfica de Usuario (GUI)**
+
+Ventajas: No requiere aprender programación. Mapeo y visualización más intuitivos y flexibles.
+
+Desventajas: No es reproducible. No escala ni automatiza bien. Difícil de personalizar.
+
+Ejemplos: ArcGIS, QGIS.
+
+**Interfaz de Línea de Comandos (CLI) / Programación**
+
+Ventajas: Muy reproducible. Flexible, escalable y automatizable. Fácil de integrar con otras herramientas.
+
+Desventajas: Requiere aprender un lenguaje. Mapeo y visualización menos intuitivos. Curva de aprendizaje inicial.
+
+### ¿Por qué Python?
+
+Python es ampliamente usado con un ecosistema rico de bibliotecas. Es flexible, poderoso y relativamente fácil de aprender. Está bien integrado con otras herramientas, es gratuito, de código abierto, y tiene una comunidad activa con documentación sólida.
+
+### ¿Por qué Google Colab?
+
+No requiere configurar un ambiente local. Es flexible e independiente de los recursos de tu computadora. Permite escalar recursos pagando si es necesario, aunque no será necesario en este curso.
+
+Para otros contextos, se recomienda instalar localmente usando UV y un IDE como VS Code.
+
+### Computación en la Nube
+
+La nube significa simplemente la computadora de alguien más: servidores a los que tu dispositivo se conecta por internet.
+
+**Ventajas**
+
+Poderosa: puedes escalar recursos flexiblemente según tus necesidades. No requiere configurar servidores locales ni instalar programas localmente. Infraestructura distribuida resiliente ante fallas.
+
+**Desventajas**
+
+Requiere conexión a internet. Curva de aprendizaje inicial. Puede ser costosa con uso intensivo.
+
+Las herramientas nativas de la nube que usaremos no son más difíciles que las herramientas tradicionales y ofrecen muchas ventajas. La nube es simplemente uno de los lugares donde la gente computa hoy.
+
+### Sistemas de Referencia de Coordenadas (CRS)
+
+Los CRS son la base de cómo se representan los datos espaciales. Todos los datos espaciales tienen un CRS porque todos están técnicamente distorsionados. El mundo es aproximadamente esférico, no plano. Para representar datos esféricos tridimensionales en dos dimensiones, debemos distorsionarlos.
+
+Hay diferentes formas de hacer esto según el uso previsto de los datos. La metáfora de la naranja: si pelas una naranja y aplanas la cáscara, debes distorsionarla de diferentes maneras.
+
+**Reglas fundamentales**
+
+Siempre necesitas un CRS para tus datos. Siempre debes saber cuál es el CRS de tus datos. Debes elegirlo apropiadamente para el contexto: a veces querrás el CRS local, a veces Web Mercator, a veces WGS 84.
+
+Cuando hay problemas en análisis geoespacial, a menudo están relacionados con el CRS. Al resolver problemas, una de las primeras cosas que debes verificar es si es un problema de CRS.
