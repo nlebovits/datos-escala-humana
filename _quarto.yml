@@ -11,8 +11,9 @@ book:
 bibliography: references.bib
 
 execute:
-  ipynb: false  # Don't execute .ipynb files, use outputs already embedded
-  # .qmd files will still execute normally
+  freeze: auto  # Only re-execute when source changes
+  cache: true   # Cache computation results
+  daemon: true  # Use Jupyter daemon for faster startup
 
 format:
   html:
