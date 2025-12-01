@@ -37,7 +37,6 @@ book:
         - en/cookbooks/esperanza.ipynb
         - en/cookbooks/la-plata.qmd
         - en/cookbooks/villa-del-rosario.ipynb
-    - en/conclusion.qmd
     - en/references.qmd
   sidebar:
     pinned: true
