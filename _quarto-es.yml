@@ -13,19 +13,19 @@ book:
     - es/intro.qmd
     - part: Python Geoespacial
       chapters:
-        - es/python-geoespacial/index.qmd
+        - es/python-geoespacial/python-geoespacial.qmd
         - es/python-geoespacial/taller.ipynb
     - part: Datos Abiertos
       chapters:
-        - es/datos-abiertos/index.qmd
+        - es/datos-abiertos/datos-abiertos.qmd
         - es/datos-abiertos/taller.ipynb
     - part: Riesgo Climático para Ciudades
       chapters:
-        - es/riesgo-climatico/index.qmd
+        - es/riesgo-climatico/riesgo-climatico.qmd
         - es/riesgo-climatico/taller.ipynb
     - part: Datos a la Acción
       chapters:
-        - es/datos-accion/index.qmd
+        - es/datos-accion/datos-accion.qmd
         - es/datos-accion/taller.ipynb
     - part: Cookbooks
       chapters:

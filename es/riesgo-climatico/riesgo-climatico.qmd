@@ -70,8 +70,6 @@ Hay varias razones para hacer esto. Principalmente, la escala a la que hacemos e
 
 Los datos de infraestructura típicamente son mejores a nivel local o nacional. Pero hay conjuntos de datos globales como OpenStreetMap, que deben usarse con precaución, pero en ausencia de otros datos pueden ser efectivos. O Overture Maps Foundation.
 
-
-
 ## Vulnerabilidad
 
 ### Definición
@@ -99,8 +97,6 @@ En ausencia de mejores datos, la riqueza es una medida decente. En este curso en
 A nivel global, hay muy pocos conjuntos de datos que tienen indicadores de vulnerabilidad socioeconómica, aparte del Relative Wealth Index, que nuevamente está lejos de ser una medida perfecta.
 
 Estos van a mejorar en los próximos años, seguramente, pero en la actualidad hay muy pocos indicadores de vulnerabilidad. Esta es otra razón por la que priorizamos datos locales cuando están disponibles. Y cuando no los tenemos, usamos las métricas más simples posibles porque simplemente no hay tantas.
-
-
 
 ## Peligro
 
@@ -158,7 +154,6 @@ Cuando trabajas con datos climáticos, pregúntate:
 
 Como señala GFDRR: cuando hablamos de peligros naturales, la desinformación puede ser tan mala o peor que la falta de información. Es realmente importante asegurarnos de que estamos representando datos con precisión y reusándolos responsablemente.
 
-
 ## Riesgo
 
 ### Combinando Factores para Obtener Impacto
@@ -201,7 +196,6 @@ El riesgo es la intersección de exposición, vulnerabilidad y peligro.
 
 [TODO: Expandir esta sección]
 
-
 ## Resiliencia, Mitigación y Adaptación
 
 ### Resiliencia
@@ -229,6 +223,7 @@ Ejemplo: casas flotantes en los Países Bajos.
 Según UNDRR: Construcciones físicas para evitar posibles impactos o peligros. La aplicación de técnicas de ingeniería o tecnología para lograr resistencia o resiliencia frente a peligros en estructuras o sistemas.
 
 Ejemplos:
+
 - Canales u otra hidroingeniería
 - Infraestructura gris
 - Infraestructura verde [TODO: agregar explicación de diferencia entre gris y verde]
@@ -240,6 +235,7 @@ Hay muchos enfoques diferentes para diferentes cosas.
 Definición de UNDRR: Enfoques que no involucran construcción física y que usan conocimiento, prácticas o acuerdos para reducir riesgos o impactos de desastres, en particular a través de políticas y leyes, educación pública, construcción de capacidades y educación.
 
 Ejemplos:
+
 - Sistema de alerta temprana de inundación
 - Plan de reducción de riesgo
 - Plan de reducción de incendios

@@ -60,7 +60,6 @@ Siempre necesitas un CRS para tus datos. Siempre debes saber cuál es el CRS de 
 
 Cuando hay problemas en análisis geoespacial, a menudo están relacionados con el CRS. Al resolver problemas, una de las primeras cosas que debes verificar es si es un problema de CRS.
 
-
 ## Datos vectoriales
 
 Los datos vectoriales están compuestos de ubicaciones geométricas discretas: puntos, líneas o polígonos. Representan características del planeta y asignan atributos a esas cosas en formato tabular.
@@ -85,7 +84,6 @@ Las operaciones espaciales pueden ser sofisticadas porque funcionan como constru
 
 Esta es un área sutil que requiere pensamiento cuidadoso sobre las diferencias entre operaciones. Por ejemplo, intersección y clip no son lo mismo.
 
-
 ## Datos raster
 
 Los datos raster son datos de píxeles. Representan el espacio dividiéndolo en celdas de cuadrícula consistentes. Cada celda tiene un valor.
@@ -93,9 +91,6 @@ Los datos raster son datos de píxeles. Representan el espacio dividiéndolo en 
 Las celdas de la cuadrícula tienen una resolución consistente. Los valores pueden ser continuos o categóricos.
 
 Los raster se usan para representar muchos tipos diferentes de datos. En este taller representamos DEM (Modelo Digital de Elevación) y clases de cobertura del suelo: DEM siendo continuo, cobertura del suelo siendo codificada categóricamente.
-
-
-
 
 ## Análisis espacial
 
