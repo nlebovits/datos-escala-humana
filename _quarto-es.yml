@@ -29,7 +29,7 @@ book:
         - es/datos-accion/taller.ipynb
     - part: Cookbooks
       chapters:
-        - es/cookbooks/pergamino-final.ipynb
+        - es/cookbooks/pergamino.ipynb
         - es/cookbooks/esperanza.ipynb
         # - es/cookbooks/la-plata.ipynb
         - es/cookbooks/villa-del-rosario.ipynb
