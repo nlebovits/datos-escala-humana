@@ -1,5 +1,7 @@
 ## Python Geoespacial
 
+Esta lección está basada en gran medida en el material de [Introduction to Geospatial Raster and Vector Data with Python](https://carpentries-incubator.github.io/geospatial-python/index.html) de The Carpentries, disponible bajo licencia [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), al igual que nuestro material.
+
 ### Objetivos
 
 Desarrollar habilidades básicas en programación GIS para trabajar con datos públicos abiertos sobre riesgo climático en Argentina y el mundo. Aprender sobre tipos de datos geoespaciales, proyecciones, operaciones espaciales, análisis básico y visualización.
@@ -52,7 +54,7 @@ Las herramientas nativas de la nube que usaremos no son más difíciles que las 
 
 Los CRS son la base de cómo se representan los datos espaciales. Todos los datos espaciales tienen un CRS porque todos están técnicamente distorsionados. El mundo es aproximadamente esférico, no plano. Para representar datos esféricos tridimensionales en dos dimensiones, debemos distorsionarlos.
 
-![Metáfora de la naranja](../../public/python-geoespacial/orange-peel-earth.jpg)
+![Metáfora de la naranja [@carpentries_geospatial_python]](../../public/python-geoespacial/orange-peel-earth.jpg)
 
 Hay diferentes formas de hacer esto según el uso previsto de los datos. La metáfora de la naranja: si pelas una naranja y aplanas la cáscara, debes distorsionarla de diferentes maneras.
 
@@ -66,11 +68,26 @@ Cuando hay problemas en análisis geoespacial, a menudo están relacionados con 
 
 Los datos vectoriales están compuestos de ubicaciones geométricas discretas: puntos, líneas o polígonos. Representan características del planeta y asignan atributos a esas cosas en formato tabular.
 
-![Datos vectoriales](../../public/python-geoespacial/spatial_extent.png)
+![Datos vectoriales [@carpentries_geospatial_python]](../../public/python-geoespacial/spatial_extent.png)
 
 Obtienes una tabla con diferentes atributos como nombres o valores (población, temperatura, etc.) y luego una columna de geometría que indica la forma física de esa cosa en el espacio. Esta columna de geometría puede contener punto, línea, polígono o multipolígono.
 
-![GeoDataframe](../../public/python-geoespacial/pandas_geopandas_relation.png)
+![GeoDataframe [@carpentries_geospatial_python]](../../public/python-geoespacial/pandas_geopandas_relation.png)
+
+```{python}
+partidos_path = "data/pba_partidos.geojson"
+
+
+partidos = partidos.to_crs(USE_CRS) # Reproyectar al CRS de trabajo
+```
+
+```{python}
+partidos.head()
+```
+
+```{python}
+partidos.plot()
+```
 
 ### GeoPandas
 
@@ -94,7 +111,7 @@ Esta es un área sutil que requiere pensamiento cuidadoso sobre las diferencias 
 
 Los datos raster son datos de píxeles. Representan el espacio dividiéndolo en celdas de cuadrícula consistentes. Cada celda tiene un valor.
 
-![Datos raster](../../public/python-geoespacial/raster_concept.png)
+![Datos raster [@carpentries_geospatial_python]](../../public/python-geoespacial/raster_concept.png)
 
 Las celdas de la cuadrícula tienen una resolución consistente. Los valores pueden ser continuos o categóricos.
 
