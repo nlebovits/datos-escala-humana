@@ -75,10 +75,14 @@ Obtienes una tabla con diferentes atributos como nombres o valores (población, 
 ![GeoDataframe [@carpentries_geospatial_python]](../../public/python-geoespacial/pandas_geopandas_relation.png)
 
 ```{python}
-partidos_path = "data/pba_partidos.geojson"
+import geopandas as gpd
+import matplotlib.pyplot as plt
 
+partidos_path = "../../public/python-geoespacial/pba_partidos.geojson"
 
-partidos = partidos.to_crs(USE_CRS) # Reproyectar al CRS de trabajo
+partidos = gpd.read_file(partidos_path)
+
+partidos = partidos.to_crs("EPSG:5348") # Reproyectar al CRS POSGAR 2007 / Argentina 4
 ```
 
 ```{python}
