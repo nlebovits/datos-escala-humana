@@ -8,71 +8,83 @@ Desarrollar habilidades básicas en programación GIS para trabajar con datos p�
 
 ### ¿Qué es GIS?
 
-GIS es software que permite interactuar con datos geoespaciales. Herramientas comunes incluyen ArcGIS, PostGIS, QGIS, GDAL, Earth Engine, R y Python.
+GIS (Sistema de Información Geográfica) es software que permite interactuar con datos geoespaciales: capturar, almacenar, analizar y visualizar información sobre ubicaciones en la superficie terrestre. Estas herramientas son fundamentales para entender patrones espaciales, tomar decisiones informadas sobre recursos y territorio, y comunicar información geográfica de manera efectiva.
+
+En el contexto de gestión de riesgo climático, GIS permite identificar áreas vulnerables a inundaciones, analizar patrones de temperatura urbana, evaluar cobertura de infraestructura verde, y mucho más. Herramientas comunes incluyen aplicaciones de escritorio (ArcGIS, QGIS), bases de datos espaciales (PostGIS), bibliotecas de procesamiento (GDAL), plataformas en la nube (Earth Engine), y lenguajes de programación (R y Python).
 
 ### Tipos de Software GIS
 
+Existen dos enfoques principales para trabajar con datos geoespaciales: aplicaciones de interfaz gráfica de usuario (GUI) y herramientas de línea de comandos (CLI) basadas en programación.
+
 **Interfaz Gráfica de Usuario (GUI)**
 
-Ventajas: No requiere aprender programación. Mapeo y visualización más intuitivos y flexibles.
-
-Desventajas: No es reproducible. No escala ni automatiza bien. Difícil de personalizar.
-
-Ejemplos: ArcGIS, QGIS.
+Las aplicaciones GUI como ArcGIS y QGIS permiten trabajar con datos espaciales sin aprender un lenguaje de programación. El mapeo y la visualización son más intuitivos y flexibles en este entorno. Sin embargo, estas herramientas tienen limitaciones importantes: baja reproducibilidad de análisis, escalabilidad limitada para automatización, capacidad restringida para personalizar funcionalidad, e interfaces complejas con demasiados botones que pueden resultar abrumadoras.
 
 **Interfaz de Línea de Comandos (CLI) / Programación**
 
-Ventajas: Muy reproducible. Flexible, escalable y automatizable. Fácil de integrar con otras herramientas.
-
-Desventajas: Requiere aprender un lenguaje. Mapeo y visualización menos intuitivos. Curva de aprendizaje inicial.
+El enfoque programático ofrece alta reproducibilidad, escalabilidad y automatización completa. Proporciona flexibilidad total para personalizar funcionalidad y facilita la integración con otros flujos de trabajo y fuentes de datos. Las desventajas principales son la necesidad de aprender un lenguaje de programación, una curva de aprendizaje más pronunciada al principio, y que el mapeo y la visualización resultan menos intuitivos inicialmente.
 
 ### ¿Por qué Python?
 
-Python es ampliamente usado con un ecosistema rico de bibliotecas. Es flexible, poderoso y relativamente fácil de aprender. Está bien integrado con otras herramientas, es gratuito, de código abierto, y tiene una comunidad activa con documentación sólida.
+Python es ampliamente usado con un ecosistema rico de bibliotecas especializadas para análisis geoespacial. Es flexible, poderoso y relativamente fácil de aprender comparado con otros lenguajes. Ofrece integración total con bases de datos, APIs, servicios web y otros lenguajes de programación. Además, es gratuito, de código abierto, y cuenta con una comunidad activa que provee abundante documentación, tutoriales y soporte.
 
 ### ¿Por qué Google Colab?
 
-No requiere configurar un ambiente local. Es flexible e independiente de los recursos de tu computadora. Permite escalar recursos pagando si es necesario, aunque no será necesario en este curso.
+Google Colab es un entorno de computación en la nube que no requiere instalación local, solo necesitas conexión a internet. Es fácil de compartir y ofrece recursos gratuitos con acceso a CPU y GPU sin costo. Es escalable, permitiendo ampliar recursos según necesidad mediante opciones pagas, aunque no será necesario en este curso.
 
 Para otros contextos, se recomienda instalar localmente usando UV y un IDE como VS Code.
 
 ### Computación en la Nube
 
-La nube significa simplemente la computadora de alguien más: servidores a los que tu dispositivo se conecta por internet.
+La nube básicamente significa la computadora de alguien más: servidores a los que tu dispositivo se conecta por internet.
 
-**Ventajas**
+![Computación en la nube [@cloudflare_cloud_definition]](../../public/python-geoespacial/what-is-the-cloud.webp)
 
-Poderosa: puedes escalar recursos flexiblemente según tus necesidades. No requiere configurar servidores locales ni instalar programas localmente. Infraestructura distribuida resiliente ante fallas.
-
-**Desventajas**
-
-Requiere conexión a internet. Curva de aprendizaje inicial. Puede ser costosa con uso intensivo.
+La computación en la nube ofrece poder, flexibilidad y escalabilidad según necesidad sin requerir configurar servidores locales. Proporciona infraestructura distribuida y confiable. Sin embargo, tiene una curva de aprendizaje inicial, los costos pueden acumularse con uso intensivo, y requiere conexión constante a internet.
 
 Las herramientas nativas de la nube que usaremos no son más difíciles que las herramientas tradicionales y ofrecen muchas ventajas. La nube es simplemente uno de los lugares donde la gente computa hoy.
 
+**Herramientas Geoespaciales Nativas de la Nube**
+
+Las herramientas geoespaciales nativas de la nube están diseñadas específicamente para trabajar con datos almacenados en la nube. A diferencia de las herramientas tradicionales que requieren descargar datasets completos, estas herramientas permiten acceder y procesar solo las porciones de datos necesarias mediante protocolos como HTTP range requests.
+
+Ejemplos incluyen Cloud Optimized GeoTIFF (COG) para datos raster, que permite streaming eficiente de imágenes satelitales sin descargar archivos completos. GeoParquet y FlatGeobuf son formatos vectoriales optimizados para la nube que soportan consultas espaciales rápidas. Plataformas como Google Earth Engine, Microsoft Planetary Computer y AWS Earth Search proporcionan catálogos masivos de datos satelitales con APIs para análisis a escala.
+
+Estas herramientas son especialmente relevantes para análisis de riesgo climático, donde necesitamos procesar grandes volúmenes de datos satelitales, climáticos y geográficos sin la infraestructura para almacenarlos localmente.
+
 ### Sistemas de Referencia de Coordenadas (CRS)
 
-Los CRS son la base de cómo se representan los datos espaciales. Todos los datos espaciales tienen un CRS porque todos están técnicamente distorsionados. El mundo es aproximadamente esférico, no plano. Para representar datos esféricos tridimensionales en dos dimensiones, debemos distorsionarlos.
+Los [sistemas de referencia de coordenadas](https://py.geocompx.org/01-spatial-data#sec-coordinate-reference-systems-intro) definen cómo los elementos espaciales de los datos se relacionan con la superficie terrestre. Los CRS son geográficos o proyectados. Los [sistemas geográficos](https://py.geocompx.org/01-spatial-data#geographic-coordinate-systems) identifican ubicaciones usando longitud y latitud en grados decimales sobre una superficie esférica o elipsoidal. Los [sistemas proyectados](https://py.geocompx.org/01-spatial-data#sec-projected-coordinate-reference-systems) convierten la superficie tridimensional de la Tierra en coordenadas cartesianas (x, y) en metros sobre una superficie implícitamente plana.
+
+![Ejemplos de CRS distintos, Opennews.org via [@carpentries_geospatial_python]](../../public/python-geoespacial/us-crs-versions.jpg)
+
+Toda proyección introduce deformaciones. Por tanto, algunas propiedades de la superficie terrestre se distorsionan: área, dirección, distancia y forma. Una proyección puede preservar solo una o dos de estas propiedades. Las proyecciones se nombran según la propiedad que preservan: equal-area preserva área, azimuthal preserva dirección, equidistant preserva distancia, y conformal preserva forma local.
+
+Si imaginas que la Tierra es una naranja, la forma de pelarla y luego aplanar la cáscara es similar a cómo se hacen las proyecciones.
 
 ![Metáfora de la naranja [@carpentries_geospatial_python]](../../public/python-geoespacial/orange-peel-earth.jpg)
 
-Hay diferentes formas de hacer esto según el uso previsto de los datos. La metáfora de la naranja: si pelas una naranja y aplanas la cáscara, debes distorsionarla de diferentes maneras.
+Cuando surgen problemas con el análisis espacial, a menudo la causa son cuestiones relacionadas con el CRS. Al resolver problemas, una de las primeras cosas que debes verificar es si hay un problema de CRS.
 
-**Reglas fundamentales**
+**POSGAR 07: los CRS de Argentina**
 
-Siempre necesitas un CRS para tus datos. Siempre debes saber cuál es el CRS de tus datos. Debes elegirlo apropiadamente para el contexto: a veces querrás el CRS local, a veces Web Mercator, a veces WGS 84.
+El POSGAR 07 es el Marco de Referencia Geodésico Nacional establecido por el Instituto Geográfico Nacional (IGN). Argentina se divide en 7 fajas de Gauss-Krueger. Para calcular el CRS correspondiente, encontrá la faja en que te ubicas y agregá el número a 5342. Por ejemplo, La Plata se encuentra en faja 6 y tiene CRS "EPSG:5348". Podés usar [epsg.io](https://epsg.io) para confirmar códigos CRS.
 
-Cuando hay problemas en análisis geoespacial, a menudo están relacionados con el CRS. Al resolver problemas, una de las primeras cosas que debes verificar es si es un problema de CRS.
+**Unidades**
+
+Las estructuras de datos espaciales en GeoPandas y rasterio no soportan nativamente el concepto de unidades de medida. Las coordenadas son números planos que refieren a un plano arbitrario. Típicamente, las unidades son grados decimales (en CRS geográficos) o metros (en CRS proyectados), aunque hay excepciones. Los cálculos geométricos como longitud, área o distancia retornan números en las mismas unidades del CRS. Es responsabilidad del usuario determinar en qué unidades está el resultado y tratarlo apropiadamente. Por ejemplo, si el área está en m² y necesitamos km², debemos dividir por 1,000,000. Para más detalles, consultá la [sección sobre unidades](https://py.geocompx.org/01-spatial-data#units) en _Geocomputation with Python_.
 
 ## Datos vectoriales
 
-Los datos vectoriales están compuestos de ubicaciones geométricas discretas: puntos, líneas o polígonos. Representan características del planeta y asignan atributos a esas cosas en formato tabular.
+El [modelo de datos vectoriales](https://py.geocompx.org/01-spatial-data#sec-vector-data) representa entidades geográficas con puntos, líneas y polígonos. Estas geometrías tienen límites discretos y bien definidos, lo que significa que los datos vectoriales generalmente tienen alta precisión. Los puntos pueden representar features independientes (como la ubicación de una parada de colectivo) o pueden conectarse para formar geometrías más complejas como líneas y polígonos.
 
 ![Datos vectoriales [@carpentries_geospatial_python]](../../public/python-geoespacial/spatial_extent.png)
 
-Obtienes una tabla con diferentes atributos como nombres o valores (población, temperatura, etc.) y luego una columna de geometría que indica la forma física de esa cosa en el espacio. Esta columna de geometría puede contener punto, línea, polígono o multipolígono.
+Los datos vectoriales se organizan en una tabla de atributos y geometrías. La [columna de geometría](https://py.geocompx.org/01-spatial-data#sec-geometry-columns) es esencial en un GeoDataFrame: contiene la parte geométrica del vector layer y es la base para todas las operaciones espaciales. Esta columna puede contener punto, línea, polígono o multipolígono, y también almacena la información de referencia espacial (CRS).
 
 ![GeoDataframe [@carpentries_geospatial_python]](../../public/python-geoespacial/pandas_geopandas_relation.png)
+
+Los vectores dominan las ciencias sociales porque los asentamientos humanos y procesos (como infraestructura de transporte) tienden a tener límites discretos.
 
 ```{python}
 import geopandas as gpd
@@ -93,56 +105,88 @@ partidos.head()
 partidos.plot()
 ```
 
-### GeoPandas
+### Bibliotecas Python para Análisis Geoespacial
 
-GeoPandas es el módulo principal para datos vectoriales en Python, aunque hay otros.
+Python cuenta con un ecosistema robusto de bibliotecas para análisis geoespacial. En este curso usamos principalmente [geopandas](https://geopandas.org/) para vectores y [rasterio](https://rasterio.readthedocs.io/) y [xarray](https://xarray.dev/) para rasters.
 
-GeoPandas permite operaciones espaciales y no espaciales:
+**Para datos vectoriales:** [GeoPandas](https://geopandas.org/) extiende Pandas para trabajar con geometrías espaciales usando [Shapely](https://shapely.readthedocs.io/) para operaciones geométricas y [Fiona](https://fiona.readthedocs.io/) para lectura/escritura de archivos. [PyGEOS](https://pygeos.readthedocs.io/) ofrece operaciones vectoriales de alto rendimiento.
 
-**Operaciones no espaciales**
+**Para datos raster:** [Rasterio](https://rasterio.readthedocs.io/) lee y escribe formatos raster georreferenciados. [Xarray](https://xarray.dev/) y [rioxarray](https://corteva.github.io/rioxarray/) facilitan trabajar con arrays multidimensionales etiquetados, ideales para series temporales climáticas. [GDAL/OGR](https://gdal.org/) son las bibliotecas fundamentales que subyacen a muchas herramientas.
 
-Filtrado por columnas: buscar columnas con cierto nombre o valor.
+**Para visualización:** [Matplotlib](https://matplotlib.org/) proporciona gráficos básicos. [Folium](https://python-visualization.github.io/folium/) crea mapas interactivos web. [Plotly](https://plotly.com/python/) permite visualizaciones interactivas avanzadas. [Contextily](https://contextily.readthedocs.io/) agrega mapas base.
 
-**Operaciones espaciales**
+### Importar y trabajar con vectores
 
-Filtrado espacial: buscar columnas dentro de cierta área, fuera de cierta área, etc.
+Los proyectos típicamente comienzan importando un vector layer existente guardado como GeoPackage (.gpkg), ESRI Shapefile (.shp), u otro formato geográfico. La función `gpd.read_file()` importa estos archivos en un GeoDataFrame.
 
-Las operaciones espaciales pueden ser sofisticadas porque funcionan como constructos lógicos. Puedes decir "dame todo lo que está dentro de esto O toca esto O no toca esto O toca esto PERO no se superpone completamente O se superpone completamente PERO no solo toca el exterior".
+```python
+import geopandas as gpd
 
-Esta es un área sutil que requiere pensamiento cuidadoso sobre las diferencias entre operaciones. Por ejemplo, intersección y clip no son lo mismo.
+# Leer un archivo vectorial
+gdf = gpd.read_file("archivo.gpkg")
+
+# Acceder a la columna de geometría
+gdf.geometry
+
+# Ver el CRS
+gdf.crs
+
+# Filtrar datos (ejemplo: solo Egipto)
+gdf[gdf['name_long'] == 'Egypt']
+```
+
+La clase GeoDataFrame extiende DataFrame de pandas, permitiendo tratar atributos no espaciales como una tabla y procesarlos con métodos estándar. Los predicados espaciales son relaciones geométricas entre objetos: intersección, contención, proximidad, etc. Estas operaciones son fundamentales para análisis como identificar barrios dentro de zonas de inundación o encontrar infraestructura crítica cerca de áreas de riesgo. Para más detalles, consultá [Geocomputation with Python, Capítulo 1](https://py.geocompx.org/01-spatial-data#sec-vector-data).
 
 ## Datos raster
 
-Los datos raster son datos de píxeles. Representan el espacio dividiéndolo en celdas de cuadrícula consistentes. Cada celda tiene un valor.
+El [modelo de datos raster](https://py.geocompx.org/01-spatial-data#sec-raster-data) representa el mundo mediante una cuadrícula continua de celdas de tamaño constante. Este modelo consiste en metadatos (header) que definen el sistema de coordenadas, el origen y la resolución, más una matriz de valores. El origen típicamente es la coordenada de la esquina inferior izquierda. Esta representación evita almacenar explícitamente las coordenadas de cada celda, haciendo el procesamiento raster mucho más eficiente que el procesamiento vectorial.
 
 ![Datos raster [@carpentries_geospatial_python]](../../public/python-geoespacial/raster_concept.png)
 
-Las celdas de la cuadrícula tienen una resolución consistente. Los valores pueden ser continuos o categóricos.
+Los valores de celda son numéricos, representando variables continuas (elevación, temperatura, precipitación) o categóricas (tipos de cobertura del suelo, clases de uso). Los rasters suelen representar fenómenos continuos, aunque features discretos como clases de suelo también pueden representarse en este modelo. Sin embargo, los bordes de features discretos pueden volverse borrosos en datasets raster.
 
-Los raster se usan para representar muchos tipos diferentes de datos. En este taller representamos DEM (Modelo Digital de Elevación) y clases de cobertura del suelo: DEM siendo continuo, cobertura del suelo siendo codificada categóricamente.
+Los rasters dominan muchas ciencias ambientales debido a la dependencia de datos de teledetección satelital. Ejemplos incluyen imágenes satelitales, fotografías aéreas, modelos digitales de elevación, y mapas de precipitación. En este taller usamos modelos digitales de elevación (continuos) y datos de cobertura del suelo (categóricos).
 
-## Análisis espacial
+## Análisis Espacial
 
-## Operaciones Espaciales Básicas
+El análisis espacial permite extraer insights de datos geográficos mediante operaciones que consideran las relaciones espaciales entre features. Estas operaciones son esenciales para evaluar riesgo climático, planificar infraestructura resiliente, y tomar decisiones basadas en evidencia sobre el territorio.
 
-### Reproyecciones
+### Operaciones Espaciales Fundamentales
 
-### Operaciones de Recorte
+**Reproyecciones:** Transformar datos de un sistema de coordenadas a otro es frecuentemente necesario cuando trabajamos con múltiples fuentes de datos. Todos los datos deben estar en el mismo CRS antes de realizar análisis espacial. En Python, GeoPandas facilita esto con el método `to_crs()`.
 
-### Superposiciones Espaciales
+**Recorte espacial (Clip):** Extraer datos dentro de un área de interés específica. Por ejemplo, recortar datos climáticos nacionales a los límites de una provincia o municipio para enfocarse en análisis local.
 
-### Estadísticas Zonales
+**Superposiciones espaciales:** Combinar múltiples capas de datos según relaciones espaciales. La intersección espacial permite identificar, por ejemplo, qué infraestructura escolar se encuentra en zonas de riesgo de inundación. La unión espacial agrega atributos de una capa a otra basándose en relaciones espaciales.
 
-### Agregaciones Espaciales Básicas
+**Buffers y áreas de influencia:** Crear zonas alrededor de features para análisis de proximidad. Por ejemplo, identificar población dentro de 500 metros de espacios verdes o analizar áreas potencialmente afectadas alrededor de cuerpos de agua.
 
-### Extracción de Raster
+**Estadísticas zonales:** Calcular estadísticas de datos raster dentro de zonas definidas por polígonos. Por ejemplo, calcular temperatura promedio por barrio o precipitación total por cuenca hidrográfica. Esta operación es fundamental para conectar datos continuos (raster) con unidades administrativas (vector).
+
+**Agregación espacial:** Combinar geometrías y sus atributos según criterios espaciales o temáticos. Por ejemplo, disolver límites de barrios para crear distritos o agregar datos de parcelas para obtener estadísticas a nivel de manzana.
+
+Estas operaciones forman la base del análisis geoespacial aplicado a gestión de riesgo climático, permitiendo identificar exposición, evaluar vulnerabilidad, y priorizar intervenciones basadas en criterios espaciales claros.
+
+## Formatos de Archivos GIS
+
+Existen varios formatos de archivo utilizados en análisis GIS, cada uno con características específicas.
+
+**Formatos vectoriales comunes:** Shapefile de ESRI (.shp, .dbf, .shx) es el formato geoespacial más común y se ha convertido en estándar de la industria, aunque requiere múltiples archivos. GeoPackage (.gpkg) es una alternativa más reciente basada en un archivo único que gana terreno. GeoJSON (.geojson, .json) se usa para cartografía web y almacena coordenadas como texto usando JavaScript Object Notation. KML/KMZ (.kml, .kmz) es el formato XML utilizado principalmente en Google Earth.
+
+**Formatos raster comunes:** GeoTIFF (.tif, .tiff) es el formato estándar de la industria para aplicaciones GIS y teledetección satelital. Los Cloud Optimized GeoTIFF (COG) son una variante optimizada que incorpora mosaicos y vistas previas para soportar consultas HTTP, permitiendo cargar subconjuntos de la imagen sin transferir el archivo completo.
+
+[**Formatos nativos de la nube:**](https://guide.cloudnativegeo.org/) GeoParquet es un formato columnar optimizado para consultas analíticas de grandes datasets vectoriales. FlatGeobuf proporciona acceso espacial eficiente mediante indexación espacial incorporada. Zarr es un formato para arrays multidimensionales optimizado para almacenamiento en la nube, ideal para series temporales climáticas.
+
+**STAC (SpatioTemporal Asset Catalog):** Aunque no es un formato de datos per se, STAC es un estándar fundamental para organizar y descubrir datos geoespaciales en la nube. Proporciona metadatos estructurados que permiten buscar y acceder eficientemente a colecciones masivas de imágenes satelitales y otros datos espaciotemporales.
+
+
 
 ## Recursos Adicionales y Aprendizaje Avanzado
 
-Rey, S., Arribas-Bel, D., & Wolf, L. (2023). Geographic Data Science with
-Python. Disponible en: https://geographicdata.science/book/intro.html
+Para profundizar en análisis geoespacial con Python, consultá estos recursos completos y gratuitos:
 
-Dorman, M. (2023). Geocomputation with Python. Disponible en:
-https://py.geocompx.org/
+Rey, S., Arribas-Bel, D., & Wolf, L. (2023). [Geographic Data Science with Python](https://geographicdata.science/book/intro.html). CRC Press.
 
-Material seleccionado de PyGIS (https://pygis.io)
+Dorman, M., Graser, A., Nowosad, J., & Lovelace, R. (2025). [Geocomputation with Python](https://py.geocompx.org/). CRC Press.
+
+Para explorar software GIS tradicional y plataformas comerciales, visitá [The Carpentries Geospatial Python workshop](https://carpentries-incubator.github.io/geospatial-python/index.html) que incluye información detallada sobre opciones de código abierto (QGIS, GRASS GIS, GDAL) y soluciones comerciales (ArcGIS, MapInfo).
