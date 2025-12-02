@@ -52,6 +52,8 @@ Las herramientas nativas de la nube que usaremos no son más difíciles que las 
 
 Los CRS son la base de cómo se representan los datos espaciales. Todos los datos espaciales tienen un CRS porque todos están técnicamente distorsionados. El mundo es aproximadamente esférico, no plano. Para representar datos esféricos tridimensionales en dos dimensiones, debemos distorsionarlos.
 
+![Metáfora de la naranja](../../public/python-geoespacial/orange-peel-earth.jpg)
+
 Hay diferentes formas de hacer esto según el uso previsto de los datos. La metáfora de la naranja: si pelas una naranja y aplanas la cáscara, debes distorsionarla de diferentes maneras.
 
 **Reglas fundamentales**
@@ -64,7 +66,11 @@ Cuando hay problemas en análisis geoespacial, a menudo están relacionados con 
 
 Los datos vectoriales están compuestos de ubicaciones geométricas discretas: puntos, líneas o polígonos. Representan características del planeta y asignan atributos a esas cosas en formato tabular.
 
+![Datos vectoriales](../../public/python-geoespacial/spatial_extent.png)
+
 Obtienes una tabla con diferentes atributos como nombres o valores (población, temperatura, etc.) y luego una columna de geometría que indica la forma física de esa cosa en el espacio. Esta columna de geometría puede contener punto, línea, polígono o multipolígono.
+
+![GeoDataframe](../../public/python-geoespacial/pandas_geopandas_relation.png)
 
 ### GeoPandas
 
@@ -88,6 +94,8 @@ Esta es un área sutil que requiere pensamiento cuidadoso sobre las diferencias 
 
 Los datos raster son datos de píxeles. Representan el espacio dividiéndolo en celdas de cuadrícula consistentes. Cada celda tiene un valor.
 
+![Datos raster](../../public/python-geoespacial/raster_concept.png)
+
 Las celdas de la cuadrícula tienen una resolución consistente. Los valores pueden ser continuos o categóricos.
 
 Los raster se usan para representar muchos tipos diferentes de datos. En este taller representamos DEM (Modelo Digital de Elevación) y clases de cobertura del suelo: DEM siendo continuo, cobertura del suelo siendo codificada categóricamente.
@@ -109,3 +117,11 @@ Los raster se usan para representar muchos tipos diferentes de datos. En este ta
 ### Extracción de Raster
 
 ## Recursos Adicionales y Aprendizaje Avanzado
+
+Rey, S., Arribas-Bel, D., & Wolf, L. (2023). Geographic Data Science with
+Python. Disponible en: https://geographicdata.science/book/intro.html
+
+Dorman, M. (2023). Geocomputation with Python. Disponible en:
+https://py.geocompx.org/
+
+Material seleccionado de PyGIS (https://pygis.io)
