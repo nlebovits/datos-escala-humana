@@ -36,13 +36,13 @@ jobs:
         uses: quarto-dev/quarto-actions/setup@v2
 
       - name: Render language selector
-        run: quarto render index.qmd
+        run: uv run quarto render index.qmd
 
       - name: Render Spanish book
-        run: quarto render --profile es
+        run: uv run quarto render --profile es
 
       - name: Render English book
-        run: quarto render --profile en
+        run: uv run quarto render --profile en
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
