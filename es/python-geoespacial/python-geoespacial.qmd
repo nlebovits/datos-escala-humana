@@ -74,6 +74,18 @@ El POSGAR 07 es el Marco de Referencia Geodésico Nacional establecido por el In
 
 Las estructuras de datos espaciales en GeoPandas y rasterio no soportan nativamente el concepto de unidades de medida. Las coordenadas son números planos que refieren a un plano arbitrario. Típicamente, las unidades son grados decimales (en CRS geográficos) o metros (en CRS proyectados), aunque hay excepciones. Los cálculos geométricos como longitud, área o distancia retornan números en las mismas unidades del CRS. Es responsabilidad del usuario determinar en qué unidades está el resultado y tratarlo apropiadamente. Por ejemplo, si el área está en m² y necesitamos km², debemos dividir por 1,000,000. Para más detalles, consultá la [sección sobre unidades](https://py.geocompx.org/01-spatial-data#units) en _Geocomputation with Python_.
 
+### Formatos de Archivos GIS
+
+Existen varios formatos de archivo utilizados en análisis GIS, cada uno con características específicas.
+
+**Formatos vectoriales comunes:** Shapefile de ESRI (.shp, .dbf, .shx) es el formato geoespacial más común y se ha convertido en estándar de la industria, aunque requiere múltiples archivos. GeoPackage (.gpkg) es una alternativa más reciente basada en un archivo único que gana terreno. GeoJSON (.geojson, .json) se usa para cartografía web y almacena coordenadas como texto usando JavaScript Object Notation. KML/KMZ (.kml, .kmz) es el formato XML utilizado principalmente en Google Earth.
+
+**Formatos raster comunes:** GeoTIFF (.tif, .tiff) es el formato estándar de la industria para aplicaciones GIS y teledetección satelital. Los Cloud Optimized GeoTIFF (COG) son una variante optimizada que incorpora mosaicos y vistas previas para soportar consultas HTTP, permitiendo cargar subconjuntos de la imagen sin transferir el archivo completo.
+
+[**Formatos nativos de la nube:**](https://guide.cloudnativegeo.org/) GeoParquet es un formato columnar optimizado para consultas analíticas de grandes datasets vectoriales. FlatGeobuf proporciona acceso espacial eficiente mediante indexación espacial incorporada. Zarr es un formato para arrays multidimensionales optimizado para almacenamiento en la nube, ideal para series temporales climáticas.
+
+**STAC (SpatioTemporal Asset Catalog):** Aunque no es un formato de datos per se, STAC es un estándar fundamental para organizar y descubrir datos geoespaciales en la nube. Proporciona metadatos estructurados que permiten buscar y acceder eficientemente a colecciones masivas de imágenes satelitales y otros datos espaciotemporales.
+
 ## Datos vectoriales
 
 El [modelo de datos vectoriales](https://py.geocompx.org/01-spatial-data#sec-vector-data) representa entidades geográficas con puntos, líneas y polígonos. Estas geometrías tienen límites discretos y bien definidos, lo que significa que los datos vectoriales generalmente tienen alta precisión. Los puntos pueden representar features independientes (como la ubicación de una parada de colectivo) o pueden conectarse para formar geometrías más complejas como líneas y polígonos.
@@ -115,24 +127,45 @@ Python cuenta con un ecosistema robusto de bibliotecas para análisis geoespacia
 
 **Para visualización:** [Matplotlib](https://matplotlib.org/) proporciona gráficos básicos. [Folium](https://python-visualization.github.io/folium/) crea mapas interactivos web. [Plotly](https://plotly.com/python/) permite visualizaciones interactivas avanzadas. [Contextily](https://contextily.readthedocs.io/) agrega mapas base.
 
-### Importar y trabajar con vectores
+### Filtrar y manipular geometrías
 
-Los proyectos típicamente comienzan importando un vector layer existente guardado como GeoPackage (.gpkg), ESRI Shapefile (.shp), u otro formato geográfico. La función `gpd.read_file()` importa estos archivos en un GeoDataFrame.
+Los datos de `partidos` tienen varios atributos: código del departamento, nombre del departamento y geometría. Para sacar solo los datos del Partido de La Plata, filtramos por la observación donde la columna "fna" corresponde a "Partido de La Plata".
 
-```python
-import geopandas as gpd
+```{python}
+la_plata = partidos[partidos["fna"] == "Partido de La Plata"]
 
-# Leer un archivo vectorial
-gdf = gpd.read_file("archivo.gpkg")
+la_plata.head()
+```
 
-# Acceder a la columna de geometría
-gdf.geometry
+Al mapearlo vemos que incluye no solo la zona urbana sino también una isla que es técnicamente parte del partido.
 
-# Ver el CRS
-gdf.crs
+```{python}
+la_plata.plot(figsize=(12, 12))
+```
 
-# Filtrar datos (ejemplo: solo Egipto)
-gdf[gdf['name_long'] == 'Egypt']
+Al examinar el tipo de geometría, vemos que tenemos un multipolígono. La geometría puede ser un punto, una línea, un polígono o un multipolígono.
+
+```{python}
+print(la_plata.geometry.iloc[0].geom_type)
+```
+
+Queremos eliminar la isla porque no corresponde a nuestro análisis. Extraemos la geometría más grande de las dos.
+
+```{python}
+# Obtener la geometría principal y mantener solo el polígono más grande
+la_plata = la_plata.copy()
+main_geom = la_plata.geometry.iloc[0]
+la_plata.loc[la_plata.index[0], "geometry"] = max(main_geom.geoms, key=lambda p: p.area)
+```
+
+Al chequear la geometría nuevamente, vemos que ahora es un polígono simple y aparece únicamente el partido de La Plata sin la isla.
+
+```{python}
+print(la_plata.geometry.iloc[0].geom_type)
+```
+
+```{python}
+la_plata.plot(figsize=(12, 12))
 ```
 
 La clase GeoDataFrame extiende DataFrame de pandas, permitiendo tratar atributos no espaciales como una tabla y procesarlos con métodos estándar. Los predicados espaciales son relaciones geométricas entre objetos: intersección, contención, proximidad, etc. Estas operaciones son fundamentales para análisis como identificar barrios dentro de zonas de inundación o encontrar infraestructura crítica cerca de áreas de riesgo. Para más detalles, consultá [Geocomputation with Python, Capítulo 1](https://py.geocompx.org/01-spatial-data#sec-vector-data).
@@ -146,6 +179,239 @@ El [modelo de datos raster](https://py.geocompx.org/01-spatial-data#sec-raster-d
 Los valores de celda son numéricos, representando variables continuas (elevación, temperatura, precipitación) o categóricas (tipos de cobertura del suelo, clases de uso). Los rasters suelen representar fenómenos continuos, aunque features discretos como clases de suelo también pueden representarse en este modelo. Sin embargo, los bordes de features discretos pueden volverse borrosos en datasets raster.
 
 Los rasters dominan muchas ciencias ambientales debido a la dependencia de datos de teledetección satelital. Ejemplos incluyen imágenes satelitales, fotografías aéreas, modelos digitales de elevación, y mapas de precipitación. En este taller usamos modelos digitales de elevación (continuos) y datos de cobertura del suelo (categóricos).
+
+### Elevación: datos continuos
+
+Trabajamos con datos de DSM (Modelo Digital de Superficie) que provienen de Copernicus (Agencia Espacial Europea) [almacenados en Open Land Map](https://radiantearth.github.io/stac-browser/#/external/s3.eu-central-1.wasabisys.com/stac/openlandmap/dsm_glo30/collection.json). Usamos un Cloud Optimized GeoTIFF (GeoTIFF Optimizado para la Nube), junto con el módulo `rioxarray` para importar solamente los datos necesarios de manera eficaz. En lugar de importar todos los datos globales (varios terabytes), importamos únicamente nuestra área de interés mediante lazy loading (carga perezosa). Esto significa que no descargamos los datos hasta haberlos filtrado, usando así solamente la memoria y poder computacional esencial.
+
+Los datos de elevación son un ejemplo de datos continuos, lo que significa que los valores pueden tomar cualquier número dentro de un rango (incluyendo decimales). Estos valores se almacenan como floats (números de punto flotante) en vez de enteros, permitiendo representar mediciones precisas como 15.7 metros o 23.42 metros de elevación.
+
+```{python}
+import pystac_client
+from odc.stac import load
+import rioxarray as rio
+
+# el DEM de Copernicus
+dsm_path = "../../public/python-geoespacial/copernicus-dem.tif"
+
+# Reproyectar al CRS del raster (EPSG:4326)
+aoi = la_plata.to_crs("EPSG:4326")
+
+# Obtener el bounding box de nuestro área de interés
+bbox = aoi.total_bounds
+
+dsm = rio.open_rasterio(dsm_path)
+
+# Reproyectamos al CRS de trabajo
+dsm_reproj = dsm.rio.reproject(dst_crs="EPSG:5348")
+```
+
+Visualizamos el modelo digital de superficie para La Plata. El parámetro `robust=True` mejora el contraste ignorando valores extremos, y `cmap="terrain"` usa una paleta de colores apropiada para elevación.
+
+```{python}
+dsm_clipped_reproj.plot(robust=True, cmap="terrain", figsize=(12, 12))
+```
+
+### Estadísticas zonales: conectar raster y vector
+
+Las estadísticas zonales permiten calcular valores agregados de un raster dentro de zonas definidas por polígonos vectoriales. Esta operación es fundamental para conectar datos continuos (raster) con unidades administrativas (vector). Extraemos estadísticas de elevación para el área de La Plata.
+
+```{python}
+import numpy as np
+from rasterstats import zonal_stats
+
+la_plata = la_plata.copy()
+
+# Extraer estadísticas de elevación (min, mean, median, max)
+stats = zonal_stats(
+    la_plata,
+    dsm_clipped_reproj.squeeze().values,
+    affine=dsm_clipped_reproj.rio.transform(),
+    stats=["min", "mean", "median", "max"],
+    nodata=np.nan,
+)
+
+# Agregar las estadísticas como nuevas columnas
+la_plata["dsm_min"] = [s["min"] for s in stats]
+la_plata["dsm_mean"] = [s["mean"] for s in stats]
+la_plata["dsm_median"] = [s["median"] for s in stats]
+la_plata["dsm_max"] = [s["max"] for s in stats]
+
+la_plata[
+    [
+        "fna",
+        "dsm_min",
+        "dsm_mean",
+        "dsm_median",
+        "dsm_max",
+    ]
+]
+```
+
+### Cobertura del suelo: datos categóricos
+
+Los datos anteriores eran continuos (float, números con decimales). Los rasters también pueden tener datos categóricos, codificados con números enteros que representan categorías. Importamos datos de cobertura del suelo del proyecto MapBiomas, que tiene información de Argentina desde 1998 hasta 2022. Son los datos más confiables a 30 metros de resolución disponibles actualmente.
+
+```{python}
+suelo_2022_ruta = "https://storage.googleapis.com/mapbiomas-public/initiatives/argentina/collection-1/coverage/argentina_coverage_2022.tif"
+
+# Abre el raster con rioxarray y chunks
+suelo_2022 = rio.open_rasterio(
+    suelo_2022_ruta,
+    chunks={"x": 4096, "y": 4096},
+)
+
+# Recorta en el CRS nativo del raster (EPSG:4326)
+suelo_2022_clipped = suelo_2022.rio.clip(
+    aoi.geometry.values,
+    from_disk=True,
+)
+
+# Reproyecta al CRS de trabajo (POSGAR 7)
+suelo_2022 = suelo_2022_clipped.rio.reproject(dst_crs="EPSG:5348")
+
+# Enmascarar valores NoData
+suelo_2022_masked = suelo_2022.where(
+    (suelo_2022 != suelo_2022.rio.nodata) & (suelo_2022 != 255)
+)
+```
+
+Para visualizar correctamente los datos categóricos de cobertura del suelo, necesitamos mapear cada valor numérico a su categoría y color correspondiente.
+
+```{python}
+import matplotlib.colors as mcolors
+
+# Definir categorías de cobertura del suelo con sus IDs y colores MapBiomas
+categorias = {
+    "Leñosa cerrada": {"ids": [3], "color": "#1f8d49"},
+    "Leñosa abierta": {"ids": [4], "color": "#7dc975"},
+    "Leñosa dispersa": {"ids": [45], "color": "#807a40"},
+    "Leñosa inundable": {"ids": [6], "color": "#026975"},
+    "Vegetación no leñosa inundable": {"ids": [11], "color": "#519799"},
+    "Pastizal": {"ids": [12], "color": "#d6bc74"},
+    "Estepa": {"ids": [63], "color": "#ebf8b5"},
+    "Pastura": {"ids": [15], "color": "#edde8e"},
+    "Agricultura": {"ids": [18], "color": "#e974ed"},
+    "Plantación forestal": {"ids": [9], "color": "#7a5900"},
+    "Cultivo arbustivo": {"ids": [36], "color": "#d082de"},
+    "Mosaico agropecuario": {"ids": [21], "color": "#ffefc3"},
+    "Área sin vegetación": {"ids": [22], "color": "#d4271e"},
+    "Río, lago u océano": {"ids": [33], "color": "#2532e4"},
+    "Hielo y nieve en superficie": {"ids": [34], "color": "#93dfe6"},
+    "No observado": {"ids": [27], "color": "#ffffff"},
+}
+
+# Obtener los IDs únicos presentes en los datos
+valores_unicos = np.unique(
+    suelo_2022_masked.values[~np.isnan(suelo_2022_masked.values)]
+).astype(int)
+ids_presentes = set(valores_unicos)
+
+# Filtrar solo las categorías que aparecen en nuestros datos
+categorias_presentes = {
+    nombre: info
+    for nombre, info in categorias.items()
+    if any(id in ids_presentes for id in info["ids"])
+}
+
+# Crear mapa de colores
+colores_por_id = {}
+for info in categorias.values():
+    for id_pixel in info["ids"]:
+        colores_por_id[id_pixel] = info["color"]
+
+ids_ordenados = sorted(colores_por_id.keys())
+cmap = mcolors.ListedColormap([colores_por_id[i] for i in ids_ordenados])
+norm = mcolors.BoundaryNorm(ids_ordenados, cmap.N)
+
+# Visualizar el raster de cobertura del suelo
+fig, ax = plt.subplots(figsize=(20, 20))
+
+suelo_2022_masked.plot(ax=ax, cmap=cmap, norm=norm, add_colorbar=False)
+
+# Crear leyenda solo con las categorías presentes
+leyenda = [
+    plt.Rectangle((0, 0), 1, 1, facecolor=info["color"], label=nombre)
+    for nombre, info in categorias_presentes.items()
+]
+
+ax.legend(
+    handles=leyenda,
+    loc="lower center",
+    bbox_to_anchor=(0.5, -0.1),
+    ncol=3,
+    frameon=False,
+)
+
+plt.title("Cobertura del Suelo - MapBiomas 2022")
+plt.tight_layout()
+plt.show()
+```
+
+### Analizar distribución territorial
+
+Para entender mejor la composición del territorio, calculamos qué porcentaje del área de La Plata corresponde a cada tipo de cobertura del suelo.
+
+```{python}
+# Extraer valores del raster y eliminar NoData
+valores = suelo_2022_masked.values.flatten()
+valores = valores[~np.isnan(valores)]
+
+# Contar píxeles de cada ID único
+ids_unicos, conteos = np.unique(valores, return_counts=True)
+
+# Agrupar IDs por categoría de cobertura
+conteos_por_categoria = {}
+for nombre, info in categorias.items():
+    total = sum(
+        conteos[ids_unicos == id_pixel][0] if id_pixel in ids_unicos else 0
+        for id_pixel in info["ids"]
+    )
+    if total > 0:
+        conteos_por_categoria[nombre] = {"conteo": total, "color": info["color"]}
+
+# Calcular porcentajes
+total_pixeles = sum(cat["conteo"] for cat in conteos_por_categoria.values())
+for nombre in conteos_por_categoria:
+    porcentaje = (conteos_por_categoria[nombre]["conteo"] / total_pixeles) * 100
+    conteos_por_categoria[nombre]["porcentaje"] = porcentaje
+
+# Ordenar de mayor a menor porcentaje
+categorias_ordenadas = sorted(
+    conteos_por_categoria.items(), key=lambda x: x[1]["porcentaje"], reverse=True
+)
+
+# Crear gráfico de barras horizontal
+fig, ax = plt.subplots(figsize=(12, 8))
+
+nombres = [cat[0] for cat in categorias_ordenadas]
+porcentajes = [cat[1]["porcentaje"] for cat in categorias_ordenadas]
+colores = [cat[1]["color"] for cat in categorias_ordenadas]
+
+barras = ax.barh(nombres, porcentajes, color=colores, edgecolor="black")
+
+ax.set_xlabel("Porcentaje (%)", fontsize=12)
+ax.set_ylabel("Tipo de Cobertura", fontsize=12)
+ax.set_title(
+    "Distribución de Cobertura del Suelo - La Plata (MapBiomas 2022)",
+    fontsize=14,
+    fontweight="bold",
+)
+ax.grid(True, alpha=0.3, axis="x")
+
+# Agregar etiquetas de porcentaje en las barras
+for barra, pct in zip(barras, porcentajes):
+    ax.text(
+        pct + 0.5,
+        barra.get_y() + barra.get_height() / 2,
+        f"{pct:.1f}%",
+        va="center",
+        fontsize=10,
+    )
+
+plt.tight_layout()
+plt.show()
+```
 
 ## Análisis Espacial
 
@@ -166,20 +432,6 @@ El análisis espacial permite extraer insights de datos geográficos mediante op
 **Agregación espacial:** Combinar geometrías y sus atributos según criterios espaciales o temáticos. Por ejemplo, disolver límites de barrios para crear distritos o agregar datos de parcelas para obtener estadísticas a nivel de manzana.
 
 Estas operaciones forman la base del análisis geoespacial aplicado a gestión de riesgo climático, permitiendo identificar exposición, evaluar vulnerabilidad, y priorizar intervenciones basadas en criterios espaciales claros.
-
-## Formatos de Archivos GIS
-
-Existen varios formatos de archivo utilizados en análisis GIS, cada uno con características específicas.
-
-**Formatos vectoriales comunes:** Shapefile de ESRI (.shp, .dbf, .shx) es el formato geoespacial más común y se ha convertido en estándar de la industria, aunque requiere múltiples archivos. GeoPackage (.gpkg) es una alternativa más reciente basada en un archivo único que gana terreno. GeoJSON (.geojson, .json) se usa para cartografía web y almacena coordenadas como texto usando JavaScript Object Notation. KML/KMZ (.kml, .kmz) es el formato XML utilizado principalmente en Google Earth.
-
-**Formatos raster comunes:** GeoTIFF (.tif, .tiff) es el formato estándar de la industria para aplicaciones GIS y teledetección satelital. Los Cloud Optimized GeoTIFF (COG) son una variante optimizada que incorpora mosaicos y vistas previas para soportar consultas HTTP, permitiendo cargar subconjuntos de la imagen sin transferir el archivo completo.
-
-[**Formatos nativos de la nube:**](https://guide.cloudnativegeo.org/) GeoParquet es un formato columnar optimizado para consultas analíticas de grandes datasets vectoriales. FlatGeobuf proporciona acceso espacial eficiente mediante indexación espacial incorporada. Zarr es un formato para arrays multidimensionales optimizado para almacenamiento en la nube, ideal para series temporales climáticas.
-
-**STAC (SpatioTemporal Asset Catalog):** Aunque no es un formato de datos per se, STAC es un estándar fundamental para organizar y descubrir datos geoespaciales en la nube. Proporciona metadatos estructurados que permiten buscar y acceder eficientemente a colecciones masivas de imágenes satelitales y otros datos espaciotemporales.
-
-
 
 ## Recursos Adicionales y Aprendizaje Avanzado
 
