@@ -209,7 +209,7 @@ dsm_reproj = dsm.rio.reproject(dst_crs="EPSG:5348")
 Visualizamos el modelo digital de superficie para La Plata. El parámetro `robust=True` mejora el contraste ignorando valores extremos, y `cmap="terrain"` usa una paleta de colores apropiada para elevación.
 
 ```{python}
-dsm_clipped_reproj.plot(robust=True, cmap="terrain", figsize=(12, 12))
+dsm_reproj.plot(robust=True, cmap="terrain", figsize=(12, 12))
 ```
 
 ### Estadísticas zonales: conectar raster y vector
@@ -225,8 +225,8 @@ la_plata = la_plata.copy()
 # Extraer estadísticas de elevación (min, mean, median, max)
 stats = zonal_stats(
     la_plata,
-    dsm_clipped_reproj.squeeze().values,
-    affine=dsm_clipped_reproj.rio.transform(),
+    dsm_reproj.squeeze().values,
+    affine=dsm_reproj.rio.transform(),
     stats=["min", "mean", "median", "max"],
     nodata=np.nan,
 )
