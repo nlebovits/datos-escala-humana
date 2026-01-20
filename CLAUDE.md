@@ -25,5 +25,6 @@ When instructed to work "as" one of the following agents, read and follow the co
 | "as editor" or "as English editor" | `.agents/eng-copyeditor.md` |
 | "as open data reviewer" or "as open data specialist" | `.agents/open-data-reviewer.md` |
 | "as content reviewer" or "high-level content reviewer" | `.agents/content-reviewer.md` |
+| "as climate risk expert" | | `.agents/climate-risk-expert.md` |
 
 Read the agent file before responding. Follow its instructions for tone, output format, and review approach.

@@ -46,14 +46,19 @@ Volume and quality have grown tremendously. Many of these datasets are available
 
 Important repositories to explore:
 
-- OpenStreetMap
-- Google Earth Engine
-- Google Earth Engine Community Catalog
-- OpenLandMap
-- Source Cooperative
-- Microsoft Planetary Computer
+**OpenStreetMap**: Community-generated geographic data. Coverage and quality vary significantly by region—strong in areas with active mapping communities, sparse elsewhere. Best for infrastructure (roads, buildings) in urban areas. Data quality depends on local contributor activity. Institutionally stable (OpenStreetMap Foundation), but data completeness is community-dependent.
 
-Many have QGIS plugins to import data directly. If not, you can always access in Python or through download.
+**Google Earth Engine**: Platform providing access to satellite imagery and geospatial datasets, particularly strong for environmental monitoring and land cover analysis. Requires learning the Earth Engine API. Free for research and non-commercial use. Backed by Google's infrastructure, making it highly stable, but tied to Google's platform.
+
+**Google Earth Engine Community Catalog**: Community-curated collection of datasets not in the official Earth Engine catalog. More diverse than the official catalog, but sustainability depends on individual contributors and grant funding. Variable documentation quality. Excellent for finding specialized climate datasets.
+
+**OpenLandMap**: Provides global environmental layers (soil, climate, vegetation) based on machine learning models. Focus on reproducible science and open methods. Strong documentation of methods and uncertainty. Institutionally backed by OpenGeoHub Foundation. Particularly useful for environmental baseline data.
+
+**Source Cooperative**: Community-driven data catalog emphasizing cloud-native formats and open science. Newer platform (launched 2021) with growing collection of climate and earth observation data. Sustainability model still developing. Good for finding GeoParquet and cloud-optimized datasets.
+
+**Microsoft Planetary Computer**: Curated catalog of earth observation data optimized for analysis at scale. Strong focus on cloud-native formats and computational efficiency. Backed by Microsoft, making it institutionally stable. US-government-focused datasets (USGS, NOAA), which means better coverage of North America than other regions.
+
+Many have QGIS plugins to import data directly. If not, you can always access in Python or through download. This book primarily uses Python workflows to demonstrate reproducible, cloud-native approaches that work across these platforms.
 
 ### Limitations of Global Data
 
@@ -63,7 +68,23 @@ Many have QGIS plugins to import data directly. If not, you can always access in
 
 Models often perform better outside the global south because they have less data from the global south.
 
+**Evaluating fitness for your region**: When encountering a "global" dataset, assess its usefulness for your specific location:
+
+- **Visual inspection**: Load the data for your area and compare it against your local knowledge. Does the land cover classification match what you know about your city? Do building footprints align with actual development patterns?
+
+- **Ground truthing**: If possible, verify the data against field observations or local surveys. Check a few locations you know well—does the dataset accurately represent them?
+
+- **Comparison with local data**: If you have local government data (even if less current), compare it with the global dataset. Where do they agree? Where do they diverge? Understanding these differences helps you know what the global data can and cannot tell you.
+
+- **Check the documentation**: Read the dataset's methodology and validation reports. Does it include accuracy assessments for your region? What were the training data sources? If validation focuses on North America and Europe, the dataset likely performs worse in your context.
+
+- **Understand resolution and scale**: A 30m resolution global land cover dataset may be adequate for regional analysis but inappropriate for neighborhood-scale planning. Match the data resolution to your decision scale.
+
+Global datasets are tools, not truth. They provide starting points and regional context, but they require critical evaluation before use in local decision-making. When global data quality is insufficient for your needs, consider hybrid approaches that combine global baselines with local data collection, or focus efforts on collecting the specific high-priority data your decisions require.
+
 ## Geospatial File Formats
+
+This section describes different formats for storing and accessing geospatial data. In Chapter 1, we demonstrated several of these approaches: loading vector data from a WFS service (ARBA municipalities), accessing raster data via STAC catalogs (Copernicus DEM), and querying cloud-optimized files over HTTP (MapBiomas land cover). Understanding these format categories helps you navigate the data landscape and choose appropriate access methods for different situations.
 
 ### Flat or Standard Files
 
@@ -79,6 +100,8 @@ GeoJSON is specifically designed for web visualization, but has significant limi
 
 Standardized protocols for web mapping and data visualization. Integration with GIS, but can be slow for queries. Can be considered precursors to cloud-native formats because they were the industry standard for a long time for sharing online. They remain useful, but are aging.
 
+In Chapter 1, we used a WFS service to load Buenos Aires Province municipalities from ARBA's GeoServer. WFS remains common for government data portals, particularly in Latin America where many agencies have invested in this infrastructure.
+
 ### APIs
 
 Flexible ways to get exactly the data you want, making data available through an endpoint. Excellent for programming workflows and web applications, but require technical knowledge. Not always as efficient as optimized cloud-native formats.
@@ -90,3 +113,27 @@ API and cloud-native geospatial data can be compatible.
 Best for sharing online and for massive live data. They are a step forward over traditional file formats, although they have their own limitations.
 
 **Main advantage**: They allow you to query only the data you want for your area of interest. Instead of having to download gigabytes of files, you might only download megabytes and you can download them very efficiently only for the area that matters to you. For our purposes, this is the main advantage.
+
+Cloud-optimized formats like GeoParquet (for vector data) and Cloud Optimized GeoTIFF/COG (for raster data) support HTTP range requests, meaning you can read just the portion of a file you need without downloading the whole thing. This is transformative for working with large datasets—instead of downloading Argentina's entire building footprint dataset, you can query just the buildings in La Plata. In Chapter 1, we demonstrated this by loading elevation data from a global DEM and land cover data from a national dataset, downloading only our area of interest.
+
+STAC (SpatioTemporal Asset Catalog) provides standardized metadata and discovery for cloud-optimized data. When we queried the Copernicus DEM in Chapter 1, we used a STAC catalog to find the specific tiles covering La Plata, then loaded only those tiles. This pattern—discover via STAC, load via cloud-optimized formats—is increasingly standard for earth observation and climate data.
+
+### When to Use Which Format
+
+**Use cloud-native formats (GeoParquet, COG, Zarr) when:**
+- Working with large datasets where you only need a subset
+- Accessing data stored remotely (cloud storage, data repositories)
+- Building reproducible workflows that others can run without downloading large files
+- Processing earth observation or climate data at scale
+
+**Use WFS/WMS services when:**
+- Accessing government data portals that provide these endpoints
+- You need the most current version of regularly updated data
+- Integration with existing GIS workflows
+
+**Use flat files (GeoJSON, GeoPackage) when:**
+- Working with small datasets that fit comfortably in memory
+- You need offline access to data
+- Sharing data with users who lack technical infrastructure for cloud-native access
+
+This book emphasizes cloud-native approaches by default because they enable the scale and efficiency needed for climate risk analysis in resource-constrained contexts. The workflows demonstrated here assume internet access and basic computational resources (laptop, moderate bandwidth) but don't require expensive commercial software or high-end infrastructure.

@@ -16,11 +16,7 @@ book:
         - en/python-geospatial/python-geospatial.qmd
     - part: Climate Risk for Cities
       chapters:
-        - en/climate-risk/fundamentals.qmd
-        - en/climate-risk/exposure.ipynb
-        - en/climate-risk/vulnerability.ipynb
-        - en/climate-risk/hazard.qmd
-        - en/climate-risk/risk.qmd
+        - en/climate-risk/climate-risk.qmd
     - part: Open Data
       chapters:
         - en/open-data/open-data.qmd
