@@ -3,7 +3,7 @@ project:
   output-dir: docs/en
 
 book:
-  title: "Human-Scale Data"
+  title: "Human Scale Data"
   subtitle: "Open data for resilient cities"
   author: "Nissim Lebovits"
   site-url: https://nlebovits.github.io/datos-escala-humana/en/

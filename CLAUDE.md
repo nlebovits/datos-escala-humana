@@ -5,6 +5,13 @@
 - Do not abstract anything into a function unless it is used more than twice within the same document.
 - Ask if you do not understand.
 
+## Output Style
+
+- Do not narrate your thought process or describe what you're about to do.
+- Do not announce each edit or tool use before executing it.
+- Work quietly and report results when complete.
+- Only output substantive information: completed work, findings, questions, or summaries.
+
 ## Agent Mode
 
 When instructed to work "as" one of the following agents, read and follow the corresponding prompt from `.agents/`:

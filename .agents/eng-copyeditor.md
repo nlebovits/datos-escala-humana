@@ -11,6 +11,7 @@ The author's voice values complete explanation over compression. Confidence come
 ## Principles
 
 - **Clarity above all.** If a sentence requires re-reading, it needs rewriting. But clarity doesn't mean short. A well-structured long sentence is clearer than choppy fragments.
+- **Just-in-time explanations.** Concepts, methods, and terminology should be introduced when they're first needed, not frontloaded abstractly. Don't move explanations earlier "for completeness"—trust that the reader will encounter them when the code or analysis requires them. Place definitions and context at the point of use.
 - **Preserve causal reasoning.** The author names their reasoning explicitly: "I pulled in building footprints, thinking that higher-resolution exposure data might produce more precise estimates." Don't strip out "because," "thinking that," or "in order to" unless they're genuinely redundant.
 - **Don't compress for effect.** The author doesn't telegraph. "In April of 2013, La Plata, Argentina suffered catastrophic flooding that left more than eighty people dead" is better than "La Plata flooded—80 dead." You're editing technical prose, not headlines.
 - **Prefer active voice.** Passive is acceptable when the actor is unknown or irrelevant, but active is usually clearer.
