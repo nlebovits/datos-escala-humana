@@ -1,0 +1,190 @@
+# From Data to Action
+
+## Objectives
+
+Understand uncertainty in climate models and climate risk models, and tools for managing it: robust decision-making under deep uncertainty and the psychology of climate change decision-making. Understand how to implement these concepts for municipal decision-making.
+
+## Uncertainty
+
+Until now we have talked about what models can tell us. Now we will talk about the limits of what those models can do.
+
+### What is Uncertainty
+
+According to the U.S. Climate Resilience Toolkit, uncertainty is a state of incomplete knowledge. Climate uncertainty comes from the complexity of climate systems and the models we use to represent that complexity, and from the impossibility of predicting what decisions society will make.
+
+### Sources of Uncertainty in Climate Models
+
+**Epistemic uncertainty**
+
+Comes from lack of sufficient knowledge or data. It can be reduced by collecting better information or higher-quality data.
+
+**Aleatory uncertainty**
+
+Comes from the inherent unpredictability of climate systems. It cannot be reduced through data, only quantified.
+
+Epistemic uncertainty arises because our historical datasets and geospatial distributions are relatively limited compared to the general scope of climate change. However, even with perfect historical data, climate models would still exhibit aleatory uncertainty because climate systems are inherently stochastic.
+
+### Stochastic Processes
+
+A stochastic process is a phenomenon that evolves through time in a way that is partially random or unpredictable. In the context of climate change, this means that although we can identify general patterns like temperature trends or seasons, there will always be a component of natural variability that we cannot predict exactly.
+
+Stochastic processes can be stationary or non-stationary:
+
+**Stationary processes**
+
+Their statistical properties—median, variance, and variability—are generally constant over time. They fluctuate around a stable state, although there is random variance.
+
+**Non-stationary processes**
+
+Their statistical properties change over time. They can show changes in trends (increases or decreases), changes in variance, or changes in overall patterns.
+
+Climate outcomes are inherently stochastic, but climate change means that in addition to being stochastic, they are also non-stationary. This means that the general trend, the mean, and the variance are all subject to potential change, which makes them even more difficult to predict or, in other words, increases uncertainty. For infrastructure planning, this means that historical patterns no longer reliably predict future conditions—a 100-year flood based on historical records might occur more (or occasionally less) frequently in the future, depending on how climate change affects local precipitation patterns.
+
+### Social Uncertainty
+
+Social uncertainty comes from the impossibility of predicting human decision-making and social change—demographic shifts, technological transformations, and social reorganizations that determine who is exposed to risk and who has the capacity to respond to it.
+
+This uncertainty is as important as, or even more important than, the uncertainty in climate models themselves.
+
+**Examples**
+
+- Fall of the Berlin Wall
+- Argentine economy
+- 2008 financial crisis
+- COVID pandemic
+- Rise of artificial intelligence in the economy
+
+All of these have caused radical changes in society that have been very difficult to predict and have had major impacts on climate change as well. For adaptation planning, this means that strategies should avoid rigid assumptions about future demographics, economic conditions, or technological capabilities—factors that can shift dramatically in ways we cannot anticipate.
+
+## Robust Decision-Making
+
+Faced with these fundamental and irreducible uncertainties in climate change and society, how do we plan?
+
+### Limitations of Traditional Decision-Making
+
+Traditional decision-making frameworks seek to identify a single optimal model and rely on it. But what happens if the assumptions of that optimal model are incorrect?
+
+**Examples of failure**
+
+- Collapse of Rust Belt cities that optimized for a particular economic model based on industrialization and manufacturing
+- Heat trends in Pergamino, Argentina: you could plan for a certain number of hot days per year, but climate change will radically change how many hot days per year we have (we don't know exactly how)
+
+### Path Dependency
+
+By committing to something, we can get trapped in it for a long time.
+
+**Example: La Plata, Argentina**
+
+The original founding of the city in 1888 corresponds to where the city floods today. A decision made over 130 years ago still impacts infrastructural challenges and climate risk in the city today.
+
+### Robust Decision-Making Framework
+
+How do we plan for multiple possible futures? The framework of robust decision-making under deep uncertainty.
+
+An excellent PNAS paper, "Coupled Human Natural System Analysis of Freshwater Security Under Climate and Population Change", helps us contextualize four steps:
+
+1. **Identify possible future scenarios**
+2. **Explore a range of possible solutions**
+3. **Select the solution that works best across a diversity of possible futures**
+4. **Choose an implementation that is flexible and adaptive**, to avoid getting locked into a single approach. Prioritize changes that can be reversed or adapted as conditions evolve.
+
+### Case Study: The Netherlands
+
+Water level represents a major threat in the coming century. The Dutch government is evaluating four adaptation strategies to better manage risks:
+
+- Protect closed
+- Protect open
+- Advance
+- Accommodate
+
+They consider each strategy according to its cost and benefits under different climate scenarios. They prioritize low-regret strategies that will succeed in a range of possible futures and will not generate path dependency.
+
+The goal is to combine these strategies, not to choose a single solution, but to combine them flexibly over time, monitoring and adapting them as conditions change.
+
+## The Ostrich Paradox
+
+Why do people make bad decisions in the face of climate change? Knowing all this, why do people still make bad decisions?
+
+### Example: Philadelphia
+
+An area in Philadelphia with luxury housing was rezoned in 2018 to permit construction of luxury developments in a floodplain. Predictably, three years later during Hurricane Ida, it flooded. You would think they would learn the lesson, but in 2025, people are planning to build more there.
+
+### Why This Happens
+
+As Robert Meyer and Howard Kunreuther find in "The Ostrich Paradox", cognitive psychology and behavioral economics suggest that most of the mistakes made when planning for disasters are due to certain blindnesses that cause people to make decisions under uncertainty.
+
+When people are not sure what the best decision to make is, they tend to make the choice that requires the least mental effort.
+
+Meyer and Kunreuther identify six sources of bias and offer a matrix of possible solutions. They also talk about different ways to improve, such as:
+
+- Changing the timeline
+- Automatic inclusion
+- Opt-out instead of opt-in
+- Social incentives for people to behave well
+
+### Four Principles for Planners and Public Sector
+
+For dealing with long-term risks such as those posed by climate change, public sector planners at the local, state, and national levels need to embrace the following guiding principles [@meyer_kunreuther_2019]:
+
+- **Principle 1: Commit to long-term protective planning as a top priority.** Make climate adaptation a sustained institutional priority rather than an episodic response to crisis.
+
+- **Principle 2: Discourage individual and community actions that increase exposure to long-term risks.** Use zoning, building codes, and incentives to prevent development in high-risk areas.
+
+- **Principle 3: Consider the cognitive biases that inhibit adoption of protective measures.** Design policies that account for myopia, amnesia, optimism, inertia, simplification, and herding behaviors.
+
+- **Principle 4: Address problems equitably.** Ensure that adaptation measures protect vulnerable populations who face the highest exposure and have the least capacity to respond.
+
+## Data in the Real World
+
+How do we get political decision-makers to implement best practices?
+
+### Understand Your User
+
+Politicians have different priorities than climate data scientists. This does not mean they are bad. The goal is not to criticize politicians, but simply to understand that they operate with a different set of priorities and incentives than climate decision-makers. This is largely because of the political systems we have designed, which in some ways impede or disincentivize politicians from making decisions in the ways that climate scientists would prefer.
+
+**In contrast with climate scientists, politicians:**
+
+- Have to win elections, usually every two to four years. They do not have the luxury of thinking in timelines of 25 to 100 or 1,000 years because of these electoral cycles. We design our political systems this way.
+- Work on a range of issues. It is not fair to expect them to be experts in climate science—they are not PhDs in climate science. They have to work on a multiplicity of issues and represent a diverse electorate. It would be counterproductive for them to be exclusively experts in climate science and not also know about economics, political decision-making, transportation infrastructure, public health, or the many other domains where they have to make decisions.
+
+### How to Work with These Users
+
+**1. Emphasize what politicians value and understand**
+
+- Can you give them the opportunity to be the hero?
+- Can you give them the opportunity to look good?
+- Can you quantify the positive impact, especially if it is economic?
+- Be clear about what the benefit is for them and the general benefit
+- If you can put it in quantitative terms, much better
+
+**2. Use political timescales**
+
+- Emphasize short-term benefits over long-term benefits (although you should also talk about long-term benefits)
+- Instead of talking about possible future scenarios, prioritize recent events when you can
+- Build on things that have happened recently in memory
+- Never waste a good crisis: have a plan ready to implement when something comes up
+
+**3. Communicate clearly and concisely**
+
+- Use visuals over text when possible
+- One-page memos are excellent
+- Make your recommendations and benefits very, very clear
+
+**4. Tell a good story**
+
+People want to feel that their work has meaning, that what they are doing fits into a larger narrative. Tell a good story.
+
+## Workshop
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nlebovits/datos-escala-humana/blob/main/es/datos-accion/taller.ipynb)
+
+The workshop integrates the concepts of this chapter using the case of Esperanza, Santa Fe, to analyze flood risk and propose interventions based on principles of robust decision-making.
+
+## Learn More
+
+- Meyer, R., & Kunreuther, H. (2017). *The Ostrich Paradox: Why We Underprepare for Disasters*
+- Hall, J. W., et al. (2019). "Coupled Human-Natural System Analysis of Freshwater Security Under Climate and Population Change." *PNAS*
+- [U.S. Climate Resilience Toolkit](https://toolkit.climate.gov/)
+- Resources on robust decision-making under deep uncertainty
+
+[TODO: Expand with specific resources]

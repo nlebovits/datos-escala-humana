@@ -43,3 +43,33 @@
 ### Notes
 
 Many of the critical and high priority gaps are intentionally deferred to cookbook chapters, which will demonstrate actual workflows for flooding risk assessment, heat vulnerability mapping, and informal settlement exposure analysis. The fundamentals chapter provides conceptual grounding; the cookbooks will show the mechanics.
+
+## Chapter 4: From Data to Action
+
+### High Priority
+
+**RDM framework needs resource-constrained guidance**: Lines 86-89 present the four-step robust decision-making framework but don't explain how a three-person planning department in a Global South city actually implements "identify possible future scenarios" or "explore a range of possible solutions." Even a single sentence acknowledging resource constraints would help: "Even with limited capacity, cities can identify 2-3 plausible scenarios (optimistic adaptation, business as usual, delayed action) without sophisticated modeling."
+
+**Ostrich Paradox needs climate-specific application**: Lines 114-123 mention the six biases and list generic solutions (changing timelines, opt-out defaults, social incentives) but don't connect them to climate adaptation practice. Which biases are most relevant for climate decisions? How do they manifest in municipal planning? For example: "Myopia manifests when councils prioritize immediate infrastructure repairs over flood protection because benefits are visible now. Counter this by quantifying near-term co-benefits: green infrastructure reduces flooding but also provides immediate amenities."
+
+**Disconnect between RDM framework and political realities**: The "Data in the Real World" section (lines 137-167) provides excellent guidance on working with politicians but doesn't connect to the robust decision-making framework presented earlier. Adaptive pathways are politically valuable precisely because they defer expensive commitments and preserve flexibility—this connection should be made explicit.
+
+### Medium Priority
+
+**Workshop preview unclear**: Line 173 references the Esperanza workshop integrating chapter concepts but doesn't preview what the workshop demonstrates. One sentence like "The Esperanza workshop demonstrates this framework by [brief description]" would show readers where they're headed.
+
+**Learn More section needs annotations**: Lines 176-182 list excellent sources but don't guide readers on what each provides. Is the Climate Resilience Toolkit for technical uncertainty analysis? Is Meyer & Kunreuther for behavioral interventions? Brief annotations would help practitioners know where to go next.
+
+**Structural connections between sections**: The chapter moves from uncertainty concepts to decision frameworks to behavioral barriers to political communication, but the connections between sections are weak. The robust decision-making framework doesn't explicitly reference the uncertainty types. The Ostrich Paradox discussion doesn't connect to the RDM framework. The sections feel like separate topics rather than building toward a unified argument.
+
+**Resource-constrained example needed**: The Netherlands case study (lines 91-102) is the only worked example, and it reinforces that RDM is for well-resourced contexts. Adding one resource-constrained example would balance this. Even a paragraph: "In [city], planners used this approach with three staff and no consultants by..."
+
+### Medium Priority (Completed)
+
+**Non-stationarity implications**: Added sentence connecting non-stationarity to infrastructure planning—historical 100-year floods may occur more or less frequently in the future depending on local climate change effects (line 41).
+
+**Social uncertainty implications**: Added sentence explaining that adaptation strategies should avoid rigid assumptions about future demographics, economic conditions, or technological capabilities (line 57).
+
+**Four principles for planners**: Added complete four principles from Meyer & Kunreuther (2019) with brief explanations for each principle (lines 127-135).
+
+**Reference added**: Added Meyer & Kunreuther (2019) Ostrich Paradox issue brief to references.bib with proper citation in text.
