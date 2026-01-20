@@ -13,11 +13,7 @@ book:
     - en/intro.qmd
     - part: Geospatial Python
       chapters:
-        - en/python-geospatial/fundamentals.qmd
-        - en/python-geospatial/vector.qmd
-        - en/python-geospatial/raster.qmd
-        - en/python-geospatial/spatial-analysis.qmd
-        - en/python-geospatial/unit_1b_solutions.ipynb
+        - en/python-geospatial/python-geospatial.qmd
     - part: Climate Risk for Cities
       chapters:
         - en/climate-risk/fundamentals.qmd

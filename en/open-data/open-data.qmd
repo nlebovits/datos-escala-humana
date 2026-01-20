@@ -1,13 +1,92 @@
-# Datos Abiertos
+# Open Data for Cities and Climate
 
-## Qué son los Datos Abiertos
+## Objectives
 
-## Fuentes Comunes de Datos Abiertos
+Understand what open data is, where it comes from, how to find it, and how to evaluate its quality. Understand the main sources of open data for climate and urban risk at local, national, and global scales.
 
-## Cómo Encontrar Datos Abiertos
+## What is Open Data
 
-## Cómo Entender los Datos Abiertos
+Open data is, in effect, data that anyone can use. This is an approximate definition, subject to interpretation and nuance depending on context, but generally that is the idea.
 
-## Qué se Puede y No se Puede Hacer con los Datos Abiertos
+Beyond technical availability, open data typically carries legal permissions that allow use, redistribution, and derivative works. Common open licenses include Creative Commons (CC-BY, CC-BY-SA) and Open Database License (ODbL). The specific license determines what you can do with the data—whether you can use it commercially, whether you must attribute the source, whether derivative works must use the same license. When evaluating a dataset for municipal use, check the license terms to ensure they match your intended use case.
 
-## Cómo Evaluar la Calidad de los Datos Abiertos
+### Advantages
+
+Open data offers fundamental properties that make it particularly valuable for climate risk work in resource-constrained contexts:
+
+**Interoperability**: Open formats and standards allow data from different sources to work together. You can combine Copernicus elevation data with OpenStreetMap infrastructure and local census data without proprietary conversion tools.
+
+**Auditability**: Open data allows you to trace methods, verify quality, and understand limitations. When a flood model uses a particular DEM, you can examine that DEM's resolution, accuracy, and coverage rather than accepting a black box.
+
+**No vendor lock-in**: Open data doesn't tie you to a specific software vendor or platform. If your GIS software changes or a commercial platform shuts down, your data and workflows remain accessible.
+
+**Reproducibility**: Open data enables others to verify your analysis and adapt your methods to their context. This is essential for building institutional knowledge and capacity across cities facing similar challenges.
+
+For resource-constrained municipalities, these properties matter because they enable access to high-quality data without the budget for commercial alternatives, allow comparison across regions using consistent methodologies, and reduce dependence on external technical capacity that may not be sustainable long-term.
+
+### Growth in Volume
+
+The volume of open data has increased rapidly. The open data era begins in the 2010s, but particularly in recent years it has taken off with the rise of cloud storage, AI models, and new massive data volumes.
+
+## Geospatial Data Infrastructure
+
+Open data is found in geospatial data infrastructure: any place where open geospatial data is found on the internet. It can be a catalog, server, web application, list of pages, or layers.
+
+Geospatial data infrastructure includes both technical components (APIs, tile servers, STAC catalogs) and institutional arrangements (who maintains it, how it's funded, governance structures). Understanding both dimensions matters when evaluating whether to rely on a data source for municipal planning. A technically excellent catalog with uncertain funding may disappear when a grant expires. An institutionally stable source with poor documentation may be difficult to use effectively.
+
+The main objective is to ensure collaboration and accessibility of geospatial information. Generally, you will look for an open geospatial portal at national and regional scale.
+
+When evaluating a geospatial data portal, consider: Is it maintained by a stable institution (national mapping agency, established research organization) or dependent on project funding? Does it have clear documentation and support channels? Has it been operational for multiple years? Is there a community of users you can learn from? These questions help assess whether a data source is reliable enough to base planning decisions on.
+
+### Recent Important Changes
+
+Volume and quality have grown tremendously. Many of these datasets are available globally. A large part of this course focuses on globally available datasets to fill local or national gaps.
+
+## Main Sources of Open Data
+
+Important repositories to explore:
+
+- OpenStreetMap
+- Google Earth Engine
+- Google Earth Engine Community Catalog
+- OpenLandMap
+- Source Cooperative
+- Microsoft Planetary Computer
+
+Many have QGIS plugins to import data directly. If not, you can always access in Python or through download.
+
+### Limitations of Global Data
+
+**Not so global**: Global datasets often come from richer countries in the global north, China, and Japan, not from global south countries.
+
+**Lack of precision**: Data, especially derived from machine learning models, is only as good as it is comprehensive. Systematic bias toward certain countries and away from others means that models typically are less accurate or datasets less comprehensive in countries with less data.
+
+Models often perform better outside the global south because they have less data from the global south.
+
+## Geospatial File Formats
+
+### Flat or Standard Files
+
+**Examples**: GeoJSON, shapefile.
+
+**Uses**: Local work or web visualization. Can be considered legacy files. Excellent for working offline.
+
+**Limitations**: If you want to work at large scale with massive global datasets, GeoJSON or shapefile is not the way to do it. They are also more difficult to share.
+
+GeoJSON is specifically designed for web visualization, but has significant limitations.
+
+### WMS and WFS Servers
+
+Standardized protocols for web mapping and data visualization. Integration with GIS, but can be slow for queries. Can be considered precursors to cloud-native formats because they were the industry standard for a long time for sharing online. They remain useful, but are aging.
+
+### APIs
+
+Flexible ways to get exactly the data you want, making data available through an endpoint. Excellent for programming workflows and web applications, but require technical knowledge. Not always as efficient as optimized cloud-native formats.
+
+API and cloud-native geospatial data can be compatible.
+
+### Cloud-Optimized Formats
+
+Best for sharing online and for massive live data. They are a step forward over traditional file formats, although they have their own limitations.
+
+**Main advantage**: They allow you to query only the data you want for your area of interest. Instead of having to download gigabytes of files, you might only download megabytes and you can download them very efficiently only for the area that matters to you. For our purposes, this is the main advantage.
