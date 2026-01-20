@@ -7,26 +7,6 @@ project:
 book:
   chapters:
     - index.qmd
-    - en/intro.qmd
-    - part: "Python GIS"
-      chapters:
-        - en/python-geospatial/python-geospatial.qmd
-    - part: "Open Data"
-      chapters:
-        - en/open-data/open-data.qmd
-    - part: "Climate Risk"
-      chapters:
-        - en/climate-risk/fundamentals.qmd
-        - en/climate-risk/hazard.qmd
-        - en/climate-risk/risk.qmd
-    - part: "From Data to Action"
-      chapters:
-        - en/data-to-action/data-to-action.qmd
-    - part: "Cookbooks"
-      chapters:
-        - en/cookbooks/la-plata.qmd
-        - en/cookbooks/pergamino.qmd
-    - en/references.qmd
 
 bibliography: references.bib
 
