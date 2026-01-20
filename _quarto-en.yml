@@ -22,7 +22,7 @@ book:
         - en/open-data/open-data.qmd
     - part: Data to Action
       chapters:
-        - en/data-to-action/data-to-action.qmd
+        - en/data-action/data-action.qmd
     - part: Cookbooks
       chapters:
         - en/cookbooks/pergamino.qmd
