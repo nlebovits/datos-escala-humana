@@ -1,48 +1,43 @@
 # Introduction {.unnumbered}
 
-🚧 **Project Status**: This book is currently in the early stages of development. We expect to complete a minimum viable product by the end of 2025. Check the [roadmap](/project/ROADMAP.md) for more information.
-
-This book is largely based on the [Open Data for Resilient Cities](https://www.fau.unlp.edu.ar/posgrado/curso-datos-abiertos-para-ciudades-resilientes/) course that the author teaches at the Faculty of Architecture and Urban Planning of the National University of La Plata during the final semester of 2025.
+🚧 **Project Status**: This book is currently under development. Please see the [roadmap](/project/ROADMAP.md) for more information.
 
 ## About this book
 
-_Human-Scale Data_ teaches how to leverage global datasets through cloud-native geospatial computing to mitigate climate risk in cities.
+_Human Scale Data_ explains how to use global datasets to manage climate risk in cities. This book is aimed at urban planners, municipal officials, and other decision-makers in resource-limited environments where high-quality local data is scarce or insufficient. While the tools taught in this book are meant to be useful in any city around the world, the primary emphasis is placed on under-resourced cities that would not otherwise have the resources to access high-quality climate data.
 
-Primarily aimed at urban planners, municipal officials, architects, and technicians in resource-limited environments where high-quality local data is scarce or of insufficient quality. Does not assume advanced GIS knowledge. Intensive course, not exhaustive. We provide resources for deeper exploration. Action and simple, replicable workflows are the focus.
-
-An evolving document, currently in minimum viable product phase. Not the final word, and we recognize it will become outdated without continued development.
-
-Uses cloud-native geospatial technology. While relatively new, it's not difficult and makes things easier. We don't delve into theory but into applications. To learn more, see the [Cloud-Native Geospatial Forum](https://cloudnativegeo.org/).
-
-Written first in Spanish because there are almost no Spanish-language resources on these topics. The author is not a native speaker and has used language models to support translation. If you find errors, open a ticket or contribute.
-
-## Philosophy: practice over theory
-
-We prioritize practice over theory. We balance the explanation of spatial concepts with their implementation. There will be cases where we don't delve into why we do something a certain way. We leave you to explore with language models or consult the documentation. We focus on doing.
-
-We also prioritize concepts over techniques. We deliberately return to core techniques: you'll see spatial aggregation and zonal statistics repeatedly. We won't delve into advanced spatial statistics. We show the concepts and repeat them so they stick. The goal is not to create fully trained geospatial analysts, but to provide replicable workflows that you understand well enough to apply in your own context.
+This book does not assume advanced Python or GIS knowledge. It aims to be an intensive course, not exhaustive, and provides resources for further exploration when possible. The goal of this work is not on mastering GIS programming but on providing replicable workflows that users can readily understand and apply in their own contexts to drive tangible municipal action.
 
 ## Organization
 
-The book is organized into four main sections:
+The book is organized into five main sections:
 
-**Chapter 1: GIS and Python crash course**. Covers the fundamentals of working with geospatial data in Python, both vector and raster, and a summary of the basic spatial operations we use in this book. We also provide resources for learning more about Python and GIS.
+**Chapter 1: Python GIS**. This chapter covers the fundamentals of working with geospatial data in Python and a summary of the basic spatial operations we use in this book.
 
-**Chapter 2: Open data**. Explores what the best sources of open data are, different ways to access these data, and why these tools are important. Delves a bit into cloud-native data formats and different ways to access these datasets, plus evaluating their quality and suitability. Addresses both epistemological and programming issues.
+**Chapter 2: Open data**. This chapter explores the best sources of open data, different ways to access them, and why these tools are important. It delves into cloud-native data formats and different ways to access these datasets, plus evaluating their quality and suitability.
 
-**Chapter 3: Climate risk**. We define what climate risk is, common climate risks for cities, and the best available data sources. We talk about how to calculate climate risk and some limitations in calculating it, given the available datasets.
+**Chapter 3: Climate risk**. This chapter defines what climate risk is, common climate hazards for cities, and the best available data sources. It covers how to calculate climate risk and some limitations in calculating it, given available datasets.
 
-**Chapter 4: Data to action**. Addresses how to take these datasets and link them to concrete policies and infrastructure decisions to protect people from climate. We address issues of governance, certainty, fitness for purpose, heuristics, etc.
+**Chapter 4: From data to action**. This chapter addresses how to link these datasets to concrete policies and infrastructure decisions to protect people from climate. It covers issues of governance, certainty, fitness for purpose, and heuristics.
 
-**Cookbooks**. Chapters 1 through 4 are designed to be more pedagogical, focused on practice and learning tools and concepts. The Cookbooks section presents real-world examples of case studies the author carried out in Argentina during his Fulbright fellowship with real municipal governments, using real data to make real decisions. These examples demonstrate what's possible with the tools we explore in this book. We welcome contributions of additional examples from other contexts.
+**Cookbooks**. The Cookbooks section presents real-world case studies the author carried out in Argentina, along with the accompanying code to replicate them. As this project grows, we hope to incorporate more examples from around the world.
+
+## Guiding principles
+
+**Build community, not just tech.** Given the pace of technological change, much of the contents of this book will be outdated by the time it comes out. The goal of this book, therefore, is not to treat the book as a static resource, but to build a hub. We hope to bring together a community of practitioners and experts who will not only update and maintain this resource but eventually grow beyond it.
+
+**Use data for decisions.** Our goal is not to provide an exhaustive list of available data or processing approaches, but to demonstrate how high quality open data can be used to support robust-decision making to reduce climate risk.
+
+**Cloud-native by default.**
+New cloud-native geospatial tools unlock efficient, low-cost, data processing at scale. This makes it possible for resource-constrained cities to get unprecedented access to high-quality global climate data. Workflows that were impossible five years ago can now be run for free in a matter of minutes. This book uses these tools by default, demonstrating that cloud-native is usually simpler, faster, and more powerful than legacy tools.
 
 ## Author(s)
 
-_[Section to be completed]_
+[Nissim Lebovits](https://nlebovits.github.io/)
 
 ## Acknowledgments
 
-_[Section to be completed]_
+This project was made possible by a Fulbright research grant from the [Argentine Fulbright Commission](https://fulbright.edu.ar/). Further thanks are due to the [Centro de Investigaciones Urbanas y Territoriales](https://ciut.fau.unlp.edu.ar/) at the Universidad Nacional de La Plata, which hosted the author during his stay in Argentina in 2025; and to Celeste Duarte, Juan Carlos Etulaín, and Ted Wong.
 
 ## Project Sponsors
 

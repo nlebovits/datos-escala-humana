@@ -1,7 +1,18 @@
+# Human Scale Data
 
 - Use bullet points or lists only when absolutely necessary.
 - Avoid idioms. Write plainly and concisely.
-- Do not abstract anything into a function unless it is used > 2 times within the same document.
--
+- Do not abstract anything into a function unless it is used more than twice within the same document.
+- Ask if you do not understand.
 
-Ask if you do not understand.
+## Agent Mode
+
+When instructed to work "as" one of the following agents, read and follow the corresponding prompt from `.agents/`:
+
+| Invocation | File |
+|------------|------|
+| "as translator" or "as Spanish to English translator" | `.agents/es-to-eng-translator.md` |
+| "as instructor" or "as Python GIS instructor" | `.agents/pygis-instructor.md` |
+| "as editor" or "as English editor" | `.agents/eng-copyeditor.md` |
+
+Read the agent file before responding. Follow its instructions for tone, output format, and review approach.
