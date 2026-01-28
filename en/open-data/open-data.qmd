@@ -102,11 +102,93 @@ Standardized protocols for web mapping and data visualization. Integration with 
 
 In Chapter 1, we used a WFS service to load Buenos Aires Province municipalities from ARBA's GeoServer. WFS remains common for government data portals, particularly in Latin America where many agencies have invested in this infrastructure.
 
+```{python}
+import geopandas as gpd
+import matplotlib.pyplot as plt
+import os
+from owslib.wfs import WebFeatureService
+from io import StringIO, BytesIO
+
+partidos_path = "../../public/python-geoespacial/pba_partidos.parquet"
+
+# Load partidos from ARBA GeoServer WFS service
+if os.path.exists(partidos_path):
+    partidos = gpd.read_parquet(partidos_path)
+else:
+    # Connect to WFS (Web Feature Service)
+    wfs_url = "https://geo.arba.gov.ar/geoserver/idera/wfs"
+    wfs = WebFeatureService(url=wfs_url, version="2.0.0")
+
+    # Request the Departamento layer (partidos)
+    response = wfs.getfeature(
+        typename="idera:Departamento",
+        srsname="EPSG:5347",  # Original CRS
+    )
+
+    # Convert WFS response to GeoDataFrame
+    partidos = gpd.read_file(BytesIO(response.read()))
+
+    # Save to cache for future use
+    partidos.to_parquet(partidos_path)
+
+# Reproject to working CRS
+partidos = partidos.to_crs("EPSG:5348")  # POSGAR 2007 / Argentina 4
+```
+
 ### APIs
 
 Flexible ways to get exactly the data you want, making data available through an endpoint. Excellent for programming workflows and web applications, but require technical knowledge. Not always as efficient as optimized cloud-native formats.
 
-API and cloud-native geospatial data can be compatible.
+API and cloud-native geospatial data can be compatible, as below, when we load Copernicus DEM data via the Element84 STAC API:
+
+```{python}
+import pystac_client
+from odc.stac import load
+import rioxarray as rio
+
+# Reproject to geographic CRS for bounding box query
+aoi = la_plata.to_crs("EPSG:4326")
+
+# Configure AWS for unsigned requests (no login required)
+os.environ["AWS_NO_SIGN_REQUEST"] = "YES"
+os.environ["GDAL_DISABLE_READDIR_ON_OPEN"] = "EMPTY_DIR"
+
+# Connect to Element84 Earth Search STAC catalog
+catalog = pystac_client.Client.open("https://earth-search.aws.element84.com/v1")
+
+# Get bounding box for our area of interest
+# bbox format: [min_x, min_y, max_x, max_y]
+bbox = aoi.total_bounds
+
+# Search for Copernicus DEM tiles covering our area
+# cop-dem-glo-30 is the global 30m elevation dataset
+search = catalog.search(
+    collections=["cop-dem-glo-30"],
+    bbox=bbox,
+)
+
+# Get the items (files) that cover our area
+items = list(search.items())
+
+# Load DSM using chunks for efficient memory processing
+# odc.stac.load automatically downloads and assembles the necessary tiles
+dsm = load(
+    items,
+    bbox=bbox,
+    chunks={"x": 1024, "y": 1024},  # Process in blocks for efficiency
+)
+
+# Extract elevation band and convert to DataArray for use with rioxarray
+# load() returns a Dataset; we need the elevation DataArray
+dsm = dsm["data"].squeeze()  # Remove extra dimensions
+
+# Clip raster to exact geometries
+dsm_clipped = dsm.rio.clip(aoi.geometry)
+
+# Reproject clipped area to working CRS (POSGAR 2007 / Argentina 4)
+# This is more efficient because we reproject only the area of interest
+dsm_reproj = dsm_clipped.rio.reproject(dst_crs="EPSG:5348")
+```
 
 ### Cloud-Optimized Formats
 
@@ -117,6 +199,78 @@ Best for sharing online and for massive live data. They are a step forward over 
 Cloud-optimized formats like GeoParquet (for vector data) and Cloud Optimized GeoTIFF/COG (for raster data) support HTTP range requests, meaning you can read just the portion of a file you need without downloading the whole thing. This is transformative for working with large datasets—instead of downloading Argentina's entire building footprint dataset, you can query just the buildings in La Plata. In Chapter 1, we demonstrated this by loading elevation data from a global DEM and land cover data from a national dataset, downloading only our area of interest.
 
 STAC (SpatioTemporal Asset Catalog) provides standardized metadata and discovery for cloud-optimized data. When we queried the Copernicus DEM in Chapter 1, we used a STAC catalog to find the specific tiles covering La Plata, then loaded only those tiles. This pattern—discover via STAC, load via cloud-optimized formats—is increasingly standard for earth observation and climate data.
+
+```{python}
+suelo_2022_ruta = "https://storage.googleapis.com/mapbiomas-public/initiatives/argentina/collection-1/coverage/argentina_coverage_2022.tif"
+
+# Open the raster with rioxarray and chunks
+suelo_2022 = rio.open_rasterio(
+    suelo_2022_ruta,
+    chunks={"x": 4096, "y": 4096},
+)
+
+# Clip in the raster's native CRS (EPSG:4326)
+suelo_2022_clipped = suelo_2022.rio.clip(
+    aoi.geometry.values,
+    from_disk=True,
+)
+
+# Reproject to working CRS (POSGAR 2007 / Argentina 4)
+suelo_2022 = suelo_2022_clipped.rio.reproject(dst_crs="EPSG:5348")
+
+# Mask NoData values
+suelo_2022_masked = suelo_2022.where(
+    (suelo_2022 != suelo_2022.rio.nodata) & (suelo_2022 != 255)
+)
+```
+
+```{python}
+import duckdb
+import pandas as pd
+
+# Get bounding box of La Plata in WGS84 (EPSG:4326) for cloud query
+bounds_4326 = la_plata.to_crs("EPSG:4326").total_bounds
+
+# Configure DuckDB with spatial and network extensions
+con = duckdb.connect()
+con.execute("INSTALL spatial")
+con.execute("LOAD spatial")
+con.execute("INSTALL httpfs")
+con.execute("LOAD httpfs")
+
+# Configure DuckDB for S3 cloud storage access
+con.execute("SET s3_region='us-east-1'")
+con.execute("SET s3_endpoint='data.source.coop'")
+con.execute("SET s3_use_ssl=true")
+con.execute("SET s3_url_style='path'")
+
+# Query buildings within our bounding box and save to temporary file
+# This filters buildings using geographic bounds (bbox) to load only those in our area of interest
+temp_file = "buildings_filtered.parquet"
+query = f"""
+COPY (
+    SELECT *
+    FROM 's3://vida/google-microsoft-open-buildings/geoparquet/by_country/country_iso=ARG/ARG.parquet'
+    WHERE bbox.xmax >= {bounds_4326[0]} AND bbox.xmin <= {bounds_4326[2]} AND
+          bbox.ymax >= {bounds_4326[1]} AND bbox.ymin <= {bounds_4326[3]}
+) TO '{temp_file}' (FORMAT PARQUET);
+"""
+con.execute(query)
+
+# Read filtered building data from Parquet file
+buildings_df = pd.read_parquet(temp_file)
+
+# Deserialize geometries: convert from binary format (WKB - Well-Known Binary) to GeoSeries objects
+# GeoParquet stores geometries as bytes in WKB format, we need to convert them to GeoPandas geometries
+buildings_df["geometry"] = gpd.GeoSeries.from_wkb(buildings_df["geometry"])
+
+# Create GeoDataFrame with deserialized geometries
+# Specify original CRS as EPSG:4326 (WGS84) since data comes in that coordinate system
+buildings = gpd.GeoDataFrame(buildings_df, geometry="geometry", crs="EPSG:4326")
+
+# Reproject to working CRS to match other analysis data
+buildings = buildings.to_crs("EPSG:5348")
+```
 
 ### When to Use Which Format
 
