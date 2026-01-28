@@ -8,6 +8,7 @@ es/cookbooks/ipcc_ssp2_4_5_data/
 es/cookbooks/ipcc_ssp5_8_5_data/
 es/cookbooks/temp_esp_processing.ipynb
 
+_freeze/
 
 data/
 
@@ -15,6 +16,8 @@ data/
 *.parquet
 *.tif
 *.tif.aux.xml
+en/open-data/.jupyter_cache/
+en/python-geospatial/.jupyter_cache/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

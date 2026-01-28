@@ -194,6 +194,17 @@ dsm_clipped = dsm.rio.clip(aoi.geometry)
 dsm_reproj = dsm_clipped.rio.reproject(dst_crs="EPSG:5348")
 ```
 
+#### Cloud-Native Geospatial
+**Cloud-native geospatial** tools are designed specifically to work with data stored in the cloud. Unlike traditional tools that require downloading complete datasets, these tools allow you to access and process only the portions of data needed through protocols like HTTP range requests.
+
+::: {.column-margin}
+The **cloud** basically means someone else’s computer: servers that your device connects to over the internet. Cloud computing offers power, flexibility, and scalability as needed without requiring you to configure local servers. It provides distributed and reliable infrastructure. However, it has an initial learning curve, costs can accumulate with intensive use, and it requires constant internet connection.
+:::
+
+Examples include Cloud Optimized GeoTIFF (COG) for raster data, which allows efficient streaming of satellite images without downloading complete files. GeoParquet and FlatGeobuf are cloud-optimized vector formats that support fast spatial queries. Platforms like Google Earth Engine, Microsoft Planetary Computer, and AWS Earth Search provide massive catalogs of satellite data with APIs for analysis at scale.
+
+These tools are especially relevant for climate risk analysis, where we need to process large volumes of satellite, climate, and geographic data without the infrastructure to store them locally. The cloud-native tools we will use are not more difficult than traditional tools and offer many advantages. The cloud is simply one of the places where people compute today. As mentioned in [the introduction](../intro.qmd#guiding-principles), this book takes the cloud-native approach as the default.
+
 ### Cloud-Optimized Formats
 
 Best for sharing online and for massive live data. They are a step forward over traditional file formats, although they have their own limitations.
@@ -277,6 +288,11 @@ buildings = buildings.to_crs("EPSG:5348")
 ```
 
 ### When to Use Which Format
+
+
+For cloud-native workflows, GeoParquet is a columnar format optimized for analytical queries of large vector datasets, and FlatGeobuf provides efficient spatial access through built-in spatial indexing. Both support HTTP range requests, meaning you can query subsets of data without downloading entire files.
+
+You'll also encounter GeoJSON (.geojson, .json), which is used for web mapping and stores coordinates as text using JavaScript Object Notation. GeoPackage (.gpkg) is a single-file format that works well for local data exchange. ESRI Shapefile (.shp, .dbf, .shx) is a legacy format that requires multiple files and has technical limitations (field name length, attribute types, file size), but you'll still encounter it in the wild because many organizations haven't migrated yet.
 
 **Use cloud-native formats (GeoParquet, COG, Zarr) when:**
 - Working with large datasets where you only need a subset

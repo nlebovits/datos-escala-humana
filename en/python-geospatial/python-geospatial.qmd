@@ -4,12 +4,7 @@ _This lesson is largely based on material from [Introduction to Geospatial Raste
 
 ### Objectives
 
-After completing this chapter, you will be able to:
-
-- Load and work with vector (points, lines, polygons) and raster (gridded) geospatial data in Python
-- Reproject data between coordinate reference systems appropriate for your study area
-- Perform spatial operations including clipping, aggregation, and zonal statistics
-- Extract meaningful summaries from geospatial datasets to inform climate risk decisions
+After completing this chapter, you will be able to load and work with vector and raster data in Python; reproject data between different coordinate reference systems; and perform key spatial operations such as clipping, aggregation, and zonal statistics.
 
 ### What is GIS?
 
@@ -24,20 +19,8 @@ There are two main approaches for working with geospatial data:
 
 In this book, we use **Python** for all of our analyses. Python is widely used with a rich ecosystem of specialized libraries for geospatial analysis. It is flexible, powerful, and relatively easy to learn compared to other languages. It offers complete integration with databases, APIs, web services, and other programming languages. Additionally, it is free, open source, and has an active community that provides abundant documentation, tutorials, and support. Lastly, its high replicability makes it ideal for sharing analyses that can be adapted and scaled in other contexts.
 
-#### Cloud-Native Geospatial
-**Cloud-native geospatial** tools are designed specifically to work with data stored in the cloud. Unlike traditional tools that require downloading complete datasets, these tools allow you to access and process only the portions of data needed through protocols like HTTP range requests.
-
-::: {.column-margin}
-The **cloud** basically means someone else’s computer: servers that your device connects to over the internet. Cloud computing offers power, flexibility, and scalability as needed without requiring you to configure local servers. It provides distributed and reliable infrastructure. However, it has an initial learning curve, costs can accumulate with intensive use, and it requires constant internet connection.
-:::
-
-Examples include Cloud Optimized GeoTIFF (COG) for raster data, which allows efficient streaming of satellite images without downloading complete files. GeoParquet and FlatGeobuf are cloud-optimized vector formats that support fast spatial queries. Platforms like Google Earth Engine, Microsoft Planetary Computer, and AWS Earth Search provide massive catalogs of satellite data with APIs for analysis at scale.
-
-These tools are especially relevant for climate risk analysis, where we need to process large volumes of satellite, climate, and geographic data without the infrastructure to store them locally. The cloud-native tools we will use are not more difficult than traditional tools and offer many advantages. The cloud is simply one of the places where people compute today. As mentioned in [the introduction](../intro.qmd#guiding-principles), this book takes the cloud-native approach as the default.
-
 ### Coordinate Reference Systems (CRS)
-
-[Coordinate reference systems](https://py.geocompx.org/01-spatial-data#sec-coordinate-reference-systems-intro) define how the spatial elements of data relate to the Earth's surface. CRS are geographic or projected. [Geographic systems](https://py.geocompx.org/01-spatial-data#geographic-coordinate-systems) identify locations using longitude and latitude in decimal degrees on a spherical or ellipsoidal surface. [Projected systems](https://py.geocompx.org/01-spatial-data#sec-projected-coordinate-reference-systems) convert the three-dimensional surface of the Earth into Cartesian coordinates (x, y) in meters on an implicitly flat surface.
+Before we get into looking at any data, we need to define a key concept in geospatial data analysis: **coordinate reference systems (CRS)**. [Coordinate reference systems](https://py.geocompx.org/01-spatial-data#sec-coordinate-reference-systems-intro) define how the spatial elements of data relate to the Earth's surface. CRS are geographic or projected. [Geographic systems](https://py.geocompx.org/01-spatial-data#geographic-coordinate-systems) identify locations using longitude and latitude in decimal degrees on a spherical or ellipsoidal surface. [Projected systems](https://py.geocompx.org/01-spatial-data#sec-projected-coordinate-reference-systems) convert the three-dimensional surface of the Earth into Cartesian coordinates (x, y) in meters on an implicitly flat surface. Any time you work with spatial data, it should have a CRS (if it doesn't, that's almost definitely an error), so it's important to have a good grasp of CRS from the outset.
 
 ![Examples of different CRS, Opennews.org via [@carpentries_geospatial_python]](../../public/python-geoespacial/us-crs-versions.jpg)
 
@@ -57,26 +40,11 @@ The [vector data model](https://py.geocompx.org/01-spatial-data#sec-vector-data)
 
 ![Vector data [@carpentries_geospatial_python]](../../public/python-geoespacial/spatial_extent.png)
 
-Vector data is organized into a table of attributes and geometries. The [geometry column](https://py.geocompx.org/01-spatial-data#sec-geometry-columns) is essential in a GeoDataFrame: it contains the geometric part of the vector layer and is the basis for all spatial operations. This column can contain point, line, polygon, or multipolygon, and also stores spatial reference information (CRS).
-
-![GeoDataframe [@carpentries_geospatial_python]](../../public/python-geoespacial/pandas_geopandas_relation.png)
-
-Vectors dominate the social sciences because human settlements and processes (like transportation infrastructure) tend to have discrete boundaries.
+### Importing vector data
+Let's load in an example of vector data and explore it. The first thing we'll do is load the Python libraries that we need.
 
 ::: {.callout-tip}
 [GeoPandas](https://geopandas.org/) extends Pandas to work with spatial geometries using [Shapely](https://shapely.readthedocs.io/) for geometric operations and [Fiona](https://fiona.readthedocs.io/) for file reading/writing. We also use [Matplotlib](https://matplotlib.org/) for basic graphics and visualization.
-:::
-
-### Vector file formats
-
-For cloud-native workflows, GeoParquet is a columnar format optimized for analytical queries of large vector datasets, and FlatGeobuf provides efficient spatial access through built-in spatial indexing. Both support HTTP range requests, meaning you can query subsets of data without downloading entire files.
-
-You'll also encounter GeoJSON (.geojson, .json), which is used for web mapping and stores coordinates as text using JavaScript Object Notation. GeoPackage (.gpkg) is a single-file format that works well for local data exchange. ESRI Shapefile (.shp, .dbf, .shx) is a legacy format that requires multiple files and has technical limitations (field name length, attribute types, file size), but you'll still encounter it in the wild because many organizations haven't migrated yet.
-
-We load municipal boundaries for Buenos Aires Province from ARBA[@arba_partidos_pba]. The code below loads a local copy of the data; in [chapter two](/en/open-data/open-data.qmd), we'll show how to query these same data from ARBA's WFS service.
-
-:::{.callout-important}
-In this chapter, we're loading data from our own local copies of remote files (stored on servers elsewhere). While this book assumes a cloud-native approach, we try to introduce new concepts "just-in-time" and therefore will show how to access the remote versions of these datasets in [chapter two](/en/open-data/open-data.qmd), when we discuss open data sources and access. Similarly, since this chapter focuses on geospatial processing, we'll save our in depth explanation of why we choose _these_ particular datasets for chapters [two](/en/open-data/open-data.qmd) and [three](/en/climate-risk/climate-risk.qmd).
 :::
 
 ```{python}
@@ -85,16 +53,30 @@ import matplotlib.pyplot as plt
 import os
 from owslib.wfs import WebFeatureService
 from io import StringIO, BytesIO
+```
 
+We load municipal boundaries for Buenos Aires Province from ARBA[@arba_partidos_pba]. The code below loads a local copy of the data stored as a GeoParquet file. In [chapter two](/en/open-data/open-data.qmd), we'll talk more about file formats and show how to query these same data from ARBA's WFS service. For now, it's enough to know that GeoParquet is one of several ways to store vector data.
+
+:::{.callout-important}
+In this chapter, we're loading data from our own local copies of remote files (stored on servers elsewhere). While this book assumes a cloud-native approach, we try to introduce new concepts "just-in-time" and therefore will show how to access the remote versions of these datasets in [chapter two](/en/open-data/open-data.qmd), when we discuss open data sources and access. Similarly, since this chapter focuses on geospatial processing, we'll save our in depth explanation of why we choose _these_ particular datasets for chapters [two](/en/open-data/open-data.qmd) and [three](/en/climate-risk/climate-risk.qmd).
+:::
+
+```{python}
 partidos_path = "../../public/python-geoespacial/pba_partidos.parquet"
 
 # Load partidos from our local copy of the data from the ARBA GeoServer WFS service
 partidos = gpd.read_parquet(partidos_path)
 ```
 
-### Reprojections
+Now that we've loaded these data, we see what they look like. This is a book about geospatial data, so let's start by mapping them!
 
-Transforming data from one coordinate system to another is frequently necessary when working with multiple data sources. When performing spatial analysis, all datasets must be in the same CRS. Both vector and raster data can be reprojected. In the code above, we reprojected the partidos data to EPSG:5348 (POSGAR 2007 / Argentina 4) using GeoPandas' `to_crs()` method. This ensures our data is in a projected coordinate system with units in meters, which is appropriate for spatial calculations in the La Plata region.
+```{python}
+partidos.plot()
+```
+
+### Reprojection
+
+What we're looking at here is a map of all the administrative districts ("partidos" in Spanish) in the province of Buenos Aires. Before we do anything else, we'll make sure we've set the CRS properly. Transforming data from one coordinate system to another is frequently necessary when working with multiple data sources. When performing spatial analysis, all datasets must be in the same CRS. (This holds true for both vector and raster data, as [we will see below](#zonal-statistics)) We're going to be working with the Partido de Berisso, so we're going to use `EPSG:5348`, also know as Posgar 2007 / Argentina 4. 
 
 ```{python}
 # Reproject to our local CRS
@@ -105,62 +87,32 @@ partidos = partidos.to_crs("EPSG:5348")  # POSGAR 2007 / Argentina 4
 When you have datasets in different coordinate systems, choose a projected CRS that covers your study area. For Argentina, POSGAR 2007 divides the country into 7 Gauss-Krueger zones. Use the zone that covers your municipality. If your study area spans multiple zones, choose the zone that covers the majority of your area. You can confirm CRS codes at [epsg.io](https://epsg.io).
 :::
 
+### Data structure and basic filtering
+
+Vector data is organized into a table of attributes and geometries. The [geometry column](https://py.geocompx.org/01-spatial-data#sec-geometry-columns) is essential in a GeoDataFrame: it contains the geometric part of the vector layer and is the basis for all spatial operations. This column can contain point, line, polygon, or multipolygon, and also stores spatial reference information (CRS).
+
+![GeoDataframe [@carpentries_geospatial_python]](../../public/python-geoespacial/pandas_geopandas_relation.png)
+
+Let's take a peek at what's in our `partidos` data:
+
 ```{python}
 partidos.head()
 ```
 
-```{python}
-partidos.plot()
-```
-
-### Filter and manipulate geometries
-
-The `partidos` data has several attributes: department code, department name, and geometry. To extract only the data for the Partido de La Plata, we filter for the observation where the "fna" column corresponds to "Partido de La Plata".
+The `partidos` data has several attributes: department code, department name, and geometry. To extract only the data for the Partido de Berisso, we filter for the observation where the "fna" column corresponds to "Partido de Berisso". (If you're wondering whether we can also accomplish this by filtering based on a certain geographic area, good intuition! We come that in the [key spatial operations](#key-spatial-operations) below.)
 
 ```{python}
-la_plata = partidos[partidos["fna"] == "Partido de La Plata"]
+berisso = partidos[partidos["fna"] == "Partido de Berisso"]
 
-la_plata.head()
+berisso.head()
 ```
 
-When we map it we see that it includes not only the urban area but also an island that is technically part of the partido.
-
+We can also plot the data to see what Berisso looks like on a map:
 ```{python}
-#| code-fold: true
-#| code-summary: "Show visualization code"
-
-la_plata.plot(figsize=(12, 12))
+berisso.plot()
 ```
 
-When we examine the geometry type, we see that we have a multipolygon. The geometry can be a point, a line, a polygon, or a multipolygon.
-
-```{python}
-print(la_plata.geometry.iloc[0].geom_type)
-```
-
-We want to remove the island because it does not correspond to our analysis. We extract the larger geometry of the two.
-
-```{python}
-# Get the main geometry and keep only the largest polygon
-la_plata = la_plata.copy()
-main_geom = la_plata.geometry.iloc[0]
-la_plata.loc[la_plata.index[0], "geometry"] = max(main_geom.geoms, key=lambda p: p.area)
-```
-
-When we check the geometry again, we see that it is now a simple polygon and only the partido de La Plata appears without the island.
-
-```{python}
-print(la_plata.geometry.iloc[0].geom_type)
-```
-
-```{python}
-#| code-fold: true
-#| code-summary: "Show visualization code"
-
-la_plata.plot(figsize=(12, 12))
-```
-
-The GeoDataFrame class extends the pandas DataFrame, allowing you to treat non-spatial attributes like a table and process them with standard methods. Spatial predicates are geometric relationships between objects: intersection, containment, proximity, etc. These operations are fundamental for analyses like identifying neighborhoods within flood zones or finding critical infrastructure near risk areas. For more details, see [Geocomputation with Python, Chapter 1](https://py.geocompx.org/01-spatial-data#sec-vector-data).
+We now have a basic understand of what vector data is and how to work with in Python. You'll see these concepts come up repeatedly throughout the book, so you'll have plenty more time to absorb them, but if you're interested in going deeper on your own, we recommend chapters one through three of [Geocomputation with Python](https://py.geocompx.org/). We'll move on to raster data next.
 
 ## Raster data
 
@@ -197,7 +149,7 @@ dsm = rio.open_rasterio("../../public/python-geoespacial/copernicus_dsm.tif")
 dsm = dsm.rio.reproject(dst_crs="EPSG:5348")
 ```
 
-We visualize the digital surface model for La Plata. The `robust=True` parameter improves contrast by ignoring extreme values, and `cmap="terrain"` uses an appropriate color palette for elevation.
+We visualize the digital surface model for Berisso. The `robust=True` parameter improves contrast by ignoring extreme values, and `cmap="terrain"` uses an appropriate color palette for elevation.
 
 ```{python}
 #| code-fold: true
@@ -211,7 +163,7 @@ Now that we've seen how to load vector and raster data, we'll delve into some of
 
 ### Spatial clipping
 
-When we pulled in the DEM data, we used the line `dsm_clipped = dsm.rio.clip(aoi.geometry)` to "clip" the raster to the boundaries of our area of interest (i.e., the boundaries of La Plata). **Spatial clipping** refers to extracting data (raster or vector) within a specific area of interest. Let's take a look at another example.
+When we pulled in the DEM data, we used the line `dsm_clipped = dsm.rio.clip(aoi.geometry)` to "clip" the raster to the boundaries of our area of interest (i.e., the boundaries of Berisso). **Spatial clipping** refers to extracting data (raster or vector) within a specific area of interest. Let's take a look at another example.
 
 We import 30m resolution categorical land cover data from MapBiomas Argentina Collection 1 [@mapbiomas_argentina_2022], covering 1998-2022. This is the most reliable land cover data currently available for Argentina. The dataset is accessed directly from MapBiomas' public Google Cloud Storage bucket. We'll explain how to find and access datasets like this in [chapter two](/en/open-data/open-data.qmd). As we see here, the full dataset is a single file covering all of Argentina. That's a lot of data!
 
@@ -264,13 +216,13 @@ overview = overview.where((overview != 0) & (~np.isnan(overview)))
 overview.plot(figsize=(12, 10), cmap=lc_cmap, norm=lc_norm, add_colorbar=False)
 ```
 
-However, we're only interested in the data for the La Plata area, so we're going to clip the Mapbiomas raster to our area of interest. Because `rioxarray` is cloud-optimized, all this is done lazily, which means we're only actually loading in the bytes corresponding to our area of interest.
+However, we're only interested in the data for the Berisso area, so we're going to clip the Mapbiomas raster to our area of interest. Because `rioxarray` is cloud-optimized, all this is done lazily, which means we're only actually loading in the bytes corresponding to our area of interest.
 
 Now, we're left with just the data corresponding to the area we actually care about.
 
 ```{python}
 # Reproject to geographic CRS for bounding box query
-aoi = la_plata.to_crs("EPSG:4326")
+aoi = berisso.to_crs("EPSG:4326")
 
 # Open the raster with rioxarray and chunks
 suelo_2022 = rio.open_rasterio(
@@ -316,7 +268,7 @@ plt.show()
 ```
 
 ### Spatial aggregation
-What if we want to go beyond clipping to actually assessing how many observations in one dataset fall within the boundaries of another? We can do this using **spatial aggregation**, which allows us to assess how many observations of one vector dataset fall within (or outside of, or a number of [other spatial predicates](https://py.geocompx.org/03-spatial-operations#sec-vector-spatial-aggregation)) the geographic area of another vector dataset. Here, we'll demonstrate this by counting building footprints from the Google-Microsoft-OSM Open Buildings dataset [@google_microsoft_osm_buildings] within La Plata's boundaries. Building counts proxy for exposure in risk assessments—more structures means more potential flood damage.
+What if we want to go beyond clipping to actually assessing how many observations in one dataset fall within the boundaries of another? We can do this using **spatial aggregation**, which allows us to assess how many observations of one vector dataset fall within (or outside of, or a number of [other spatial predicates](https://py.geocompx.org/03-spatial-operations#sec-vector-spatial-aggregation)) the geographic area of another vector dataset. (Spatial predicates are geometric relationships between objects: intersection, containment, proximity, etc. These operations are fundamental for analyses like identifying neighborhoods within flood zones or finding critical infrastructure near risk areas.) Here, we'll demonstrate this by counting building footprints from the Google-Microsoft-OSM Open Buildings dataset [@google_microsoft_osm_buildings] within Berisso's boundaries. Building counts proxy for exposure in risk assessments—more structures means more potential flood damage.
 
 ```{python}
 # read local copy of the open building footprints dataset
@@ -326,30 +278,30 @@ buildings = gpd.read_parquet("../../public/python-geoespacial/vida-buildings.par
 buildings = buildings.to_crs("EPSG:5348")
 ```
 
-Now we spatially filter buildings that fall within La Plata's boundaries and count them:
+Now we spatially filter buildings that fall within Berisso's boundaries and count them:
 
 ```{python}
-# Spatial join: keep only buildings that intersect with La Plata polygon
-buildings_in_la_plata = gpd.sjoin(buildings, la_plata, predicate="intersects", how="inner")
+# Spatial join: keep only buildings that intersect with Berisso polygon
+buildings_in_berisso = gpd.sjoin(buildings, berisso, predicate="intersects", how="inner")
 
 # Count total buildings
-total_buildings = len(buildings_in_la_plata)
+total_buildings = len(buildings_in_berisso)
 ```
 
 ```{python}
 #| code-fold: true
 #| code-summary: "Show map visualization code"
 
-# Visualize buildings within La Plata
+# Visualize buildings within Berisso
 fig, ax = plt.subplots(figsize=(12, 12))
 
-# Plot La Plata boundary
-la_plata.plot(ax=ax, facecolor="none", edgecolor="black", linewidth=2)
+# Plot Berisso boundary
+berisso.plot(ax=ax, facecolor="none", edgecolor="black", linewidth=2)
 
 # Plot buildings with orange outlines
-buildings_in_la_plata.plot(ax=ax, facecolor="none", edgecolor="orange", linewidth=0.5)
+buildings_in_berisso.plot(ax=ax, facecolor="none", edgecolor="orange", linewidth=0.5)
 
-ax.set_title(f"Building Footprints in La Plata\nTotal buildings: {total_buildings:,}",
+ax.set_title(f"Building Footprints in Berisso\nTotal buildings: {total_buildings:,}",
              fontsize=14, fontweight="bold")
 ax.set_xticks([])
 ax.set_yticks([])
@@ -366,30 +318,30 @@ Beyond counting buildings, we often need to measure them. Building footprint are
 
 ```{python}
 # Calculate area in square meters (our CRS uses meters)
-buildings_in_la_plata["area_m2"] = buildings_in_la_plata.geometry.area
+buildings_in_berisso["area_m2"] = buildings_in_berisso.geometry.area
 
 # Calculate total built area
-total_built_area_m2 = buildings_in_la_plata["area_m2"].sum()
+total_built_area_m2 = buildings_in_berisso["area_m2"].sum()
 total_built_area_km2 = total_built_area_m2 / 1_000_000
 
 print(f"Total building footprint area: {total_built_area_km2:.2f} km²")
-print(f"Average building footprint: {buildings_in_la_plata['area_m2'].mean():.1f} m²")
+print(f"Average building footprint: {buildings_in_berisso['area_m2'].mean():.1f} m²")
 ```
 
 Note that area calculations depend on your CRS. If we had calculated areas in EPSG:4326 (geographic coordinates), the results would be wrong because degrees are not uniform units of distance. This is why we reprojected to EPSG:5348, an equal-area projection appropriate for this region.
 
 ### Zonal statistics
-We've just looked at aggregating and summarizing one vector dataset by another. What if we want to aggregate or describe a _raster_ dataset? For example, taking the average land surface temperature within a municipal boundary. This kind of spatial operation is referred to as **zonal statistics**, which allow you to calculate aggregate values from a raster within zones defined by vector polygons. This operation is fundamental for connecting continuous data (raster) with administrative units (vector). In this example, we extract elevation statistics for the La Plata area, calculating the minimum, mean, median, and maximum values. Given La Plata's tendency to flood, understanding the spatial distribution of elevation is essential to identifying flood-prone areas.
+We've just looked at aggregating and summarizing one vector dataset by another. What if we want to aggregate or describe a _raster_ dataset? For example, taking the average land surface temperature within a municipal boundary. This kind of spatial operation is referred to as **zonal statistics**, which allow you to calculate aggregate values from a raster within zones defined by vector polygons. This operation is fundamental for connecting continuous data (raster) with administrative units (vector). In this example, we extract elevation statistics for the Berisso area, calculating the minimum, mean, median, and maximum values. Given Berisso's tendency to flood, understanding the spatial distribution of elevation is essential to identifying flood-prone areas.
 
 ```{python}
 import numpy as np
 from rasterstats import zonal_stats
 
-la_plata = la_plata.copy()
+berisso = berisso.copy()
 
 # Extract elevation statistics (min, mean, median, max)
 stats = zonal_stats(
-    la_plata,
+    berisso,
     dsm.squeeze().values,
     affine=dsm.rio.transform(),
     stats=["min", "mean", "median", "max"],
@@ -397,12 +349,12 @@ stats = zonal_stats(
 )
 
 # Add the statistics as new columns
-la_plata["dsm_min"] = [s["min"] for s in stats]
-la_plata["dsm_mean"] = [s["mean"] for s in stats]
-la_plata["dsm_median"] = [s["median"] for s in stats]
-la_plata["dsm_max"] = [s["max"] for s in stats]
+berisso["dsm_min"] = [s["min"] for s in stats]
+berisso["dsm_mean"] = [s["mean"] for s in stats]
+berisso["dsm_median"] = [s["median"] for s in stats]
+berisso["dsm_max"] = [s["max"] for s in stats]
 
-la_plata[
+berisso[
     [
         "fna",
         "dsm_min",
@@ -413,7 +365,7 @@ la_plata[
 ]
 ```
 
-Zonal statistics are not limited to continuous data, either. Below, we aggregate the Mapbiomas data to assess relative composition of la Plata's land cover by category.
+Zonal statistics are not limited to continuous data, either. Below, we aggregate the Mapbiomas data to assess relative composition of Berisso's land cover by category.
 
 ```{python}
 # Extract raster values and remove NoData
@@ -463,7 +415,7 @@ bars = ax.barh(names, percentages, color=colors, edgecolor="black")
 ax.set_xlabel("Percentage (%)", fontsize=12)
 ax.set_ylabel("Cover Type", fontsize=12)
 ax.set_title(
-    "Land Cover Distribution - La Plata (MapBiomas 2022)",
+    "Land Cover Distribution - Berisso (MapBiomas 2022)",
     fontsize=14,
     fontweight="bold",
 )
