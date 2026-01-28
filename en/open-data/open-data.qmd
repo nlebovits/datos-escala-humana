@@ -133,6 +133,10 @@ else:
 
 # Reproject to working CRS
 partidos = partidos.to_crs("EPSG:5348")  # POSGAR 2007 / Argentina 4
+
+la_plata = partidos[partidos["fna"] == "Partido de La Plata"]
+
+la_plata.head()
 ```
 
 ### APIs

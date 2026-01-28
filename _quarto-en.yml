@@ -14,12 +14,12 @@ book:
     - part: Geospatial Python
       chapters:
         - en/python-geospatial/python-geospatial.qmd
-    - part: Climate Risk for Cities
-      chapters:
-        - en/climate-risk/climate-risk.qmd
     - part: Open Data
       chapters:
         - en/open-data/open-data.qmd
+    - part: Climate Risk for Cities
+      chapters:
+        - en/climate-risk/climate-risk.qmd
     - part: Data to Action
       chapters:
         - en/data-action/data-action.qmd
