@@ -4,7 +4,12 @@ _This lesson is largely based on material from [Introduction to Geospatial Raste
 
 ### Objectives
 
-This chapter develops basic GIS programming skills for working with open data on climate risk. You will learn about geospatial data types, projections, spatial operations, basic analysis, and visualization.
+After completing this chapter, you will be able to:
+
+- Load and work with vector (points, lines, polygons) and raster (gridded) geospatial data in Python
+- Reproject data between coordinate reference systems appropriate for your study area
+- Perform spatial operations including clipping, aggregation, and zonal statistics
+- Extract meaningful summaries from geospatial datasets to inform climate risk decisions
 
 ### What is GIS?
 
@@ -58,9 +63,9 @@ Vector data is organized into a table of attributes and geometries. The [geometr
 
 Vectors dominate the social sciences because human settlements and processes (like transportation infrastructure) tend to have discrete boundaries.
 
-### Python libraries for vector data
-
+::: {.callout-tip}
 [GeoPandas](https://geopandas.org/) extends Pandas to work with spatial geometries using [Shapely](https://shapely.readthedocs.io/) for geometric operations and [Fiona](https://fiona.readthedocs.io/) for file reading/writing. We also use [Matplotlib](https://matplotlib.org/) for basic graphics and visualization.
+:::
 
 ### Vector file formats
 
@@ -68,7 +73,11 @@ For cloud-native workflows, GeoParquet is a columnar format optimized for analyt
 
 You'll also encounter GeoJSON (.geojson, .json), which is used for web mapping and stores coordinates as text using JavaScript Object Notation. GeoPackage (.gpkg) is a single-file format that works well for local data exchange. ESRI Shapefile (.shp, .dbf, .shx) is a legacy format that requires multiple files and has technical limitations (field name length, attribute types, file size), but you'll still encounter it in the wild because many organizations haven't migrated yet.
 
-We load municipal boundaries for Buenos Aires Province from ARBA's WFS service [@arba_partidos_pba]. The code below checks for a cached local copy first, then fetches from the WFS service if needed.
+We load municipal boundaries for Buenos Aires Province from ARBA[@arba_partidos_pba]. The code below loads a local copy of the data; in [chapter two](/en/open-data/open-data.qmd), we'll show how to query these same data from ARBA's WFS service.
+
+:::{.callout-important}
+In this chapter, we're loading data from our own local copies of remote files (stored on servers elsewhere). While this book assumes a cloud-native approach, we try to introduce new concepts "just-in-time" and therefore will show how to access the remote versions of these datasets in [chapter two](/en/open-data/open-data.qmd), when we discuss open data sources and access. Similarly, since this chapter focuses on geospatial processing, we'll save our in depth explanation of why we choose _these_ particular datasets for chapters [two](/en/open-data/open-data.qmd) and [three](/en/climate-risk/climate-risk.qmd).
+:::
 
 ```{python}
 import geopandas as gpd
@@ -79,33 +88,18 @@ from io import StringIO, BytesIO
 
 partidos_path = "../../public/python-geoespacial/pba_partidos.parquet"
 
-# Load partidos from ARBA GeoServer WFS service
-if os.path.exists(partidos_path):
-    partidos = gpd.read_parquet(partidos_path)
-else:
-    # Connect to WFS (Web Feature Service)
-    wfs_url = "https://geo.arba.gov.ar/geoserver/idera/wfs"
-    wfs = WebFeatureService(url=wfs_url, version="2.0.0")
-
-    # Request the Departamento layer (partidos)
-    response = wfs.getfeature(
-        typename="idera:Departamento",
-        srsname="EPSG:5347",  # Original CRS
-    )
-
-    # Convert WFS response to GeoDataFrame
-    partidos = gpd.read_file(BytesIO(response.read()))
-
-    # Save to cache for future use
-    partidos.to_parquet(partidos_path)
-
-# Reproject to working CRS
-partidos = partidos.to_crs("EPSG:5348")  # POSGAR 2007 / Argentina 4
+# Load partidos from our local copy of the data from the ARBA GeoServer WFS service
+partidos = gpd.read_parquet(partidos_path)
 ```
 
 ### Reprojections
 
-Transforming data from one coordinate system to another is frequently necessary when working with multiple data sources. All data must be in the same CRS before performing spatial analysis. In the code above, we reprojected the partidos data to EPSG:5348 (POSGAR 2007 / Argentina 4) using GeoPandas' `to_crs()` method. This ensures our data is in a projected coordinate system with units in meters, which is appropriate for spatial calculations in the La Plata region.
+Transforming data from one coordinate system to another is frequently necessary when working with multiple data sources. When performing spatial analysis, all datasets must be in the same CRS. Both vector and raster data can be reprojected. In the code above, we reprojected the partidos data to EPSG:5348 (POSGAR 2007 / Argentina 4) using GeoPandas' `to_crs()` method. This ensures our data is in a projected coordinate system with units in meters, which is appropriate for spatial calculations in the La Plata region.
+
+```{python}
+# Reproject to our local CRS
+partidos = partidos.to_crs("EPSG:5348")  # POSGAR 2007 / Argentina 4
+```
 
 ::: {.callout-tip}
 When you have datasets in different coordinate systems, choose a projected CRS that covers your study area. For Argentina, POSGAR 2007 divides the country into 7 Gauss-Krueger zones. Use the zone that covers your municipality. If your study area spans multiple zones, choose the zone that covers the majority of your area. You can confirm CRS codes at [epsg.io](https://epsg.io).
@@ -132,6 +126,9 @@ la_plata.head()
 When we map it we see that it includes not only the urban area but also an island that is technically part of the partido.
 
 ```{python}
+#| code-fold: true
+#| code-summary: "Show visualization code"
+
 la_plata.plot(figsize=(12, 12))
 ```
 
@@ -157,6 +154,9 @@ print(la_plata.geometry.iloc[0].geom_type)
 ```
 
 ```{python}
+#| code-fold: true
+#| code-summary: "Show visualization code"
+
 la_plata.plot(figsize=(12, 12))
 ```
 
@@ -176,111 +176,101 @@ Cell values are numeric, representing continuous variables (elevation, temperatu
 
 Rasters dominate many environmental sciences due to dependence on satellite remote sensing data. Examples include satellite images, aerial photographs, digital elevation models, and precipitation maps. In this chapter we use digital elevation models (continuous) and land cover data (categorical).
 
-### Python libraries for raster data
-
-[Rasterio](https://rasterio.readthedocs.io/) reads and writes georeferenced raster formats. [Xarray](https://xarray.dev/) and [rioxarray](https://corteva.github.io/rioxarray/) facilitate working with labeled multidimensional arrays, ideal for climate time series. [GDAL/OGR](https://gdal.org/) are the fundamental libraries that underlie many tools.
+::: {.callout-tip}
+[Rasterio](https://rasterio.readthedocs.io/) reads and writes georeferenced raster formats. [Xarray](https://xarray.dev/) and [rioxarray](https://corteva.github.io/rioxarray/) facilitate working with labeled multidimensional arrays, ideal for climate time series.
+:::
 
 ### Raster file formats
 
 GeoTIFF (.tif, .tiff) is the industry standard format for GIS applications and satellite remote sensing. Cloud Optimized GeoTIFF (COG) is an optimized variant that incorporates tiles and previews to support HTTP queries, allowing you to load subsets of the image without transferring the complete file. For cloud-native workflows with multidimensional data, Zarr is a format optimized for cloud storage, ideal for climate time series.
 
-We work with 30m resolution Digital Surface Model data from the Copernicus DEM [@copernicus_dem_openlandmap], accessed via the Element84 Earth Search STAC catalog. We use Cloud Optimized GeoTIFF along with the `rioxarray` module to import only the necessary data efficiently. Instead of importing all the global data (several terabytes), we import only our area of interest through lazy loading. This means we don't download the data until we have filtered it, thus using only the essential memory and computational power.
+We work with 30m resolution Digital Surface Model data from the Copernicus DEM [@copernicus_dem_openlandmap], accessed via the Element84 Earth Search STAC catalog. We use Cloud Optimized GeoTIFF along with the `rioxarray` module to import only the necessary data efficiently. Instead of importing all the global data (several terabytes), we import only our area of interest through **lazy loading**—the library doesn't transfer data until you request specific operations, letting you work with massive datasets while downloading only the small portion you need. We'll cover cloud storage, APIs, and remote data access in detail in [chapter two](/en/open-data/open-data.qmd).
 
 ```{python}
-import pystac_client
-from odc.stac import load
 import rioxarray as rio
 
-# Reproject to geographic CRS for bounding box query
-aoi = la_plata.to_crs("EPSG:4326")
+# import a local copy of the Copernicus DSM
+dsm = rio.open_rasterio("../../public/python-geoespacial/copernicus_dsm.tif")
 
-# Configure AWS for unsigned requests (no login required)
-os.environ["AWS_NO_SIGN_REQUEST"] = "YES"
-os.environ["GDAL_DISABLE_READDIR_ON_OPEN"] = "EMPTY_DIR"
-
-# Connect to Element84 Earth Search STAC catalog
-catalog = pystac_client.Client.open("https://earth-search.aws.element84.com/v1")
-
-# Get bounding box for our area of interest
-# bbox format: [min_x, min_y, max_x, max_y]
-bbox = aoi.total_bounds
-
-# Search for Copernicus DEM tiles covering our area
-# cop-dem-glo-30 is the global 30m elevation dataset
-search = catalog.search(
-    collections=["cop-dem-glo-30"],
-    bbox=bbox,
-)
-
-# Get the items (files) that cover our area
-items = list(search.items())
-
-# Load DSM using chunks for efficient memory processing
-# odc.stac.load automatically downloads and assembles the necessary tiles
-dsm = load(
-    items,
-    bbox=bbox,
-    chunks={"x": 1024, "y": 1024},  # Process in blocks for efficiency
-)
-
-# Extract elevation band and convert to DataArray for use with rioxarray
-# load() returns a Dataset; we need the elevation DataArray
-dsm = dsm["data"].squeeze()  # Remove extra dimensions
-
-# Clip raster to exact geometries
-dsm_clipped = dsm.rio.clip(aoi.geometry)
-
-# Reproject clipped area to working CRS (POSGAR 2007 / Argentina 4)
-# This is more efficient because we reproject only the area of interest
-dsm_reproj = dsm_clipped.rio.reproject(dst_crs="EPSG:5348")
+# Reproject to working CRS (POSGAR 2007 / Argentina 4)
+# Both vector and raster data can be reprojected
+dsm = dsm.rio.reproject(dst_crs="EPSG:5348")
 ```
 
 We visualize the digital surface model for La Plata. The `robust=True` parameter improves contrast by ignoring extreme values, and `cmap="terrain"` uses an appropriate color palette for elevation.
 
 ```{python}
-dsm_reproj.plot(robust=True, cmap="terrain", figsize=(12, 12))
+#| code-fold: true
+#| code-summary: "Show visualization code"
+
+dsm.plot(robust=True, cmap="terrain", figsize=(12, 12))
 ```
 
-### Zonal statistics: connecting raster and vector
+## Key spatial operations
+Now that we've seen how to load vector and raster data, we'll delve into some of the basic analyses that can be done with these data, focusing on a handful of those that often show up in climate risk assessments. 
 
-Zonal statistics allow you to calculate aggregate values from a raster within zones defined by vector polygons. This operation is fundamental for connecting continuous data (raster) with administrative units (vector). We extract elevation statistics for the La Plata area.
+### Spatial clipping
+
+When we pulled in the DEM data, we used the line `dsm_clipped = dsm.rio.clip(aoi.geometry)` to "clip" the raster to the boundaries of our area of interest (i.e., the boundaries of La Plata). **Spatial clipping** refers to extracting data (raster or vector) within a specific area of interest. Let's take a look at another example.
+
+We import 30m resolution categorical land cover data from MapBiomas Argentina Collection 1 [@mapbiomas_argentina_2022], covering 1998-2022. This is the most reliable land cover data currently available for Argentina. The dataset is accessed directly from MapBiomas' public Google Cloud Storage bucket. We'll explain how to find and access datasets like this in [chapter two](/en/open-data/open-data.qmd). As we see here, the full dataset is a single file covering all of Argentina. That's a lot of data!
 
 ```{python}
+#| code-fold: true
+#| code-summary: "Show land cover colormap setup"
+
+from matplotlib.colors import ListedColormap, BoundaryNorm
 import numpy as np
-from rasterstats import zonal_stats
 
-la_plata = la_plata.copy()
+# MapBiomas Argentina land cover categories
+categories = {
+    "Closed woody": {"ids": [3], "color": "#1f8d49"},
+    "Open woody": {"ids": [4], "color": "#7dc975"},
+    "Sparse woody": {"ids": [45], "color": "#807a40"},
+    "Flooded woody": {"ids": [6], "color": "#026975"},
+    "Flooded non-woody vegetation": {"ids": [11], "color": "#519799"},
+    "Grassland": {"ids": [12], "color": "#d6bc74"},
+    "Steppe": {"ids": [63], "color": "#ebf8b5"},
+    "Pasture": {"ids": [15], "color": "#edde8e"},
+    "Agriculture": {"ids": [18], "color": "#e974ed"},
+    "Forest plantation": {"ids": [9], "color": "#7a5900"},
+    "Shrub crop": {"ids": [36], "color": "#d082de"},
+    "Agricultural mosaic": {"ids": [21], "color": "#ffefc3"},
+    "Non-vegetated area": {"ids": [22], "color": "#d4271e"},
+    "River, lake or ocean": {"ids": [33], "color": "#2532e4"},
+    "Ice and surface snow": {"ids": [34], "color": "#93dfe6"},
+    "Not observed": {"ids": [27], "color": "#ffffff"},
+}
 
-# Extract elevation statistics (min, mean, median, max)
-stats = zonal_stats(
-    la_plata,
-    dsm_reproj.squeeze().values,
-    affine=dsm_reproj.rio.transform(),
-    stats=["min", "mean", "median", "max"],
-    nodata=np.nan,
-)
-
-# Add the statistics as new columns
-la_plata["dsm_min"] = [s["min"] for s in stats]
-la_plata["dsm_mean"] = [s["mean"] for s in stats]
-la_plata["dsm_median"] = [s["median"] for s in stats]
-la_plata["dsm_max"] = [s["max"] for s in stats]
-
-la_plata[
-    [
-        "fna",
-        "dsm_min",
-        "dsm_mean",
-        "dsm_median",
-        "dsm_max",
-    ]
-]
+# Build colormap from categories (sorted by ID for consistent mapping)
+colors_by_id = {id_: info["color"] for info in categories.values() for id_ in info["ids"]}
+sorted_ids = sorted(colors_by_id.keys())
+lc_cmap = ListedColormap([colors_by_id[i] for i in sorted_ids])
+lc_norm = BoundaryNorm(sorted_ids + [max(sorted_ids) + 1], lc_cmap.N)
 ```
-
-We import 30m resolution categorical land cover data from MapBiomas Argentina Collection 1 [@mapbiomas_argentina_2022], covering 1998-2022. This is the most reliable land cover data currently available for Argentina. The dataset is accessed directly from MapBiomas' public Google Cloud Storage bucket without requiring a local copy, since we clip to our area of interest before downloading.
 
 ```{python}
 suelo_2022_ruta = "https://storage.googleapis.com/mapbiomas-public/initiatives/argentina/collection-1/coverage/argentina_coverage_2022.tif"
+
+# Load overview and mask nodata
+overview = rio.open_rasterio(suelo_2022_ruta, overview_level=4).squeeze()
+overview = overview.where((overview != 0) & (~np.isnan(overview)))
+```
+
+```{python}
+#| code-fold: true
+#| code-summary: "Show visualization code"
+
+overview.plot(figsize=(12, 10), cmap=lc_cmap, norm=lc_norm, add_colorbar=False)
+```
+
+However, we're only interested in the data for the La Plata area, so we're going to clip the Mapbiomas raster to our area of interest. Because `rioxarray` is cloud-optimized, all this is done lazily, which means we're only actually loading in the bytes corresponding to our area of interest.
+
+Now, we're left with just the data corresponding to the area we actually care about.
+
+```{python}
+# Reproject to geographic CRS for bounding box query
+aoi = la_plata.to_crs("EPSG:4326")
 
 # Open the raster with rioxarray and chunks
 suelo_2022 = rio.open_rasterio(
@@ -303,85 +293,127 @@ suelo_2022_masked = suelo_2022.where(
 )
 ```
 
-### Spatial clipping
-
-Extracting data within a specific area of interest is one of the most common spatial operations. In the code above, we clipped the national land cover data to the boundaries of La Plata using the `.rio.clip()` method. This operation reduces the dataset from the entire country to just our study area, making subsequent processing faster and more focused. Note that we clip in the raster's native CRS (EPSG:4326) before reprojecting to our working CRS (EPSG:5348).
-
 ```{python}
 #| code-fold: true
-#| code-summary: "Show legend and formatting code"
+#| code-summary: "Show plotting and legend code"
 
-import matplotlib.colors as mcolors
-
-# Define land cover categories with their IDs and MapBiomas colors
-categories = {
-    "Closed woody": {"ids": [3], "color": "#1f8d49"},
-    "Open woody": {"ids": [4], "color": "#7dc975"},
-    "Sparse woody": {"ids": [45], "color": "#807a40"},
-    "Flooded woody": {"ids": [6], "color": "#026975"},
-    "Flooded non-woody vegetation": {"ids": [11], "color": "#519799"},
-    "Grassland": {"ids": [12], "color": "#d6bc74"},
-    "Steppe": {"ids": [63], "color": "#ebf8b5"},
-    "Pasture": {"ids": [15], "color": "#edde8e"},
-    "Agriculture": {"ids": [18], "color": "#e974ed"},
-    "Forest plantation": {"ids": [9], "color": "#7a5900"},
-    "Shrub crop": {"ids": [36], "color": "#d082de"},
-    "Agricultural mosaic": {"ids": [21], "color": "#ffefc3"},
-    "Non-vegetated area": {"ids": [22], "color": "#d4271e"},
-    "River, lake or ocean": {"ids": [33], "color": "#2532e4"},
-    "Ice and surface snow": {"ids": [34], "color": "#93dfe6"},
-    "Not observed": {"ids": [27], "color": "#ffffff"},
-}
-
-# Get the unique IDs present in the data
-unique_values = np.unique(
-    suelo_2022_masked.values[~np.isnan(suelo_2022_masked.values)]
-).astype(int)
-present_ids = set(unique_values)
-
-# Filter only the categories that appear in our data
+# Filter legend to only categories present in clipped data
+present_ids = set(np.unique(suelo_2022_masked.values[~np.isnan(suelo_2022_masked.values)]).astype(int))
 present_categories = {
-    name: info
-    for name, info in categories.items()
-    if any(id in present_ids for id in info["ids"])
+    name: info for name, info in categories.items()
+    if any(id_ in present_ids for id_ in info["ids"])
 }
 
-# Create color map
-colors_by_id = {}
-for info in categories.values():
-    for pixel_id in info["ids"]:
-        colors_by_id[pixel_id] = info["color"]
-
-sorted_ids = sorted(colors_by_id.keys())
-cmap = mcolors.ListedColormap([colors_by_id[i] for i in sorted_ids])
-norm = mcolors.BoundaryNorm(sorted_ids, cmap.N)
-
-# Visualize the land cover raster
 fig, ax = plt.subplots(figsize=(20, 20))
-suelo_2022_masked.plot(ax=ax, cmap=cmap, norm=norm, add_colorbar=False)
+suelo_2022_masked.plot(ax=ax, cmap=lc_cmap, norm=lc_norm, add_colorbar=False)
 
-# Create legend only with the present categories
-legend = [
-    plt.Rectangle((0, 0), 1, 1, facecolor=info["color"], label=name)
-    for name, info in present_categories.items()
-]
-
-ax.legend(
-    handles=legend,
-    loc="lower center",
-    bbox_to_anchor=(0.5, -0.1),
-    ncol=3,
-    frameon=False,
-)
-
+legend = [plt.Rectangle((0, 0), 1, 1, facecolor=info["color"], label=name)
+          for name, info in present_categories.items()]
+ax.legend(handles=legend, loc="lower center", bbox_to_anchor=(0.5, -0.1), ncol=3, frameon=False)
 plt.title("Land Cover - MapBiomas 2022")
 plt.tight_layout()
 plt.show()
 ```
 
-### Analyze territorial distribution
+### Spatial aggregation
+What if we want to go beyond clipping to actually assessing how many observations in one dataset fall within the boundaries of another? We can do this using **spatial aggregation**, which allows us to assess how many observations of one vector dataset fall within (or outside of, or a number of [other spatial predicates](https://py.geocompx.org/03-spatial-operations#sec-vector-spatial-aggregation)) the geographic area of another vector dataset. Here, we'll demonstrate this by counting building footprints from the Google-Microsoft-OSM Open Buildings dataset [@google_microsoft_osm_buildings] within La Plata's boundaries. Building counts proxy for exposure in risk assessments—more structures means more potential flood damage.
 
-To better understand the composition of the territory, we calculate what percentage of the La Plata area corresponds to each type of land cover.
+```{python}
+# read local copy of the open building footprints dataset
+buildings = gpd.read_parquet("../../public/python-geoespacial/vida-buildings.parquet")
+
+# Reproject to working CRS to match other analysis data
+buildings = buildings.to_crs("EPSG:5348")
+```
+
+Now we spatially filter buildings that fall within La Plata's boundaries and count them:
+
+```{python}
+# Spatial join: keep only buildings that intersect with La Plata polygon
+buildings_in_la_plata = gpd.sjoin(buildings, la_plata, predicate="intersects", how="inner")
+
+# Count total buildings
+total_buildings = len(buildings_in_la_plata)
+```
+
+```{python}
+#| code-fold: true
+#| code-summary: "Show map visualization code"
+
+# Visualize buildings within La Plata
+fig, ax = plt.subplots(figsize=(12, 12))
+
+# Plot La Plata boundary
+la_plata.plot(ax=ax, facecolor="none", edgecolor="black", linewidth=2)
+
+# Plot buildings with orange outlines
+buildings_in_la_plata.plot(ax=ax, facecolor="none", edgecolor="orange", linewidth=0.5)
+
+ax.set_title(f"Building Footprints in La Plata\nTotal buildings: {total_buildings:,}",
+             fontsize=14, fontweight="bold")
+ax.set_xticks([])
+ax.set_yticks([])
+ax.spines["top"].set_visible(False)
+ax.spines["right"].set_visible(False)
+ax.spines["bottom"].set_visible(False)
+ax.spines["left"].set_visible(False)
+
+plt.tight_layout()
+plt.show()
+```
+
+Beyond counting buildings, we often need to measure them. Building footprint area is a key metric for calculating exposure in climate risk assessments. GeoPandas calculates area directly from polygon geometries:
+
+```{python}
+# Calculate area in square meters (our CRS uses meters)
+buildings_in_la_plata["area_m2"] = buildings_in_la_plata.geometry.area
+
+# Calculate total built area
+total_built_area_m2 = buildings_in_la_plata["area_m2"].sum()
+total_built_area_km2 = total_built_area_m2 / 1_000_000
+
+print(f"Total building footprint area: {total_built_area_km2:.2f} km²")
+print(f"Average building footprint: {buildings_in_la_plata['area_m2'].mean():.1f} m²")
+```
+
+Note that area calculations depend on your CRS. If we had calculated areas in EPSG:4326 (geographic coordinates), the results would be wrong because degrees are not uniform units of distance. This is why we reprojected to EPSG:5348, an equal-area projection appropriate for this region.
+
+### Zonal statistics
+We've just looked at aggregating and summarizing one vector dataset by another. What if we want to aggregate or describe a _raster_ dataset? For example, taking the average land surface temperature within a municipal boundary. This kind of spatial operation is referred to as **zonal statistics**, which allow you to calculate aggregate values from a raster within zones defined by vector polygons. This operation is fundamental for connecting continuous data (raster) with administrative units (vector). In this example, we extract elevation statistics for the La Plata area, calculating the minimum, mean, median, and maximum values. Given La Plata's tendency to flood, understanding the spatial distribution of elevation is essential to identifying flood-prone areas.
+
+```{python}
+import numpy as np
+from rasterstats import zonal_stats
+
+la_plata = la_plata.copy()
+
+# Extract elevation statistics (min, mean, median, max)
+stats = zonal_stats(
+    la_plata,
+    dsm.squeeze().values,
+    affine=dsm.rio.transform(),
+    stats=["min", "mean", "median", "max"],
+    nodata=np.nan,
+)
+
+# Add the statistics as new columns
+la_plata["dsm_min"] = [s["min"] for s in stats]
+la_plata["dsm_mean"] = [s["mean"] for s in stats]
+la_plata["dsm_median"] = [s["median"] for s in stats]
+la_plata["dsm_max"] = [s["max"] for s in stats]
+
+la_plata[
+    [
+        "fna",
+        "dsm_min",
+        "dsm_mean",
+        "dsm_median",
+        "dsm_max",
+    ]
+]
+```
+
+Zonal statistics are not limited to continuous data, either. Below, we aggregate the Mapbiomas data to assess relative composition of la Plata's land cover by category.
 
 ```{python}
 # Extract raster values and remove NoData
@@ -451,108 +483,17 @@ plt.tight_layout()
 plt.show()
 ```
 
-### Spatial aggregation
+Throughout this chapter, we've demonstrated several fundamental spatial operations, such as reprojection, zonal statistics, spatial clipping, and spatial aggregation. These operations are central to most cliamte risk workflows, but there are, of course, plenty of other useful ways to process spatial information. You can learn more about these in the [additional resources](#additional-resources) provided below, and we'll also cover several of them in subsequent chapters and in the [cookbooks section](/en/cookbooks/) that follows these four core conceptual chapters.
 
-Spatial aggregation combines multiple geometries or calculates summary statistics within geographic areas. We demonstrate this by counting building footprints within La Plata using cloud-native building data from the Google-Microsoft-OSM Open Buildings dataset [@google_microsoft_osm_buildings].
+By now, you have a basic understanding of what GIS is and how to work with geospatial data in Python. In the following chapter, we'll introduce you to the concept of open data; talk about some key sources of open data at local, national, and international levels; and show examples of accessing open datasets with Python tools via WFS/WMS, API, and in cloud object storage.
 
-```{python}
-import duckdb
-import pandas as pd
-
-# Get bounding box of La Plata in WGS84 (EPSG:4326) for cloud query
-bounds_4326 = la_plata.to_crs("EPSG:4326").total_bounds
-
-# Configure DuckDB with spatial and network extensions
-con = duckdb.connect()
-con.execute("INSTALL spatial")
-con.execute("LOAD spatial")
-con.execute("INSTALL httpfs")
-con.execute("LOAD httpfs")
-
-# Configure DuckDB for S3 cloud storage access
-con.execute("SET s3_region='us-east-1'")
-con.execute("SET s3_endpoint='data.source.coop'")
-con.execute("SET s3_use_ssl=true")
-con.execute("SET s3_url_style='path'")
-
-# Query buildings within our bounding box and save to temporary file
-# This filters buildings using geographic bounds (bbox) to load only those in our area of interest
-temp_file = "buildings_filtered.parquet"
-query = f"""
-COPY (
-    SELECT *
-    FROM 's3://vida/google-microsoft-open-buildings/geoparquet/by_country/country_iso=ARG/ARG.parquet'
-    WHERE bbox.xmax >= {bounds_4326[0]} AND bbox.xmin <= {bounds_4326[2]} AND
-          bbox.ymax >= {bounds_4326[1]} AND bbox.ymin <= {bounds_4326[3]}
-) TO '{temp_file}' (FORMAT PARQUET);
-"""
-con.execute(query)
-
-# Read filtered building data from Parquet file
-buildings_df = pd.read_parquet(temp_file)
-
-# Deserialize geometries: convert from binary format (WKB - Well-Known Binary) to GeoSeries objects
-# GeoParquet stores geometries as bytes in WKB format, we need to convert them to GeoPandas geometries
-buildings_df["geometry"] = gpd.GeoSeries.from_wkb(buildings_df["geometry"])
-
-# Create GeoDataFrame with deserialized geometries
-# Specify original CRS as EPSG:4326 (WGS84) since data comes in that coordinate system
-buildings = gpd.GeoDataFrame(buildings_df, geometry="geometry", crs="EPSG:4326")
-
-# Reproject to working CRS to match other analysis data
-buildings = buildings.to_crs("EPSG:5348")
-```
-
-Now we spatially filter buildings that fall within La Plata's boundaries and count them:
-
-```{python}
-# Spatial join: keep only buildings that intersect with La Plata polygon
-buildings_in_la_plata = gpd.sjoin(buildings, la_plata, predicate="intersects", how="inner")
-
-# Count total buildings
-total_buildings = len(buildings_in_la_plata)
-
-print(f"Total buildings in La Plata: {total_buildings:,}")
-```
-
-```{python}
-#| code-fold: true
-#| code-summary: "Show map visualization code"
-
-# Visualize buildings within La Plata
-fig, ax = plt.subplots(figsize=(12, 12))
-
-# Plot La Plata boundary
-la_plata.plot(ax=ax, facecolor="none", edgecolor="black", linewidth=2)
-
-# Plot buildings with orange outlines
-buildings_in_la_plata.plot(ax=ax, facecolor="none", edgecolor="orange", linewidth=0.5)
-
-ax.set_title(f"Building Footprints in La Plata\nTotal buildings: {total_buildings:,}",
-             fontsize=14, fontweight="bold")
-ax.set_xticks([])
-ax.set_yticks([])
-ax.spines["top"].set_visible(False)
-ax.spines["right"].set_visible(False)
-ax.spines["bottom"].set_visible(False)
-ax.spines["left"].set_visible(False)
-
-plt.tight_layout()
-plt.show()
-```
-
-## Other Common Spatial Operations
-
-Throughout this chapter, we've demonstrated several fundamental spatial operations: reprojections (converting between coordinate systems), spatial clipping (extracting data for a specific area), zonal statistics (summarizing raster values within vector polygons), and spatial aggregation (combining geometries by attributes). These operations form the core of most climate risk workflows.
-
-Other common spatial operations you'll encounter in geospatial analysis include spatial overlays (combining multiple data layers based on spatial relationships) and buffers (creating zones around features for proximity analysis). These operations are covered in detail in the resources below and will appear in later chapters when we apply them to specific climate risk problems.
 
 ## Additional Resources
 
-To deepen your knowledge of geospatial analysis with Python, consult these complete and free resources:
+To deepen your knowledge of geospatial analysis and data science with Python, we recommend the following open access resources.
 
-Rey, S., Arribas-Bel, D., & Wolf, L. (2023). [Geographic Data Science with Python](https://geographicdata.science/book/intro.html). CRC Press.
+First, much of this chapter is based on the [Introduction to Geospatial Raster and Vector Data with Python](https://carpentries-incubator.github.io/geospatial-python/index.html) by The Carpentries. This is an excellent starting point for making sure you're comfortable with the basics.
 
-Dorman, M., Graser, A., Nowosad, J., & Lovelace, R. (2025). [Geocomputation with Python](https://py.geocompx.org/). CRC Press.
+If you're looking for a more comprehensive resource, [Geocomputation with Python](https://py.geocompx.org/) is an excellent, thorough book on reproducible geographic data analysis in Python and covers many of the above topics in much greater detail.
 
-To explore traditional GIS software and commercial platforms, visit [The Carpentries Geospatial Python workshop](https://carpentries-incubator.github.io/geospatial-python/index.html) which includes detailed information about open source options (QGIS, GRASS GIS, GDAL) and commercial solutions (ArcGIS, MapInfo).
+Lastly, for an in-depth look at geospatial data science and topics like spatial autorrelation, point pattern analysis, clustering, and spatial regression, we recommend [Geographic Data Science with Python](https://geographicdata.science/book/intro.html)
