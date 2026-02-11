@@ -45,4 +45,4 @@ This project was made possible by a Fulbright research grant from the [Argentine
 
 [![Faculty of Architecture and Urban Planning](../public/fau-logo.png)](https://www.fau.unlp.edu.ar/)
 
-[![Radiant Earth](../public/radiant-earth-logo.webp)](https://radiant.earth/)
+[![Radiant Earth](../public/radiant-earth-logo.png)](https://radiant.earth/)

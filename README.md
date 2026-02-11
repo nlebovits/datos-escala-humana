@@ -46,4 +46,4 @@ Este proyecto utiliza la licencia [Creative Commons Attribution 4.0 Internationa
 
 [![Facultad de Arquitectura y Urbanismo](public/fau-logo.png)](https://www.fau.unlp.edu.ar/)
 
-[![Radiant Earth](public/radiant-earth-logo.webp)](https://radiant.earth/)
+[![Radiant Earth](public/radiant-earth-logo.png)](https://radiant.earth/)

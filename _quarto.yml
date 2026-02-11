@@ -15,6 +15,9 @@ execute:
   cache: true   # Cache computation results
   daemon: true  # Use Jupyter daemon for faster startup
 
+date: last-modified
+date-format: "YYYY-MM-DD"
+
 format:
   html:
     toc: true

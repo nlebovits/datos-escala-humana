@@ -11,18 +11,10 @@ book:
   language: en
   chapters:
     - en/intro.qmd
-    - part: Geospatial Python
-      chapters:
-        - en/python-geospatial/python-geospatial.qmd
-    - part: Open Data
-      chapters:
-        - en/open-data/open-data.qmd
-    - part: Climate Risk for Cities
-      chapters:
-        - en/climate-risk/climate-risk.qmd
-    - part: Data to Action
-      chapters:
-        - en/data-action/data-action.qmd
+    - en/python-geospatial/python-geospatial.qmd
+    - en/open-data/open-data.qmd
+    - en/climate-risk/climate-risk.qmd
+    - en/data-action/data-action.qmd
     - part: Cookbooks
       chapters:
         - en/cookbooks/pergamino.qmd

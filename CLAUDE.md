@@ -47,6 +47,10 @@ Read the agent file before responding. Follow its instructions for tone, output 
 
 ## Content Formatting
 
+### Data and Reproducibility
+
+See DECISIONS.md for the data reproducibility pattern. In short: local data files go to git via LFS with a citation in references.bib; cloud-accessed data keeps remote URLs with CI to detect broken links.
+
 ### Citations and References
 
 Datasets must be cited the first time they appear in a .qmd file. All citations should be stored in references.bib.

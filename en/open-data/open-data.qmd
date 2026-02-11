@@ -206,6 +206,8 @@ Examples include Cloud Optimized GeoTIFF (COG) for raster data, which allows eff
 
 These tools are especially relevant for climate risk analysis, where we need to process large volumes of satellite, climate, and geographic data without the infrastructure to store them locally. The cloud-native tools we will use are not more difficult than traditional tools and offer many advantages. The cloud is simply one of the places where people compute today. As mentioned in [the introduction](../intro.qmd#guiding-principles), this book takes the cloud-native approach as the default.
 
+Instead of importing all the global data (several terabytes), we import only our area of interest through **lazy loading**—the library doesn't transfer data until you request specific operations, letting you work with massive datasets while downloading only the small portion you need. We'll cover cloud storage, APIs, and remote data access in detail in [chapter two](/en/open-data/open-data.qmd).
+
 ### Cloud-Optimized Formats
 
 Best for sharing online and for massive live data. They are a step forward over traditional file formats, although they have their own limitations.

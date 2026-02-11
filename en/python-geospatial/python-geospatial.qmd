@@ -54,7 +54,7 @@ import geopandas as gpd
 import matplotlib.pyplot as plt
 ```
 
-We load municipal boundaries for Buenos Aires Province from ARBA[@arba_partidos_pba]. The code below loads a local copy of the data stored as a GeoParquet file. In [chapter two](/en/open-data/open-data.qmd), we'll talk more about file formats and show how to query these same data from ARBA's WFS service. For now, it's enough to know that GeoParquet is one of several ways to store vector data.
+We load municipal boundaries for Buenos Aires Province from ARBA [@arba_partidos_pba]. The code below loads a local copy of the data stored as a GeoParquet file. In [chapter two](/en/open-data/open-data.qmd), we'll talk more about file formats and show how to query these same data from ARBA's WFS service. For now, it's enough to know that GeoParquet is one of several ways to store vector data.
 
 :::{.callout-important}
 In this chapter, we're loading data from our own local copies of remote files (stored on servers elsewhere). While this book assumes a cloud-native approach, we try to introduce new concepts "just-in-time" and therefore will show how to access the remote versions of these datasets in [chapter two](/en/open-data/open-data.qmd), when we discuss open data sources and access. Similarly, since this chapter focuses on geospatial processing, we'll save our in depth explanation of why we choose _these_ particular datasets for chapters [two](/en/open-data/open-data.qmd) and [three](/en/climate-risk/climate-risk.qmd).
@@ -132,11 +132,7 @@ Rasters dominate many environmental sciences due to dependence on satellite remo
 [Rasterio](https://rasterio.readthedocs.io/) reads and writes georeferenced raster formats. [Xarray](https://xarray.dev/) and [rioxarray](https://corteva.github.io/rioxarray/) facilitate working with labeled multidimensional arrays, ideal for climate time series.
 :::
 
-### Raster file formats
-
-GeoTIFF (.tif, .tiff) is the industry standard format for GIS applications and satellite remote sensing. Cloud Optimized GeoTIFF (COG) is an optimized variant that incorporates tiles and previews to support HTTP queries, allowing you to load subsets of the image without transferring the complete file. For cloud-native workflows with multidimensional data, Zarr is a format optimized for cloud storage, ideal for climate time series.
-
-We work with 30m resolution Digital Surface Model data from the Copernicus DEM [@copernicus_dem_openlandmap], accessed via the Element84 Earth Search STAC catalog. We use Cloud Optimized GeoTIFF along with the `rioxarray` module to import only the necessary data efficiently. Instead of importing all the global data (several terabytes), we import only our area of interest through **lazy loading**—the library doesn't transfer data until you request specific operations, letting you work with massive datasets while downloading only the small portion you need. We'll cover cloud storage, APIs, and remote data access in detail in [chapter two](/en/open-data/open-data.qmd).
+We work with 30m resolution Digital Surface Model data from the Copernicus DEM [@copernicus_dem_openlandmap], stored as a Cloud-Optimized GeoTIFF (AKA a COG---more on raster file formats in [chapter two](./open-data/open-data.qmd).) Instead of importing all the global data (several terabytes), we import only our area of interest through **lazy loading**—the library doesn't transfer data until you request specific operations, letting you work with massive datasets while downloading only the small portion you need. We'll cover cloud storage, APIs, and remote data access in detail in [chapter two](/en/open-data/open-data.qmd).
 
 ```{python}
 import rioxarray as rio
