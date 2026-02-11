@@ -32,6 +32,7 @@ dependencies = [
     "jupyter-cache>=1.0.1",
     "kaleido>=1.1.0",
     "leafmap>=0.55.0",
+    "lintquarto>=0.7.0",
     "localtileserver>=0.10.6",
     "mapclassify>=2.10.0",
     "matplotlib>=3.10.7",
@@ -63,7 +64,22 @@ dependencies = [
     "seaborn>=0.13.2",
     "shap>=0.49.1",
     "tobler>=0.12.1",
+    "vulture>=2.14",
     "xarray>=2025.4.0",
     "xdem>=0.1.6",
     "xee>=0.0.22",
+]
+
+[tool.ruff]
+exclude = [
+    ".jupyter_cache",
+    "__pycache__",
+    ".git",
+    ".venv",
+]
+
+[tool.ruff.lint]
+ignore = [
+    "E402",  # module level import not at top (normal in notebooks)
+    "F401",  # imported but unused (often intentional in notebooks)
 ]

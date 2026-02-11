@@ -34,3 +34,7 @@ jobs:
         run: |
           python -m pip install pre-commit
           pre-commit run --all-files
+
+      - name: Lint QMD files (ruff + vulture)
+        run: |
+          uv run lintquarto -l ruff vulture -p en/

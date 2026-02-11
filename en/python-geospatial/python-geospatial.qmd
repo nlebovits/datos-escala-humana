@@ -50,9 +50,6 @@ Let's load in an example of vector data and explore it. The first thing we'll do
 ```{python}
 import geopandas as gpd
 import matplotlib.pyplot as plt
-import os
-from owslib.wfs import WebFeatureService
-from io import StringIO, BytesIO
 ```
 
 We load municipal boundaries for Buenos Aires Province from ARBA[@arba_partidos_pba]. The code below loads a local copy of the data stored as a GeoParquet file. In [chapter two](/en/open-data/open-data.qmd), we'll talk more about file formats and show how to query these same data from ARBA's WFS service. For now, it's enough to know that GeoParquet is one of several ways to store vector data.

@@ -948,6 +948,7 @@ dependencies = [
     { name = "jupyter-cache" },
     { name = "kaleido" },
     { name = "leafmap" },
+    { name = "lintquarto" },
     { name = "localtileserver" },
     { name = "mapclassify" },
     { name = "matplotlib" },
@@ -979,6 +980,7 @@ dependencies = [
     { name = "seaborn" },
     { name = "shap" },
     { name = "tobler" },
+    { name = "vulture" },
     { name = "xarray" },
     { name = "xdem" },
     { name = "xee" },
@@ -1013,6 +1015,7 @@ requires-dist = [
     { name = "jupyter-cache", specifier = ">=1.0.1" },
     { name = "kaleido", specifier = ">=1.1.0" },
     { name = "leafmap", specifier = ">=0.55.0" },
+    { name = "lintquarto", specifier = ">=0.7.0" },
     { name = "localtileserver", specifier = ">=0.10.6" },
     { name = "mapclassify", specifier = ">=2.10.0" },
     { name = "matplotlib", specifier = ">=3.10.7" },
@@ -1044,6 +1047,7 @@ requires-dist = [
     { name = "seaborn", specifier = ">=0.13.2" },
     { name = "shap", specifier = ">=0.49.1" },
     { name = "tobler", specifier = ">=0.12.1" },
+    { name = "vulture", specifier = ">=2.14" },
     { name = "xarray", specifier = ">=2025.4.0" },
     { name = "xdem", specifier = ">=0.1.6" },
     { name = "xee", specifier = ">=0.0.22" },
@@ -2531,6 +2535,18 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/2a/ae/bb56c6828e4797ba5a4821eec7c43b8bf40f69cda4d4f5f8c8a2810ec96a/linkify-it-py-2.0.3.tar.gz", hash = "sha256:68cda27e162e9215c17d786649d1da0021a451bdc436ef9e0fa0ba5234b9b048", size = 27946 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/04/1e/b832de447dee8b582cac175871d2f6c3d5077cc56d5575cadba1fd1cccfa/linkify_it_py-2.0.3-py3-none-any.whl", hash = "sha256:6bcbc417b0ac14323382aef5c5192c0075bf8a9d6b41820a2b66371eac6b6d79", size = 19820 },
+]
+
+[[package]]
+name = "lintquarto"
+version = "0.7.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "toml" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/ba/a2/f30fd757b236c010e4f18bab07ada85dd143a5bb491e9f40d08b2ec6ee6f/lintquarto-0.7.0.tar.gz", hash = "sha256:fda917c6eb1d1fd456962a53fbd6eb6b85e34e46a1a21c4dabe04db2ddda8ed1", size = 663724 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/0b/53/b9cdb5b69588b127228e66f633affe6df27b51107e3b025f613a081687eb/lintquarto-0.7.0-py3-none-any.whl", hash = "sha256:bfddd3b8f26624b09d0fccb04a7f477c828125b29ad77d61a7650f2198556b9c", size = 15268 },
 ]
 
 [[package]]
@@ -5343,6 +5359,15 @@ wheels = [
 ]
 
 [[package]]
+name = "toml"
+version = "0.10.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/be/ba/1f744cdc819428fc6b5084ec34d9b30660f6f9daaf70eead706e3203ec3c/toml-0.10.2.tar.gz", hash = "sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f", size = 22253 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/44/6f/7120676b6d73228c96e17f1f794d8ab046fc910d781c8d151120c3f1569e/toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b", size = 16588 },
+]
+
+[[package]]
 name = "tomli"
 version = "2.4.0"
 source = { registry = "https://pypi.org/simple" }
@@ -5516,6 +5541,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/cb/ce/f06b84e2697fef4688ca63bdb2fdf113ca0a3be33f94488f2cadb690b0cf/uvicorn-0.38.0.tar.gz", hash = "sha256:fd97093bdd120a2609fc0d3afe931d4d4ad688b6e75f0f929fde1bc36fe0e91d", size = 80605 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/ee/d9/d88e73ca598f4f6ff671fb5fde8a32925c2e08a637303a1d12883c7305fa/uvicorn-0.38.0-py3-none-any.whl", hash = "sha256:48c0afd214ceb59340075b4a052ea1ee91c16fbc2a9b1469cca0e54566977b02", size = 68109 },
+]
+
+[[package]]
+name = "vulture"
+version = "2.14"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/8e/25/925f35db758a0f9199113aaf61d703de891676b082bd7cf73ea01d6000f7/vulture-2.14.tar.gz", hash = "sha256:cb8277902a1138deeab796ec5bef7076a6e0248ca3607a3f3dee0b6d9e9b8415", size = 58823 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a0/56/0cc15b8ff2613c1d5c3dc1f3f576ede1c43868c1bc2e5ccaa2d4bcd7974d/vulture-2.14-py2.py3-none-any.whl", hash = "sha256:d9a90dba89607489548a49d557f8bac8112bd25d3cbc8aeef23e860811bd5ed9", size = 28915 },
 ]
 
 [[package]]

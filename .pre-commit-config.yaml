@@ -1,19 +1,19 @@
 repos:
   - repo: local
     hooks:
-      - id: format-qmd-python
-        name: Format Python in QMD
-        entry: python tools/qmd_ruff.py "format"
-        language: python
+      - id: lintquarto-ruff
+        name: Lint Python in QMD (ruff)
+        entry: uv run lintquarto -l ruff -p
+        language: system
         files: \.qmd$
-        additional_dependencies: [ruff]
+        pass_filenames: true
 
-      - id: lint-qmd-python
-        name: Lint and fix Python in QMD
-        entry: python tools/qmd_ruff.py "check --fix"
-        language: python
+      - id: lintquarto-vulture
+        name: Check unused code in QMD (vulture)
+        entry: uv run lintquarto -l vulture -p
+        language: system
         files: \.qmd$
-        additional_dependencies: [ruff]
+        pass_filenames: true
 
       - id: nbqa-black
         name: nbqa-black
@@ -24,12 +24,6 @@ repos:
       - id: nbqa-isort
         name: nbqa-isort
         entry: uv run nbqa isort
-        language: system
-        types: [jupyter]
-
-      - id: nbqa-flake8
-        name: nbqa-flake8
-        entry: uv run nbqa flake8 --extend-ignore=E501,E722
         language: system
         types: [jupyter]
 
