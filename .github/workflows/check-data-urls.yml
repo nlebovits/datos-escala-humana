@@ -1,0 +1,52 @@
+name: Check Data URLs
+
+on:
+  schedule:
+    # Run weekly on Mondays at 9am UTC
+    - cron: "0 9 * * 1"
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  check-urls:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check remote data URLs
+        run: |
+          set -e
+
+          urls=(
+            # WFS service (Chapter 2)
+            "https://geo.arba.gov.ar/geoserver/idera/wfs?service=WFS&request=GetCapabilities"
+
+            # STAC catalog (Chapters 1, 2)
+            "https://earth-search.aws.element84.com/v1"
+
+            # MapBiomas Argentina (Chapters 1, 2)
+            "https://storage.googleapis.com/mapbiomas-public/initiatives/argentina/collection-1/coverage/argentina_coverage_2022.tif"
+
+            # Source Cooperative - Overture buildings (Chapters 1, 2)
+            "https://data.source.coop/vida/google-microsoft-open-buildings/geoparquet/by_country/country_iso=ARG/ARG.parquet"
+          )
+
+          failed=0
+
+          for url in "${urls[@]}"; do
+            echo "Checking: $url"
+            status=$(curl -s -o /dev/null -w "%{http_code}" --max-time 30 -L "$url" || echo "000")
+
+            if [[ "$status" =~ ^(200|206|301|302|307|308)$ ]]; then
+              echo "  OK ($status)"
+            else
+              echo "  FAILED ($status)"
+              failed=1
+            fi
+          done
+
+          if [ $failed -eq 1 ]; then
+            echo ""
+            echo "One or more data URLs are unreachable."
+            exit 1
+          fi
+
+          echo ""
+          echo "All data URLs are reachable."

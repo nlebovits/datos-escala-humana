@@ -44,7 +44,7 @@ The [vector data model](https://py.geocompx.org/01-spatial-data#sec-vector-data)
 Let's load in an example of vector data and explore it. The first thing we'll do is load the Python libraries that we need.
 
 ::: {.callout-tip}
-[GeoPandas](https://geopandas.org/) extends Pandas to work with spatial geometries using [Shapely](https://shapely.readthedocs.io/) for geometric operations and [Fiona](https://fiona.readthedocs.io/) for file reading/writing. We also use [Matplotlib](https://matplotlib.org/) for basic graphics and visualization.
+[GeoPandas](https://geopandas.org/) is the core Python library for handling geospatial vector data. We also use [Matplotlib](https://matplotlib.org/) for basic graphics and visualization.
 :::
 
 ```{python}
@@ -89,7 +89,7 @@ When you have datasets in different coordinate systems, choose a projected CRS t
 
 ### Data structure and basic filtering
 
-Vector data is organized into a table of attributes and geometries. The [geometry column](https://py.geocompx.org/01-spatial-data#sec-geometry-columns) is essential in a GeoDataFrame: it contains the geometric part of the vector layer and is the basis for all spatial operations. This column can contain point, line, polygon, or multipolygon, and also stores spatial reference information (CRS).
+Vector data is organized into a table of attributes and geometries. It builds on the concept of a dataframe, which is a tabular data structure with rows and columns. Each row represents an observation (e.g., a building, a river segment, a city), and each column represents an attribute of that observation (e.g., name, population, land cover type). The [geometry column](https://py.geocompx.org/01-spatial-data#sec-geometry-columns) is what makes our vector data a GeoDataFrame: it contains the geometric part of the vector layer and is the basis for all spatial operations. This column can contain point, line, polygon, or multipolygon, and also stores spatial reference information (CRS).
 
 ![GeoDataframe [@carpentries_geospatial_python]](../../public/python-geoespacial/pandas_geopandas_relation.png)
 
@@ -155,7 +155,7 @@ We visualize the digital surface model for Berisso. The `robust=True` parameter 
 #| code-fold: true
 #| code-summary: "Show visualization code"
 
-dsm.plot(robust=True, cmap="terrain", figsize=(12, 12))
+dsm.plot(robust=True, cmap="terrain")
 ```
 
 ## Key spatial operations
@@ -213,7 +213,7 @@ overview = overview.where((overview != 0) & (~np.isnan(overview)))
 #| code-fold: true
 #| code-summary: "Show visualization code"
 
-overview.plot(figsize=(12, 10), cmap=lc_cmap, norm=lc_norm, add_colorbar=False)
+overview.plot(cmap=lc_cmap, norm=lc_norm, add_colorbar=False)
 ```
 
 However, we're only interested in the data for the Berisso area, so we're going to clip the Mapbiomas raster to our area of interest. Because `rioxarray` is cloud-optimized, all this is done lazily, which means we're only actually loading in the bytes corresponding to our area of interest.
@@ -256,7 +256,7 @@ present_categories = {
     if any(id_ in present_ids for id_ in info["ids"])
 }
 
-fig, ax = plt.subplots(figsize=(20, 20))
+fig, ax = plt.subplots()
 suelo_2022_masked.plot(ax=ax, cmap=lc_cmap, norm=lc_norm, add_colorbar=False)
 
 legend = [plt.Rectangle((0, 0), 1, 1, facecolor=info["color"], label=name)
@@ -293,7 +293,7 @@ total_buildings = len(buildings_in_berisso)
 #| code-summary: "Show map visualization code"
 
 # Visualize buildings within Berisso
-fig, ax = plt.subplots(figsize=(12, 12))
+fig, ax = plt.subplots()
 
 # Plot Berisso boundary
 berisso.plot(ax=ax, facecolor="none", edgecolor="black", linewidth=2)
@@ -402,7 +402,7 @@ sorted_categories = sorted(
 #| code-summary: "Show chart formatting code"
 
 # Create horizontal bar chart
-fig, ax = plt.subplots(figsize=(12, 8))
+fig, ax = plt.subplots()
 
 names = [cat[0] for cat in sorted_categories]
 percentages = [cat[1]["percentage"] for cat in sorted_categories]
@@ -435,7 +435,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-Throughout this chapter, we've demonstrated several fundamental spatial operations, such as reprojection, zonal statistics, spatial clipping, and spatial aggregation. These operations are central to most cliamte risk workflows, but there are, of course, plenty of other useful ways to process spatial information. You can learn more about these in the [additional resources](#additional-resources) provided below, and we'll also cover several of them in subsequent chapters and in the [cookbooks section](/en/cookbooks/) that follows these four core conceptual chapters.
+Throughout this chapter, we've demonstrated several fundamental spatial operations, such as reprojection, zonal statistics, spatial clipping, and spatial aggregation. These operations are central to most climate risk workflows, but there are, of course, plenty of other useful ways to process spatial information. You can learn more about these in the [additional resources](#additional-resources) provided below, and we'll also cover several of them in subsequent chapters and in the [cookbooks section](/en/cookbooks/) that follows these four core conceptual chapters.
 
 By now, you have a basic understanding of what GIS is and how to work with geospatial data in Python. In the following chapter, we'll introduce you to the concept of open data; talk about some key sources of open data at local, national, and international levels; and show examples of accessing open datasets with Python tools via WFS/WMS, API, and in cloud object storage.
 
