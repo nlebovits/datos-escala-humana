@@ -40,8 +40,10 @@ uv run markdownlint-cli2 "**/*.qmd"
 
 Este proyecto utiliza la licencia [Creative Commons Attribution 4.0 International (CC BY 4.0)](/LICENSE).
 
-## Patrocinadores del Proyecto
+## Apoyan este Proyecto
 
 [![Centro de Investigaciones Urbanas y Territoriales](public/ciut-logo.png)](https://ciut.fau.unlp.edu.ar/)
 
 [![Facultad de Arquitectura y Urbanismo](public/fau-logo.png)](https://www.fau.unlp.edu.ar/)
+
+[![Radiant Earth](public/radiant-earth-logo.webp)](https://radiant.earth/)

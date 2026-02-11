@@ -50,6 +50,7 @@ dependencies = [
     "pandas>=2.3.3",
     "panel>=1.8.2",
     "pip>=25.3",
+    "pre-commit>=4.0.0",
     "planetary-computer>=1.0.0",
     "pyarrow==17.0.0",
     "pysheds>=0.5",

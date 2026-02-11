@@ -195,6 +195,7 @@ dsm_reproj = dsm_clipped.rio.reproject(dst_crs="EPSG:5348")
 ```
 
 #### Cloud-Native Geospatial
+
 **Cloud-native geospatial** tools are designed specifically to work with data stored in the cloud. Unlike traditional tools that require downloading complete datasets, these tools allow you to access and process only the portions of data needed through protocols like HTTP range requests.
 
 ::: {.column-margin}
@@ -289,23 +290,25 @@ buildings = buildings.to_crs("EPSG:5348")
 
 ### When to Use Which Format
 
-
 For cloud-native workflows, GeoParquet is a columnar format optimized for analytical queries of large vector datasets, and FlatGeobuf provides efficient spatial access through built-in spatial indexing. Both support HTTP range requests, meaning you can query subsets of data without downloading entire files.
 
 You'll also encounter GeoJSON (.geojson, .json), which is used for web mapping and stores coordinates as text using JavaScript Object Notation. GeoPackage (.gpkg) is a single-file format that works well for local data exchange. ESRI Shapefile (.shp, .dbf, .shx) is a legacy format that requires multiple files and has technical limitations (field name length, attribute types, file size), but you'll still encounter it in the wild because many organizations haven't migrated yet.
 
 **Use cloud-native formats (GeoParquet, COG, Zarr) when:**
+
 - Working with large datasets where you only need a subset
 - Accessing data stored remotely (cloud storage, data repositories)
 - Building reproducible workflows that others can run without downloading large files
 - Processing earth observation or climate data at scale
 
 **Use WFS/WMS services when:**
+
 - Accessing government data portals that provide these endpoints
 - You need the most current version of regularly updated data
 - Integration with existing GIS workflows
 
 **Use flat files (GeoJSON, GeoPackage) when:**
+
 - Working with small datasets that fit comfortably in memory
 - You need offline access to data
 - Sharing data with users who lack technical infrastructure for cloud-native access

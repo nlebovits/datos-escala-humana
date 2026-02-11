@@ -31,9 +31,7 @@ jobs:
         run: uv sync
 
       - name: Run pre-commit
-        run: |
-          python -m pip install pre-commit
-          pre-commit run --all-files
+        run: uv run pre-commit run --all-files
 
       - name: Lint QMD files (ruff + vulture)
         run: |

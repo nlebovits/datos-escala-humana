@@ -1,6 +1,7 @@
 # Configuration for markdownlint-cli2
 globs:
   - "**/*.{md,qmd}"
+  - "!.agents/**"
   - "!.venv/**"
   - "!venv/**"
   - "!node_modules/**"
@@ -8,6 +9,8 @@ globs:
   - "!docs/**"
   - "!README_files/**"
   - "!README.md"
+  - "!CHANGELOG.md"
+  - "!CLAUDE.md"
   - "!project/CODE_OF_CONDUCT.md"
   - "!project/CONTRIBUTING.md"
   - "!project/ROADMAP.md"

@@ -39,8 +39,10 @@ New cloud-native geospatial tools unlock efficient, low-cost, data processing at
 
 This project was made possible by a Fulbright research grant from the [Argentine Fulbright Commission](https://fulbright.edu.ar/). Further thanks are due to the [Centro de Investigaciones Urbanas y Territoriales](https://ciut.fau.unlp.edu.ar/) at the Universidad Nacional de La Plata, which hosted the author during his stay in Argentina in 2025; and to Celeste Duarte, Juan Carlos Etulaín, and Ted Wong.
 
-## Project Sponsors
+## Project Supporters
 
 [![Center for Urban and Territorial Research](../public/ciut-logo.png)](https://ciut.fau.unlp.edu.ar/)
 
 [![Faculty of Architecture and Urban Planning](../public/fau-logo.png)](https://www.fau.unlp.edu.ar/)
+
+[![Radiant Earth](../public/radiant-earth-logo.webp)](https://radiant.earth/)

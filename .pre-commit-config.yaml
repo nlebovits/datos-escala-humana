@@ -38,4 +38,4 @@ repos:
     rev: v0.18.1
     hooks:
       - id: markdownlint-cli2
-        exclude: ^(\.venv/|venv/|node_modules/|_book/|docs/|README_files/|README\.md|project/(CODE_OF_CONDUCT|CONTRIBUTING|ROADMAP)\.md)
+        exclude: ^(\.agents/|\.venv/|venv/|node_modules/|_book/|docs/|README_files/|README\.md|CHANGELOG\.md|CLAUDE\.md|project/(CODE_OF_CONDUCT|CONTRIBUTING|ROADMAP)\.md)

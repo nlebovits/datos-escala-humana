@@ -14,12 +14,13 @@ In the context of climate risk management, GIS makes it possible to do things su
 
 There are two main approaches for working with geospatial data:
 
- - **Graphical user interface (GUI)** applications like ArcGIS and QGIS allow you to work with spatial data without learning a programming language. Mapping and visualization are more intuitive and flexible in this environment. However, these tools have important limitations: low reproducibility of analyses, limited scalability for automation, restricted capacity to customize functionality, and complex interfaces with too many buttons that can be overwhelming. 
- - On the other hand, **programming** offers high reproducibility, scalability, and complete automation. It provides total flexibility to customize functionality and facilitates integration with other workflows and data sources. The main disadvantages are the need to learn a programming language, a steeper learning curve at the beginning, and that mapping and visualization are less intuitive initially.
+- **Graphical user interface (GUI)** applications like ArcGIS and QGIS allow you to work with spatial data without learning a programming language. Mapping and visualization are more intuitive and flexible in this environment. However, these tools have important limitations: low reproducibility of analyses, limited scalability for automation, restricted capacity to customize functionality, and complex interfaces with too many buttons that can be overwhelming.
+- On the other hand, **programming** offers high reproducibility, scalability, and complete automation. It provides total flexibility to customize functionality and facilitates integration with other workflows and data sources. The main disadvantages are the need to learn a programming language, a steeper learning curve at the beginning, and that mapping and visualization are less intuitive initially.
 
 In this book, we use **Python** for all of our analyses. Python is widely used with a rich ecosystem of specialized libraries for geospatial analysis. It is flexible, powerful, and relatively easy to learn compared to other languages. It offers complete integration with databases, APIs, web services, and other programming languages. Additionally, it is free, open source, and has an active community that provides abundant documentation, tutorials, and support. Lastly, its high replicability makes it ideal for sharing analyses that can be adapted and scaled in other contexts.
 
 ### Coordinate Reference Systems (CRS)
+
 Before we get into looking at any data, we need to define a key concept in geospatial data analysis: **coordinate reference systems (CRS)**. [Coordinate reference systems](https://py.geocompx.org/01-spatial-data#sec-coordinate-reference-systems-intro) define how the spatial elements of data relate to the Earth's surface. CRS are geographic or projected. [Geographic systems](https://py.geocompx.org/01-spatial-data#geographic-coordinate-systems) identify locations using longitude and latitude in decimal degrees on a spherical or ellipsoidal surface. [Projected systems](https://py.geocompx.org/01-spatial-data#sec-projected-coordinate-reference-systems) convert the three-dimensional surface of the Earth into Cartesian coordinates (x, y) in meters on an implicitly flat surface. Any time you work with spatial data, it should have a CRS (if it doesn't, that's almost definitely an error), so it's important to have a good grasp of CRS from the outset.
 
 ![Examples of different CRS, Opennews.org via [@carpentries_geospatial_python]](../../public/python-geoespacial/us-crs-versions.jpg)
@@ -41,6 +42,7 @@ The [vector data model](https://py.geocompx.org/01-spatial-data#sec-vector-data)
 ![Vector data [@carpentries_geospatial_python]](../../public/python-geoespacial/spatial_extent.png)
 
 ### Importing vector data
+
 Let's load in an example of vector data and explore it. The first thing we'll do is load the Python libraries that we need.
 
 ::: {.callout-tip}
@@ -73,7 +75,7 @@ partidos.plot()
 
 ### Reprojection
 
-What we're looking at here is a map of all the administrative districts ("partidos" in Spanish) in the province of Buenos Aires. Before we do anything else, we'll make sure we've set the CRS properly. Transforming data from one coordinate system to another is frequently necessary when working with multiple data sources. When performing spatial analysis, all datasets must be in the same CRS. (This holds true for both vector and raster data, as [we will see below](#zonal-statistics)) We're going to be working with the Partido de Berisso, so we're going to use `EPSG:5348`, also know as Posgar 2007 / Argentina 4. 
+What we're looking at here is a map of all the administrative districts ("partidos" in Spanish) in the province of Buenos Aires. Before we do anything else, we'll make sure we've set the CRS properly. Transforming data from one coordinate system to another is frequently necessary when working with multiple data sources. When performing spatial analysis, all datasets must be in the same CRS. (This holds true for both vector and raster data, as [we will see below](#zonal-statistics)) We're going to be working with the Partido de Berisso, so we're going to use `EPSG:5348`, also know as Posgar 2007 / Argentina 4.
 
 ```{python}
 # Reproject to our local CRS
@@ -105,6 +107,7 @@ berisso.head()
 ```
 
 We can also plot the data to see what Berisso looks like on a map:
+
 ```{python}
 berisso.plot()
 ```
@@ -156,7 +159,8 @@ dsm.plot(robust=True, cmap="terrain")
 ```
 
 ## Key spatial operations
-Now that we've seen how to load vector and raster data, we'll delve into some of the basic analyses that can be done with these data, focusing on a handful of those that often show up in climate risk assessments. 
+
+Now that we've seen how to load vector and raster data, we'll delve into some of the basic analyses that can be done with these data, focusing on a handful of those that often show up in climate risk assessments.
 
 ### Spatial clipping
 
@@ -265,6 +269,7 @@ plt.show()
 ```
 
 ### Spatial aggregation
+
 What if we want to go beyond clipping to actually assessing how many observations in one dataset fall within the boundaries of another? We can do this using **spatial aggregation**, which allows us to assess how many observations of one vector dataset fall within (or outside of, or a number of [other spatial predicates](https://py.geocompx.org/03-spatial-operations#sec-vector-spatial-aggregation)) the geographic area of another vector dataset. (Spatial predicates are geometric relationships between objects: intersection, containment, proximity, etc. These operations are fundamental for analyses like identifying neighborhoods within flood zones or finding critical infrastructure near risk areas.) Here, we'll demonstrate this by counting building footprints from the Google-Microsoft-OSM Open Buildings dataset [@google_microsoft_osm_buildings] within Berisso's boundaries. Building counts proxy for exposure in risk assessments—more structures means more potential flood damage.
 
 ```{python}
@@ -328,6 +333,7 @@ print(f"Average building footprint: {buildings_in_berisso['area_m2'].mean():.1f}
 Note that area calculations depend on your CRS. If we had calculated areas in EPSG:4326 (geographic coordinates), the results would be wrong because degrees are not uniform units of distance. This is why we reprojected to EPSG:5348, an equal-area projection appropriate for this region.
 
 ### Zonal statistics
+
 We've just looked at aggregating and summarizing one vector dataset by another. What if we want to aggregate or describe a _raster_ dataset? For example, taking the average land surface temperature within a municipal boundary. This kind of spatial operation is referred to as **zonal statistics**, which allow you to calculate aggregate values from a raster within zones defined by vector polygons. This operation is fundamental for connecting continuous data (raster) with administrative units (vector). In this example, we extract elevation statistics for the Berisso area, calculating the minimum, mean, median, and maximum values. Given Berisso's tendency to flood, understanding the spatial distribution of elevation is essential to identifying flood-prone areas.
 
 ```{python}
@@ -435,7 +441,6 @@ plt.show()
 Throughout this chapter, we've demonstrated several fundamental spatial operations, such as reprojection, zonal statistics, spatial clipping, and spatial aggregation. These operations are central to most climate risk workflows, but there are, of course, plenty of other useful ways to process spatial information. You can learn more about these in the [additional resources](#additional-resources) provided below, and we'll also cover several of them in subsequent chapters and in the [cookbooks section](/en/cookbooks/) that follows these four core conceptual chapters.
 
 By now, you have a basic understanding of what GIS is and how to work with geospatial data in Python. In the following chapter, we'll introduce you to the concept of open data; talk about some key sources of open data at local, national, and international levels; and show examples of accessing open datasets with Python tools via WFS/WMS, API, and in cloud object storage.
-
 
 ## Additional Resources
 
