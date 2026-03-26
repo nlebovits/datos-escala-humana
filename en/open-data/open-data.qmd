@@ -240,6 +240,8 @@ This book emphasizes cloud-native approaches by default because they enable the 
 ### Object Storage
 
 ```{python}
+import rioxarray as rio
+
 suelo_2022_ruta = "https://storage.googleapis.com/mapbiomas-public/initiatives/argentina/collection-1/coverage/argentina_coverage_2022.tif"
 
 # Open the raster with rioxarray and chunks
