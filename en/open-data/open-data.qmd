@@ -6,9 +6,7 @@ After completing this chapter, you will have an understanding of what open data 
 
 ## What is Open Data?
 
-Open data is data that anyone can "freely access, use, modify, and share for any purpose."[^https://opendefinition.org/]. In practice, this can be quite complicated, and in a moment, we'll talk about some of the nuances of what "open" means. But for now, we'll proceed with a basic working definition that open data is data that anyone can access and use for any purpose.
-
-Rather than talk theoretically, it might help to begin with a couple of concrete examples of open data portals:
+This is a book about using data to help cities make better decisions about climate risk. While there are various potential sources for those data, in this book we focus on _open_ data. Toward the end of this chapter, we'll talk a bit about the complexities of what open data look like in the real world, but for now we'll start with a basic working definition that open data is data that anyone can "freely access, use, modify, and share for any purpose."^[https://opendefinition.org/]. To clarify what this means, it might help to begin with a couple of concrete examples. Here are some open data portals from the U.S. government, the government of India, and the government of the City of Buenos Aires:
 
 | Portal | Description |
 |--------|-------------|
@@ -24,7 +22,7 @@ You'll notice that these portals are all government portals, which isn't an acci
 Find an open data portal for your national, regional, or local government. What datasets can you find in it? Is it well maintained? Can you find any datasets that you can see yourself using for your work?
 :::
 
-Beyond governments, open data are often published by quasi-governmental institutions like the United Nations, as well as by government-funded research organizations like the European Research Commission's Joint Research Centre. Open data are also shared by many scientific researchers, not just for reproducibility but for real-world use. Here are some examples that are particularly relevant to urban climate risk:[^Many of these sources also have plugins to import data directly in QGIS.]
+Beyond governments, open data are often published by quasi-governmental institutions like the United Nations, as well as by government-funded research organizations like the European Research Commission's Joint Research Centre. Open data are also shared by many scientific researchers, not just for reproducibility but for real-world use. Here are some examples that are particularly relevant to urban climate risk:^[Many of these sources also have plugins to import data directly in QGIS.]
 
 | Source | Description |
 |--------|-------------|
@@ -37,7 +35,7 @@ Beyond governments, open data are often published by quasi-governmental institut
 | [Microsoft Planetary Computer](https://planetarycomputer.microsoft.com/) | Curated earth observation data optimized for cloud-native analysis at scale |
 | [TUM Global Building Heights](https://mediatum.ub.tum.de/1782307) | Global building height dataset derived from remote sensing; useful for urban morphology and exposure modeling |
 
-As you can see, there's a _lot_ of open data out there--and the quantities are growing rapidly. The open data era begins in the 2010s, but particularly in recent years it has taken off with the rise of cloud storage, AI models, and new massive data volumes. This is great, and very relevant to our use case, but it raises an important question: how do I find the data that I need?
+As you can see, there's a _lot_ of open data out there--and, in fact, the quantities of available open data have been growing rapidly since the 2010s, and in particular now in the age of cloud storage and artificial intelligence. This raises the question: with all of that data out there, how do find what I need?
 
 
 ## Where is Open Data?
@@ -46,17 +44,45 @@ So far, we've looked at a couple of examples of _data portals_, which are a kind
 
 ### Data Portals
 
-A data portal is a website that provides access to datasets, often with search and filtering capabilities. The purpose of a data portal is to make it easier for users to discover and access datasets relevant to their needs, so they usually provide metadata, such as descriptions, formats, and licensing information, and tools for previewing and downloading the data. 
+A data portal is a website that provides access to datasets, often with search and filtering capabilities. The purpose of a data portal is to make it easier for users to discover and access datasets relevant to their needs, so they usually provide metadata, such as descriptions, formats, and licensing information, and tools for previewing and downloading the data. Open data portals are a great place to start your search for data, as they're designed primarily for easily searching through a catalog (or catalogs) of available data to find and acccess what you need. Usually, they'll include dataset names, descriptions, metadata, and often some simple visualization feature that allows you to preview the dataset before you commit to downloading it or connecting via server or API (more on this in a moment). 
+
+::: {.column-margin}
+**Metadata** is data that defines and describes other data. Usually it will include information like the title, publisher, publication, and description date for a dataset. It might also include schema information (i.e., what's _in_ the data itself), update frequency, licensing, contact information for the publisher, etc. Geospatial datasets usually have [a unique set of metadata](https://www.fgdc.gov/metadata) such as their bounding box and CRS.
+:::
 
 Let's take a look at an example. Here's a dataset of building demolitions listed on the City of Philadelphia's open data portal:
 
 ![Building Demolitions, OpenDataPhilly]('/home/nissim/Downloads/Screenshot 2026-03-25 at 15-32-34 Building Demolitions - OpenDataPhilly.png')
 
-This page lists several things we'd expect to see: a title, a brief description, some metadata (created date, categories, a license, a maintainer and contact info). It also lists several options for how to _access_ the data, including a visualization page (the HTML), an API (more on this in a moment), and three static file formats (CSV, shapefile, and GeoJSON). This last bit is especially important: many users of open data will only ever downlad the data as static files, which means it's important to understand what these are and where they're coming from.
+This page lists several things we'd expect to see: a title, a brief description, some metadata (created date, categories, a license, a maintainer and contact info). It also lists several options for how to _access_ the data, including a visualization page (the HTML), an API (more on this in a moment), and three _flat file_ formats (CSV, shapefile, and GeoJSON). 
 
-#### Geospatial File Formats
+### Flat Files
 
-If you right-click on the CSV link on the Open Data Philly page, you'll get a link that looks like this: `https://phl.carto.com/api/v2/sql?q=SELECT+*,+ST_Y(the_geom)+AS+lat,+ST_X(the_geom)+AS+lng+FROM+demolitions&filename=demolitions&format=csv&skipfields=cartodb_id`. This is an _API endpoint_, which allows the user to download the data as a comma-separated values (CSV) file from a SQL-style database hosted by the city of Philadelphia. Many data portals are like this: the portal itself is a simple user interface that allows users to look through a catalog of available datasets, but the data are _hosted_ elsewhere (e.g., cloud storage or institutional servers). The portal simply providers a user-friendly interface to finding and accessing the data. If we look at the links for the building demolitions CSV, shapefile, and GeoJSON, we'll notice something interesting:
+Simply put, a flat file is a file that you download once in its entirety. They can be used offline with no internet connection, and they don't change unless the user manually edits them. The major benefit of flat files is their simplicity; what you see is what you get, and they are straightforward to access: you download them, search for them on your computer, and open them with your desktop GIS software or with a programming language. 
+
+Here's a quick example of accessing the buildings demolitions data as a flat file. We've downloaded the data as a GeoJSON (one of several different vector data formats, such as shapefile, GeoPackage, FileGeoDatabase, and GeoParquet) and saved it alongside this book. Now we'll simply use the path to open it in Python with `geopandas` (see Chapter 1 for a recap of this) and we can explore the contents of the dataframe and map the geometries.
+
+```{python}
+# download the data and map it
+```
+
+Raster data also come in flat files, such as GeoTIFFs, netCDF, and ECW. Just like vector data, these can be downloaded and opened in Python, this time using `rasterio`:
+
+```{python}
+# download the data and map it
+```
+
+While both vector and raster data can come in several formats--each of which has its own strengths and limitations--tools like `geopandas` and `rasterio` make it easy to open all of these formats with a consistent interface. For example, you'd use `gpd.read_file()` to open most kinds of vector data, whether they're stored as GeoJSON, GeoPackage, or shapefile. 
+
+As we mentioned, flat files have the virtue of simplicity, and for many geospatial practitioners, they will never need to go beyond downloading and analyzing flat files. But what if we want to work with a dataset that updates regularly? What if we want only _part_ of a very large dataset, or we want to access the data _progammatically_, such as in a script? These are cases where flat files can come up short, and where we might turn instead to APIs.
+
+### APIs
+
+In the simplest terms, an API is a structured way to ask a computer for something and get a response back. 
+
+[Include a simple diagram]
+
+Let's return to the example of our building demolitions data. When we right-click on the link we used to download the GeoJSON file, we get the following URL: `https://phl.carto.com/api/v2/sql?q=SELECT+*+FROM+demolitions&filename=demolitions&format=geojson&skipfields=cartodb_id`. This reveals something interesting: the download link doesn't connect us to a flat file, but a query pased via API to a database. In fact, if we change the `format` parameter in the URL, we can get the same data in different formats (CSV, shapefile, GeoJSON) without changing the underlying query. This is a common pattern for open data portals: the portal itself is a user-friendly interface to a backend database that serves data through an API. The API allows users to access the data programmatically, and often provides more flexibility than downloading static files.
 
 `https://phl.carto.com/api/v2/sql?q=SELECT+*,+ST_Y(the_geom)+AS+lat,+ST_X(the_geom)+AS+lng+FROM+demolitions&filename=demolitions&format=csv&skipfields=cartodb_id`
 `https://phl.carto.com/api/v2/sql?q=SELECT+*+FROM+demolitions&filename=demolitions&format=shp&skipfields=cartodb_id`
@@ -64,35 +90,110 @@ If you right-click on the CSV link on the Open Data Philly page, you'll get a li
 
 Did you catch it? All three links are from the _same database_; the only thing that changes is the _output file format_: CSV, shapefile, or GeoJSON. What are these, and why do geospatial file formats matter?
 
-There are [a lot of geospatial file types](https://gisgeography.com/gis-formats/) out there. If you're reading this book, you have probably seen some of them in the wild. Maybe you've downloaded a GeoPackage (`.gpkg`) to use in QGIS, used a GeoJSON (`.geojson`) for a web map, uploaded a KMZ (`.kmz`) to Google Maps, or opened a Shapefile (`.shp`) in ArcGIS (that's okay--we forgive you). If you don't recognize any of those--or if you just want a refresher--here's a quick overview of some of the more common ones.
+Instead of downloading these data as a flat file, we can _query_ them in Python to get the same results:
 
-[Why use a static file?]
+```{python}
+# download the data and map it
+```
 
-##### Vector
+There's an important distiction here: the results of the query will _change_ as the database is updated and our Python script is re-run, whereas the GeoJSON we downloaded will not update--it's static.
 
-[table]
+In the case of the building demolitions data, we're connecting to a a PostGIS database which can be queried via SQL. This is one flavor of API, but it's specific to Carto, the vendor that provides it. In the open data world, you may run into many different kinds of APIs, each with their own quirks. We can't be comprehensive, but let's take a look at two more very common ones that are worth being familiar with.
 
-**Examples**: GeoJSON, shapefile.
+#### WFS/WMS
 
-**Uses**: Local work or web visualization. Can be considered legacy files. Excellent for working offline.
+Do you remember the `partidos` data we downloaded from the Province of Buenos Aires in chapter 1 [link]? Let's take a look at a stripped-down version of that code:
 
-**Limitations**: If you want to work at large scale with massive global datasets, GeoJSON or shapefile is not the way to do it. They are also more difficult to share.
+```{python}
+import geopandas as gpd
+import matplotlib.pyplot as plt
+import os
+from owslib.wfs import WebFeatureService
+from io import StringIO, BytesIO
 
-GeoJSON is specifically designed for web visualization, but has significant limitations.
+partidos_path = "../../public/python-geoespacial/pba_partidos.parquet"
+
+# Load partidos from ARBA GeoServer WFS service
+if os.path.exists(partidos_path):
+    partidos = gpd.read_parquet(partidos_path)
+else:
+    # Connect to WFS (Web Feature Service)
+    wfs_url = "https://geo.arba.gov.ar/geoserver/idera/wfs"
+    wfs = WebFeatureService(url=wfs_url, version="2.0.0")
+
+    # Request the Departamento layer (partidos)
+    response = wfs.getfeature(
+        typename="idera:Departamento",
+        srsname="EPSG:5347",  # Original CRS
+    )
+
+    # Convert WFS response to GeoDataFrame
+    partidos = gpd.read_file(BytesIO(response.read()))
+
+    # Save to cache for future use
+    partidos.to_parquet(partidos_path)
+
+# Reproject to working CRS
+partidos = partidos.to_crs("EPSG:5348")  # POSGAR 2007 / Argentina 4
+
+la_plata = partidos[partidos["fna"] == "Partido de La Plata"]
+
+la_plata.head()
+```
+
+At the beginnning of the query, we're connecting to something called a "Web Feature Service", or WFS, which is another example of an API. In this case, a WFS is a standardized way of sharing vector features over HTTPS. 
+
+In contrast to downloading a flat file, accessing these data via WFS allows us to _pre-filter_ them via our query to only return our features of interest. This is a much more efficient way of accessing the data, especially when the underlying dataset is very large and we only need a small portion of it for our own use. Here's an example with the same dataset:
+
+Let's make a small modification here: we can actually filter our _query_ to return only the Partido of La Plata, rather than _all_ the partidos:
+
+```{python}
+# download the data and map it
+```
+
+While it can take some adjustment to learn how to query WFS and WMS, they offer flexibility, interoperability, programmatic access, automatic updates...
+
+In many parts of the world--especially the Global South--they are _the_ go-to for sharing open data, and are therefore important to know how to use.
+
+Along with WFS, the OGC has also defined the Web Map Service (WMS), which is the same idea but for raster data. 
+
+
+#### Esri REST APIs
+
+If you spend enough time working with geospatial data, you will inevitably come across Esri. While Esri's products are proprietary, and _not_ open source, they are so widely used in the geospatial world that it's basically impossible not to encounter them at some point. Much of the world's geospatial data is stored in Esri servers, and it's therefore important to know how to access data via Esri's own API.
+
+```{python}
+# use the vacant buildings dataset, maybe? pass the query, download only a portion...? or DOR parcels? 
+```
+
+- mention the pagination issue
+
+### Cloud Storage
+
+One important subset of flat files are _cloud-native_ files. The file formats that we've talked about so far are suitable for small-scale use, perhaps up to a gigabyte or two, stored locally on a hard drive and used by one person, without changing. But modern geospatial workflows (i.e., the ones we'll discuss in this book) often involve hundreds of gigabytes of data, or thousands of gigabytes (i.e., terabytes) or even millions of gigabytes (i.e., petabytes). File types like GeoJSON simply aren't appropriate for these kinds of workflows; at best, they can be slow or cumbersome, and at worst, they can make it literally impossible to do certain tasks. This is where cloud-native file types come in. 
+
+As mentioned in the introduction, this 
+
+
+If you've ever done any geospatial analysis, you've almost certainly come across a flat file
+
+This means that there's no way to download only a part of it (e.g., ) , and if the source dataset updates, you have to download the dataset again; there's no way to update your copy of the file.
+
+If you've taken any kind of class on GIS or geospatial data science, you probably started with flat files--they're are simple to understand and use, and are a perfectly good format for many use cases. Indeed, flat files are the _only_ way that many peoeple will ever interact with geospatial data--and that's perfectly fine.
+
+
+
 
 For cloud-native workflows, GeoParquet is a columnar format optimized for analytical queries of large vector datasets, and FlatGeobuf provides efficient spatial access through built-in spatial indexing. Both support HTTP range requests, meaning you can query subsets of data without downloading entire files.
 
 You'll also encounter GeoJSON (.geojson, .json), which is used for web mapping and stores coordinates as text using JavaScript Object Notation. GeoPackage (.gpkg) is a single-file format that works well for local data exchange. ESRI Shapefile (.shp, .dbf, .shx) is a legacy format that requires multiple files and has technical limitations (field name length, attribute types, file size), but you'll still encounter it in the wild because many organizations haven't migrated yet.
 
-##### Raster
+#### Raster
 
 [table]
 
 ##### Cloud-Native File Formats
 
-In the tables above, 
-
-#### Cloud-Native Geospatial
 
 **Cloud-native geospatial** tools are designed specifically to work with data stored in the cloud. Unlike traditional tools that require downloading complete datasets, these tools allow you to access and process only the portions of data needed through protocols like HTTP range requests.
 
@@ -135,113 +236,6 @@ This book emphasizes cloud-native approaches by default because they enable the 
 - Building reproducible workflows that others can run without downloading large files
 - Processing earth observation or climate data at scale
 
-### WFS/WMS Servers
-
-Standardized protocols for web mapping and data visualization. Integration with GIS, but can be slow for queries. Can be considered precursors to cloud-native formats because they were the industry standard for a long time for sharing online. They remain useful, but are aging.
-
-In Chapter 1, we used a WFS service to load Buenos Aires Province municipalities from ARBA's GeoServer. WFS remains common for government data portals, particularly in Latin America where many agencies have invested in this infrastructure.
-
-**Use WFS/WMS services when:**
-
-- Accessing government data portals that provide these endpoints
-- You need the most current version of regularly updated data
-- Integration with existing GIS workflows
-
-```{python}
-import geopandas as gpd
-import matplotlib.pyplot as plt
-import os
-from owslib.wfs import WebFeatureService
-from io import StringIO, BytesIO
-
-partidos_path = "../../public/python-geoespacial/pba_partidos.parquet"
-
-# Load partidos from ARBA GeoServer WFS service
-if os.path.exists(partidos_path):
-    partidos = gpd.read_parquet(partidos_path)
-else:
-    # Connect to WFS (Web Feature Service)
-    wfs_url = "https://geo.arba.gov.ar/geoserver/idera/wfs"
-    wfs = WebFeatureService(url=wfs_url, version="2.0.0")
-
-    # Request the Departamento layer (partidos)
-    response = wfs.getfeature(
-        typename="idera:Departamento",
-        srsname="EPSG:5347",  # Original CRS
-    )
-
-    # Convert WFS response to GeoDataFrame
-    partidos = gpd.read_file(BytesIO(response.read()))
-
-    # Save to cache for future use
-    partidos.to_parquet(partidos_path)
-
-# Reproject to working CRS
-partidos = partidos.to_crs("EPSG:5348")  # POSGAR 2007 / Argentina 4
-
-la_plata = partidos[partidos["fna"] == "Partido de La Plata"]
-
-la_plata.head()
-```
-
-### APIs
-
-Flexible ways to get exactly the data you want, making data available through an endpoint. Excellent for programming workflows and web applications, but require technical knowledge. Not always as efficient as optimized cloud-native formats.
-
-Switch to using the L&I data! https://cityofphiladelphia.github.io/carto-api-explorer/#demolitions
-
-API and cloud-native geospatial data can be compatible, as below, when we load Copernicus DEM data via the Element84 STAC API:
-
-```{python}
-import pystac_client
-from odc.stac import load
-import rioxarray as rio
-
-# Reproject to geographic CRS for bounding box query
-aoi = la_plata.to_crs("EPSG:4326")
-
-# Configure AWS for unsigned requests (no login required)
-os.environ["AWS_NO_SIGN_REQUEST"] = "YES"
-os.environ["GDAL_DISABLE_READDIR_ON_OPEN"] = "EMPTY_DIR"
-
-# Connect to Element84 Earth Search STAC catalog
-catalog = pystac_client.Client.open("https://earth-search.aws.element84.com/v1")
-
-# Get bounding box for our area of interest
-# bbox format: [min_x, min_y, max_x, max_y]
-bbox = aoi.total_bounds
-
-# Search for Copernicus DEM tiles covering our area
-# cop-dem-glo-30 is the global 30m elevation dataset
-search = catalog.search(
-    collections=["cop-dem-glo-30"],
-    bbox=bbox,
-)
-
-# Get the items (files) that cover our area
-items = list(search.items())
-
-# Load DSM using chunks for efficient memory processing
-# odc.stac.load automatically downloads and assembles the necessary tiles
-dsm = load(
-    items,
-    bbox=bbox,
-    chunks={"x": 1024, "y": 1024},  # Process in blocks for efficiency
-)
-
-# Extract elevation band and convert to DataArray for use with rioxarray
-# load() returns a Dataset; we need the elevation DataArray
-dsm = dsm["data"].squeeze()  # Remove extra dimensions
-
-# Clip raster to exact geometries
-dsm_clipped = dsm.rio.clip(aoi.geometry)
-
-# Reproject clipped area to working CRS (POSGAR 2007 / Argentina 4)
-# This is more efficient because we reproject only the area of interest
-dsm_reproj = dsm_clipped.rio.reproject(dst_crs="EPSG:5348")
-```
-
-#### Esri
 
 ### Object Storage
 
@@ -334,3 +328,7 @@ Models often perform better outside the global south because they have less data
 - **Understand resolution and scale**: A 30m resolution global land cover dataset may be adequate for regional analysis but inappropriate for neighborhood-scale planning. Match the data resolution to your decision scale.
 
 Global datasets are tools, not truth. They provide starting points and regional context, but they require critical evaluation before use in local decision-making. When global data quality is insufficient for your needs, consider hybrid approaches that combine global baselines with local data collection, or focus efforts on collecting the specific high-priority data your decisions require.
+
+## Responsible Use of Open Data
+- attribution
+- critical evaluation
