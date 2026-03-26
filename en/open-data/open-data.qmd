@@ -242,6 +242,9 @@ This book emphasizes cloud-native approaches by default because they enable the 
 ```{python}
 import rioxarray as rio
 
+# Reproject to geographic CRS for bounding box query
+aoi = la_plata.to_crs("EPSG:4326")
+
 suelo_2022_ruta = "https://storage.googleapis.com/mapbiomas-public/initiatives/argentina/collection-1/coverage/argentina_coverage_2022.tif"
 
 # Open the raster with rioxarray and chunks
