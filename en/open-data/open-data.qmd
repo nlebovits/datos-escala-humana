@@ -52,7 +52,7 @@ A data portal is a website that provides access to datasets, often with search a
 
 Let's take a look at an example. Here's a dataset of building demolitions listed on the City of Philadelphia's open data portal:
 
-![Building Demolitions, OpenDataPhilly]('/home/nissim/Downloads/Screenshot 2026-03-25 at 15-32-34 Building Demolitions - OpenDataPhilly.png')
+![Building Demolitions, OpenDataPhilly]('/home/nissim/Documents/dev/datos-escala-humana/public/open-data/Screenshot 2026-03-25 at 15-32-34 Building Demolitions - OpenDataPhilly.png')
 
 This page lists several things we'd expect to see: a title, a brief description, some metadata (created date, categories, a license, a maintainer and contact info). It also lists several options for how to _access_ the data, including a visualization page (the HTML), an API (more on this in a moment), and three _flat file_ formats (CSV, shapefile, and GeoJSON). 
 
@@ -63,14 +63,19 @@ Simply put, a flat file is a file that you download once in its entirety. They c
 Here's a quick example of accessing the buildings demolitions data as a flat file. We've downloaded the data as a GeoJSON (one of several different vector data formats, such as shapefile, GeoPackage, FileGeoDatabase, and GeoParquet) and saved it alongside this book. Now we'll simply use the path to open it in Python with `geopandas` (see Chapter 1 for a recap of this) and we can explore the contents of the dataframe and map the geometries.
 
 ```{python}
-# download the data and map it
+import geopandas as gpd
+
+building_demos_url = "https://phl.carto.com/api/v2/sql?q=SELECT+*+FROM+demolitions&filename=demolitions&format=geojson&skipfields=cartodb_id"
+building_demos = gpd.read_file(building_demos_url)
+
+building_demos.head()
+
+building_demos.plot()
 ```
 
-Raster data also come in flat files, such as GeoTIFFs, netCDF, and ECW. Just like vector data, these can be downloaded and opened in Python, this time using `rasterio`:
-
-```{python}
-# download the data and map it
-```
+::: {.callout-tip}
+Raster data also come in flat files, such as GeoTIFFs, netCDF, and ECW. Just like vector data, these can be downloaded and opened in Python, this time using `rasterio`.
+:::
 
 While both vector and raster data can come in several formats--each of which has its own strengths and limitations--tools like `geopandas` and `rasterio` make it easy to open all of these formats with a consistent interface. For example, you'd use `gpd.read_file()` to open most kinds of vector data, whether they're stored as GeoJSON, GeoPackage, or shapefile. 
 
@@ -93,7 +98,19 @@ Did you catch it? All three links are from the _same database_; the only thing t
 Instead of downloading these data as a flat file, we can _query_ them in Python to get the same results:
 
 ```{python}
-# download the data and map it
+import requests
+import geopandas as gpd
+
+url = "https://phl.carto.com/api/v2/sql"
+params = {
+    "q": "SELECT * FROM demolitions",
+    "format": "geojson",
+    "skipfields": "cartodb_id"
+}
+
+response = requests.get(url, params=params)
+gdf = gpd.GeoDataFrame.from_features(response.json())
+gdf.plot()
 ```
 
 There's an important distiction here: the results of the query will _change_ as the database is updated and our Python script is re-run, whereas the GeoJSON we downloaded will not update--it's static.
@@ -106,39 +123,24 @@ Do you remember the `partidos` data we downloaded from the Province of Buenos Ai
 
 ```{python}
 import geopandas as gpd
-import matplotlib.pyplot as plt
-import os
 from owslib.wfs import WebFeatureService
-from io import StringIO, BytesIO
+from owslib.fes2 import PropertyIsEqualTo
+from owslib.etree import etree
+from io import BytesIO
 
-partidos_path = "../../public/python-geoespacial/pba_partidos.parquet"
+wfs = WebFeatureService(url="https://geo.arba.gov.ar/geoserver/idera/wfs", version="2.0.0")
 
-# Load partidos from ARBA GeoServer WFS service
-if os.path.exists(partidos_path):
-    partidos = gpd.read_parquet(partidos_path)
-else:
-    # Connect to WFS (Web Feature Service)
-    wfs_url = "https://geo.arba.gov.ar/geoserver/idera/wfs"
-    wfs = WebFeatureService(url=wfs_url, version="2.0.0")
+filt = PropertyIsEqualTo(propertyname="fna", literal="Partido de La Plata")
+filterxml = etree.tostring(filt.toXML()).decode("utf-8")
 
-    # Request the Departamento layer (partidos)
-    response = wfs.getfeature(
-        typename="idera:Departamento",
-        srsname="EPSG:5347",  # Original CRS
-    )
+response = wfs.getfeature(
+    typename="idera:Departamento",
+    filter=filterxml,
+    srsname="EPSG:5347",
+)
 
-    # Convert WFS response to GeoDataFrame
-    partidos = gpd.read_file(BytesIO(response.read()))
-
-    # Save to cache for future use
-    partidos.to_parquet(partidos_path)
-
-# Reproject to working CRS
-partidos = partidos.to_crs("EPSG:5348")  # POSGAR 2007 / Argentina 4
-
-la_plata = partidos[partidos["fna"] == "Partido de La Plata"]
-
-la_plata.head()
+la_plata = gpd.read_file(BytesIO(response.read())).to_crs("EPSG:5348")
+la_plata.plot()
 ```
 
 At the beginnning of the query, we're connecting to something called a "Web Feature Service", or WFS, which is another example of an API. In this case, a WFS is a standardized way of sharing vector features over HTTPS. 
@@ -146,10 +148,6 @@ At the beginnning of the query, we're connecting to something called a "Web Feat
 In contrast to downloading a flat file, accessing these data via WFS allows us to _pre-filter_ them via our query to only return our features of interest. This is a much more efficient way of accessing the data, especially when the underlying dataset is very large and we only need a small portion of it for our own use. Here's an example with the same dataset:
 
 Let's make a small modification here: we can actually filter our _query_ to return only the Partido of La Plata, rather than _all_ the partidos:
-
-```{python}
-# download the data and map it
-```
 
 While it can take some adjustment to learn how to query WFS and WMS, they offer flexibility, interoperability, programmatic access, automatic updates...
 
@@ -163,7 +161,20 @@ Along with WFS, the OGC has also defined the Web Map Service (WMS), which is the
 If you spend enough time working with geospatial data, you will inevitably come across Esri. While Esri's products are proprietary, and _not_ open source, they are so widely used in the geospatial world that it's basically impossible not to encounter them at some point. Much of the world's geospatial data is stored in Esri servers, and it's therefore important to know how to access data via Esri's own API.
 
 ```{python}
-# use the vacant buildings dataset, maybe? pass the query, download only a portion...? or DOR parcels? 
+import requests
+import geopandas as gpd
+from shapely.geometry import shape
+
+url = "https://services.arcgis.com/fLeGjb7u4uXqeF9q/arcgis/rest/services/Council_Districts_2024/FeatureServer/0/query"
+params = {
+    "where": "1=1",
+    "outFields": "*",
+    "f": "geojson",
+}
+
+response = requests.get(url, params=params)
+gdf = gpd.GeoDataFrame.from_features(response.json())
+gdf.plot()
 ```
 
 - mention the pagination issue
@@ -242,30 +253,10 @@ This book emphasizes cloud-native approaches by default because they enable the 
 ```{python}
 import rioxarray as rio
 
-# Reproject to geographic CRS for bounding box query
-aoi = la_plata.to_crs("EPSG:4326")
+url = "https://storage.googleapis.com/mapbiomas-public/initiatives/argentina/collection-1/coverage/argentina_coverage_2022.tif"
 
-suelo_2022_ruta = "https://storage.googleapis.com/mapbiomas-public/initiatives/argentina/collection-1/coverage/argentina_coverage_2022.tif"
-
-# Open the raster with rioxarray and chunks
-suelo_2022 = rio.open_rasterio(
-    suelo_2022_ruta,
-    chunks={"x": 4096, "y": 4096},
-)
-
-# Clip in the raster's native CRS (EPSG:4326)
-suelo_2022_clipped = suelo_2022.rio.clip(
-    aoi.geometry.values,
-    from_disk=True,
-)
-
-# Reproject to working CRS (POSGAR 2007 / Argentina 4)
-suelo_2022 = suelo_2022_clipped.rio.reproject(dst_crs="EPSG:5348")
-
-# Mask NoData values
-suelo_2022_masked = suelo_2022.where(
-    (suelo_2022 != suelo_2022.rio.nodata) & (suelo_2022 != 255)
-)
+suelo_2022 = rio.open_rasterio(url, overview_level=5)
+suelo_2022.plot()
 ```
 
 ## Challenges of Open Data
