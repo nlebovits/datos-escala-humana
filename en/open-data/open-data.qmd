@@ -122,24 +122,25 @@ In the case of the building demolitions data, we're connecting to a a PostGIS da
 Do you remember the `partidos` data we downloaded from the Province of Buenos Aires in chapter 1 [link]? Let's take a look at a stripped-down version of that code:
 
 ```{python}
+import requests
 import geopandas as gpd
-from owslib.wfs import WebFeatureService
-from owslib.fes2 import PropertyIsEqualTo
-from owslib.etree import etree
-from io import BytesIO
 
-wfs = WebFeatureService(url="https://geo.arba.gov.ar/geoserver/idera/wfs", version="2.0.0")
+# We use requests instead of owslib here because owslib's WebFeatureService
+# client doesn't support disabling SSL verification
+url = "https://geo.arba.gov.ar/geoserver/idera/wfs"
+params = {
+    "service": "WFS",
+    "version": "2.0.0",
+    "request": "GetFeature",
+    "typename": "idera:Departamento",
+    "CQL_FILTER": "fna='Partido de La Plata'",
+    "srsname": "EPSG:5347",
+    "outputFormat": "application/json",
+}
 
-filt = PropertyIsEqualTo(propertyname="fna", literal="Partido de La Plata")
-filterxml = etree.tostring(filt.toXML()).decode("utf-8")
-
-response = wfs.getfeature(
-    typename="idera:Departamento",
-    filter=filterxml,
-    srsname="EPSG:5347",
-)
-
-la_plata = gpd.read_file(BytesIO(response.read())).to_crs("EPSG:5348")
+# verify=False because ARBA's SSL certificate is currently expired
+response = requests.get(url, params=params, verify=False)
+la_plata = gpd.GeoDataFrame.from_features(response.json()).set_crs("EPSG:5347").to_crs("EPSG:5348")
 la_plata.plot()
 ```
 
@@ -181,27 +182,25 @@ gdf.plot()
 
 ### Cloud Storage
 
-One important subset of flat files are _cloud-native_ files. The file formats that we've talked about so far are suitable for small-scale use, perhaps up to a gigabyte or two, stored locally on a hard drive and used by one person, without changing. But modern geospatial workflows (i.e., the ones we'll discuss in this book) often involve hundreds of gigabytes of data, or thousands of gigabytes (i.e., terabytes) or even millions of gigabytes (i.e., petabytes). File types like GeoJSON simply aren't appropriate for these kinds of workflows; at best, they can be slow or cumbersome, and at worst, they can make it literally impossible to do certain tasks. This is where cloud-native file types come in. 
+So far, we've talked about flat files and APIs as two different ways to access open data. These approaches are suitable for small- or medium-scale, perhaps up to tens of gigabytes. But modern geospatial workflows--such as the ones we'll discuss in this book--often involve _hundreds_ , _thousands_, or even _millions_ of gigabytes of data. For these kinds of workflows, traditional flat files and APIs simply aren't appropriate; at best, they can be slow or cumbersome, and at worst, they can make it literally impossible to do certain tasks. This is where cloud storage and cloud-native file types come in. 
 
-As mentioned in the introduction, this 
+The **cloud** basically means someone else’s computer: servers that your device connects to over the internet. Cloud computing offers power, flexibility, and scalability as needed without requiring you to configure local servers. It provides distributed and reliable infrastructure. However, it has an initial learning curve, costs can accumulate with intensive use, and it requires constant internet connection.
 
+For data storage and access, the cloud has a the benefit of being infinitely scalable, meaning you can basically put as much data in it as you want, as long as you can pay for it. [A little bit more on the benefits of the cloud.]
 
-If you've ever done any geospatial analysis, you've almost certainly come across a flat file
+Cloud-optimized file formats can be as simple as a flat file, but offer queryability and speed. For example, here's a cloud-optimized GeoTIFF (aka, a COG) containing land cover data at 30m resolution for all of Argentina. It's stored in a Google Cloud bucket. To connect to it and plot it, this is all we need to do:
 
-This means that there's no way to download only a part of it (e.g., ) , and if the source dataset updates, you have to download the dataset again; there's no way to update your copy of the file.
+```{python}
+import rioxarray as rio
 
-If you've taken any kind of class on GIS or geospatial data science, you probably started with flat files--they're are simple to understand and use, and are a perfectly good format for many use cases. Indeed, flat files are the _only_ way that many peoeple will ever interact with geospatial data--and that's perfectly fine.
+url = "https://storage.googleapis.com/mapbiomas-public/initiatives/argentina/collection-1/coverage/argentina_coverage_2022.tif"
 
-
+suelo_2022 = rio.open_rasterio(url, overview_level=5)
+suelo_2022.plot()
+```
 
 
 For cloud-native workflows, GeoParquet is a columnar format optimized for analytical queries of large vector datasets, and FlatGeobuf provides efficient spatial access through built-in spatial indexing. Both support HTTP range requests, meaning you can query subsets of data without downloading entire files.
-
-You'll also encounter GeoJSON (.geojson, .json), which is used for web mapping and stores coordinates as text using JavaScript Object Notation. GeoPackage (.gpkg) is a single-file format that works well for local data exchange. ESRI Shapefile (.shp, .dbf, .shx) is a legacy format that requires multiple files and has technical limitations (field name length, attribute types, file size), but you'll still encounter it in the wild because many organizations haven't migrated yet.
-
-#### Raster
-
-[table]
 
 ##### Cloud-Native File Formats
 
@@ -209,7 +208,7 @@ You'll also encounter GeoJSON (.geojson, .json), which is used for web mapping a
 **Cloud-native geospatial** tools are designed specifically to work with data stored in the cloud. Unlike traditional tools that require downloading complete datasets, these tools allow you to access and process only the portions of data needed through protocols like HTTP range requests.
 
 ::: {.column-margin}
-The **cloud** basically means someone else’s computer: servers that your device connects to over the internet. Cloud computing offers power, flexibility, and scalability as needed without requiring you to configure local servers. It provides distributed and reliable infrastructure. However, it has an initial learning curve, costs can accumulate with intensive use, and it requires constant internet connection.
+
 :::
 
 Examples include Cloud Optimized GeoTIFF (COG) for raster data, which allows efficient streaming of satellite images without downloading complete files. GeoParquet and FlatGeobuf are cloud-optimized vector formats that support fast spatial queries. Platforms like Google Earth Engine, Microsoft Planetary Computer, and AWS Earth Search provide massive catalogs of satellite data with APIs for analysis at scale.
@@ -246,18 +245,6 @@ This book emphasizes cloud-native approaches by default because they enable the 
 - Accessing data stored remotely (cloud storage, data repositories)
 - Building reproducible workflows that others can run without downloading large files
 - Processing earth observation or climate data at scale
-
-
-### Object Storage
-
-```{python}
-import rioxarray as rio
-
-url = "https://storage.googleapis.com/mapbiomas-public/initiatives/argentina/collection-1/coverage/argentina_coverage_2022.tif"
-
-suelo_2022 = rio.open_rasterio(url, overview_level=5)
-suelo_2022.plot()
-```
 
 ## Challenges of Open Data
 
