@@ -182,115 +182,72 @@ gdf.plot()
 
 ### Cloud Storage
 
-So far, we've talked about flat files and APIs as two different ways to access open data. These approaches are suitable for small- or medium-scale, perhaps up to tens of gigabytes. But modern geospatial workflows--such as the ones we'll discuss in this book--often involve _hundreds_ , _thousands_, or even _millions_ of gigabytes of data. For these kinds of workflows, traditional flat files and APIs simply aren't appropriate; at best, they can be slow or cumbersome, and at worst, they can make it literally impossible to do certain tasks. This is where cloud storage and cloud-native file types come in. 
+So far, we've talked about flat files and APIs as two different ways to access open data. These approaches are suitable for small- or medium-scale datasets, perhaps up to tens of gigabytes. But modern geospatial workflows--such as the ones we'll discuss in this book--often involve _hundreds_ , _thousands_, or even _millions_ of gigabytes of data. For these kinds of workflows, traditional flat files and APIs simply aren't appropriate; at best, they can be slow or cumbersome, and at worst, they can make it literally impossible to do certain tasks. This is where cloud storage and cloud-native file types come in. 
 
-The **cloud** basically means someone else’s computer: servers that your device connects to over the internet. Cloud computing offers power, flexibility, and scalability as needed without requiring you to configure local servers. It provides distributed and reliable infrastructure. However, it has an initial learning curve, costs can accumulate with intensive use, and it requires constant internet connection.
+First, a definition: the **cloud** is nothing more than someone else's computer, servers that your computer connects to over the internet. Although accessing cloud infrastructure has an initial learning curve, and requires a consistent internet connection, it offers power, flexibility, scalability, and resilience. 
 
-For data storage and access, the cloud has a the benefit of being infinitely scalable, meaning you can basically put as much data in it as you want, as long as you can pay for it. [A little bit more on the benefits of the cloud.]
+[Add the little AWS graphic]
 
-Cloud-optimized file formats can be as simple as a flat file, but offer queryability and speed. For example, here's a cloud-optimized GeoTIFF (aka, a COG) containing land cover data at 30m resolution for all of Argentina. It's stored in a Google Cloud bucket. To connect to it and plot it, this is all we need to do:
+Here's a concrete example to illustrate this. Let's say Carolina works as a GIS analyst for her local municipality. She's asked to store 3.2 GB of cadastral data. Prior to cloud storage, she might need to purchase an external hard drive, which could cost $100 or more. The hard drive might hold 5 TB of data (or, 5,000 GB), but if Carolina only ever uses 500 GB of that, she's paying for 4,500 GB that she'll never use. Additionally, with an external hard drive, her options for sharing files are either 1) attach them to an email (if they're small enough) or 2) copy them to a USB stick and share them that way. And, perhaps worst of all, if she loses the external hard drive or something happens to it, everything on it is gone--there is no back up, no distribution. 
+
+Contrast this with cloud storage. On platforms like Google or Amazon's cloud storage, you might pay around $0.025 per GB per month. At this price, Carolina's 3.2GB of cadastral data would cost her just under $1 ($0.96, to be exact) per year. If she wants to share her data with a colleague, she can simply send them a URL to download or query the data. And there's no risk of losing a hard drive; she can access the data anywhere she can sign in to her Google or Amazon account.
+
+In recent years, several new file formats have emerged to make the most of the advantages of cloud storage. These are called **cloud-optimized file formats** (or, cloud-native), and include file types like cloud-optmized GeoTIFFs and Zarr (for rasters) and GeoParquet, FlatGeobuf, and PMTiles for vectors. (To read more about these, see the [_Cloud-Optmized Geospatial Formats Guide_](https://guide.cloudnativegeo.org/).) All of these files can be thought of like flat files, but _optimized_ for use with cloud storage. Most pertinently, this means that--unlike legacy file formats--these file tpyes allow you to access and process only the portions of data needed through protocols like HTTP range requests. They allow you to query only the data you want for your area of interest. Instead of having to download gigabytes of files, you might only download megabytes and you can download them very efficiently only for the area that matters to you. For our purposes, this is the main advantage. This is transformative for working with large datasets—instead of downloading Argentina's entire building footprint dataset, you can query just the buildings in La Plata. Or, here's another example. We'll load the land cover data from last chapter _for all of Argentina_. Using a cloud-optimized GeoTIFF (here, stored in a Google Cloud bucket), we simply query the overview of the dataset, meaning [what?] 
 
 ```{python}
+#| code-fold: true
+#| code-summary: "Show visualization code"
 import rioxarray as rio
+import numpy as np
+from matplotlib.colors import ListedColormap, BoundaryNorm
 
-url = "https://storage.googleapis.com/mapbiomas-public/initiatives/argentina/collection-1/coverage/argentina_coverage_2022.tif"
+categories = {
+    "Closed woody": {"ids": [3], "color": "#1f8d49"},
+    "Open woody": {"ids": [4], "color": "#7dc975"},
+    "Sparse woody": {"ids": [45], "color": "#807a40"},
+    "Flooded woody": {"ids": [6], "color": "#026975"},
+    "Flooded non-woody vegetation": {"ids": [11], "color": "#519799"},
+    "Grassland": {"ids": [12], "color": "#d6bc74"},
+    "Steppe": {"ids": [63], "color": "#ebf8b5"},
+    "Pasture": {"ids": [15], "color": "#edde8e"},
+    "Agriculture": {"ids": [18], "color": "#e974ed"},
+    "Forest plantation": {"ids": [9], "color": "#7a5900"},
+    "Shrub crop": {"ids": [36], "color": "#d082de"},
+    "Agricultural mosaic": {"ids": [21], "color": "#ffefc3"},
+    "Non-vegetated area": {"ids": [22], "color": "#d4271e"},
+    "River, lake or ocean": {"ids": [33], "color": "#2532e4"},
+    "Ice and surface snow": {"ids": [34], "color": "#93dfe6"},
+    "Not observed": {"ids": [27], "color": "#ffffff"},
+}
 
-suelo_2022 = rio.open_rasterio(url, overview_level=5)
-suelo_2022.plot()
+colors_by_id = {id_: info["color"] for info in categories.values() for id_ in info["ids"]}
+sorted_ids = sorted(colors_by_id.keys())
+lc_cmap = ListedColormap([colors_by_id[i] for i in sorted_ids])
+lc_norm = BoundaryNorm(sorted_ids + [max(sorted_ids) + 1], lc_cmap.N)
 ```
 
+```{python}
+suelo_2022_ruta = "https://storage.googleapis.com/mapbiomas-public/initiatives/argentina/collection-1/coverage/argentina_coverage_2022.tif"
+overview = rio.open_rasterio(suelo_2022_ruta, overview_level=4).squeeze()
+overview = overview.where((overview != 0) & (~np.isnan(overview)))
 
-For cloud-native workflows, GeoParquet is a columnar format optimized for analytical queries of large vector datasets, and FlatGeobuf provides efficient spatial access through built-in spatial indexing. Both support HTTP range requests, meaning you can query subsets of data without downloading entire files.
+overview.plot(cmap=lc_cmap, norm=lc_norm, add_colorbar=False)
+```
 
-##### Cloud-Native File Formats
+Cloud-native file formats are increasingly the standard in geospatial, offering improved performance not only for large datasets in cloud storage, but also for simple, local workflows, thanks to their improved compression and speed. They are especially relevant for climate risk analysis, where we need to process large volumes of satellite, climate, and geographic data without the infrastructure to store them locally. The cloud-native tools we will use are not more difficult than traditional tools and offer many advantages. The cloud is simply one of the places where people compute today. As mentioned in [the introduction](../intro.qmd#guiding-principles), this book takes the cloud-native approach as the default.
 
+## Open Data in the Real World
+As you can see based on these few examples, there is a _lot_ of open data in the world, and no two datasets are alike. The definition we cited at the beginning of this chapter makes the idea of open data sound simple in theory, but it can be quite complicated in practice. This makes it especially important to be able to carefully evaluate the quality and trustworthiness of open datasets before using them. Here are some things to bear in mind when considering whether to use an open dataset that you've found.
 
-**Cloud-native geospatial** tools are designed specifically to work with data stored in the cloud. Unlike traditional tools that require downloading complete datasets, these tools allow you to access and process only the portions of data needed through protocols like HTTP range requests.
+### Data Quality and Fitness for Use
 
-::: {.column-margin}
+First, what **license** is it shared under? While common open licenses like Creative Commons (CC-BY, CC-BY-SA) and Open Database License (ODbL) are very permissive, not all licenses are equal, and many have specific requirements on how you use, attribute, and share the data. For example, there may be requirements on how you cite your source and whether derivative works must use the same license, and some licenses may restrict commercial use. When evaluating an open dataset, always check the license terms to ensure they match your intended use case.
 
-:::
+Second, how thorough is the **documentation**? Does it include information on who published the data
 
-Examples include Cloud Optimized GeoTIFF (COG) for raster data, which allows efficient streaming of satellite images without downloading complete files. GeoParquet and FlatGeobuf are cloud-optimized vector formats that support fast spatial queries. Platforms like Google Earth Engine, Microsoft Planetary Computer, and AWS Earth Search provide massive catalogs of satellite data with APIs for analysis at scale.
+Third, how well **maintained** is it? 
 
-These tools are especially relevant for climate risk analysis, where we need to process large volumes of satellite, climate, and geographic data without the infrastructure to store them locally. The cloud-native tools we will use are not more difficult than traditional tools and offer many advantages. The cloud is simply one of the places where people compute today. As mentioned in [the introduction](../intro.qmd#guiding-principles), this book takes the cloud-native approach as the default.
-
-Instead of importing all the global data (several terabytes), we import only our area of interest through **lazy loading**—the library doesn't transfer data until you request specific operations, letting you work with massive datasets while downloading only the small portion you need. We'll cover cloud storage, APIs, and remote data access in detail in [chapter two](/en/open-data/open-data.qmd).
-
-### Cloud-Optimized Formats
-
-Best for sharing online and for massive live data. They are a step forward over traditional file formats, although they have their own limitations.
-
-**Main advantage**: They allow you to query only the data you want for your area of interest. Instead of having to download gigabytes of files, you might only download megabytes and you can download them very efficiently only for the area that matters to you. For our purposes, this is the main advantage.
-
-Cloud-optimized formats like GeoParquet (for vector data) and Cloud Optimized GeoTIFF/COG (for raster data) support HTTP range requests, meaning you can read just the portion of a file you need without downloading the whole thing. This is transformative for working with large datasets—instead of downloading Argentina's entire building footprint dataset, you can query just the buildings in La Plata. In Chapter 1, we demonstrated this by loading elevation data from a global DEM and land cover data from a national dataset, downloading only our area of interest.
-
-STAC (SpatioTemporal Asset Catalog) provides standardized metadata and discovery for cloud-optimized data. When we queried the Copernicus DEM in Chapter 1, we used a STAC catalog to find the specific tiles covering La Plata, then loaded only those tiles. This pattern—discover via STAC, load via cloud-optimized formats—is increasingly standard for earth observation and climate data.
-
-- Not covering point cloud or some of the more niche file types
-
-Many users of open data will only ever download static files and open them in desktop GIS software like QGIS or ArcGIS, or analyze them with programming languages like Python or R. Static files are great for one-off access; they're good if you don't need regular updates, or if the dataset is relatively small. But what happens if you need regular, recurrent access to a dataset, or you want to access only a small part of a large dataset? That's where servers and APIs come in.
-
-**Use flat files (GeoJSON, GeoPackage) when:**
-
-- Working with small datasets that fit comfortably in memory
-- You need offline access to data
-- Sharing data with users who lack technical infrastructure for cloud-native access
-
-This book emphasizes cloud-native approaches by default because they enable the scale and efficiency needed for climate risk analysis in resource-constrained contexts. The workflows demonstrated here assume internet access and basic computational resources (laptop, moderate bandwidth) but don't require expensive commercial software or high-end infrastructure.
-
-**Use cloud-native formats (GeoParquet, COG, Zarr) when:**
-
-- Working with large datasets where you only need a subset
-- Accessing data stored remotely (cloud storage, data repositories)
-- Building reproducible workflows that others can run without downloading large files
-- Processing earth observation or climate data at scale
-
-## Challenges of Open Data
-
-Geospatial data infrastructure includes both technical components (APIs, tile servers, STAC catalogs) and institutional arrangements (who maintains it, how it's funded, governance structures). Understanding both dimensions matters when evaluating whether to rely on a data source for municipal planning. A technically excellent catalog with uncertain funding may disappear when a grant expires. An institutionally stable source with poor documentation may be difficult to use effectively.
-
-The main objective is to ensure collaboration and accessibility of geospatial information. Generally, you will look for an open geospatial portal at national and regional scale.
-
-When evaluating a geospatial data portal, consider: Is it maintained by a stable institution (national mapping agency, established research organization) or dependent on project funding? Does it have clear documentation and support channels? Has it been operational for multiple years? Is there a community of users you can learn from? These questions help assess whether a data source is reliable enough to base planning decisions on.
-
-As you can see based on this handful of examples, there is a _lot_ of open data in the world, and while the definition we've just cited makes the idea of open data sound simple in theory, it can be quite complicated in practice. This makes it important to be able to critically evaluate the source of open data. A couple of things to bear in mind:
-- Licensing: the dataset license will determine how open data can actually be used and shared. While common open licenses like Creative Commons (CC-BY, CC-BY-SA) and Open Database License (ODbL) are very permissive, not all licenses are equal, and many have specific requirements on how you use, attribute, and share the data. For example, there may be requirements on how you cite your source and whether derivative works must use the same license, and some licenses may restrict commercial use. When evaluating an open dataset, always check the license terms to ensure they match your intended use case.
-- Licensing
-- Maintenance
-- Accessibility
-- Formats
-- Documentation
-
-
-
-
-
-What are the benefits of open data?
-
-the "open data" movement originating in the 2010s is especially associated with open _government_ data, and with initiatives like Data.gov, Data.gov.uk, and Data.gov.in.[^https://en.wikipedia.org/wiki/Open_data] This makes open data particularly relevant to issues of urban climate risk, since much of the 
-
-Open data therefore tends to be associated with government-produced data, and data produced by government-funded research institutions. As a consequence, open data is particularly relevant to applications in 
-
-While many kinds of data 
-
-There are lots of different kinds of open data across various domains, but in this chapter, we're focusing on open geospatial data relevant to cities and climate risk. Much of these data are produced by national, regional, and local governments, as well as government-funded research institutions. 
-
-- Examples of open data
-- History of open data
-- Issues with open data
-
-### Limitations
-- Who benefits from open data?
-- Different interpretations of "open"
-- "Open" vs. actually useful
-- Practical considerations of maintenance, etc.
-
-In practice, this is can be quite complicated, since it entails a number of assumptions about 
-
- interpreted and applied in various ways, but the core idea is that open data is available online without restrictive licenses or paywalls, and can be used in various applications without legal or technical barriers.
-
- ### Limitations of Global Data
+And lastly, how good is the **data quality**?
 
 **Not so global**: Global datasets often come from richer countries in the global north, China, and Japan, not from global south countries.
 
@@ -299,6 +256,7 @@ In practice, this is can be quite complicated, since it entails a number of assu
 Models often perform better outside the global south because they have less data from the global south.
 
 **Evaluating fitness for your region**: When encountering a "global" dataset, assess its usefulness for your specific location:
+
 
 - **Visual inspection**: Load the data for your area and compare it against your local knowledge. Does the land cover classification match what you know about your city? Do building footprints align with actual development patterns?
 
@@ -312,6 +270,25 @@ Models often perform better outside the global south because they have less data
 
 Global datasets are tools, not truth. They provide starting points and regional context, but they require critical evaluation before use in local decision-making. When global data quality is insufficient for your needs, consider hybrid approaches that combine global baselines with local data collection, or focus efforts on collecting the specific high-priority data your decisions require.
 
+
+### Evaluating Data Quality
+
+Geospatial data infrastructure includes both technical components (APIs, tile servers, STAC catalogs) and institutional arrangements (who maintains it, how it's funded, governance structures). Understanding both dimensions matters when evaluating whether to rely on a data source for municipal planning. A technically excellent catalog with uncertain funding may disappear when a grant expires. An institutionally stable source with poor documentation may be difficult to use effectively.
+
+When evaluating a geospatial data portal, consider: Is it maintained by a stable institution (national mapping agency, established research organization) or dependent on project funding? Does it have clear documentation and support channels? Has it been operational for multiple years? Is there a community of users you can learn from? These questions help assess whether a data source is reliable enough to base planning decisions on.
+
+### Challenges to the Open Data Ecosystem
+
+- Who benefits from open data?
+- Different interpretations of "open"
+- "Open" vs. actually useful
+- Practical considerations of maintenance, etc.
+
+
+The main objective is to ensure collaboration and accessibility of geospatial information. Generally, you will look for an open geospatial portal at national and regional scale.
+
 ## Responsible Use of Open Data
 - attribution
 - critical evaluation
+
+## Additional Resources
