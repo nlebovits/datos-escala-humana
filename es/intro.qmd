@@ -1,97 +1,200 @@
 # Introducción {.unnumbered}
 
-🚧 **Estado del Proyecto**: Este libro se encuentra actualmente en fase de producto mínimo viable. El objetivo es demostrar la utilidad de tener un recurso como este y generar una comunidad que pueda sostener este esfuerzo a largo plazo. Consulta la [hoja de ruta](/project/ROADMAP.md) para más información.
+🚧 **Estado del Proyecto**: Este libro se encuentra actualmente en fase de producto
+mínimo viable. El objetivo es demostrar la utilidad de tener un recurso como este y
+generar una comunidad que pueda sostener este esfuerzo a largo plazo. Consulta la [hoja
+de ruta](/project/ROADMAP.md) para más información.
 
-Este libro se desarrolló durante la beca Fulbright del autor en Argentina y se basa en gran parte en el curso [Datos Abiertos para Ciudades Resilientes](https://www.fau.unlp.edu.ar/posgrado/curso-datos-abiertos-para-ciudades-resilientes/) que el autor enseña en la Facultad de Arquitectura y Urbanismo de la Universidad Nacional de La Plata.
+Este libro se desarrolló durante la beca Fulbright del autor en Argentina y se basa en
+gran parte en el curso [Datos Abiertos para Ciudades
+Resilientes](https://www.fau.unlp.edu.ar/posgrado/curso-datos-abiertos-para-ciudades-resilientes/)
+que el autor enseña en la Facultad de Arquitectura y Urbanismo de la Universidad
+Nacional de La Plata.
 
 ## Sobre este libro
 
-_Datos a escala humana_ enseña cómo aprovechar datos globales mediante computación geoespacial nativa de la nube para mitigar el riesgo climático en ciudades.
+*Datos a escala humana* enseña cómo aprovechar datos globales mediante computación
+geoespacial nativa de la nube para mitigar el riesgo climático en ciudades.
 
-Dirigido principalmente a urbanistas, funcionarios municipales, arquitectos y técnicos en entornos con recursos limitados donde los datos locales de alta calidad son escasos o de calidad insuficiente. No asume conocimientos avanzados de SIG. Es un curso intensivo, no exhaustivo. Proporcionamos recursos para profundizar. La acción y los flujos de trabajo simples y replicables son el enfoque.
+Dirigido principalmente a urbanistas, funcionarios municipales, arquitectos y técnicos
+en entornos con recursos limitados donde los datos locales de alta calidad son escasos o
+de calidad insuficiente. No asume conocimientos avanzados de SIG. Es un curso intensivo,
+no exhaustivo. Proporcionamos recursos para profundizar. La acción y los flujos de
+trabajo simples y replicables son el enfoque.
 
-Este es un libro sobre decisiones, no sobre datos. Los datos solo importan en la medida en que ayudan a tomar buenas decisiones. No necesariamente necesitamos datos de 10 metros en lugar de 30 metros si podemos tomar buenas decisiones con datos de 30 metros. Los datos son solo una pequeña parte de la ecuación. Lo que realmente importa es cómo esos datos se traducen en acción y qué tan robustas son esas decisiones.
+Este es un libro sobre decisiones, no sobre datos. Los datos solo importan en la medida
+en que ayudan a tomar buenas decisiones. No necesariamente necesitamos datos de 10
+metros en lugar de 30 metros si podemos tomar buenas decisiones con datos de 30 metros.
+Los datos son solo una pequeña parte de la ecuación. Lo que realmente importa es cómo
+esos datos se traducen en acción y qué tan robustas son esas decisiones.
 
 ## Contexto y ejemplos
 
-Los ejemplos y datos provienen principalmente de Argentina como resultado de cuatro estudios de caso del mundo real que fueron desarrollados e implementados en gobiernos municipales en cuatro ciudades argentinas. Esperamos que este libro incorpore más ejemplos de todo el mundo a medida que se unan más contribuyentes.
+Los ejemplos y datos provienen principalmente de Argentina como resultado de cuatro
+estudios de caso del mundo real que fueron desarrollados e implementados en gobiernos
+municipales en cuatro ciudades argentinas. Esperamos que este libro incorpore más
+ejemplos de todo el mundo a medida que se unan más contribuyentes.
 
 ## Para quién es este libro
 
-Este libro no está diseñado para ciudades como Nueva York o Ámsterdam que tienen acceso a datos de máxima resolución para todos los escenarios climáticos con el modelado más sofisticado porque pueden destinar recursos casi ilimitados a los problemas.
+Este libro no está diseñado para ciudades como Nueva York o Ámsterdam que tienen acceso
+a datos de máxima resolución para todos los escenarios climáticos con el modelado más
+sofisticado porque pueden destinar recursos casi ilimitados a los problemas.
 
-El objetivo es llegar a ciudades más pequeñas donde hay mayor oportunidad de impacto: ciudades que nunca en un millón de años podrían pagar análisis climático privado de firmas costosas. El objetivo es poner datos en sus manos porque eso es fundamentalmente un tema de equidad y también una oportunidad masiva de impacto.
+El objetivo es llegar a ciudades más pequeñas donde hay mayor oportunidad de impacto:
+ciudades que nunca en un millón de años podrían pagar análisis climático privado de
+firmas costosas. El objetivo es poner datos en sus manos porque eso es fundamentalmente
+un tema de equidad y también una oportunidad masiva de impacto.
 
-Estas ciudades nunca tendrían acceso a datos climáticos si no tuvieran acceso a datos climáticos gratuitos. No pueden pagar. Pero al mismo tiempo, estos lugares más pequeños a menudo presentan algunas de las mayores oportunidades porque no están sujetos al mismo tipo de polarización política y burocracia de ciudades más grandes.
+Estas ciudades nunca tendrían acceso a datos climáticos si no tuvieran acceso a datos
+climáticos gratuitos. No pueden pagar. Pero al mismo tiempo, estos lugares más pequeños
+a menudo presentan algunas de las mayores oportunidades porque no están sujetos al mismo
+tipo de polarización política y burocracia de ciudades más grandes.
 
-El objetivo no es que socios externos vengan e impongan análisis a socios locales, sino facilitar la adopción de estas herramientas por parte de campeones locales. No es sostenible como consultores externos que vienen y hacen sugerencias únicas. Estamos tratando de construir un kit de herramientas para campeones locales, para esfuerzos de base, para que tu analista GIS local defienda algo.
+El objetivo no es que socios externos vengan e impongan análisis a socios locales, sino
+facilitar la adopción de estas herramientas por parte de campeones locales. No es
+sostenible como consultores externos que vienen y hacen sugerencias únicas. Estamos
+tratando de construir un kit de herramientas para campeones locales, para esfuerzos de
+base, para que tu analista GIS local defienda algo.
 
 ## Filosofía: práctica sobre teoría
 
-Este libro está enfocado principalmente en la práctica en lugar de la teoría. Tratamos de lograr un equilibrio entre la explicación de conceptos espaciales y de procesamiento y su implementación. Hay muchos casos donde no profundizaremos en por qué hacemos algo de cierta manera o por qué el código está de cierta manera. Te dejamos hablar con modelos de lenguaje o simplemente consultar la documentación. Nos enfocamos principalmente en simplemente hacer la cosa.
+Este libro está enfocado principalmente en la práctica en lugar de la teoría. Tratamos
+de lograr un equilibrio entre la explicación de conceptos espaciales y de procesamiento
+y su implementación. Hay muchos casos donde no profundizaremos en por qué hacemos algo
+de cierta manera o por qué el código está de cierta manera. Te dejamos hablar con
+modelos de lenguaje o simplemente consultar la documentación. Nos enfocamos
+principalmente en simplemente hacer la cosa.
 
-También priorizamos conceptos sobre técnicas. Regresamos deliberadamente varias veces a técnicas centrales. Verás agregación espacial y estadísticas zonales repetidamente. Verás algunos gráficos de correlación básicos. No profundizaremos en estadística espacial avanzada. Solo tratamos de mostrar los conceptos y repetirlos algunas veces para que se fijen.
+También priorizamos conceptos sobre técnicas. Regresamos deliberadamente varias veces a
+técnicas centrales. Verás agregación espacial y estadísticas zonales repetidamente.
+Verás algunos gráficos de correlación básicos. No profundizaremos en estadística
+espacial avanzada. Solo tratamos de mostrar los conceptos y repetirlos algunas veces
+para que se fijen.
 
-No es una mirada súper sistemática al procesamiento geoespacial, sino más bien una construcción deliberada paso a paso para usar estas herramientas de una manera bastante plug-and-play para implementar el análisis. El objetivo no es crear analistas geoespaciales completamente formados, sino proporcionar a los usuarios flujos de trabajo replicables donde entiendan los conceptos centrales de procesamiento, implementación y políticas asociadas lo suficientemente bien como para poder tomarlos y aplicarlos de manera bastante eficiente y rápida en su propio contexto sin enormes modificaciones, mientras aún pueden entender de manera transparente qué está sucediendo y por qué.
+No es una mirada súper sistemática al procesamiento geoespacial, sino más bien una
+construcción deliberada paso a paso para usar estas herramientas de una manera bastante
+plug-and-play para implementar el análisis. El objetivo no es crear analistas
+geoespaciales completamente formados, sino proporcionar a los usuarios flujos de trabajo
+replicables donde entiendan los conceptos centrales de procesamiento, implementación y
+políticas asociadas lo suficientemente bien como para poder tomarlos y aplicarlos de
+manera bastante eficiente y rápida en su propio contexto sin enormes modificaciones,
+mientras aún pueden entender de manera transparente qué está sucediendo y por qué.
 
 ## Nota sobre lo nativo de la nube
 
-Lo geoespacial nativo de la nube es relativamente nuevo en el mundo de la tecnología geoespacial. Muchos gobiernos municipales están acostumbrados a trabajar con formatos como shapefiles que son de hace una década o más. Lo nativo de la nube representa un cambio importante en cómo se hace lo geoespacial.
+Lo geoespacial nativo de la nube es relativamente nuevo en el mundo de la tecnología
+geoespacial. Muchos gobiernos municipales están acostumbrados a trabajar con formatos
+como shapefiles que son de hace una década o más. Lo nativo de la nube representa un
+cambio importante en cómo se hace lo geoespacial.
 
-Es particularmente importante para este trabajo porque desbloquea el acceso a conjuntos de datos a escala de terabytes o incluso petabytes de manera eficiente y escalable para gobiernos municipales que de otra manera no tendrían los recursos para procesar esto.
+Es particularmente importante para este trabajo porque desbloquea el acceso a conjuntos
+de datos a escala de terabytes o incluso petabytes de manera eficiente y escalable para
+gobiernos municipales que de otra manera no tendrían los recursos para procesar esto.
 
-Dicho esto, reconocemos que muchas personas en los gobiernos municipales están intimidadas por lo nativo de la nube. Este libro trata de no tratar lo nativo de la nube como algo especial o inusual y en su lugar destacar el hecho de que en realidad no es tan difícil trabajar con él, es una mejor práctica y en realidad hace las cosas más fáciles en lugar de más difíciles.
+Dicho esto, reconocemos que muchas personas en los gobiernos municipales están
+intimidadas por lo nativo de la nube. Este libro trata de no tratar lo nativo de la nube
+como algo especial o inusual y en su lugar destacar el hecho de que en realidad no es
+tan difícil trabajar con él, es una mejor práctica y en realidad hace las cosas más
+fáciles en lugar de más difíciles.
 
-Por lo tanto, no profundiza en preguntas de qué son los formatos geoespaciales nativos de la nube o cómo se fabrica la salchicha, sino que se enfoca en aplicaciones. Este no es un libro de teoría, es un libro aplicado. Si estás interesado en aprender más sobre tecnología geoespacial nativa de la nube, consulta el [Cloud-Native Geospatial Forum](https://cloudnativegeo.org/) y los recursos asociados proporcionados aquí.
+Por lo tanto, no profundiza en preguntas de qué son los formatos geoespaciales nativos
+de la nube o cómo se fabrica la salchicha, sino que se enfoca en aplicaciones. Este no
+es un libro de teoría, es un libro aplicado. Si estás interesado en aprender más sobre
+tecnología geoespacial nativa de la nube, consulta el [Cloud-Native Geospatial
+Forum](https://cloudnativegeo.org/) y los recursos asociados proporcionados aquí.
 
 ## Nota sobre el idioma
 
-Este libro está escrito primero en español porque casi no existen recursos disponibles en español. Casi todos los recursos disponibles sobre datos abiertos, Python y herramientas nativas de la nube están en inglés. Este libro busca cerrar esa brecha proporcionando esta información primero en español, sabiendo que será mucho más fácil obtener financiamiento para una traducción al inglés posteriormente.
+Este libro está escrito primero en español porque casi no existen recursos disponibles
+en español. Casi todos los recursos disponibles sobre datos abiertos, Python y
+herramientas nativas de la nube están en inglés. Este libro busca cerrar esa brecha
+proporcionando esta información primero en español, sabiendo que será mucho más fácil
+obtener financiamiento para una traducción al inglés posteriormente.
 
-El autor no es hablante nativo de español y ha usado modelos de lenguaje para apoyar la traducción cuando sea posible en este libro. Si encuentras errores que crees que vale la pena corregir, ya sea traducción o cualquier otra cosa, considera abrir un ticket o contribuir sustancialmente al proyecto.
+El autor no es hablante nativo de español y ha usado modelos de lenguaje para apoyar la
+traducción cuando sea posible en este libro. Si encuentras errores que crees que vale la
+pena corregir, ya sea traducción o cualquier otra cosa, considera abrir un ticket o
+contribuir sustancialmente al proyecto.
 
 ## Organización
 
 El libro está organizado en cuatro secciones principales:
 
-**Capítulo 1: Curso intensivo de SIG y Python**. Cubre los fundamentos de trabajar con datos geoespaciales en Python, tanto vectoriales como ráster, y un resumen de las operaciones espaciales básicas que usamos en este libro. También proporcionamos recursos para aprender más sobre Python y SIG.
+**Capítulo 1: Curso intensivo de SIG y Python**. Cubre los fundamentos de trabajar con
+datos geoespaciales en Python, tanto vectoriales como ráster, y un resumen de las
+operaciones espaciales básicas que usamos en este libro. También proporcionamos recursos
+para aprender más sobre Python y SIG.
 
-**Capítulo 2: Datos abiertos**. Explora qué son las mejores fuentes de datos abiertos, diferentes formas de acceder a estos datos y por qué estas herramientas son importantes. Profundiza en formatos de datos nativos de la nube y las diferentes formas de acceder a estos conjuntos de datos, además de evaluar su calidad e idoneidad. Trata tanto cuestiones de epistemología como de programación.
+**Capítulo 2: Datos abiertos**. Explora qué son las mejores fuentes de datos abiertos,
+diferentes formas de acceder a estos datos y por qué estas herramientas son importantes.
+Profundiza en formatos de datos nativos de la nube y las diferentes formas de acceder a
+estos conjuntos de datos, además de evaluar su calidad e idoneidad. Trata tanto
+cuestiones de epistemología como de programación.
 
-**Capítulo 3: Riesgo climático**. Definimos qué es el riesgo climático, riesgos climáticos comunes para ciudades y las mejores fuentes de datos disponibles. Hablamos sobre cómo calcular el riesgo climático y algunas limitaciones al calcularlo, dados los conjuntos de datos disponibles.
+**Capítulo 3: Riesgo climático**. Definimos qué es el riesgo climático, riesgos
+climáticos comunes para ciudades y las mejores fuentes de datos disponibles. Hablamos
+sobre cómo calcular el riesgo climático y algunas limitaciones al calcularlo, dados los
+conjuntos de datos disponibles.
 
-**Capítulo 4: Datos en acción**. Aborda cómo tomar estos conjuntos de datos y vincularlos a políticas concretas y decisiones de infraestructura para proteger a las personas del clima. Abordamos cuestiones de gobernanza, certeza, idoneidad para el propósito, heurísticas, etc.
+**Capítulo 4: Datos en acción**. Aborda cómo tomar estos conjuntos de datos y
+vincularlos a políticas concretas y decisiones de infraestructura para proteger a las
+personas del clima. Abordamos cuestiones de gobernanza, certeza, idoneidad para el
+propósito, heurísticas, etc.
 
-**Cookbooks**. Los capítulos 1 a 4 están diseñados para ser más pedagógicos, enfocados en la práctica y el aprendizaje de herramientas y conceptos. La sección de Cookbooks presenta ejemplos del mundo real de estudios de caso que el autor llevó a cabo en Argentina durante su beca Fulbright con gobiernos municipales reales, utilizando datos reales para tomar decisiones reales. Estos ejemplos demuestran lo que es posible con las herramientas que exploramos en este libro. Aceptamos contribuciones de ejemplos adicionales de otros contextos.
+**Cookbooks**. Los capítulos 1 a 4 están diseñados para ser más pedagógicos, enfocados
+en la práctica y el aprendizaje de herramientas y conceptos. La sección de Cookbooks
+presenta ejemplos del mundo real de estudios de caso que el autor llevó a cabo en
+Argentina durante su beca Fulbright con gobiernos municipales reales, utilizando datos
+reales para tomar decisiones reales. Estos ejemplos demuestran lo que es posible con las
+herramientas que exploramos en este libro. Aceptamos contribuciones de ejemplos
+adicionales de otros contextos.
 
 ## Principios rectores
 
 ### Los datos y la tecnología cambiarán
 
-Este libro estará obsoleto en un año. Para cuando salga, ya estará obsoleto. El objetivo no es tratar el libro o los estudios de caso como un fin en sí mismos, sino construir un centro para la infraestructura humana: una comunidad de practicantes y expertos que se reúnan en torno a estos temas y resuelvan problemas colectivamente, construyendo una red de conocimiento y comunidad de práctica para abordar estos temas.
+Este libro estará obsoleto en un año. Para cuando salga, ya estará obsoleto. El objetivo
+no es tratar el libro o los estudios de caso como un fin en sí mismos, sino construir un
+centro para la infraestructura humana: una comunidad de practicantes y expertos que se
+reúnan en torno a estos temas y resuelvan problemas colectivamente, construyendo una red
+de conocimiento y comunidad de práctica para abordar estos temas.
 
-Es la comunidad misma la que continuará demostrando el valor, revelará las limitaciones en el libro tal como está, lo actualizará, mejorará, mantendrá y, eventualmente, idealmente, crecerá más allá de él. Queremos que este libro se vuelva obsoleto.
+Es la comunidad misma la que continuará demostrando el valor, revelará las limitaciones
+en el libro tal como está, lo actualizará, mejorará, mantendrá y, eventualmente,
+idealmente, crecerá más allá de él. Queremos que este libro se vuelva obsoleto.
 
 ### Trabajamos con los mejores datos disponibles
 
-Pero también trabajamos con datos públicos y gratuitos. No se trata realmente de los datos. Buscamos usar los mejores datos disponibles de las formas más defendibles posibles sin perder de vista el hecho de que el objetivo es tomar decisiones que apoyen la resiliencia. El objetivo no es simplemente acumular conjuntos de datos.
+Pero también trabajamos con datos públicos y gratuitos. No se trata realmente de los
+datos. Buscamos usar los mejores datos disponibles de las formas más defendibles
+posibles sin perder de vista el hecho de que el objetivo es tomar decisiones que apoyen
+la resiliencia. El objetivo no es simplemente acumular conjuntos de datos.
 
-Todo este trabajo que estamos tratando de hacer está fundamentalmente orientado hacia esa pregunta de cómo tomamos mejores decisiones. Y tratando de entender como una pregunta abierta, no de manera prescriptiva, sino tratando de entender realmente qué constituye mejores decisiones. Cómo ayudamos a las ciudades a tomar mejores decisiones. Cómo podemos lograr esos objetivos.
+Todo este trabajo que estamos tratando de hacer está fundamentalmente orientado hacia
+esa pregunta de cómo tomamos mejores decisiones. Y tratando de entender como una
+pregunta abierta, no de manera prescriptiva, sino tratando de entender realmente qué
+constituye mejores decisiones. Cómo ayudamos a las ciudades a tomar mejores decisiones.
+Cómo podemos lograr esos objetivos.
 
 ### Este es un documento en evolución
 
-No está destinado a ser la palabra final sobre ninguna de estas cosas y reconocemos que libros como este se vuelven obsoletos muy rápidamente en un mundo de tecnología en rápida evolución sin un desarrollo robusto que lo respalde.
+No está destinado a ser la palabra final sobre ninguna de estas cosas y reconocemos que
+libros como este se vuelven obsoletos muy rápidamente en un mundo de tecnología en
+rápida evolución sin un desarrollo robusto que lo respalde.
 
 ## Autor(es)
 
-_[Sección por completar]_
+*[Sección por completar]*
 
 ## Agradecimientos
 
-_[Sección por completar]_
+*[Sección por completar]*
 
 ## Patrocinadores del proyecto
 
-[![Centro de Investigaciones Urbanas y Territoriales](../public/ciut-logo.png)](https://ciut.fau.unlp.edu.ar/)
+[![Centro de Investigaciones Urbanas y
+Territoriales](../public/ciut-logo.png)](https://ciut.fau.unlp.edu.ar/)
 
-[![Facultad de Arquitectura y Urbanismo](../public/fau-logo.png)](https://www.fau.unlp.edu.ar/)
+[![Facultad de Arquitectura y
+Urbanismo](../public/fau-logo.png)](https://www.fau.unlp.edu.ar/)

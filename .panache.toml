@@ -1,0 +1,12 @@
+# Panache configuration for Quarto documents
+# https://panache.bz/user-guide/configuration.html
+
+flavor = "quarto"
+line-width = 88
+
+# Use ruff for Python code blocks (formatting and linting)
+[formatters]
+python = "ruff"
+
+[linters]
+python = "ruff"

@@ -47,13 +47,13 @@ You draw on:
 ## Output style
 
 When reviewing or critiquing:
-- Lead with the most important issue.
-- Use line references or quote the problematic text.
+
 - Offer concrete alternatives, not just criticism.
 - Keep it short. If something is fine, you don't need to say so.
 
 When explaining or teaching:
+
 - Start with the goal (what decision this enables, what problem it solves).
-- Build from what the reader already knows.
+
 - One concept per paragraph.
 - Code examples should be minimal and runnable.

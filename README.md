@@ -1,46 +1,26 @@
-# Datos a escala humana
+# Human Scale Data
 
-Un libro de código abierto
+_Human Scale Data_ explains how to use global datasets to manage climate risk in cities. This book is aimed at urban planners, municipal officials, and other decision-makers in resource-limited environments where high-quality local data is scarce or insufficient. While the tools taught in this book are meant to be useful in any city around the world, the primary emphasis is placed on under-resourced cities that would not otherwise have the resources to access high-quality climate data.
 
-[Guía de Contribución](/project/CONTRIBUTING.md) |
-[Código de Conducta](/project/CODE_OF_CONDUCT.md) |
-[Hoja de Ruta](/project/ROADMAP.md)
+[Contributing](/project/CONTRIBUTING.md) | [Code of Conduct](/project/CODE_OF_CONDUCT.md) | [Roadmap](/project/ROADMAP.md)
 
-🚧 Estado del Proyecto: este libro se encuentra actualmente en las primeras
-etapas de desarrollo. Espero completar un MVP para finales de octubre de
-2025. Por favor, consulta la HOJA DE RUTA para más información.
+🚧 Project Status: this book is in the early stages of development. We hope to complete v1.0 by mid-2026. Please consult [the roadmap](/project/ROADMAP.md) for more information.
 
-## Desarrollo
+## Development
 
-### Configuración del Entorno
-
-Para configurar el entorno de desarrollo:
-
-```bash
-# Clonar el repositorio
-git clone <repository-url>
+```
+git clone https://github.com/nlebovits/datos-escala-humana.git
 cd datos-escala-humana
 
-# Instalar dependencias
-uv sync
-
-# Instalar pre-commit hooks
+uv sync --all-extras
 uv run pre-commit install
 ```
 
-## Contribuciones
+## License
 
-- We use [`markdownlint-cli2` to manage Markdown formatting in .qmd files](https://github.com/DavidAnson/markdownlint-cli2). To run this before committing, use:
+[Creative Commons Attribution 4.0 International (CC BY 4.0)](/LICENSE).
 
-```bash
-uv run markdownlint-cli2 "**/*.qmd"
-```
-
-## Licenciamiento
-
-Este proyecto utiliza la licencia [Creative Commons Attribution 4.0 International (CC BY 4.0)](/LICENSE).
-
-## Apoyan este Proyecto
+## Supporters
 
 [![Centro de Investigaciones Urbanas y Territoriales](public/ciut-logo.png)](https://ciut.fau.unlp.edu.ar/)
 

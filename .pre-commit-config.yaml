@@ -1,13 +1,16 @@
 repos:
+  # Panache for Quarto/Markdown files (uses ruff under the hood)
+  - repo: https://github.com/jolars/panache
+    rev: v2.31.0
+    hooks:
+      - id: panache-format
+        files: \.qmd$
+      - id: panache-lint
+        files: \.qmd$
+
+  # Vulture for dead code detection in QMD files
   - repo: local
     hooks:
-      - id: lintquarto-ruff
-        name: Lint Python in QMD (ruff)
-        entry: uv run lintquarto -l ruff -p
-        language: system
-        files: \.qmd$
-        pass_filenames: true
-
       - id: lintquarto-vulture
         name: Check unused code in QMD (vulture)
         entry: uv run lintquarto -l vulture -p
@@ -15,27 +18,10 @@ repos:
         files: \.qmd$
         pass_filenames: true
 
-      - id: nbqa-black
-        name: nbqa-black
-        entry: uv run nbqa black
-        language: system
-        types: [jupyter]
-
-      - id: nbqa-isort
-        name: nbqa-isort
-        entry: uv run nbqa isort
-        language: system
-        types: [jupyter]
-
-  - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: "v0.9.6"
+  # Ruff for Python files AND Jupyter notebooks (native support since v0.6.0)
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.9.6
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
       - id: ruff-format
-
-  - repo: https://github.com/DavidAnson/markdownlint-cli2
-    rev: v0.18.1
-    hooks:
-      - id: markdownlint-cli2
-        exclude: ^(\.agents/|\.venv/|venv/|node_modules/|_book/|docs/|README_files/|README\.md|CHANGELOG\.md|CLAUDE\.md|project/(CODE_OF_CONDUCT|CONTRIBUTING|ROADMAP)\.md)

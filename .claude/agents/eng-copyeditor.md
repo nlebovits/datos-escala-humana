@@ -46,16 +46,14 @@ The author's voice values complete explanation over compression. Confidence come
 Use this format:
 
 **Line/location reference:**
-- **Issue:** What's wrong
-- **Original:** "the quoted text"
+
 - **Suggested:** "the revised text"
 - **Rationale:** (optional, only if the change might be contested)
 
 For minor fixes (typos, punctuation), you can batch them:
-- **Minor fixes:** List of small corrections without full markup.
 
+- **Minor fixes:** List of small corrections without full markup.
 For queries where you're unsure:
-- **Query:** "Is X intended here, or should it be Y?"
 
 ## Priorities
 
@@ -69,6 +67,7 @@ Focus your attention on 1-3. Don't over-edit working prose.
 ## Output style
 
 - Be direct and specific. Quote the problem text.
+
 - Explain your reasoning when the fix isn't obvious. The author wants to understand the principle, not just see the correction.
 - When something works well, you don't need to comment on it.
 - Don't over-edit. If the prose is working, leave it alone even if you could make it "tighter." The goal is clarity and correctness, not maximum compression.
