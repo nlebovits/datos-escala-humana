@@ -174,6 +174,11 @@ Politicians have different priorities than climate data scientists. This does no
 
 People want to feel that their work has meaning, that what they are doing fits into a larger narrative. Tell a good story.
 
+## This quote from Erica Thompson:
+
+> All “climate decisions” are also political decisions about which industries to support or restrain, which goals to prioritise, which voices to amplify or to ignore. All “climate decisions” are also moral decisions about whose lives matter; what species matter; what levels of risk we are prepared to live with and accept on behalf of future generations. In framing climate decisions as technical decisions primarily to be answered by modelling studies, it is imperative to consider the political and ethical dimensions of that framing and what interests are served by doing so. (Cited in https://radiant.earth/blog/2023/02/more-data-more-available-to-more-people/)
+
+
 ## Workshop
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/nlebovits/datos-escala-humana/blob/main/es/datos-accion/taller.ipynb)
