@@ -66,9 +66,12 @@ of that data out there, how do find what I need?
 
 So far, we've looked at a couple of examples of *data portals*, which are a kind of
 spatial data infrastructure (SDI). An SDI is basically any place where open geospatial
-data is found on the internet. It can be a catalog, server, web application, list of
-pages, or layers. A well-organized SDI makes it easy to find, access, and use open data,
-but not all SDIs are created equal. In this chapter, we'll talk about navigating the SDI
+data can be found on the internet, such as catalogs, servers, web apps, or even just a
+list of pages.
+
+is found on the internet. It can be a catalog, server, web application, list of pages,
+or layers. A well-organized SDI makes it easy to find, access, and use open data, but
+not all SDIs are created equal. In this chapter, we'll talk about navigating the SDI
 landscape in order to find and access the data that you need. While this isn't a
 comprehensive guide to all the different sources of open data, it will give enough
 informaion to help you navigate and use common SDIs.
@@ -125,13 +128,13 @@ import geopandas as gpd
 
 building_demos_url = "https://phl.carto.com/api/v2/sql?q=SELECT+*+FROM+demolitions&filename=demolitions&format=geojson&skipfields=cartodb_id"
 building_demos = gpd.read_file(building_demos_url)
-building_demos.to_file("data/building_demolitions.geojson")
+building_demos.to_file("building_demolitions.geojson")
 ```
 
 ```{python}
 import geopandas as gpd
 
-building_demos = gpd.read_file("data/building_demolitions.geojson")
+building_demos = gpd.read_file("building_demolitions.geojson")
 building_demos.head()
 ```
 
