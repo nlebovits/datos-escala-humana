@@ -208,8 +208,19 @@ two more very common ones that are worth being familiar with.
 
 #### WFS/WMS
 
-Do you remember the `partidos` data we downloaded from the Province of Buenos Aires in
-chapter 1 [link]? Let's take a look at a stripped-down version of that code:
+Web Feature Services (WFS) and Web Map Services (WMS) are standardized APIs for sharing
+vector and raster features (respectively). These standards are maintained by the Open
+Geospatial Consortium (OGC) and are meant to facilitate consistent access and
+distribution patterns for open geospatial data. Since the standards and tooling are open
+source, they are the go-to for sharing geospatial data in much of the world, especially
+the Global South.
+
+Let's take a look at a simple example of accessing data via WFS. We'll return to the
+`partidos` data from the Province of Buenos Aires that we looked at [in chapter
+1](../python-geospatial/python-geospatial.qmd#importing-vector-data). This time, instead
+of loading the data from a pre-downloaded local copy, we'll query it directly from the
+ARBA WFS server. Note that we can now pass our query directly to the server, limiting
+the response to just the Partido de Berisso (`"CQL_FILTER": "fna='Partido de Berisso"`).
 
 ```{python}
 import requests
@@ -223,42 +234,27 @@ params = {
     "version": "2.0.0",
     "request": "GetFeature",
     "typename": "idera:Departamento",
-    "CQL_FILTER": "fna='Partido de La Plata'",
+    "CQL_FILTER": "fna='Partido de Berisso'",
     "srsname": "EPSG:5347",
     "outputFormat": "application/json",
 }
 
 # verify=False because ARBA's SSL certificate is currently expired
 response = requests.get(url, params=params, verify=False)
-la_plata = (
+berisso = (
     gpd.GeoDataFrame.from_features(response.json())
     .set_crs("EPSG:5347")
     .to_crs("EPSG:5348")
 )
-la_plata.plot()
+berisso.plot()
 ```
 
-At the beginnning of the query, we're connecting to something called a "Web Feature
-Service", or WFS, which is another example of an API. In this case, a WFS is a
-standardized way of sharing vector features over HTTPS.
-
-In contrast to downloading a flat file, accessing these data via WFS allows us to
-*pre-filter* them via our query to only return our features of interest. This is a much
-more efficient way of accessing the data, especially when the underlying dataset is very
-large and we only need a small portion of it for our own use. Here's an example with the
-same dataset:
-
-Let's make a small modification here: we can actually filter our *query* to return only
-the Partido of La Plata, rather than *all* the partidos:
-
-While it can take some adjustment to learn how to query WFS and WMS, they offer
-flexibility, interoperability, programmatic access, automatic updates...
-
-In many parts of the world--especially the Global South--they are *the* go-to for
-sharing open data, and are therefore important to know how to use.
-
-Along with WFS, the OGC has also defined the Web Map Service (WMS), which is the same
-idea but for raster data.
+For simplicity and clarity, we're making this query via the `requests` library, as we
+did in the Carto example before and as we will in the Esri example in the next section.
+However, OGC also maintains [`owslib`, a Python library for working with
+WFS/WMS](https://github.com/geopython/OWSLib). For details on how to use it, such as
+querying a WMS layer, see [the official
+documentation](https://owslib.readthedocs.io/en/latest/usage.html#wms).
 
 #### Esri REST APIs
 
