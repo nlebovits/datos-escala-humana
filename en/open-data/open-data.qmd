@@ -108,41 +108,42 @@ and GeoJSON).
 
 ### Flat Files
 
-Simply put, a flat file is a file that you download once in its entirety. They can be
-used offline with no internet connection, and they don't change unless the user manually
-edits them. The major benefit of flat files is their simplicity; what you see is what
-you get, and they are straightforward to access: you download them, search for them on
-your computer, and open them with your desktop GIS software or with a programming
-language.
+A flat file is a file that you download once in its entirety. They can be used offline
+with no internet connection, and they don't change unless the user manually edits them.
+The major benefit of flat files is their simplicity. What you see is what you get, and
+they are straightforward to access: you download them, search for them on your computer,
+and open them with your desktop GIS software or with a programming language.
 
 Here's a quick example of accessing the buildings demolitions data as a flat file. We've
-downloaded the data as a GeoJSON (one of several different vector data formats, such as
-shapefile, GeoPackage, FileGeoDatabase, and GeoParquet) and saved it alongside this
-book. Now we'll simply use the path to open it in Python with `geopandas` (see Chapter 1
-for a recap of this) and we can explore the contents of the dataframe and map the
-geometries.
+downloaded the data as a GeoJSON and can simply open the file directly in Python (for a
+recap of this, see [chapter
+1](../python-geospatial/python-geospatial.qmd#importing-vector-data)).
 
 ```{python}
+#| echo: false
 import geopandas as gpd
 
 building_demos_url = "https://phl.carto.com/api/v2/sql?q=SELECT+*+FROM+demolitions&filename=demolitions&format=geojson&skipfields=cartodb_id"
 building_demos = gpd.read_file(building_demos_url)
+building_demos.to_file("data/building_demolitions.geojson")
+```
 
+```{python}
+import geopandas as gpd
+
+building_demos = gpd.read_file("data/building_demolitions.geojson")
 building_demos.head()
-
-building_demos.plot()
 ```
 
 ::: {.callout-tip}
 Raster data also come in flat files, such as GeoTIFFs, netCDF, and ECW. Just like vector
-data, these can be downloaded and opened in Python, this time using `rasterio`.
+data, these can be downloaded and opened in Python, as covered in [chapter
+1](../python-geospatial/python-geospatial.qmd#raster-data).
 :::
 
 While both vector and raster data can come in several formats--each of which has its own
 strengths and limitations--tools like `geopandas` and `rasterio` make it easy to open
-all of these formats with a consistent interface. For example, you'd use
-`gpd.read_file()` to open most kinds of vector data, whether they're stored as GeoJSON,
-GeoPackage, or shapefile.
+all of these formats with a consistent interface.
 
 As we mentioned, flat files have the virtue of simplicity, and for many geospatial
 practitioners, they will never need to go beyond downloading and analyzing flat files.
