@@ -98,7 +98,7 @@ bounding box and CRS.
 Let's take a look at an example. Here's a dataset of building demolitions listed on the
 City of Philadelphia's open data portal:
 
-![Building Demolitions, OpenDataPhilly]('../../../../public/open-data/Screenshot%202026-03-25%20at%2015-32-34%20Building%20Demolitions%20-%20OpenDataPhilly.png')
+![Building Demolitions, OpenDataPhilly](../../public/open-data/Screenshot%202026-03-25%20at%2015-32-34%20Building%20Demolitions%20-%20OpenDataPhilly.png)
 
 This page lists several things we'd expect to see: a title, a brief description, some
 metadata (created date, categories, a license, a maintainer and contact info). It also
@@ -156,7 +156,7 @@ instead to APIs.
 In the simplest terms, an API is a structured way to ask a computer for something and
 get a response back.
 
-![What is the cloud?]('../../../../public/open-data/what-is-the-cloud.webp')
+![What is the cloud?](../../public/open-data/what-is-the-cloud.webp)
 
 Let's return to the example of our building demolitions data. When we right-click on the
 link we used to download the GeoJSON file, we get the following URL:
