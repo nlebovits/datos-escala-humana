@@ -67,14 +67,8 @@ of that data out there, how do find what I need?
 So far, we've looked at a couple of examples of *data portals*, which are a kind of
 spatial data infrastructure (SDI). An SDI is basically any place where open geospatial
 data can be found on the internet, such as catalogs, servers, web apps, or even just a
-list of pages.
-
-is found on the internet. It can be a catalog, server, web application, list of pages,
-or layers. A well-organized SDI makes it easy to find, access, and use open data, but
-not all SDIs are created equal. In this chapter, we'll talk about navigating the SDI
-landscape in order to find and access the data that you need. While this isn't a
-comprehensive guide to all the different sources of open data, it will give enough
-informaion to help you navigate and use common SDIs.
+list of pages. In this chapter, we'll look at a few of the most common types of SDIs,
+including data portals, APIs, and cloud storage.
 
 ### Data Portals
 
@@ -86,8 +80,14 @@ downloading the data. Open data portals are a great place to start your search f
 as they're designed primarily for easily searching through a catalog (or catalogs) of
 available data to find and acccess what you need. Usually, they'll include dataset
 names, descriptions, metadata, and often some simple visualization feature that allows
-you to preview the dataset before you commit to downloading it or connecting via server
-or API (more on this in a moment).
+you to preview the dataset before you commit to downloading it or connecting via API
+(more on this in a moment).
+
+::: {.callout-tip}
+Often, data portals don't actually *host* the data itself. Instead, they provide a user
+interface to organize and navigate data, while storage is handled elsewhere, whether in
+databases, cloud storage, or other infrastructure.
+:::
 
 ::: {.column-margin}
 **Metadata** is data that defines and describes other data. Usually it will include
