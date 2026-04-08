@@ -263,10 +263,12 @@ idea but for raster data.
 #### Esri REST APIs
 
 If you spend enough time working with geospatial data, you will inevitably come across
-Esri. While Esri's products are proprietary, and *not* open source, they are so widely
-used in the geospatial world that it's basically impossible not to encounter them at
-some point. Much of the world's geospatial data is stored in Esri servers, and it's
-therefore important to know how to access data via Esri's own API.
+Esri. While Esri's products are proprietary (and therefore *not* open source), they are
+so widely used in the geospatial world that it's basically impossible not to encounter
+them at some point. Much of the world's geospatial data is stored in Esri servers, so
+it's important to know how to access data via Esri's own API. Here's an example that is
+very similar to the WFS query above. As before, we'll construct a query URL with
+parameters, make a request, and convert the results to a GeoDataFrame.
 
 ```{python}
 import requests
@@ -285,7 +287,18 @@ gdf = gpd.GeoDataFrame.from_features(response.json())
 gdf.plot()
 ```
 
-- mention the pagination issue
+For more details on Esri REST API query syntax, see [the official
+documentation](https://developers.arcgis.com/rest/). There are also several Python
+libraries that streamline extraction, such as
+[esri2gpd](https://github.com/PhiladelphiaController/esri2gpd) and
+[esri-dump](https://github.com/openaddresses/pyesridump), though neither is actively
+maintained. One of the authors of this book maintains `geoparquet-io`, a CLI tool and
+Python library that, among other features, makes it easy to extract data from ArcGIS
+feature services and convert the data to optimized geoparquet files (see the
+[geoparquet.io extraction
+guide](https://geoparquet.io/guide/extract/#extracting-from-arcgis-feature-services)).
+It's also often possible to simply download the data as a GeoJSON or Shapefile, as long
+as a download link is provided.
 
 ### Cloud Storage
 
