@@ -156,29 +156,29 @@ instead to APIs.
 In the simplest terms, an API is a structured way to ask a computer for something and
 get a response back.
 
-![What is the cloud?](../../public/open-data/what-is-the-cloud.webp)
+![What is an API?](../../public/open-data/api-3284935437.png)
 
-Let's return to the example of our building demolitions data. When we right-click on the
-link we used to download the GeoJSON file, we get the following URL:
+Let's return to the example of our building demolitions data and dig a little deeper.
+When we right-click on the "GeoJSON" link, we get the following URL:
+
 `https://phl.carto.com/api/v2/sql?q=SELECT+*+FROM+demolitions&filename=demolitions&format=geojson&skipfields=cartodb_id`.
-This reveals something interesting: the download link doesn't connect us to a flat file,
-but a query pased via API to a database. In fact, if we change the `format` parameter in
-the URL, we can get the same data in different formats (CSV, shapefile, GeoJSON) without
-changing the underlying query. This is a common pattern for open data portals: the
-portal itself is a user-friendly interface to a backend database that serves data
-through an API. The API allows users to access the data programmatically, and often
-provides more flexibility than downloading static files.
 
-`https://phl.carto.com/api/v2/sql?q=SELECT+*,+ST_Y(the_geom)+AS+lat,+ST_X(the_geom)+AS+lng+FROM+demolitions&filename=demolitions&format=csv&skipfields=cartodb_id`
-`https://phl.carto.com/api/v2/sql?q=SELECT+*+FROM+demolitions&filename=demolitions&format=shp&skipfields=cartodb_id`
-`https://phl.carto.com/api/v2/sql?q=SELECT+*+FROM+demolitions&filename=demolitions&format=geojson&skipfields=cartodb_id`
+This reveals something interesting: our "download" link is actually a query passed via
+API to a database. We can break it down in more detail:
 
-Did you catch it? All three links are from the *same database*; the only thing that
-changes is the *output file format*: CSV, shapefile, or GeoJSON. What are these, and why
-do geospatial file formats matter?
+- We are querying a SQL-style [Carto](https://carto.com/) database belonging to the City
+  of Philadelphia (`https://phl.carto.com/api/v2/sql`)
+- We are requesting data specifically from the `demolitions` table
+- We are requesting that the response be returned as GeoJSON data (`geojson`)
 
-Instead of downloading these data as a flat file, we can *query* them in Python to get
-the same results:
+In fact, if we right-click on the shapefile or CSV download links, we'll see that the
+queries are almost identical, the only difference being that the shapefile query
+specifies `shp` instead of `geojson`, and the CSV query specifies `csv` and also needs
+to indicate the formatting of the geometry data
+(`ST_Y(the_geom)+AS+lat,+ST_X(the_geom)+AS+lng`). In other words, there aren't actually
+three different files, but a single database that we access via API. This gives us
+another option for data access. Instead of downloading these data as a flat file, we can
+*query* them in Python to get the same results:
 
 ```{python}
 import requests
@@ -196,15 +196,16 @@ gdf = gpd.GeoDataFrame.from_features(response.json())
 gdf.plot()
 ```
 
-There's an important distiction here: the results of the query will *change* as the
-database is updated and our Python script is re-run, whereas the GeoJSON we downloaded
-will not update--it's static.
-
-In the case of the building demolitions data, we're connecting to a a PostGIS database
-which can be queried via SQL. This is one flavor of API, but it's specific to Carto, the
-vendor that provides it. In the open data world, you may run into many different kinds
-of APIs, each with their own quirks. We can't be comprehensive, but let's take a look at
-two more very common ones that are worth being familiar with.
+While a flat file is static, our query is not; each time we run it, the results will
+*change* depending on what's in the database. While static flat files are good for
+one-off analysis, APIs give us the opportunity to access data flexibly and
+programmatically, such as scripting regular data updates or filtering only for the data
+we need. In the example we've just seen, we're connecting to a
+[PostGIS](https://postgis.net/) database which can be queried via SQL. This is one
+flavor of API, but it's specific to Carto, the vendor that provides it. In the open data
+world, you may run into many different kinds of APIs, each with their own quirks. We
+can't be comprehensive, but let's take a look at two more very common ones that are
+worth being familiar with.
 
 #### WFS/WMS
 
@@ -311,7 +312,7 @@ that your machine connects to over the internet. Accessing cloud infrastructure 
 initial learning curve, and it requires a consistent internet connection, but it offers
 power, flexibility, scalability, and resilience that local storage cannot match.
 
-[Add the little AWS graphic]
+![What is the cloud?](../../public/open-data/what-is-the-cloud.webp)
 
 Here's a concrete example to illustrate the difference. Let's say Carolina works as a GIS analyst for her local municipality, and she's been asked to store 3.2 GB of cadastral data. Prior to cloud storage, she might need to purchase an external hard drive, which could cost $100 or more. The hard drive might hold 5 TB of data (or 5,000 GB), but if Carolina only ever uses 500 GB of that, she's paying for 4,500 GB she'll never use. On top of that, her options for sharing files are limited: she can either attach them to an email, if they're small enough, or copy them to a USB stick and pass it along by hand. And, perhaps worst of all, if she loses the hard drive or something happens to it, everything on it is gone—there's no backup, no distribution.
 
