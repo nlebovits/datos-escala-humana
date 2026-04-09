@@ -304,12 +304,12 @@ as a download link is provided.
 ### Cloud Storage
 
 So far, we've discussed flat files and APIs as two different ways to access open data.
-These approaches work well for small- or medium-scale datasets, perhaps up to tens of
-gigabytes. But modern geospatial workflows—including many of the ones we'll discuss in
-this book—often involve *hundreds*, *thousands*, or even *millions* of gigabytes of
-data. For workflows at this scale, traditional flat files and APIs simply aren't
-appropriate; at best, they're slow and cumbersome, and at worst, they make certain tasks
-literally impossible. This is where cloud storage and cloud-native file formats come in.
+These approaches work well for small- or medium-scale datasets, perhaps up to hundreds
+of gigabytes. But modern geospatial workflows—including many of the ones we'll discuss
+in this book—often involve *thousands* or even *millions* of gigabytes of data. For
+workflows at this scale, traditional flat files and APIs simply aren't appropriate; at
+best, they're slow and cumbersome, and at worst, they make certain tasks literally
+impossible. This is where cloud storage and cloud-native file formats come in.
 
 First, a definition: the **cloud** is nothing more than someone else's computer, servers
 that your machine connects to over the internet. Accessing cloud infrastructure has an
@@ -318,7 +318,7 @@ power, flexibility, scalability, and resilience that local storage cannot match.
 
 ![What is the cloud?](../../public/open-data/what-is-the-cloud.webp)
 
-Here's a concrete example to illustrate the difference. Let's say Carolina works as a GIS analyst for her local municipality, and she's been asked to store 3.2 GB of cadastral data. Prior to cloud storage, she might need to purchase an external hard drive, which could cost $100 or more. The hard drive might hold 5 TB of data (or 5,000 GB), but if Carolina only ever uses 500 GB of that, she's paying for 4,500 GB she'll never use. On top of that, her options for sharing files are limited: she can either attach them to an email, if they're small enough, or copy them to a USB stick and pass it along by hand. And, perhaps worst of all, if she loses the hard drive or something happens to it, everything on it is gone—there's no backup, no distribution.
+Here's a concrete example to illustrate the how cloud storage improves on legacy approaches. Let's say Carolina works as a GIS analyst for her local municipality, and she's been asked to store 3.2 GB of cadastral data. Without cloud storage, she might need to purchase an external hard drive, which could cost $100 or more. The hard drive might hold 5 TB of data (or 5,000 GB), but if Carolina only ever uses 500 GB of that, she's paying for 4,500 GB she'll never use. On top of that, her options for sharing files are limited: she can either attach them to an email, if they're small enough, or copy them to a USB stick and pass it along by hand. And, perhaps worst of all, if she loses the hard drive or something happens to it, everything on it is gone—there's no backup, no distribution.
 
 Contrast this with cloud storage. On platforms like Google Cloud or Amazon Web Services,
 storage costs around $0.025 per GB per month. At that price, Carolina's 3.2 GB of
@@ -327,30 +327,26 @@ wants to share her data with a colleague, she can simply send them a URL to down
 query the data directly. And there's no risk of losing a hard drive, because she can
 access her data from anywhere she can sign into her cloud account.
 
-In recent years, several new file formats have emerged to make the most of the
-advantages of cloud storage. These are called **cloud-optimized** (or cloud-native) file
-formats, and they include cloud-optimized GeoTIFFs and Zarr for rasters, as well as
-GeoParquet, FlatGeobuf, and PMTiles for vectors. (To read more about these, see the
-[*Cloud-Optimized Geospatial Formats Guide*](https://guide.cloudnativegeo.org/).) You
-can think of these as flat files, but *optimized* for use with cloud storage. Most
-pertinently, this means that—unlike legacy file formats—they allow you to access and
-process only the portions of data you actually need, through protocols like HTTP range
-requests. Instead of having to download gigabytes of files, you can download just the
-megabytes that matter to you, and you can do so very efficiently for your specific area
-of interest. For our purposes, this is the main advantage. It's transformative for
-working with large datasets: instead of downloading Argentina's entire building
-footprint dataset, you can query just the buildings in La Plata.
+The cloud isn't just about *where* you store your data; the *how* is also important. In
+recent years, several new file formats have emerged to make the most of the advantages
+of cloud storage. These are called **cloud-optimized** (or cloud-native) file formats,
+and they include cloud-optimized GeoTIFFs and Zarr for rasters, as well as GeoParquet,
+FlatGeobuf, and PMTiles for vectors. (To read more about these, see the
+[*Cloud-Optimized Geospatial Formats Guide*](https://guide.cloudnativegeo.org/).)
 
-Here's another example. We'll load the land cover data from the last chapter *for all of
-Argentina*. Using a cloud-optimized GeoTIFF stored in a Google Cloud bucket, we simply
-query the overview of the dataset, meaning a lower-resolution version of the raster
-that's stored inside the same file alongside the full-resolution data. Cloud-optimized
-GeoTIFFs bundle these pre-computed downsampled copies—sometimes called
-pyramids—precisely so that tools can grab a coarse view of a huge dataset without
-pulling the underlying pixels. For a country the size of Argentina, the full-resolution
-land cover raster is many gigabytes, but the overview we need to render it on a map is
-only a few megabytes. We make a single HTTP range request, pull just those bytes from
-the Google Cloud bucket, and have a national land cover map in seconds.
+![Cloud-Optimized File Formats](https://guide.cloudnativegeo.org/images/cogeo-formats-table.png)
+
+Cloud-native file types combine the simplicity of flat files with the flexility and
+scability of APIs, but to an even greater extent. They allow users to store millions of
+gigabytes of data while accessing just the portions they need. In other words, instead
+of having to download the entire file, you download *just the data that matters to you.*
+Here's an example.
+
+In the last chapter, we loaded Mapbiomas land cover data. The original data are stored
+as a cloud-optimized GeoTIFF in a Google Cloud bucket. (In other words, a cloud-native
+file in cloud storage.) The full raster is \~430 MB, or a bit under half a gigabyte. We
+can get a near-intantaneous map of the data for all of Argentina using
+[overviews](https://guide.cloudnativegeo.org/cloud-optimized-geotiffs/intro.html#overviews):
 
 ```{python}
 #| code-fold: true
@@ -394,15 +390,47 @@ overview = overview.where((overview != 0) & (~np.isnan(overview)))
 overview.plot(cmap=lc_cmap, norm=lc_norm, add_colorbar=False)
 ```
 
-Cloud-native file formats are increasingly the standard in geospatial, offering improved
-performance not only for large datasets in cloud storage, but also for simple, local
-workflows, thanks to their improved compression and speed. They are especially relevant
-for climate risk analysis, where we need to process large volumes of satellite, climate,
-and geographic data without the infrastructure to store them locally. The cloud-native
-tools we will use are not more difficult than traditional tools and offer many
-advantages. The cloud is simply one of the places where people compute today. As
-mentioned in [the introduction](../intro.qmd#guiding-principles), this book takes the
-cloud-native approach as the default.
+The real magic comes when we load *just the section we need*, in this case,
+corresponding to the Partido of Berisso, which we mapped in the previous section on WFS.
+
+```{python}
+import rioxarray as rio
+import numpy as np
+
+# Reproject Berisso to raster CRS (WGS84)
+berisso_wgs84 = berisso.to_crs("EPSG:4326")
+
+# Clip raster to Berisso (full resolution, not overview)
+berisso_lc = (
+    rio.open_rasterio(suelo_2022_ruta)
+    .rio.clip(berisso_wgs84.geometry, from_disk=True)
+    .squeeze()
+)
+
+# Mask nodata
+berisso_lc = berisso_lc.where((berisso_lc != 0) & (~np.isnan(berisso_lc)))
+
+# Size in MB (actual bytes transferred ≈ uncompressed clip size)
+size_mb = berisso_lc.nbytes / (1024**2)
+print(f"Berisso clip: {size_mb:.2f} MB")
+
+# Plot
+berisso_lc.plot(cmap=lc_cmap, norm=lc_norm, add_colorbar=False)
+```
+
+For climate risk analyses with global datasets, the ability to pull only the data you
+need is essential; if we had to download the entirety of CMIP6 data to run an analysis
+for a small city in Bolivia, it would be literally impossible. Thanks to cloud-native
+geospatial tooling, however, it is now easy to access gold-standard climate data even on
+a normal office laptop.
+
+And cloud-native geospatial tools aren't some fancy, cutting-edge tech; they are
+increasing the standard tools of the geospatial world, offering improved performance not
+only for large datasets in cloud storage, but also for simple, local workflows, thanks
+to their improved compression and speed. The cloud is simply one of the places where
+people compute today. As mentioned in [the
+introduction](../intro.qmd#guiding-principles), this book takes the cloud-native
+approach as the default.
 
 ## Why Use Open Data?
 
