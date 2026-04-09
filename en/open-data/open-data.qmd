@@ -426,6 +426,74 @@ for a small city in Bolivia, it would be literally impossible. Thanks to cloud-n
 geospatial tooling, however, it is now easy to access gold-standard climate data even on
 a normal office laptop.
 
+## Data Quality and Fitness for Use
+
+As the examples above suggest, there is a *lot* of open data in the world, and no two
+datasets are quite alike. The definition we cited at the beginning of this chapter makes
+the idea sound simple in theory, but in practice it gets complicated quickly. That's why
+it's especially important to be able to carefully evaluate the quality and
+trustworthiness of an open dataset before building anything on top of it. Here are
+several questions to ask yourself.
+
+First, is the dataset **maintained**? It is common to find "orphaned" datasets
+online--data that were published years ago and are no longer actively maintained by
+anyone. This lack of maintainence isn't necessarily a problem if the data is in a final
+state, but it means that no one is accountable to answer questions you may have about
+the data. Often, it simply means that the data were superseded and you should look for a
+newer version of the dataset.
+
+Second, how complete is the data **documentation**? Good documentation tells you who
+published the data and when, provides contact information for the publisher and/or
+maintainer, and includes key information such as metadata, known limitations, and
+guidance on interpretation. Without good documentation, it is very hard to know if
+you're using a dataset as intended, which can lead to all kinds of problems when trying
+to make sound decisions based on the data.
+
+::: {.callout-important}
+A key part of dataset documentation is the **license**. [Common open
+licenses](https://opensciencelab.uc3m.es/blog/types-of-open-data-licenses/) like
+Creative Commons (CC-BY, CC-BY-SA) and the Open Database License (ODbL) are generally
+permissive, but not all licenses are equal, and many have specific requirements about
+how you use, attribute, and share the data.
+:::
+
+Related to documentation is the question of **data quality**. Well-documented datasets
+include quantitative and/or qualitative assessments of how accurate and reliable the
+data are. Validation and uncertainty metrics should tell you what the strengths and
+limitations of the dataset are, and give you a sense of what you *can* and *can't* be
+confident in when using it.
+
+![Global Land Cover Datasets Compared](../../public/open-data/Screenshot%202026-04-09%20at%2014-54-08%20Global%20Land%20Cover%20Maps%E2%80%99%20Accuracy%20and%20Applications%20Explained.png)
+
+::: {.callout-important}
+When reading a global dataset's validation report, be mindful to how it performs in
+*your specific region.* Due to variation and/or bias in their training data, global
+datasets usually perform better in some countries or regions than others. Keep this in
+mind when selecting the most appropriate data sources for your use case.
+:::
+
+In addition to checking documentation, it's the responsibility of the data user to do
+their *own* validation, especially when they understand the local context. If you're
+trying to decide which global land cover map is best suited for use in your city, you
+should open it in software like QGIS and actually compare it to high-resolution basemaps
+and your own understanding of what your city is like. If you're using a global flood
+hazard model, compare it to a map of local flood defenses, which are often hard to
+factor into global flooding models. If you're comparing two datasets, try to understand
+*where* and *why* they differ. In short, do not use data blindly--[trust but
+verify](https://en.wikipedia.org/wiki/Trust%2C_but_verify).
+
+Lastly, ask yourself if the data are the right tool for the job you're trying to do. In
+other words, are they **fit for use**? Even "accurate" data, when applied to questions
+they weren't meant to answer, can lead to bad outcomes. Using riverine flood hazard data
+in a place that only has pluvial flash flooding would give you totally misleading
+estimates of flood risk. VIIRS/FIRMS fire observations are helpful for mapping wildfires
+at a large scale, but aren't sensitive enough to pick up small wildfires when they've
+just started. Ideally, datasets would include explicit guidance on what they should and
+shouldn't be used for, but in practice this is rare. The best approach is to proceed
+with caution, look for prior precedent of how the dataset has been applied, and consult
+subject matter experts whenever you have doubts. Good geospatial work, in the end,
+depends as much on knowing the limits of your data as on knowing how to process it.
+
 ## Why Use Open (Global) Data? A Case Study
 
 It's a truism that local data are better than global data. This is often true:
@@ -466,131 +534,5 @@ The lesson here is not that RENABAP is a failure and local data are irrelevant; 
 this is a clear example of how open global datasets can be used to supplement local
 datasets to refine and improve them, especially in contexts where limited resources or
 governance challenges may render official datasets unreliable.
-
-## Data Quality and Fitness for Use
-
-As the examples above suggest, there is a *lot* of open data in the world, and no two
-datasets are quite alike. The definition we cited at the beginning of this chapter makes
-the idea sound simple in theory, but in practice it gets complicated quickly. That's why
-it's especially important to be able to carefully evaluate the quality and
-trustworthiness of an open dataset before building anything on top of it.
-
-When you encounter a new open dataset, there are several questions worth asking before
-you commit to using it. None of them are particularly technical, but skipping them is
-one of the most common ways that geospatial projects go wrong.
-
-First, what **license** is the data shared under? Common open licenses like Creative
-Commons (CC-BY, CC-BY-SA) and the Open Database License (ODbL) are generally permissive,
-but not all licenses are equal, and many have specific requirements about how you use,
-attribute, and share the data. Some specify how you must cite the source; others require
-that derivative works carry the same license; still others restrict commercial use
-entirely. Always check the license terms against your intended use case before you
-invest time in a dataset, because discovering a licensing conflict after the fact can
-mean throwing out weeks of work.
-
-Second, how thorough is the **documentation**? Good documentation tells you who
-published the data and when, provides contact information for the publisher, and
-includes metadata describing how the dataset was produced, what its known limitations
-are, and how its fields should be interpreted. Sparse documentation isn't necessarily
-disqualifying, but it does mean you'll need to do more of the interpretive work
-yourself, and you should weight the dataset accordingly.
-
-Third, how well **maintained** is the dataset? How frequently is it updated, and when
-was the last update? A dataset that hasn't been touched in five years may still be
-useful, but you need to know that going in. Relatedly, when evaluating a data portal as
-a whole, it's worth asking whether it's maintained by a stable institution—a national
-mapping agency, an established research organization—or whether it depends on project
-funding that may evaporate. Has the portal been operational for multiple years? Is there
-a community of users around it whose work you can learn from? These questions help you
-assess whether a source is reliable enough to base planning decisions on.
-
-Fourth, how good is the **data quality** itself? Well-documented datasets publish
-qualitative and quantitative assessments of accuracy, and the specific metrics vary
-depending on the subject matter. But published metrics only get you so far. It's also
-important to actually *look* at your data. Open the dataset in a map and compare it
-against what you already know about the area. Does the land cover classification match
-your understanding of the city? Do building footprints align with actual development
-patterns? If you have local government data, even if it's somewhat out of date, compare
-the two and pay attention to where they agree and where they diverge. Understanding
-those differences is often more valuable than either dataset alone, because it tells you
-what the global data can and cannot reliably tell you.
-
-It's also worth reading the dataset's validation reports, when they exist, with an eye
-to your specific region. If validation focuses on North America and Europe, the dataset
-likely performs worse elsewhere—not because the producers are negligent, but because
-that's where their training data and ground truth tend to be concentrated. And
-resolution matters: a 30m global land cover dataset may be perfectly adequate for
-regional analysis but entirely inappropriate for neighborhood-scale planning. Match the
-data resolution to the scale of the decision you're trying to inform.
-
-A related concept is **fitness for use**. A dataset might be highly accurate and still
-be the wrong tool for the job, because accuracy is irrelevant if the data are applied to
-a question they weren't designed to answer. This can get nuanced. When evaluating flood
-risk in a coastal region, is coastal storm surge data enough, or do you also need data
-on riverine and pluvial (rain-caused) flooding? Do you need climate change projections,
-or are present-day data sufficient? The answer might depend on whether you're trying to
-design a flood wall or relocate families living in informal settlements—two decisions
-that demand very different evidence.
-
-Ideally, datasets would include explicit guidance on what they should and shouldn't be
-used for, but in practice this is rare. The best approach is to proceed with caution,
-look for prior precedent of how the dataset has been applied, and consult subject matter
-experts whenever you have doubts. Good geospatial work, in the end, depends as much on
-knowing the limits of your data as on knowing how to process it.
-
-### A Note on Global Datasets
-
-In this book, we work primarily with *global* datasets, and it's worth pausing to say
-something about what that means and where it gets complicated. Global datasets can be
-enormously valuable, especially for filling gaps in countries that otherwise have no way
-of collecting such data themselves. They make it possible to do meaningful analysis in
-places where local data infrastructure is thin, and they provide a common baseline that
-lets you compare conditions across regions. But "global" is a word that hides a lot of
-variation, and these datasets come with limitations that are easy to overlook precisely
-because the word sounds so comprehensive.
-
-The first limitation is that global datasets are often not as global as they sound. Most
-are produced by institutions and research groups based in wealthy countries—primarily in
-North America, Europe, China, and Japan—and the underlying training data, ground truth,
-and validation efforts tend to concentrate in those same regions. This isn't a matter of
-bad faith on the part of the producers; it's a reflection of where data collection
-infrastructure already exists. But the consequence is that "global" datasets are often
-substantially better in some parts of the world than in others, and the gaps tend to
-fall in exactly the places where local data is hardest to come by.
-
-This leads directly to the second limitation, which is precision. Datasets derived from
-machine learning models—and increasingly, that's most of them—are only as good as the
-data they were trained on. Systematic bias in training data toward certain countries and
-away from others means that models typically perform less accurately, and produce less
-comprehensive results, in the regions where they're most needed. A building footprint
-dataset trained primarily on aerial imagery from the United States and Western Europe
-will struggle with the dense, irregular, and informal settlement patterns common in much
-of the global south, even when the model is technically being applied "globally."
-
-When you encounter a global dataset, then, the key question isn't whether it covers your
-region, but *how well* it covers your region. Read the validation reports if they exist.
-Look for accuracy assessments broken down by country or continent. Compare the dataset
-against any local data you can get your hands on, even informally, and see whether the
-patterns line up. Ask whether anyone working in your context has used this dataset
-before, and what they found. The goal isn't to dismiss global datasets, which remain
-genuinely useful, but to develop a calibrated sense of what they can and can't tell you
-about your specific place.
-
-(Note, too, that global datasets can often be *better* than local; cite my example of
-the building footprints in La Plata)
-
-The takeaway is that global datasets are tools, not truth. They provide starting points
-and regional context, but they require critical evaluation before use in local
-decision-making. When the quality of a global dataset turns out to be insufficient for
-your needs, the right move is often a hybrid approach: use the global data as a
-baseline, supplement it with local data collection where you can, and focus targeted
-effort on collecting the specific high-priority information your decisions actually
-depend on.
-
-## Why Use Open Data?
-
-We'd like to conclude this chapter with a tangible illustration of the value of open
-data--specifically, open *global* data. Generally, it's assumed that local data are
-better (more accurate, more recent, etc.) than global data.
 
 ## Additional Resources
