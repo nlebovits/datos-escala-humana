@@ -135,7 +135,7 @@ building_demos.to_file("building_demolitions.geojson")
 import geopandas as gpd
 
 building_demos = gpd.read_file("building_demolitions.geojson")
-building_demos.head()
+building_demos.plot()
 ```
 
 ::: {.callout-tip}
@@ -392,6 +392,8 @@ overview.plot(cmap=lc_cmap, norm=lc_norm, add_colorbar=False)
 
 The real magic comes when we load *just the section we need*, in this case,
 corresponding to the Partido of Berisso, which we mapped in the previous section on WFS.
+Thanks to the magic of cloud-native workflows, we are only pulling 1.69 MB of data--just
+0.4% of the full file size!
 
 ```{python}
 import rioxarray as rio
@@ -424,15 +426,46 @@ for a small city in Bolivia, it would be literally impossible. Thanks to cloud-n
 geospatial tooling, however, it is now easy to access gold-standard climate data even on
 a normal office laptop.
 
-And cloud-native geospatial tools aren't some fancy, cutting-edge tech; they are
-increasing the standard tools of the geospatial world, offering improved performance not
-only for large datasets in cloud storage, but also for simple, local workflows, thanks
-to their improved compression and speed. The cloud is simply one of the places where
-people compute today. As mentioned in [the
-introduction](../intro.qmd#guiding-principles), this book takes the cloud-native
-approach as the default.
+## Why Use Open (Global) Data? A Case Study
 
-## Why Use Open Data?
+It's a truism that local data are better than global data. This is often true:
+locally-collected datasets are generally based on a more complete understanding of the
+local context than global datasets can be. However, this is changing rapidly, driven
+especially by massive improvements in artificial intelligence that are enabling more and
+more accurate open, global datasets. Furthermore, the quality of local datasets is often
+hampered by limited resources; especially in Global South countries, demographers,
+statisticians, and other producers are often hampered by under-funding, political
+instability, and numerous other challenges that impact the quality and availability of
+local data. As a result, open global datasets increasingly provide valuable supplements
+to or even replacements for local data, and can reveal crucial information. Here's an
+illustrative case study.
+
+The greater La Plata region in Argentina has a number of informal settlements exposed to
+flood hazards. In previous studies, the city and the Universidad Nacional de La Plata
+had estimated the population of these informal settlements based on REBANAP data,
+Argentina's official census of informal settlements. Although RENABAP provides the
+authoritative estimates of informal settlement populations, they are not fine-grained
+(they simply estimate the number of families per settlement, with no estimate of
+population distribution *within* settlements), and have another of methdological
+limitations. The most recent data, for example, published in 2023, include estimates
+based on surveys completed as far back as 2016. In the context of informal
+settlements--where population changes are swift and sometimes unpredcitable--this can
+lead to completely inaccurate population counts and therefore prevent local governments
+from adequately providing services.
+
+As part of broader research work in Argentina, we worked in 2025 to pull open building
+footprints to compare to RENABAP data in La Plata. Our findings were stark: the RENABAP
+data may underestimate the real population in these settlements by roughly 40%. In one
+extreme case, we found an informal settlement that RENABAP estimated was inhabited by
+330 families--but satellite imagery showed that it contained more than *four thousand
+building footprints*.
+
+![Barrio Los Pinos, La Plata, Argentina](https://nlebovits.github.io/ciut-riesgo/renabap_files/figure-html/fig-ejemplo-barrio-output-1.png)
+
+The lesson here is not that RENABAP is a failure and local data are irrelevant; rather,
+this is a clear example of how open global datasets can be used to supplement local
+datasets to refine and improve them, especially in contexts where limited resources or
+governance challenges may render official datasets unreliable.
 
 ## Data Quality and Fitness for Use
 
@@ -554,32 +587,10 @@ baseline, supplement it with local data collection where you can, and focus targ
 effort on collecting the specific high-priority information your decisions actually
 depend on.
 
-### Challenges to the Open Data Ecosystem
+## Why Use Open Data?
 
-When you go looking for data to inform a real decision, you'll quickly discover that
-"open" doesn't always mean "usable." A dataset can have an open license and a public
-download link and still be effectively out of reach—maybe it takes a full day to
-download, requires a terabyte of free local storage, depends on expensive proprietary
-software, or has no documentation in a language anyone on your team reads. The questions
-that determine whether a dataset will actually help you don't show up in the license: Is
-it in a format you can open? Is it documented well enough to interpret? Is it hosted
-somewhere you can reliably reach? Is anyone going to keep maintaining it next year?
-
-The harder version of this problem is institutional. A great deal of the open data that practitioners around the world rely on—weather forecasts, hurricane models, long-range climate projections—comes from a small number of public institutions whose continued existence we used to take for granted. NOAA is the clearest example: its data products underlie property insurance, shipping, agriculture, aviation, and most of the climate models built on top of them, returning roughly $73 in savings for every dollar invested in its forecasts alone. And yet, as [ProPublica reported in 2025](https://www.propublica.org/article/trump-noaa-budget-cuts-climate-change-modeling-princeton-gfdl), the Trump administration has proposed cutting NOAA's funding by 27%, with a 74% cut to the office that houses the Geophysical Fluid Dynamics Laboratory at Princeton—the lab whose models feed hurricane forecasts, the National Weather Service, and much of the world's climate prediction work. NASA, NSF, and DOE modeling programs face similar pressures. Any workflow that quietly depends on a single agency staying funded forever is more fragile than it looks.
-
-The encouraging news is that people are actively working on what comes next. Jed
-Sundwall of Radiant Earth has
-[argued](https://radiant.earth/blog/2025/03/building-resilient-data-infrastructure/)
-that the right response isn't just to defend the institutions we inherited but to build
-new ones designed from the start to be resilient: cooperatively governed,
-internationally distributed, built on open source code and cloud-native formats, and
-structured so that a political shock in any one country can't take down the data the
-rest of the world depends on. Efforts like the Cloud-Native Geospatial Forum, Source
-Cooperative, the Overture Maps Foundation, and OpenStreetMap are early experiments in
-what this can look like. For you as a practitioner, the implication is twofold: when
-choosing data for real decisions, look past the license and ask who's behind it and what
-your alternatives would be if it went away; and when you have a choice, use and support
-the newer, more resilient sources, because the long-term health of the open data we all
-rely on will be shaped by which efforts get built upon.
+We'd like to conclude this chapter with a tangible illustration of the value of open
+data--specifically, open *global* data. Generally, it's assumed that local data are
+better (more accurate, more recent, etc.) than global data.
 
 ## Additional Resources
