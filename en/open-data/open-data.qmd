@@ -14,9 +14,10 @@ While there are various potential sources for those data, in this book we focus 
 what open data look like in the real world, but for now we'll start with a basic working
 definition that open data is data that anyone can "freely access, use, modify, and share
 for any purpose."^[https://opendefinition.org/]. To clarify what this means, it might
-help to begin with a couple of concrete examples. Here are some open data portals from
-the U.S. government, the government of India, and the government of the City of Buenos
-Aires:
+help to begin with a couple of concrete examples.
+
+Here are some open data portals from the U.S. government, the government of India, and
+the government of the City of Buenos Aires:
 
 | Portal                                                             | Description                        |
 | ------------------------------------------------------------------ | ---------------------------------- |
@@ -24,8 +25,10 @@ Aires:
 | [data.gov.in](https://www.data.gov.in/)                            | India national open data portal    |
 | [Catálogo de Datos GBA](https://catalogo.datos.gba.gov.ar/dataset) | Buenos Aires Province data catalog |
 
-You'll notice that these portals are all government portals, which isn't an accident.
-The idea of publicly-accessible data is old, but [the "open data"
+If you click on one of the links and explore it, you'll see many different datasets
+covering different time periods, regions, and topics. You'll also likely notice that
+these three portals are all government portals, which isn't an accident. The idea of
+publicly-accessible data is old, but [the "open data"
 movement](https://en.wikipedia.org/wiki/Open_data) tends to refer to a particular
 initiative that emerged in the 2010s and focused primarily on open *government* data. As
 such, national, regional, and local governments are some of the main publishers of open
@@ -35,8 +38,7 @@ data.
 ## Try it yourself
 
 Find an open data portal for your national, regional, or local government. What datasets
-can you find in it? Is it well maintained? Can you find any datasets that you can see
-yourself using for your work?
+does it offer? Can you find any data that might be useful for your work?
 :::
 
 Beyond governments, open data are often published by quasi-governmental institutions
@@ -64,7 +66,7 @@ of that data out there, how do find what I need?
 
 ## Where is Open Data?
 
-So far, we've looked at a couple of examples of *data portals*, which are a kind of
+What we've seen so far are examples of *data portals*, where are one of several kinds of
 spatial data infrastructure (SDI). An SDI is basically any place where open geospatial
 data can be found on the internet, such as catalogs, servers, web apps, or even just a
 list of pages. In this chapter, we'll look at a few of the most common types of SDIs,
@@ -78,10 +80,7 @@ discover and access datasets relevant to their needs, so they usually provide me
 such as descriptions, formats, and licensing information, and tools for previewing and
 downloading the data. Open data portals are a great place to start your search for data,
 as they're designed primarily for easily searching through a catalog (or catalogs) of
-available data to find and acccess what you need. Usually, they'll include dataset
-names, descriptions, metadata, and often some simple visualization feature that allows
-you to preview the dataset before you commit to downloading it or connecting via API
-(more on this in a moment).
+available data to find and acccess what you need.
 
 ::: {.callout-tip}
 Often, data portals don't actually *host* the data itself. Instead, they provide a user
@@ -103,11 +102,11 @@ City of Philadelphia's open data portal:
 
 ![Building Demolitions, OpenDataPhilly](../../public/open-data/Screenshot%202026-03-25%20at%2015-32-34%20Building%20Demolitions%20-%20OpenDataPhilly.png)
 
-This page lists several things we'd expect to see: a title, a brief description, some
-metadata (created date, categories, a license, a maintainer and contact info). It also
-lists several options for how to *access* the data, including a visualization page (the
-HTML), an API (more on this in a moment), and three *flat file* formats (CSV, shapefile,
-and GeoJSON).
+As expected, we can see a title, a description, and some metadata (created date,
+categories, a license, a maintainer and contact info). OpenDataPhilly also lists several
+options for how to *access* the data, including a visualization page (the HTML link), an
+API (more on this in a moment), and three *flat file* formats (CSV, shapefile, and
+GeoJSON).
 
 ### Flat Files
 
@@ -144,9 +143,9 @@ data, these can be downloaded and opened in Python, as covered in [chapter
 1](../python-geospatial/python-geospatial.qmd#raster-data).
 :::
 
-While both vector and raster data can come in several formats--each of which has its own
-strengths and limitations--tools like `geopandas` and `rasterio` make it easy to open
-all of these formats with a consistent interface.
+While both vector and raster data can come in several flat file formats--each of which
+has its own strengths and limitations--tools like `geopandas` and `rasterio` make it
+easy to open all of these formats with a consistent interface.
 
 As we mentioned, flat files have the virtue of simplicity, and for many geospatial
 practitioners, they will never need to go beyond downloading and analyzing flat files.
@@ -201,7 +200,7 @@ gdf.plot()
 ```
 
 While a flat file is static, our query is not; each time we run it, the results will
-*change* depending on what's in the database. While static flat files are good for
+*change* depending on what's in the database. And while static flat files are good for
 one-off analysis, APIs give us the opportunity to access data flexibly and
 programmatically, such as scripting regular data updates or filtering only for the data
 we need. In the example we've just seen, we're connecting to a
@@ -214,11 +213,11 @@ worth being familiar with.
 #### WFS/WMS
 
 Web Feature Services (WFS) and Web Map Services (WMS) are standardized APIs for sharing
-vector and raster features (respectively). These standards are maintained by the Open
-Geospatial Consortium (OGC) and are meant to facilitate consistent access and
-distribution patterns for open geospatial data. Since the standards and tooling are open
-source, they are the go-to for sharing geospatial data in much of the world, especially
-the Global South.
+vector and raster features (respectively). These standards are maintained by the [Open
+Geospatial Consortium (OGC)](https://www.ogc.org/) and are meant to facilitate
+consistent access and distribution patterns for open geospatial data. Since the
+standards and tooling are open source, they are the go-to for sharing geospatial data in
+much of the world, especially the Global South.
 
 Let's take a look at a simple example of accessing data via WFS. We'll return to the
 `partidos` data from the Province of Buenos Aires that we looked at [in chapter
@@ -421,10 +420,10 @@ berisso_lc.plot(cmap=lc_cmap, norm=lc_norm, add_colorbar=False)
 ```
 
 For climate risk analyses with global datasets, the ability to pull only the data you
-need is essential; if we had to download the entirety of CMIP6 data to run an analysis
-for a small city in Bolivia, it would be literally impossible. Thanks to cloud-native
-geospatial tooling, however, it is now easy to access gold-standard climate data even on
-a normal office laptop.
+need is essential; if we had to download the entirety of CMIP6 data just to run an
+analysis for a small city in Bolivia, it would be literally impossible. Thanks to
+cloud-native geospatial tooling, however, it is now easy to access gold-standard climate
+data even on a normal office laptop.
 
 ## Data Quality and Fitness for Use
 
@@ -474,27 +473,31 @@ mind when selecting the most appropriate data sources for your use case.
 
 In addition to checking documentation, it's the responsibility of the data user to do
 their *own* validation, especially when they understand the local context. If you're
-trying to decide which global land cover map is best suited for use in your city, you
-should open it in software like QGIS and actually compare it to high-resolution basemaps
-and your own understanding of what your city is like. If you're using a global flood
-hazard model, compare it to a map of local flood defenses, which are often hard to
-factor into global flooding models. If you're comparing two datasets, try to understand
-*where* and *why* they differ. In short, do not use data blindly--[trust but
-verify](https://en.wikipedia.org/wiki/Trust%2C_but_verify).
+trying to decide which [global land cover
+map](https://landcarbonlab.org/insights/global-land-cover-maps-accuracy-applications/)
+is best suited for use in your city, you should open it in software like QGIS and
+actually compare it to high-resolution basemaps and your own understanding of what your
+city is like. If you're using a global flood hazard model, compare it to a map of local
+flood defenses, which are often hard to factor into global flooding models. If you're
+comparing two datasets, try to understand *where* and *why* they differ. In short, do
+not use data blindly.
 
 Lastly, ask yourself if the data are the right tool for the job you're trying to do. In
 other words, are they **fit for use**? Even "accurate" data, when applied to questions
 they weren't meant to answer, can lead to bad outcomes. Using riverine flood hazard data
 in a place that only has pluvial flash flooding would give you totally misleading
-estimates of flood risk. VIIRS/FIRMS fire observations are helpful for mapping wildfires
-at a large scale, but aren't sensitive enough to pick up small wildfires when they've
-just started. Ideally, datasets would include explicit guidance on what they should and
-shouldn't be used for, but in practice this is rare. The best approach is to proceed
-with caution, look for prior precedent of how the dataset has been applied, and consult
-subject matter experts whenever you have doubts. Good geospatial work, in the end,
-depends as much on knowing the limits of your data as on knowing how to process it.
+estimates of flood risk. [VIIRS/FIRMS fire
+observations](https://firms.modaps.eosdis.nasa.gov/map/) are helpful for mapping
+wildfires at a large scale, but aren't always sensitive enough to pick up small roadside
+wildfires when they've just started. Ideally, datasets would [include explicit
+guidance](https://open.substack.com/pub/lettersfromthreadedfoundry/p/candid-core-framework?utm_campaign=post-expanded-share&utm_medium=web)
+on what they should and shouldn't be used for, but in practice this is rare. The best
+approach is to proceed with caution, look for prior precedent of how the dataset has
+been applied, and consult subject matter experts whenever you have doubts. Good
+geospatial work, in the end, depends as much on knowing the limits of your data as on
+knowing how to process it.
 
-## Why Use Open (Global) Data? A Case Study
+## Why Use Open Data? A Case Study
 
 It's a truism that local data are better than global data. This is often true:
 locally-collected datasets are generally based on a more complete understanding of the
@@ -528,11 +531,21 @@ extreme case, we found an informal settlement that RENABAP estimated was inhabit
 330 families--but satellite imagery showed that it contained more than *four thousand
 building footprints*.
 
-![Barrio Los Pinos, La Plata, Argentina](https://nlebovits.github.io/ciut-riesgo/renabap_files/figure-html/fig-ejemplo-barrio-output-1.png)
+![Example of Informal Settlement, La Plata, Argentina](https://nlebovits.github.io/ciut-riesgo/renabap_files/figure-html/fig-ejemplos-barrios-adicionales-output-3.png)
+
+We ultimately estimated that as many as 100,000 people may be missing from population
+surveys of La Plata's informal settlements, key information which has now been
+incorporated into La Plata's first-ever municipal plan, and will be used to inform
+future decisions such as flood risk planning.
 
 The lesson here is not that RENABAP is a failure and local data are irrelevant; rather,
 this is a clear example of how open global datasets can be used to supplement local
 datasets to refine and improve them, especially in contexts where limited resources or
 governance challenges may render official datasets unreliable.
 
-## Additional Resources
+## Conclusion
+
+In this chapter, we've covered what open data is, where and how to access it, and how to
+think critically about data quality and fitness for use. In the next chapter, we'll
+delve into climate risk data specifically, including key sources, and how to calculate
+key indicators such as vulnerability, exposure, hazard, and risk.
