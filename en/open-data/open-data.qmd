@@ -13,8 +13,8 @@ While there are various potential sources for those data, in this book we focus 
 *open* data. Toward the end of this chapter, we'll talk a bit about the complexities of
 what open data look like in the real world, but for now we'll start with a basic working
 definition that open data is data that anyone can "freely access, use, modify, and share
-for any purpose."^[https://opendefinition.org/]. To clarify what this means, it might
-help to begin with a couple of concrete examples.
+for any purpose" [@opendefinition]. To clarify what this means, it might help to begin
+with a couple of concrete examples.
 
 Here are some open data portals from the U.S. government, the government of India, and
 the government of the City of Buenos Aires:
@@ -159,7 +159,7 @@ instead to APIs.
 In the simplest terms, an API is a structured way to ask a computer for something and
 get a response back.
 
-![What is an API?](../../public/open-data/api-3284935437.png)
+![What is an API? Source: [roboleary.net](https://roboleary.net/)](../../public/open-data/api-3284935437.png)
 
 Let's return to the example of our building demolitions data and dig a little deeper.
 When we right-click on the "GeoJSON" link, we get the following URL:
@@ -315,7 +315,7 @@ that your machine connects to over the internet. Accessing cloud infrastructure 
 initial learning curve, and it requires a consistent internet connection, but it offers
 power, flexibility, scalability, and resilience that local storage cannot match.
 
-![What is the cloud?](../../public/open-data/what-is-the-cloud.webp)
+![What is the cloud? [@cloudflare_cloud_definition]](../../public/open-data/what-is-the-cloud.webp)
 
 Here's a concrete example to illustrate the how cloud storage improves on legacy approaches. Let's say Carolina works as a GIS analyst for her local municipality, and she's been asked to store 3.2 GB of cadastral data. Without cloud storage, she might need to purchase an external hard drive, which could cost $100 or more. The hard drive might hold 5 TB of data (or 5,000 GB), but if Carolina only ever uses 500 GB of that, she's paying for 4,500 GB she'll never use. On top of that, her options for sharing files are limited: she can either attach them to an email, if they're small enough, or copy them to a USB stick and pass it along by hand. And, perhaps worst of all, if she loses the hard drive or something happens to it, everything on it is gone—there's no backup, no distribution.
 
@@ -462,7 +462,7 @@ data are. Validation and uncertainty metrics should tell you what the strengths 
 limitations of the dataset are, and give you a sense of what you *can* and *can't* be
 confident in when using it.
 
-![Global Land Cover Datasets Compared](../../public/open-data/Screenshot%202026-04-09%20at%2014-54-08%20Global%20Land%20Cover%20Maps%E2%80%99%20Accuracy%20and%20Applications%20Explained.png)
+![Global Land Cover Datasets Compared. Source: [Land Carbon Lab](https://landcarbonlab.org/insights/global-land-cover-maps-accuracy-applications/)](../../public/open-data/Screenshot%202026-04-09%20at%2014-54-08%20Global%20Land%20Cover%20Maps%E2%80%99%20Accuracy%20and%20Applications%20Explained.png)
 
 ::: {.callout-important}
 When reading a global dataset's validation report, be mindful to how it performs in
@@ -512,24 +512,25 @@ to or even replacements for local data, and can reveal crucial information. Here
 illustrative case study.
 
 The greater La Plata region in Argentina has a number of informal settlements exposed to
-flood hazards. In previous studies, the city and the Universidad Nacional de La Plata
-had estimated the population of these informal settlements based on REBANAP data,
-Argentina's official census of informal settlements. Although RENABAP provides the
-authoritative estimates of informal settlement populations, they are not fine-grained
-(they simply estimate the number of families per settlement, with no estimate of
-population distribution *within* settlements), and have another of methdological
-limitations. The most recent data, for example, published in 2023, include estimates
-based on surveys completed as far back as 2016. In the context of informal
+flood hazards. In previous studies [@romanazzi2019], the city and the Universidad
+Nacional de La Plata had estimated the population of these informal settlements based on
+REBANAP data, Argentina's official census of informal settlements. Although RENABAP
+provides the authoritative estimates of informal settlement populations, they are not
+fine-grained (they simply estimate the number of families per settlement, with no
+estimate of population distribution *within* settlements), and have another of
+methdological limitations. The most recent data, for example, published in 2023, include
+estimates based on surveys completed as far back as 2016. In the context of informal
 settlements--where population changes are swift and sometimes unpredcitable--this can
 lead to completely inaccurate population counts and therefore prevent local governments
 from adequately providing services.
 
-As part of broader research work in Argentina, we worked in 2025 to pull open building
-footprints to compare to RENABAP data in La Plata. Our findings were stark: the RENABAP
-data may underestimate the real population in these settlements by roughly 40%. In one
-extreme case, we found an informal settlement that RENABAP estimated was inhabited by
-330 families--but satellite imagery showed that it contained more than *four thousand
-building footprints*.
+As part of broader research work in Argentina, we worked in 2025 to [pull open building
+footprints to compare to RENABAP data in La
+Plata](https://nlebovits.github.io/ciut-riesgo/renabap.html). Our findings were stark:
+the RENABAP data may underestimate the real population in these settlements by roughly
+40%. In one extreme case, we found an informal settlement that RENABAP estimated was
+inhabited by 330 families--but satellite imagery showed that it contained more than
+*four thousand building footprints*.
 
 ![Example of Informal Settlement, La Plata, Argentina](https://nlebovits.github.io/ciut-riesgo/renabap_files/figure-html/fig-ejemplos-barrios-adicionales-output-3.png)
 
