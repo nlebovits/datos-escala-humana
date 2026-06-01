@@ -69,10 +69,286 @@ built environment, agriculture, etc.
 
 In Argentina, this is often done with the 2022 Argentine Census.
 
+```{python}
+import geopandas as gpd
+import matplotlib.pyplot as plt
+import numpy as np
+from rasterio.features import rasterize
+from io import BytesIO
+from owslib.wfs import WebFeatureService
+
+import rioxarray
+import contextily as ctx
+from shapely.geometry import box
+import xarray as xr
+
+
+USE_CRS = "EPSG:5347"  # posgar para esperanza
+WEB_MERCATOR_CRS = "EPSG:3857"
+
+DEFAULT_FIGSIZE = (12, 10)
+MAP_PADDING = 500
+PLASMA_CMAP = plt.cm.plasma
+
+
+def setup_base_map(
+    figsize=None, bounds=None, boundary_gdf=None, padding_x=None, padding_y=None
+):
+    """Create figure and set up basic map boundaries with padding."""
+    if figsize is None:
+        figsize = DEFAULT_FIGSIZE
+    if padding_x is None:
+        padding_x = MAP_PADDING
+    if padding_y is None:
+        padding_y = MAP_PADDING
+
+    if bounds is None and boundary_gdf is not None:
+        bounds = boundary_gdf.total_bounds
+
+    # Convert bounds to Web Mercator for basemap compatibility
+    if bounds is not None:
+        # Create a temporary GeoDataFrame with the bounds to reproject
+        temp_bounds = gpd.GeoDataFrame(
+            geometry=[box(bounds[0], bounds[1], bounds[2], bounds[3])], crs=USE_CRS
+        )
+        bounds_3857 = temp_bounds.to_crs(WEB_MERCATOR_CRS).total_bounds
+    else:
+        bounds_3857 = bounds
+
+    fig, ax = plt.subplots(figsize=figsize)
+    ax.set_xlim(bounds_3857[0] - padding_x, bounds_3857[2] + padding_x)
+    ax.set_ylim(bounds_3857[1] - padding_y, bounds_3857[3] + padding_y)
+    return fig, ax
+
+
+def add_basemap(ax, zoom=13):
+    """Add CartoDB basemap to the axes."""
+
+    ctx.add_basemap(
+        ax,
+        source=ctx.providers.CartoDB.PositronNoLabels,
+        zorder=0,
+        zoom=zoom,
+    )
+
+    return ax
+
+
+def add_north_arrow(ax, x=0.95, y=0.05, arrow_length=0.04):
+    """Add a north arrow to the map."""
+    ax.annotate(
+        "N",
+        xy=(x, y),
+        xytext=(x, y - arrow_length),
+        arrowprops=dict(facecolor="black", width=3, headwidth=10),
+        ha="center",
+        va="center",
+        fontsize=14,
+        xycoords=ax.transAxes,
+    )
+
+
+def add_boundary_outline(ax, boundary_gdf, crs="EPSG:3857"):
+    """Add the outline of a boundary geodataframe to a map."""
+    boundary_3857 = boundary_gdf.to_crs(crs)
+    boundary_3857.plot(
+        ax=ax,
+        facecolor="none",
+        edgecolor="black",
+        linewidth=0.5,
+        linestyle="--",
+        legend=False,
+        zorder=5,
+    )
+
+
+def create_consistent_map(title, boundary_gdf, bounds=None):
+    """Create a map with consistent styling and basemap."""
+    fig, ax = setup_base_map(bounds=bounds, boundary_gdf=boundary_gdf)
+
+    add_basemap(ax)
+
+    add_north_arrow(ax)
+
+    add_boundary_outline(ax, boundary_gdf)
+
+    ax.set_title(title, fontsize=16, fontweight="bold", pad=20)
+
+    ax.set_axis_off()
+
+    return fig, ax
+
+
+def wfs_to_gdf(
+    wfs_url: str, layer_name: str, srs: str = "EPSG:4326"
+) -> gpd.GeoDataFrame:
+    """
+    Descarga una capa WFS y la devuelve como GeoDataFrame.
+
+    Args:
+        wfs_url (str): URL del servicio WFS.
+        layer_name (str): Nombre de la capa (typename).
+        srs (str): Código EPSG del sistema de referencia de coordenadas.
+
+    Returns:
+        gpd.GeoDataFrame: Capa descargada como GeoDataFrame.
+    """
+    wfs = WebFeatureService(url=wfs_url, version="2.0.0")
+    response = wfs.getfeature(typename=layer_name, srsname=srs)
+    gdf = gpd.read_file(BytesIO(response.read()))
+    return gdf
+
+
+base_url = "https://wms.ign.gob.ar/geoserver/ign/ows"
+
+munis = wfs_to_gdf(wfs_url=base_url, layer_name="ign:municipio", srs="EPSG:4326")
+
+aoi = munis[munis["nam"] == "Esperanza"]
+aoi = aoi.to_crs(USE_CRS)
+```
+
 **Global population raster data**
 
 - Global Human Settlement Layer (GHSL) 2025: 100-meter resolution
 - WorldPop 2025: 100-meter resolution
+
+```{python}
+# esperanza_ruta = ""/home/nissim/Documents/dev/fulbright/ciut-riesgo/notebooks/data/GHS_POP_E2025_GLOBE_R2023A_54009_100_V1_0_R13_C13/GHS_POP_E2025_GLOBE_R2023A_54009_100_V1_0_R13_C13.tif""
+
+ghsl_ruta = "/home/nissim/Documents/dev/fulbright/ciut-riesgo/notebooks/data/GHS_POP_E2025_GLOBE_R2023A_54009_100_V1_0_R13_C13/GHS_POP_E2025_GLOBE_R2023A_54009_100_V1_0_R13_C13.tif"
+
+ghsl = rioxarray.open_rasterio(
+    ghsl_ruta,
+    chunks={"x": 1024, "y": 1024},
+)
+
+ghsl = ghsl.rio.reproject(dst_crs=USE_CRS)
+
+ghsl_clipped = ghsl.rio.clip(
+    [aoi.geometry.iloc[0]],
+    from_disk=True,
+)
+
+ghsl_masked = ghsl_clipped.where(ghsl_clipped > 0)
+
+fig, ax = create_consistent_map("Estimaciones de Población GHSL 2023", aoi)
+
+ghsl_masked_3857 = ghsl_masked.rio.reproject(WEB_MERCATOR_CRS)
+
+ghsl_masked_3857 = ghsl_masked_3857.where(ghsl_masked_3857 > 0)
+
+ghsl_masked_3857.plot(
+    ax=ax, cmap=PLASMA_CMAP, alpha=0.75, add_colorbar=False, add_labels=False, zorder=2
+)
+
+plt.title("Estimaciones de Población GHSL 2023", fontsize=16, fontweight="bold", pad=20)
+plt.show()
+
+raster_referencia = ghsl_clipped
+transformacion_referencia = raster_referencia.rio.transform()
+crs_referencia = raster_referencia.rio.crs
+forma_referencia = raster_referencia.shape[1:]
+raster_ghsl = ghsl_clipped.values[0]
+
+geometrias = [geom for geom in datos_censales.geometry]
+
+# Option 1: Use the same method for both
+# Replace zonal_stats with rasterize-based calculation
+raster_ghsl_full = rasterize(
+    [(geom, i + 1) for i, geom in enumerate(datos_censales.geometry)],
+    out_shape=forma_referencia,
+    transform=transformacion_referencia,
+    fill=0,
+    all_touched=True,
+    dtype=np.int32,
+)
+
+# Calculate totals from the rasterized version
+totales_ghsl = []
+for i in range(len(datos_censales.geometry)):
+    polygon_mask = raster_ghsl_full == (i + 1)  # +1 because rasterize starts at 1
+
+    # Apply both polygon mask AND exclude nodata values
+    valid_mask = polygon_mask & (raster_ghsl > 0) & (raster_ghsl != -200)
+
+    total = np.sum(raster_ghsl[valid_mask]) if np.any(valid_mask) else 0
+    totales_ghsl.append(total)
+
+datos_censales["estimacion_pob_ghsl"] = totales_ghsl
+
+
+geometrias_ghsl = [
+    (geom, valor)
+    for geom, valor in zip(
+        datos_censales.geometry,
+        datos_censales["estimacion_pob_ghsl"],
+    )
+]
+geometrias_pob = [
+    (geom, valor)
+    for geom, valor in zip(datos_censales.geometry, datos_censales["POB_TOT_P"])
+]
+
+raster_pob_ghsl = rasterize(
+    geometrias_ghsl,
+    out_shape=forma_referencia,
+    transform=transformacion_referencia,
+    fill=0,
+    dtype=np.float32,
+    all_touched=True,
+)
+
+raster_pob_censo = rasterize(
+    geometrias_pob,
+    out_shape=forma_referencia,
+    transform=transformacion_referencia,
+    fill=0,
+    dtype=np.float32,
+    all_touched=True,
+)
+
+
+mascara = (raster_ghsl > 0) & (raster_ghsl != -200) & (raster_pob_ghsl > 0.1)
+ghsl_fraccional = np.full_like(raster_ghsl, 0, dtype=np.float64)
+ghsl_fraccional[mascara] = raster_ghsl[mascara] / raster_pob_ghsl[mascara]
+
+mascara2 = (ghsl_fraccional > 0) & (raster_pob_censo > 0)
+pob_redistribuida = np.full_like(raster_ghsl, 0, dtype=np.float64)
+pob_redistribuida[mascara2] = ghsl_fraccional[mascara2] * raster_pob_censo[mascara2]
+
+pob_redistribuida_da = xr.DataArray(
+    pob_redistribuida,
+    coords={"y": ghsl_clipped.y, "x": ghsl_clipped.x},
+    dims=["y", "x"],
+    attrs=ghsl_clipped.attrs.copy(),
+)
+
+pob_redistribuida_da = pob_redistribuida_da.rio.write_crs(USE_CRS)
+
+pob_redistribuida_enmascarada = pob_redistribuida_da.where(pob_redistribuida_da > 0)
+
+total_redistribuido = pob_redistribuida[pob_redistribuida > 0].sum()
+total_censo = datos_censales["POB_TOT_P"].sum()
+
+fig, ax = create_consistent_map("Población Redistribuida a 100m", aoi)
+
+pob_redistribuida_enmascarada_3857 = pob_redistribuida_enmascarada.rio.reproject(
+    WEB_MERCATOR_CRS
+)
+
+pob_redistribuida_enmascarada_3857 = pob_redistribuida_enmascarada_3857.where(
+    pob_redistribuida_enmascarada_3857 > 0
+)
+
+pob_redistribuida_enmascarada_3857.plot(
+    ax=ax, cmap=PLASMA_CMAP, alpha=0.75, add_colorbar=False, add_labels=False, zorder=2
+)
+
+plt.title(
+    "Población Censal Redistribuida a 100m", fontsize=16, fontweight="bold", pad=20
+)
+plt.show()
+```
 
 **Building footprints**
 
@@ -131,6 +407,138 @@ In the absence of better data, wealth is a decent measure. In this particular co
 prioritize clear, transparent, and easily explainable metrics instead of complex tools
 like the socioeconomic vulnerability index that came out of the United States. So, we
 tend to prioritize measures like wealth.
+
+```{python}
+import duckdb
+import pandas as pd
+import geopandas as gpd
+
+# Setup DuckDB and query
+con = duckdb.connect()
+for cmd in [
+    "INSTALL spatial",
+    "LOAD spatial",
+    "INSTALL httpfs",
+    "LOAD httpfs",
+    "SET s3_region='us-east-2'",  # Note: different region for your data
+]:
+    con.execute(cmd)
+
+temp_file = "privacion_data.parquet"
+
+WGS84_CRS = "EPSG:4326"
+
+bounds = aoi.to_crs(WGS84_CRS).total_bounds
+
+query = f"""
+COPY (
+    WITH privacion_data AS (
+        SELECT 
+            id_geo,
+            SUM(CASE WHEN valor_categoria IN ('2', '3', '4') THEN conteo ELSE 0 END) AS hogares_con_privacion,
+            SUM(conteo) AS total_hogares,
+            ROUND((hogares_con_privacion * 100.0) / total_hogares, 2) AS porcentaje_privacion
+        FROM 's3://arg-fulbright-data/censo-argentino-2022/censo-2022-largo.parquet'
+        WHERE codigo_variable = 'HOGAR_IPMH'
+        GROUP BY id_geo
+        HAVING total_hogares > 0
+    )
+    SELECT 
+        g.cod_2022,
+        g.prov,
+        g.depto, 
+        g.pob_tot_p,
+        g.geometry,
+        p.hogares_con_privacion,
+        p.total_hogares,
+        p.porcentaje_privacion
+    FROM 's3://arg-fulbright-data/censo-argentino-2022/radios-2022.parquet' g
+    JOIN privacion_data p ON g.cod_2022 = p.id_geo
+    WHERE ST_XMax(g.geometry) >= {bounds[0]} 
+      AND ST_XMin(g.geometry) <= {bounds[2]}
+      AND ST_YMax(g.geometry) >= {bounds[1]} 
+      AND ST_YMin(g.geometry) <= {bounds[3]}
+) TO '{temp_file}' (FORMAT PARQUET);
+"""
+
+con.execute(query)
+df = pd.read_parquet(temp_file)
+df["geometry"] = gpd.GeoSeries.from_wkb(df["geometry"])
+gdf = gpd.GeoDataFrame(df, geometry="geometry", crs="4326")
+
+gdf = gdf.to_crs(USE_CRS).clip(aoi)
+
+fig, ax = create_consistent_map("Privación por Radio Censal - Censo 2022", aoi)
+
+filtered_gdf_3857 = gdf.to_crs(WEB_MERCATOR_CRS)
+
+filtered_gdf_3857.plot(
+    column="POB_TOT_P", ax=ax, cmap=PLASMA_CMAP, legend=False, alpha=0.8, zorder=2
+)
+
+plt.title(
+    "Privación por Radio Censal - Censo 2022", fontsize=16, fontweight="bold", pad=20
+)
+plt.show()
+
+# Create poverty proportions raster at 100m resolution
+geometrias_privacion = [
+    (geom, valor)
+    for geom, valor in zip(
+        gdf.geometry,
+        gdf["porcentaje_privacion"] / 100,  # Convert percentage to proportion
+    )
+]
+
+raster_privacion = rasterize(
+    geometrias_privacion,
+    out_shape=forma_referencia,
+    transform=transformacion_referencia,
+    fill=0,
+    dtype=np.float32,
+    all_touched=True,
+)
+
+# Create population in poverty raster by multiplying redistributed population by poverty proportions
+mascara_pob_privacion = (pob_redistribuida > 0) & (raster_privacion > 0)
+pob_privacion = np.full_like(pob_redistribuida, 0, dtype=np.float64)
+pob_privacion[mascara_pob_privacion] = (
+    pob_redistribuida[mascara_pob_privacion] * raster_privacion[mascara_pob_privacion]
+)
+
+# Create xarray DataArray for the poverty population raster
+pob_privacion_da = xr.DataArray(
+    pob_privacion,
+    coords={"y": ghsl_clipped.y, "x": ghsl_clipped.x},
+    dims=["y", "x"],
+    attrs=ghsl_clipped.attrs.copy(),
+)
+
+pob_privacion_da = pob_privacion_da.rio.write_crs(USE_CRS)
+
+# Mask zero values
+pob_privacion_enmascarada = pob_privacion_da.where(pob_privacion_da > 0)
+
+# Calculate total population in poverty
+total_pob_privacion = pob_privacion[pob_privacion > 0].sum()
+print(f"Total population in poverty: {total_pob_privacion:,.0f}")
+print(
+    f"Percentage of redistributed population in poverty: {(total_pob_privacion / total_redistribuido) * 100:.1f}%"
+)
+
+# Map of population in poverty at 100m resolution
+fig, ax = create_consistent_map("Población en Privación a 100m", aoi)
+
+pob_privacion_3857 = pob_privacion_enmascarada.rio.reproject(WEB_MERCATOR_CRS)
+pob_privacion_3857 = pob_privacion_3857.where(pob_privacion_3857 > 0)
+
+pob_privacion_3857.plot(
+    ax=ax, cmap=PLASMA_CMAP, alpha=0.75, add_colorbar=False, add_labels=False, zorder=2
+)
+
+plt.title("Población en Privación a 100m", fontsize=16, fontweight="bold", pad=20)
+plt.show()
+```
 
 ### Limitation of Global Data
 
@@ -315,67 +723,3 @@ specific urban characteristics that increase climate risk.
 ### Sea Level Rise
 
 [TODO: Expand this section]
-
-## Resilience, Mitigation, and Adaptation
-
-### Resilience
-
-The capacity of a system, community, or society exposed to hazards to resist, absorb,
-adapt, transform, and recover from the effects of a hazard in a timely and efficient
-manner, including the preservation and restoration of its basic structures and functions
-through risk management.
-
-Source: UNDRR [TODO: add original citation]
-
-### Mitigation
-
-Interventions to reduce emissions, reduce the effect of greenhouse gases, or increase
-their capture, reducing the effect or magnitude of climate change.
-
-**Important**: Most of what we discuss in this course is adaptation, not mitigation.
-Unless you are talking about reducing emissions, you are not talking about mitigation.
-You are talking about adaptation.
-
-### Adaptation
-
-Changes to natural or human systems in response to current climate or anticipated
-climate and its effects to reduce risk and take advantage of opportunities.
-
-Example: floating houses in the Netherlands.
-
-### Adaptation Approaches
-
-**Structural Interventions**
-
-According to UNDRR: Physical constructions to avoid possible impacts or hazards. The
-application of engineering techniques or technology to achieve resistance or resilience
-against hazards in structures or systems.
-
-Examples:
-
-- Channels or other hydroengineering
-- Gray infrastructure: Built infrastructure like concrete channels, flood walls, levees,
-  and drainage pipes. Effective for controlling water flow but can be expensive to build
-  and maintain, may transfer risk downstream, and doesn't address multiple co-benefits.
-- Green infrastructure: Nature-based solutions like wetlands, permeable surfaces, urban
-  forests, and rain gardens. Can address multiple issues simultaneously (flood
-  management, heat reduction, air quality, biodiversity) and typically costs less to
-  maintain than gray infrastructure, though may require more space and longer time to
-  establish.
-
-Many effective adaptation strategies combine gray and green infrastructure. For example,
-a drainage system (gray) supplemented with bioswales and rain gardens (green) that
-capture and infiltrate stormwater before it enters the drainage network.
-
-**Non-Structural Approaches**
-
-UNDRR definition: Approaches that do not involve physical construction and that use
-knowledge, practices, or agreements to reduce risks or disaster impacts, particularly
-through policies and laws, public education, capacity building, and education.
-
-Examples:
-
-- Flood early warning system
-- Risk reduction plan
-- Fire reduction plan
-- Flood hazard zone where new structures are not permitted to be built

@@ -1,0 +1,247 @@
+## Climate Risk for Cities
+
+## Objectives
+
+After completing this chapter, you will understand the key concepts of exposure,
+vulnerability, hazard, and risk. You will understand how to measure these concepts with
+data, and how to apply them to an example of riverine flood risk in Esperanza,
+Argentina.
+
+## What is Climate Risk?
+
+Climate risk is typically defined as the intersection of exposure, vulnerability, and
+hazard.^[https://www.undrr.org/terminology/disaster-risk] In the following sections,
+we'll explain what each of these terms means and how they combine to generate risk,
+illustrated by an example in the city of Esperanza in Argentina.
+
+## Exposure
+
+The Sendai framework from the UNDRR defines exposure as: > The situation of people,
+infrastructure, housing, production capacities and other tangible human assets located
+in hazard-prone areas.^[https://www.undrr.org/terminology/exposure]
+
+The simplest way to measure exposure is the number of people in a hazard-prone area.
+While we rarely have access to exact population count data, lots of proxies exist. For
+instance, here, we can count the number of building footprints in the city of Esperanza:
+
+```{python}
+```
+
+Of course, building footprints are not a perfect proxy for population; they don't
+account for differences in building height, size, or use (e.g., residential vs.
+commercial). Therefore, we might want to consider other proxies for population, such as
+census data. Here, we use Argentina's 2022 national census to estimate the population in
+Esperanza by census tract:
+
+```{python}
+```
+
+While the national census is the official dataset for Argentina, it, too, has meaningful
+limitations. For one, as in many low-and-middle-income countries (LMICs), there are good
+reasons to doubt the accuracy of its estimates [include link to my working paper]. And
+for another, the coarse resolution of census tracts can obscure important nuances in how
+population is distributed within a hazard area [link to Fathom paper]. With this in
+mind, we might also want to consider higher resoltion gridded population estimates like
+the Global Human Settlement Layer or WorldPop, both at 100m resolution.
+
+```{python}
+```
+
+Nor is population the only worthwhile measure of exposure; we might also be interested
+in the impact of hazards on agricultural land [link to fields of the world] or critical
+infrastructure (link to OSM + Overture Maps.)
+
+```{python}
+```
+
+You'll notice that each of these methods produces *different* estimates of exposure, and
+each method has different strenghts and limitations.
+
+In sum, then, there is no single way to report exposure; the best approach is to choose
+your exposure metrics based on 1) the type of risk you're itnerested in assessing, and
+2) the avaiable data; and then to present multiple metrics, taking into account their
+respective strengths and limitations.
+
+## Vulnerability
+
+> The conditions determined by physical, social, economic and environmental factors or
+> processes which increase the susceptibility of an individual, a community, assets or
+> systems to the impacts of hazards.^[https://www.undrr.org/terminology/vulnerability]
+
+It can be helpful to consider concrete forms of vulnerability in order to better
+understand the concept. An elderly couple without air conditioning is more vulnerable
+during a heat wave than a young couple. A person in a wheelchair living on the first
+floor is more vulnerable during a flood than an able-bodied person living on the
+eleventh floor. And vulnerability can operate across multiple axes simultaneously, such
+as a person's financial situation, race, gender, education, access to transport, access
+to plumbing, and more. Some of the most sophisticated vulnerability metrics, such as the
+Social Vulnerability Index (SoVI) produced in the Unitd States attempt to concisely
+synthesize these dimensions into a single measure that can be used to guide
+interventions and disaster
+response.^[https://sc.edu/study/colleges_schools/artsandsciences/centers_and_institutes/hvri/data_and_resources/sovi/index.php]
+
+[Insert image of SoVI]
+
+In many countries, however, especially in the Global South, vulnerability data are
+extremely limited or even non-existant. As a result, our best bet is usually to rely on
+heuristics, supplemented with local knowledge. One of the most common and effective
+heuristics is income: although financial status is not perfectly correlated with
+vulnerability (for instance, a person may be an elderly billionaire), it tends to be
+both strongly associated with other forms of vulnerability such as race, gender, and
+educational access; and more widely available than other vulnerability indicators.
+
+```{python}
+### income/NBI from the census
+```
+
+As in the case of exposure, the choice of vulnerability metric can lead to different
+outcomes, so the best approach is to carefully consider multiple indicators, chosen
+based on the particular hazard in question, and supplemented with local knowledge. Here,
+for instance, are informal settlements boundaries in Esperanza, which are known to be
+imperfect [link to my article], but provide us at least a basis for approximating
+vulnerabilities associated with informality, such as poverty, limited educational
+access, and inadequate plumbing and other infrastructure.
+
+```{python}
+### informal settlements
+```
+
+### Resilience
+
+Another wrinkle in vulnerability is the question of resilience: > The ability of a
+system, community or society exposed to hazards to resist, absorb, accommodate, adapt
+to, transform and recover from the effects of a hazard in a timely and efficient manner,
+including through the preservation and restoration of its essential basic structures and
+functions through risk management.^[https://www.undrr.org/terminology/resilience]
+
+Resilience is not simply the absence of vulnerability; rather, it is a mitigating
+factor. For instance, a city may be wealthy on the whole, but political corruption that
+hinders disaster response may mean that it is not resilient:
+
+> This study examines the relationship between corruption and natural disaster-related
+> fatalities using panel data from 135 countries spanning the period 1980 to 2020. The
+> empirical analysis reveals robust evidence that elevated levels of corruption in
+> developing countries are significantly associated with disproportionately high
+> fatality rates from natural disasters. These outcomes are indicative of systemic
+> weaknesses in infrastructure, risk management, and emergency response mechanisms. By
+> controlling for a comprehensive set of economic, demographic, healthcare, and
+> institutional variables, the study offers a clearer understanding of how governance
+> quality shapes disaster outcomes. Importantly, the analysis identifies nonlinear
+> effects, wherein the adverse impact of corruption on disaster mortality intensifies at
+> higher levels of corruption. These findings underscore the critical importance of
+> institutional integrity and effective governance in mitigating the human toll of
+> natural disasters, especially in low- and middle-income countries.
+> (https://onlinelibrary-wiley-com.proxy.library.upenn.edu/doi/full/10.1111/sjpe.70024)
+
+Conversely, a neighborhood that is poor but has deep social support networks may be
+better able to rebuild in the wake of a disaster.
+
+As a product of factors like social cohesion and political integrity, resilience is
+especially hard to quanitfy; therefore, local knowledge is particularly critical when
+accounting for resiliance in climate risk assessments.
+
+## Hazard
+
+What is a hazard? What are some commonly-measured hazards?
+
+What are some limitations in measuring hazards? Why does this matter? - Compounding -
+Cascading/interacting - Probabilistic vs. deterministic, non-stationarity, etc.
+
+### Climate Change
+
+## Risk
+
+Some other things to cover: - Importance of scale - Deterministic vs. probabilistic -
+Resilience and adaptive capacity - Uncertainty + sources of uncertainty - Epistemic vs.
+aleatory. plus recognizing that many of these datasets are incomplete (but getting
+better!), e.g., the more you use OSM, the better it becomes, which is a benefit of open
+data - But understand that the data you select will have a big impact on your results;
+be transparent about your assumptions - Mitigate this by using multiple sources, scales,
+etc. And get expert feedback
+
+## Uncertainty
+
+Until now we have talked about what models can tell us. Now we will talk about the
+limits of what those models can do.
+
+### What is Uncertainty
+
+According to the U.S. Climate Resilience Toolkit, uncertainty is a state of incomplete
+knowledge. Climate uncertainty comes from the complexity of climate systems and the
+models we use to represent that complexity, and from the impossibility of predicting
+what decisions society will make.
+
+### Sources of Uncertainty in Climate Models
+
+**Epistemic uncertainty**
+
+Comes from lack of sufficient knowledge or data. It can be reduced by collecting better
+information or higher-quality data.
+
+**Aleatory uncertainty**
+
+Comes from the inherent unpredictability of climate systems. It cannot be reduced
+through data, only quantified.
+
+Epistemic uncertainty arises because our historical datasets and geospatial
+distributions are relatively limited compared to the general scope of climate change.
+However, even with perfect historical data, climate models would still exhibit aleatory
+uncertainty because climate systems are inherently stochastic.
+
+### Stochastic Processes
+
+A stochastic process is a phenomenon that evolves through time in a way that is
+partially random or unpredictable. In the context of climate change, this means that
+although we can identify general patterns like temperature trends or seasons, there will
+always be a component of natural variability that we cannot predict exactly.
+
+Stochastic processes can be stationary or non-stationary:
+
+**Stationary processes**
+
+Their statistical properties—median, variance, and variability—are generally constant
+over time. They fluctuate around a stable state, although there is random variance.
+
+**Non-stationary processes**
+
+Their statistical properties change over time. They can show changes in trends
+(increases or decreases), changes in variance, or changes in overall patterns.
+
+Climate outcomes are inherently stochastic, but climate change means that in addition to
+being stochastic, they are also non-stationary. This means that the general trend, the
+mean, and the variance are all subject to potential change, which makes them even more
+difficult to predict or, in other words, increases uncertainty. For infrastructure
+planning, this means that historical patterns no longer reliably predict future
+conditions—a 100-year flood based on historical records might occur more (or
+occasionally less) frequently in the future, depending on how climate change affects
+local precipitation patterns.
+
+### Social Uncertainty
+
+Social uncertainty comes from the impossibility of predicting human decision-making and
+social change—demographic shifts, technological transformations, and social
+reorganizations that determine who is exposed to risk and who has the capacity to
+respond to it.
+
+This uncertainty is as important as, or even more important than, the uncertainty in
+climate models themselves.
+
+**Examples**
+
+- Fall of the Berlin Wall
+- Argentine economy
+- 2008 financial crisis
+- COVID pandemic
+- Rise of artificial intelligence in the economy
+
+All of these have caused radical changes in society that have been very difficult to
+predict and have had major impacts on climate change as well. For adaptation planning,
+this means that strategies should avoid rigid assumptions about future demographics,
+economic conditions, or technological capabilities—factors that can shift dramatically
+in ways we cannot anticipate.
+
+## Data Sources
+
+- Risk Data Library (GFDRR)
+- JRC
+- Source Coop
