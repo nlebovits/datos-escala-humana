@@ -142,12 +142,80 @@ accounting for resiliance in climate risk assessments.
 
 ## Hazard
 
-What is a hazard? What are some commonly-measured hazards?
+> A process, phenomenon or human activity that may cause loss of life, injury or other
+> health impacts, property damage, social and economic disruption or environmental
+> degradation.^[https://www.undrr.org/terminology/hazard]
 
-What are some limitations in measuring hazards? Why does this matter? - Compounding -
-Cascading/interacting - Probabilistic vs. deterministic, non-stationarity, etc.
+Hazards include phenomena such as flooding, droughts, extreme rain, heat waves, sea
+level rise, and more. They can be natural, anthropogenic, or socionatural, and can
+compound, cascade, and interact in complex ways. For instance, a heat wave can lead to
+drought, which can lead to wildfires, which can lead to air pollution, which can lead to
+health impacts.
 
-### Climate Change
+### Types of Hazard Data
+
+Hazard data comes in two types: deterministic and probabilistic.
+
+**Deterministic hazard data** are based on historical records and observations. They
+tell us what has happened in the past, such as the maximum temperature recorded in a
+city or the highest flood level observed. This data is useful for understanding
+historical patterns and for planning based on those patterns.
+
+**Probabilistic hazard data** are based on models that simulate future scenarios. They
+typically incorporate historical data, but also make use of physics-based models and
+climate projections to estimate the likelihood of different hazard levels occurring in
+the future. For example, a probabilistic flood model might estimate the probability of a
+flood of a certain magnitude occurring in any given year, based on both historical data
+and projected changes in precipitation patterns due to climate change.
+
+When selecting and interpreting hazard data for risk assessments, it's vital to
+understand whether the data you're using are deterministic or probabilistic, and how
+this affects interpretation. For example, historic flood data represent a known flood
+event that occurred on a specific date under specific circumstances, but this does not
+guarantee that future floods will happen the same way. Conversely, probabilistic flood
+models indicate where flooding is likely and under what circumstances, but cannot
+predict exactly where, when, and how flooding will occur in the future. As we emphasize
+throughout this book, the best use of these data is to *combine* them by comparing
+historical data with model projections when available, along with local knowledge.
+
+### Hazards and Climate Change
+
+A key factor for hazard data is that it is changing. To begin with, climate phenomena
+follow probabilistic distributions; while science can predict the *average* temperature
+in July in Bangkok with very high accuracy, it cannot predict the exact temperature at
+12:16pm on July 7th, 2031. This is because climate is a **stochastic** process, meaning
+that it is subject to a degree of randomness. This is why, for instance, weather
+forecasts more than a week out are no better than a coin flip. [Need a citation for
+this--I think it's from Nate Silver.]
+
+Climate change adds an additional layer of complexity to hazard data. Climate patterns
+are now **non-stationary**, meaning the *distributions* are changing. Non-stationarity
+means that both the central tendancy and the distribution are changing. Put simply, the
+average temperature in July in Bangkok is both increasing and becoming harder to
+predict.
+
+Climate change alters the frequency, intensity, and spatial distribution of climate
+hazards. Hazards that historically occurred rarely now occur more frequently. Events
+that were considered extreme become more common. Areas that were previously safe become
+exposed.
+
+For cities, this means that historical data alone is insufficient for planning. A
+100-year flood based on historical records may now be a 50-year or 25-year event. Heat
+waves that occurred once per decade may now occur multiple times per year.
+Infrastructure designed for historical climate conditions faces conditions it was not
+built to handle.
+
+Probabilistic modeling that incorporates climate projections helps address this
+limitation by simulating future scenarios. However, climate projections carry
+uncertainty—different models project different magnitudes of change, and local effects
+are harder to predict than global trends. This uncertainty doesn't eliminate the value
+of projections; it means we need to work with scenarios and ranges rather than single
+predictions.
+
+For practical municipal planning, this typically means: use historical data to
+understand what has happened, use climate projections to understand the direction and
+approximate magnitude of change, and design interventions that are robust across a range
+of possible futures rather than optimized for a single prediction.
 
 ## Risk
 
