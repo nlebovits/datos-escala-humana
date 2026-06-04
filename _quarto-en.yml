@@ -13,7 +13,7 @@ book:
     - en/intro.qmd
     - en/python-geospatial/python-geospatial.qmd
     - en/open-data/open-data.qmd
-    - en/climate-risk/climate-risk.qmd
+    - en/climate-risk/climate-risk-draft.qmd
     - en/data-action/data-action.qmd
     - part: Cookbooks
       chapters:
