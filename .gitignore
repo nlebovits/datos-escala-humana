@@ -232,3 +232,5 @@ __marimo__/
 /docs/
 
 /.luarc.json
+ipcc_atlas_*.zip
+ipcc_*_data/
