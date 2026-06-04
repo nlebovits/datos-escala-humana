@@ -17,7 +17,7 @@ book:
     - en/data-action/data-action.qmd
     - part: Cookbooks
       chapters:
-        - en/cookbooks/pergamino.qmd
+        - en/cookbooks/pergamino.ipynb
         - en/cookbooks/esperanza.ipynb
         - en/cookbooks/la-plata.qmd
         - en/cookbooks/villa-del-rosario.ipynb
