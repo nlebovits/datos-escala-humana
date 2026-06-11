@@ -26,6 +26,9 @@ jobs:
 
             # Source Cooperative - Overture buildings (Chapters 1, 2)
             "https://data.source.coop/vida/google-microsoft-open-buildings/geoparquet/by_country/country_iso=ARG/ARG.parquet"
+
+            # RENABAP informal settlements registry (Cookbooks: La Plata)
+            "https://www.argentina.gob.ar/sites/default/files/renabap-2023-12-06.geojson"
           )
 
           failed=0

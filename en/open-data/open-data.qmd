@@ -525,12 +525,12 @@ lead to completely inaccurate population counts and therefore prevent local gove
 from adequately providing services.
 
 As part of broader research work in Argentina, we worked in 2025 to [pull open building
-footprints to compare to RENABAP data in La
-Plata](https://nlebovits.github.io/ciut-riesgo/renabap.html). Our findings were stark:
-the RENABAP data may underestimate the real population in these settlements by roughly
-40%. In one extreme case, we found an informal settlement that RENABAP estimated was
-inhabited by 330 families--but satellite imagery showed that it contained more than
-*four thousand building footprints*.
+footprints to compare to RENABAP data in La Plata](../cookbooks/la-plata.ipynb). Our
+findings were stark: building footprints imply more than twice as many households as
+RENABAP records, meaning the registry may underestimate the real population in these
+settlements by more than half. In one extreme case, we found an informal settlement that
+RENABAP estimated was inhabited by 330 families--but satellite imagery showed that it
+contained more than *four thousand building footprints*.
 
 ![Example of Informal Settlement, La Plata, Argentina](https://nlebovits.github.io/ciut-riesgo/renabap_files/figure-html/fig-ejemplos-barrios-adicionales-output-3.png)
 
