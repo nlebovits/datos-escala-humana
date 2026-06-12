@@ -20,7 +20,6 @@ book:
         - en/cookbooks/pergamino.ipynb
         - en/cookbooks/esperanza.ipynb
         - en/cookbooks/la-plata.ipynb
-        - en/cookbooks/villa-del-rosario.ipynb
     - en/references.qmd
   sidebar:
     pinned: true
